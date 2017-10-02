@@ -120,7 +120,7 @@ public class Main {
 	
 	private static void signUpClass(){
 		String classNumber = Input.next("Input class number (0 cancel): ");
-		String courseNumber = Input.next("Input class number (0 cancel): ");
+		String courseNumber = Input.next("Input course number (0 cancel): ");
 		if (!classNumber.equals("0") && !courseNumber.equals("0"))
 			studentSystem.registerClass(classNumber, courseNumber, new Callback<Void>() {
 				@Override
