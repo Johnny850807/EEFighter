@@ -5,6 +5,6 @@ public abstract class Game
         System.out.println("Welcome!");
         return start();
     }
-     abstract boolean start() ; // an abstract method
+    abstract boolean start() ; // an abstract method
      
 }
