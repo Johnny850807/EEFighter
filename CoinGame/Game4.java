@@ -5,10 +5,10 @@
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Game1 extends Game
+public class Game4 extends Game
 {
     public  boolean start() {
-          System.out.println(" Game1 is playiong now .....!");
+          System.out.println(" Game4 is playiong now .....!");
           return true;
     }
 }
