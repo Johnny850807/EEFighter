@@ -3,18 +3,13 @@ import java.util.function.*;
 
 public class Test
 {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception{
         List<Coin> coins = new ArrayList<>();
-        Map<Integer,Supplier<Coin>> coinMap = new HashMap<>();
-        coinMap.put(0, () -> new Coin1());
-        coinMap.put(1, () -> new Coin2());
-        coinMap.put(2, () -> new Coin3());
-        coinMap.put(3, () -> new Coin4());
         Random random = new Random();
         
         for(int i = 0; i < 10; i++) {
             int randomInt = random.nextInt(4);
-            coins.add(coinMap.get(randomInt).get());
+            coins.add((Coin)Class.forName("Coin" + (randomInt+1)).newInstance());  // reflection
         }
         
         for (Coin coin : coins)
