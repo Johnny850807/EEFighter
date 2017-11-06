@@ -8,7 +8,8 @@ import java.util.Map;
 public class Word {
 	private String word;
 	private String soundPath;
-	private Map<String, List<String>> sentences = new HashMap<String, List<String>>();
+	// TODO 詞性改成列舉
+	private Map<String, List<String>> definitions = new HashMap<String, List<String>>();
 	
 	public Word(String word) {
 		this.word = word;
@@ -31,21 +32,21 @@ public class Word {
 	}
 
 	public Map<String, List<String>> getSentences() {
-		return sentences;
+		return definitions;
 	}
 
 	public void setSentences(Map<String, List<String>> sentences) {
-		this.sentences = sentences;
+		this.definitions = sentences;
 	}
 
 	public void addDefinition(String partOfSpeech, String sentence) {
-		if (sentences.get(partOfSpeech) == null) {
+		if (definitions.get(partOfSpeech) == null) {
 			List sentencelist = new ArrayList<>();
 			sentencelist.add(sentence);
-			sentences.put(partOfSpeech, sentencelist);
+			definitions.put(partOfSpeech, sentencelist);
 		}
 		else {
-			sentences.get(partOfSpeech).add(sentence);
+			definitions.get(partOfSpeech).add(sentence);
 		}
 	}
 }
