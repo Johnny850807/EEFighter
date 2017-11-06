@@ -9,7 +9,7 @@ import org.jsoup.select.Elements;
 public class Main {
 
 	public static void main(String[] args) {
-		final String WORD = "asdasndln";  //selected word
+		final String WORD = "volunteer";  //selected word
 		final String LINK = "https://www.vocabulary.com/dictionary/" + WORD; // the link the htmlpage to crawl
 		try {
 			Document doc = Jsoup.connect(LINK).get();
