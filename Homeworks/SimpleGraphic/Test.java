@@ -7,12 +7,12 @@ public class Test {
     	GraphicStrategy smileFace = new SmileFace(200, 300, 300, 200);
     	GraphicStrategy sadFace = new SadFace(300, 100, 300, 200);
     	GraphicStrategy rectangle = new Rectangle(680, 160, 60, 90);
-    	DrawGarphics drawGarphics = new DrawGarphics();
-    	drawGarphics.addGarphic(rectangle);
-    	drawGarphics.addGarphic(circle);
-    	drawGarphics.addGarphic(smileFace);
-    	drawGarphics.addGarphic(sadFace);
-    	drawGarphics.setVisible(true);
+    	GraphicsFrame graphicsFrame = new GraphicsFrame();
+    	graphicsFrame.addGraphic(rectangle);
+    	graphicsFrame.addGraphic(circle);
+    	graphicsFrame.addGraphic(smileFace);
+    	graphicsFrame.addGraphic(sadFace);
+    	graphicsFrame.setVisible(true);
     }
     
 }

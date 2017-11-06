@@ -5,10 +5,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.awt.Color;
 
-public class DrawGarphics extends JFrame {
+public class GraphicsFrame extends JFrame {
 	private List<GraphicStrategy> drawGarphicStrategys = new ArrayList<>();
     
-    public DrawGarphics()
+    public GraphicsFrame()
     {
         setSize(800, 600); //width, height of the window
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //set default close oeraton
@@ -20,7 +20,7 @@ public class DrawGarphics extends JFrame {
         draw(g);
     }
     
-    public void addGarphic(GraphicStrategy graphicStrategy) {
+    public void addGraphic(GraphicStrategy graphicStrategy) {
     	drawGarphicStrategys.add(graphicStrategy);
     }
     
