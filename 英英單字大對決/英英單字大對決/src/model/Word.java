@@ -40,13 +40,8 @@ public class Word {
 	}
 
 	public void addDefinition(String partOfSpeech, String sentence) {
-		if (definitions.get(partOfSpeech) == null) {
-			List sentencelist = new ArrayList<>();
-			sentencelist.add(sentence);
-			definitions.put(partOfSpeech, sentencelist);
-		}
-		else {
-			definitions.get(partOfSpeech).add(sentence);
-		}
+		if (!definitions.containsKey(partOfSpeech)) 
+			definitions.put(partOfSpeech, new ArrayList<>());
+		definitions.get(partOfSpeech).add(sentence);
 	}
 }
