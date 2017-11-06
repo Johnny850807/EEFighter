@@ -1,5 +1,5 @@
 package ui;
 
-public class EnglishWarehouseView {
-
+public interface EnglishWarehouseView {
+	
 }
