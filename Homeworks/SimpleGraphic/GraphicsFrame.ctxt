@@ -1,0 +1,14 @@
+#BlueJ class context
+comment0.params=
+comment0.target=GraphicsFrame()
+comment1.params=g
+comment1.target=void\ paint(java.awt.Graphics)
+comment2.params=graphicStrategy
+<<<<<<< HEAD:Homeworks/SimpleGarphic/DrawGarphics.ctxt
+comment2.target=void\ addGarphic(GraphicStrategy)
+=======
+comment2.target=void\ addGraphic(GraphicStrategy)
+>>>>>>> 5a8f7829bb29213426a79151ec7b4f8d6d193c8d:Homeworks/SimpleGraphic/GraphicsFrame.ctxt
+comment3.params=g
+comment3.target=void\ draw(java.awt.Graphics)
+numComments=4

@@ -1,4 +1,4 @@
-package media;
+package utils;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -21,21 +21,11 @@ public class SoundPlayer {
 	}
 	
 	public void playSound(String path){
-		 try {   
-			new Thread(new Runnable() {
-				 Clip soundClip = AudioSystem.getClip();
-				    public void run() {
-				      try {
-				    	soundClip.open(AudioSystem.getAudioInputStream(new File(path).toURL()));
-				  		soundClip.start();
-				      } catch (Exception e) {
-				        soundClip.close();
-				     
-				      }
-				    }
-				  }
-			 ).start();
-		} catch (LineUnavailableException e) {
+		try {   
+			Clip soundClip = AudioSystem.getClip();
+			soundClip.open(AudioSystem.getAudioInputStream(new File(path).toURL()));
+			soundClip.start();
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}

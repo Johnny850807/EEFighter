@@ -17,7 +17,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
-import media.SoundPlayer;
+import utils.SoundPlayer;
 
 /*
  * The Main view where contains the main function buttons.
