@@ -120,7 +120,8 @@ public class MainView extends JFrame implements ActionListener{
 	}
 	
 	private void goToEnglishWarehouse(){
-		
+		EnglishWarehouseViewImp englishWarehouseViewImp = new EnglishWarehouseViewImp();
+		englishWarehouseViewImp.start();
 	}
 	
 	public static void main(String[] argv){
