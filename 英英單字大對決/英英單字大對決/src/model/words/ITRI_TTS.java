@@ -160,7 +160,7 @@ public class ITRI_TTS implements TTS{
 			TTS tts = new ITRI_TTS(Secret.TTS_ACCOUNT, Secret.TTS_PASSWORD);
 			String path = tts.saveWordTTS("sounds/vocabulary", "extraterrestrial");
 			new MainView().setVisible(true);
-			SoundPlayer.getSoundManager().playSound(path);
+			SoundPlayer.getInstance().playSound(path);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
