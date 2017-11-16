@@ -57,23 +57,7 @@ public class ITRI_TTS implements TTS{
 			throw new IllegalArgumentException("The word is not valid.");
 		word = word.trim();
 		int convertId = getConvertId(word);
-		System.out.println(convertId);
-		String resourceUrl = null;
-		while(true)  // repeatedly asking for the status until it's completed.
-		{
-			try{
-				resourceUrl = getFileUrlByConvertId(convertId); 
-				break;
-			}catch (TTSProcessingException e) {
-				try {
-					Thread.sleep(500);
-				} catch (InterruptedException e1) {
-					e1.printStackTrace();
-				}
-			}
-		}
-		
-		System.out.println(resourceUrl);
+		String resourceUrl = repeatedlyAskingForTheTTSProduct(convertId);
 		File file = parseAndSaveFileFromUrl(resourceUrl, directoryPath, word);
 		return file.getAbsolutePath();
 	}
@@ -105,7 +89,23 @@ public class ITRI_TTS implements TTS{
 		return resuleElm.getTextContent().trim();
 	}
     
-
+	private String repeatedlyAskingForTheTTSProduct(int convertId) throws TTSException{
+		String resourceUrl = null;
+		while(true)  // repeatedly asking for the status until it's completed.
+		{
+			try{
+				resourceUrl = getFileUrlByConvertId(convertId); 
+				break;
+			}catch (TTSProcessingException e) {
+				try {
+					Thread.sleep(500);
+				} catch (InterruptedException e1) {
+					e1.printStackTrace();
+				}
+			}
+		}
+		return resourceUrl;
+	}
 	
 	private String getFileUrlByConvertId(int convertId) throws TTSException{
 		final String actionEndpoint = ACTION_BASE + ACTION_GET_CONVERT_STATUS; // now we are going to get the convert status.
@@ -158,12 +158,12 @@ public class ITRI_TTS implements TTS{
 	public static void main(String[] argv){
 		try {
 			TTS tts = new ITRI_TTS(Secret.TTS_ACCOUNT, Secret.TTS_PASSWORD);
-			String path = tts.saveWordTTS("sounds/vocabulary", "Hello everyone, Here I'm gonna talk about myself. The weather in Taoyuan is just awesome. Ms. Joanna where are you ?  I am very 哈哈幹你老師咧，還真當我廣播電台喔，馬的逼蛋。");
-			System.out.println(path);
+			String path = tts.saveWordTTS("sounds/vocabulary", "extraterrestrial");
 			new MainView().setVisible(true);
-			SoundPlayer.getSoundManager().playSound(path);
+			SoundPlayer.getInstance().playSound(path);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
+	
 }

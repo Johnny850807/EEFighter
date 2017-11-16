@@ -120,7 +120,8 @@ public class MainView extends JFrame implements ActionListener{
 	}
 	
 	private void goToEnglishWarehouse(){
-		
+		EnglishWarehouseViewImp englishWarehouseViewImp = new EnglishWarehouseViewImp();
+		englishWarehouseViewImp.start();
 	}
 	
 	public static void main(String[] argv){
@@ -128,7 +129,7 @@ public class MainView extends JFrame implements ActionListener{
 		try {
 			mainView = new MainView();
 			mainView.setVisible(true);
-			SoundPlayer.getSoundManager().playLoopMusic("sounds/after-journey.wav");
+			SoundPlayer.getInstance().playLoopMusic("sounds/after-journey.wav");
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
