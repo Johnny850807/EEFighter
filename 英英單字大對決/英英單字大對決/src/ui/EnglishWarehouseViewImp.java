@@ -8,8 +8,6 @@ import javax.swing.*;
 import model.words.Word;
 
 public class EnglishWarehouseViewImp extends JFrame implements EnglishWarehouseView, ActionListener {
-	private static final int BUTTONS_WIDTH = 50;
-	private static final int BUTTON_HEIGHT = 40;
 	private Button addWordBtn;
 	private Button removeWordBtn;
 	private TextField searchAndAddWordEd;
@@ -35,7 +33,7 @@ public class EnglishWarehouseViewImp extends JFrame implements EnglishWarehouseV
 	private void setupViews() {
 		initializeAllComponents();
 		setViewsFont(new Font("·L³n¥¿¶ÂÅé", Font.BOLD, 20));
-		setViewsSize(new Dimension(BUTTONS_WIDTH, BUTTON_HEIGHT));
+		setViewsSize(new Dimension(50, 40));
 	}
 
 	private void initializeAllComponents() {
@@ -76,9 +74,7 @@ public class EnglishWarehouseViewImp extends JFrame implements EnglishWarehouseV
 	}
 
 	public void start() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(300, 300, 400, 650);
-		setVisible(true);
+		setBounds(500, 200, 400, 650);
 		setupViews();
 		setupLayout();
 		addButtonsActionListener(this);
