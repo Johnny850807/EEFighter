@@ -18,7 +18,7 @@ public class WordRepositoryImp implements WordRepository {
 
 	@Override
 	public void addWord(Word word) {
-		if (wordExistedOrNot(word.getWord()))
+		if (wordExists(word.getWord()))
 			return;
 		words.put(word.getWord(), word);
 		writeFile(words);
@@ -26,7 +26,7 @@ public class WordRepositoryImp implements WordRepository {
 
 	@Override
 	public void removeWord(Word word) {
-		if (!wordExistedOrNot(word.getWord()))
+		if (!wordExists(word.getWord()))
 			return;
 		words.remove(word.getWord());
 		writeFile(words);
@@ -34,24 +34,23 @@ public class WordRepositoryImp implements WordRepository {
 
 	@Override
 	public Word readWord(String wordtext) {
-		if (wordExistedOrNot(wordtext))
+		if (wordExists(wordtext))
 			return words.get(wordtext);
 		return null;
 	}
 
-	private boolean wordExistedOrNot(String wordtext) {
+	private boolean wordExists(String wordtext) {
 		if (words.containsKey(wordtext))
 			return true;
 		return false;
 	}
 	
 	private void readFile() {
+		BufferedReader br = null;
 		try {
 			FileReader fr = new FileReader("words.txt");
-			BufferedReader br = new BufferedReader(fr);
-			
+			br = new BufferedReader(fr);
 			String line;
-			
 			while ((line = br.readLine()) != null) {
 				String[] results = line.split(" ");
 				String wordtext = results[0];
@@ -63,16 +62,23 @@ public class WordRepositoryImp implements WordRepository {
 						word.addDefinition(define[0], define[j]);
 				}
 			}
-			br.close();
 		} catch (Exception e) {
 			e.printStackTrace();
+		}finally {
+			try {
+				if (br != null)
+					br.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 		}
 	}
 	
 	public void writeFile(Map<String, Word> words) {
+		BufferedWriter bw = null;
 		try {
 			FileWriter fw = new FileWriter("words.txt");
-			BufferedWriter bw = new BufferedWriter(fw);
+			bw = new BufferedWriter(fw);
 			
 			for (String w : words.keySet()) {
 				Word word = words.get(w);
@@ -88,11 +94,15 @@ public class WordRepositoryImp implements WordRepository {
 					bw.newLine();
 				}
 			}
-			bw.close();
-			
 		} catch (IOException e) {
 			e.printStackTrace();
+		}finally {
+			try {
+				if (bw != null)
+					bw.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 		}	
-
 	}
 }
