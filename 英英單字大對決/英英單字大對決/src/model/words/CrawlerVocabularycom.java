@@ -35,8 +35,16 @@ public class CrawlerVocabularycom implements Crawler{
 	
 	
 	public static void main(String[] args) {
+		String wordtext = "volunteer";
 		CrawlerVocabularycom c = new CrawlerVocabularycom();
-		c.crawlWordAndGetSentence("volunteer");
+		Word word = c.crawlWordAndGetSentence(wordtext);
+		Word word2 = c.crawlWordAndGetSentence("despair");
+		word.setSoundPath("fjii");
+		word2.setSoundPath("wdtetwew");
+		WordFileManager wordFileManager = WordFileManager.getInstance();
+		wordFileManager.addWordToFile(word);
+		wordFileManager.addWordToFile(word2);
+		System.out.println(wordFileManager.readWordFromFile("despair").getSentences());
 	}
 
 }
