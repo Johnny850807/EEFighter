@@ -5,16 +5,14 @@ import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 public class WordFileManager {
 	private static WordFileManager instance;
-	private Map<String, Word> words = new HashMap<String, Word>();
 	
 	private WordFileManager() {
-		readWordFromFile();
+		readFile();
 	}
 	
 	public static WordFileManager getInstance() {
@@ -22,14 +20,8 @@ public class WordFileManager {
 			instance = new WordFileManager();
 		return instance;
 	}
-	
-	public Word readWordFromFile(String word) {
-		if (words.containsKey(word))
-			return words.get(word);
-		return null;
-	}
 
-	private void readWordFromFile() {
+	private void readFile() {
 		try {
 			FileReader fr = new FileReader("words.txt");
 			BufferedReader br = new BufferedReader(fr);
@@ -46,7 +38,6 @@ public class WordFileManager {
 					for (int j = 1; j < define.length; j++)
 						word.addDefinition(define[0], define[j]);
 				}
-				words.put(wordtext, word);	
 			}
 			br.close();
 		} catch (Exception e) {
@@ -54,35 +45,30 @@ public class WordFileManager {
 		}
 	}
 	
-	public void addWordToFile(Word word) {
-		if (wordExistedOrNot(word.getWord()))
-			return;
+	public void writeFile(Map<String, Word> words) {
 		try {
-			FileWriter fw = new FileWriter("words.txt", true);
+			FileWriter fw = new FileWriter("words.txt");
 			BufferedWriter bw = new BufferedWriter(fw);
 			
-			Map<String, List<String>> definitions = word.getSentences();
-			int keyAmount = definitions.keySet().size();
-			
-			bw.append(word.getWord() + " " + word.getSoundPath() + " " + keyAmount);
-			bw.newLine();
-			for (String partOfSpeech : definitions.keySet()) {
-				bw.append(partOfSpeech);
-				for (String definition : definitions.get(partOfSpeech))
-					bw.append("/" + definition);
+			for (String w : words.keySet()) {
+				Word word = words.get(w);
+				Map<String, List<String>> definitions = word.getSentences();
+				int keyAmount = definitions.keySet().size();
+				
+				bw.append(word.getWord() + " " + word.getSoundPath() + " " + keyAmount);
 				bw.newLine();
+				for (String partOfSpeech : definitions.keySet()) {
+					bw.append(partOfSpeech);
+					for (String definition : definitions.get(partOfSpeech))
+						bw.append("/" + definition);
+					bw.newLine();
+				}
 			}
 			bw.close();
-			words.put(word.getWord(), word);
+			
 		} catch (IOException e) {
 			e.printStackTrace();
 		}	
 
-	}
-	
-	private boolean wordExistedOrNot(String wordtext) {
-		if (readWordFromFile(wordtext) == null)
-			return false;
-		return true;
 	}
 }

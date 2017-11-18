@@ -41,10 +41,11 @@ public class CrawlerVocabularycom implements Crawler{
 		Word word2 = c.crawlWordAndGetSentence("despair");
 		word.setSoundPath("fjii");
 		word2.setSoundPath("wdtetwew");
-		WordFileManager wordFileManager = WordFileManager.getInstance();
-		wordFileManager.addWordToFile(word);
-		wordFileManager.addWordToFile(word2);
-		System.out.println(wordFileManager.readWordFromFile("despair").getSentences());
+		WordRepository wordRepository = new WordRepositoryImp();
+		wordRepository.addWord(word);
+		wordRepository.addWord(word2);
+		wordRepository.removeWord(word);
+		System.out.println(wordRepository.readWord("despair").getSentences());
 	}
 
 }
