@@ -45,7 +45,11 @@ public class CrawlerVocabularycom implements Crawler{
 		wordRepository.addWord(word);
 		wordRepository.addWord(word2);
 		wordRepository.removeWord(word);
-		System.out.println(wordRepository.readWord("despair").getSentences());
+		try {
+			System.out.println(wordRepository.readWord("despair").getSentences());
+		} catch (ReadWordFailedException e) {
+			e.printStackTrace();
+		}
 	}
 
 }

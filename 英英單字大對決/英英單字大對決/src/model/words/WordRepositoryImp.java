@@ -18,31 +18,29 @@ public class WordRepositoryImp implements WordRepository {
 
 	@Override
 	public void addWord(Word word) {
-		if (wordExists(word.getWord()))
-			return;
-		words.put(word.getWord(), word);
-		writeFile(words);
+		if (!wordExists(word.getWord())) {
+			words.put(word.getWord(), word);
+			writeFile(words);
+		}
 	}
 
 	@Override
 	public void removeWord(Word word) {
-		if (!wordExists(word.getWord()))
-			return;
-		words.remove(word.getWord());
-		writeFile(words);
+		if (wordExists(word.getWord())) {
+			words.remove(word.getWord());
+			writeFile(words);
+		}
 	}
 
 	@Override
-	public Word readWord(String wordtext) {
+	public Word readWord(String wordtext) throws ReadWordFailedException {
 		if (wordExists(wordtext))
 			return words.get(wordtext);
-		return null;
+		throw new ReadWordFailedException();
 	}
 
 	private boolean wordExists(String wordtext) {
-		if (words.containsKey(wordtext))
-			return true;
-		return false;
+		return words.containsKey(wordtext); 
 	}
 	
 	private void readFile() {
