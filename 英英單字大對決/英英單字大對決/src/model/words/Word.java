@@ -14,7 +14,7 @@ public class Word {
 	public Word(String word) {
 		this.word = word;
 	}
-
+	
 	public String getWord() {
 		return word;
 	}
@@ -23,11 +23,11 @@ public class Word {
 		this.word = word;
 	}
 
-	public String getSound() {
+	public String getSoundPath() {
 		return soundPath;
 	}
 
-	public void setSound(String soundPath) {
+	public void setSoundPath(String soundPath) {
 		this.soundPath = soundPath;
 	}
 
