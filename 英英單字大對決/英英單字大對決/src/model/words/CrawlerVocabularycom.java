@@ -10,7 +10,7 @@ import org.jsoup.select.Elements;
 public class CrawlerVocabularycom implements Crawler{
 	
 	@Override
-	public Word crawlWordAndGetSentence(String wordSpelling) {
+	public Word crawlWordAndGetSentence(String wordSpelling) throws WordNotExistException {
 		final String LINK = "https://www.vocabulary.com/dictionary/" + wordSpelling;
 		try {
 			Document doc = Jsoup.connect(LINK).get();
@@ -30,25 +30,24 @@ public class CrawlerVocabularycom implements Crawler{
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		return null;
+		throw new WordNotExistException();
 	}
 	
 	
 	public static void main(String[] args) {
 		String wordtext = "volunteer";
-		CrawlerVocabularycom c = new CrawlerVocabularycom();
-		Word word = c.crawlWordAndGetSentence(wordtext);
-		Word word2 = c.crawlWordAndGetSentence("despair");
-		word.setSoundPath("fjii");
-		word2.setSoundPath("wdtetwew");
 		WordRepository wordRepository = new WordRepositoryImp();
-		wordRepository.addWord(word);
-		wordRepository.addWord(word2);
-		wordRepository.removeWord(word);
+		CrawlerVocabularycom c = new CrawlerVocabularycom();
+		Word word;
 		try {
+			word = c.crawlWordAndGetSentence(wordtext);
+			word.setSoundPath("fjii");
+			wordRepository.addWord(word);
+			wordRepository.removeWord(word);
 			System.out.println(wordRepository.readWord("despair").getSentences());
-		} catch (ReadWordFailedException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
+			System.out.println(e.getMessage());
 		}
 	}
 
