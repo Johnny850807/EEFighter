@@ -3,17 +3,22 @@ package ui;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.swing.*;
 
+import Mock.MockWordListFactory;
 import model.words.Word;
 
 public class EnglishWarehouseViewImp extends JFrame implements EnglishWarehouseView, ActionListener {
 	private Button addWordBtn;
 	private Button removeWordBtn;
 	private TextField searchAndAddWordEd;
-	DefaultListModel<String> words;
-	JList<String> wordList;
-	JScrollPane wordListScrollPane;
+	private DefaultListModel<Word> words;
+	private JList<Word> wordList;
+	private JScrollPane wordListScrollPane;
+	private List<Word> mockWords = new ArrayList<>();
 
 	private void setupLayout() {
 		getContentPane().setBackground(new Color(55, 55, 55));
@@ -22,7 +27,6 @@ public class EnglishWarehouseViewImp extends JFrame implements EnglishWarehouseV
 		add(addWordBtn);
 		add(removeWordBtn);
 		add(wordListScrollPane);
-
 	}
 
 	private void addButtonsActionListener(ActionListener actionListener) {
@@ -40,9 +44,7 @@ public class EnglishWarehouseViewImp extends JFrame implements EnglishWarehouseV
 		addWordBtn = new Button("¥[¤J");
 		removeWordBtn = new Button("§R°£");
 		searchAndAddWordEd = new TextField();
-		words = new DefaultListModel<>();
-		wordList = new JList<>(words);
-		wordListScrollPane = new JScrollPane(wordList);
+		showWordList();
 	}
 
 	private void setViewsFont(Font font) {
@@ -60,17 +62,14 @@ public class EnglishWarehouseViewImp extends JFrame implements EnglishWarehouseV
 	}
 
 	public void showWordList() {
-		for (int i = 0; i < 4; i++) {
-			words.addElement("Apple");
-			words.addElement("Banana");
-			words.addElement("Cat");
-			words.addElement("Dog");
-			words.addElement("Egg");
-			words.addElement("Fuck");
-			words.addElement("Gun");
-			words.addElement("Hack");
-		}
-		wordList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		mockWords = new MockWordListFactory().createWordList();
+		words = new DefaultListModel<>();
+		for (Word word : mockWords)
+			words.addElement(word);
+		wordList = new JList<>(words);
+		wordList.setCellRenderer(new WordCellRenderer());
+		wordListScrollPane = new JScrollPane(wordList);
+
 	}
 
 	public void start() {
@@ -85,11 +84,34 @@ public class EnglishWarehouseViewImp extends JFrame implements EnglishWarehouseV
 		Button button = (Button) e.getSource();
 		if (button.equals(addWordBtn)) {
 			String text = searchAndAddWordEd.getText().toString();
-			words.addElement(text);
+			words.addElement(new Word(text));
 		} else if (button.equals(removeWordBtn)) {
 			String text = searchAndAddWordEd.getText().toString();
-			int index = words.indexOf(text);
-			words.remove(index);
+			for (int i = 0; i < words.size(); i++)
+				if (words.getElementAt(i).getWord().equals(text))
+					words.remove(i);
 		}
+	}
+}
+
+class WordCellRenderer extends JLabel implements ListCellRenderer {
+	private static final Color HIGHLIGHT_COLOR = new Color(0, 0, 128);
+
+	public WordCellRenderer() {
+		setOpaque(true);
+	}
+
+	public Component getListCellRendererComponent(JList list, Object value, int index, boolean isSelected,
+			boolean cellHasFocus) {
+		Word word = (Word) value;
+		setText(word.getWord());
+		if (isSelected) {
+			setBackground(HIGHLIGHT_COLOR);
+			setForeground(Color.white);
+		} else {
+			setBackground(Color.white);
+			setForeground(Color.black);
+		}
+		return this;
 	}
 }
