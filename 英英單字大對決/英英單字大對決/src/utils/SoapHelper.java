@@ -17,7 +17,7 @@ import javax.xml.stream.events.Namespace;
 
 /**
  * @author Johnny850807
- * A SOAP helper used for sending any soap requests.
+ * A SOAP helper used for sending any soap requests with specified properties.
  */
 public class SoapHelper {
 	public static final String NAMESPACE = "NAMESPACE";

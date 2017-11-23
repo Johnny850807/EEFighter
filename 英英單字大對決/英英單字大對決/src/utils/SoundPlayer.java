@@ -12,14 +12,22 @@ import javax.sound.sampled.Clip;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 
+/**
+ * The singleton sound player playing the sound or the looping background music. (Notice, only when any UI component such
+ * as JFrame created and showing cause this work.)
+ */
 public class SoundPlayer {
-	private static SoundPlayer soundManager = new SoundPlayer();
+	private static SoundPlayer instance = new SoundPlayer();
 	private Clip backgroundMusic;  //背景音樂 一次只能撥一首 
 	
-	public static SoundPlayer getSoundManager(){
-		return soundManager;
+	public static SoundPlayer getInstance(){
+		return instance;
 	}
 	
+	/**
+	 * Play once the sound.
+	 * @param path sound's path.
+	 */
 	public void playSound(String path){
 		try {   
 			Clip soundClip = AudioSystem.getClip();
@@ -31,13 +39,12 @@ public class SoundPlayer {
 	}
 	
 	/**
-	 * play the background music, the background music can only 
-	 * exits only one at the same time.
+	 * Play the background music, the background music can only exits one at the same time, as well as the
+	 * background music will be looping over and over again. Invoke stopBackgroundMusicIfLooping() if you want to stop the background music.
 	 */
 	public void playLoopMusic(String path){
 		try {
-			if ( backgroundMusic != null && backgroundMusic.isOpen() )
-				backgroundMusic.close();
+			stopBackgroundMusicIfLooping();
 			backgroundMusic = AudioSystem.getClip();
 			backgroundMusic.open(AudioSystem.getAudioInputStream(new File(path).toURL()));
 			backgroundMusic.loop(-1);
@@ -46,5 +53,11 @@ public class SoundPlayer {
 		} 
 	}
 
-	
+	/**
+	 * Stop the playing background music.
+	 */
+	public void stopBackgroundMusicIfLooping(){
+		if ( backgroundMusic != null && backgroundMusic.isOpen() )
+			backgroundMusic.close();
+	}
 }
