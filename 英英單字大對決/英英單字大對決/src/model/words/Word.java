@@ -10,7 +10,7 @@ public class Word {
 	private String soundPath;
 	// TODO 詞性改成列舉
 	private Map<String, List<String>> definitions = new HashMap<String, List<String>>();
-	
+
 	public Word(String word) {
 		this.word = word;
 	}

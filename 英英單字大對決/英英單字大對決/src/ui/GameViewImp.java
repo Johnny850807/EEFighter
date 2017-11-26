@@ -31,14 +31,19 @@ public class GameViewImp extends JPanel implements GameView {
 	private GridBagConstraints gbc;
 
 	public GameViewImp() {
-		draw();
-	}
-
-	@Override
-	public void draw() {
 		setBounds(0, 0, 1100, 700);
 		setupViews();
 		setupLayout();
+	}
+	
+	@Override
+	protected void paintComponent(Graphics g) {
+		super.paintComponent(g);
+	}
+	
+	@Override
+	public void draw() {
+		repaint();
 	}
 
 	private void setupLayout() {

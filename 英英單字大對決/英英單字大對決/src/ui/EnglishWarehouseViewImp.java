@@ -82,11 +82,11 @@ public class EnglishWarehouseViewImp extends JFrame implements EnglishWarehouseV
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		Button button = (Button) e.getSource();
-		if (button.equals(addWordBtn)) {
-			String text = searchAndAddWordEd.getText().toString();
+		if (button == addWordBtn) {
+			String text = searchAndAddWordEd.getText();
 			words.addElement(new Word(text));
-		} else if (button.equals(removeWordBtn)) {
-			String text = searchAndAddWordEd.getText().toString();
+		} else if (button == removeWordBtn) {
+			String text = searchAndAddWordEd.getText();
 			for (int i = 0; i < words.size(); i++)
 				if (words.getElementAt(i).getWord().equals(text))
 					words.remove(i);
