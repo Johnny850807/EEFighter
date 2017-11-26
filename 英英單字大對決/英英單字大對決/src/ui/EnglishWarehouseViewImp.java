@@ -8,14 +8,13 @@ import java.util.List;
 
 import javax.swing.*;
 
-import Mock.MockWordListFactory;
 import model.words.Word;
 
 public class EnglishWarehouseViewImp extends JFrame implements EnglishWarehouseView, ActionListener {
 	private Button addWordBtn;
 	private Button removeWordBtn;
 	private TextField searchAndAddWordEd;
-	private DefaultListModel<Word> words;
+	private DefaultListModel<Word> wordDefaultListModel;
 	private JList<Word> wordList;
 	private JScrollPane wordListScrollPane;
 	private List<Word> mockWords = new ArrayList<>();
@@ -62,11 +61,11 @@ public class EnglishWarehouseViewImp extends JFrame implements EnglishWarehouseV
 	}
 
 	public void showWordList() {
-		mockWords = new MockWordListFactory().createWordList();
-		words = new DefaultListModel<>();
+	
+		wordDefaultListModel = new DefaultListModel<>();
 		for (Word word : mockWords)
-			words.addElement(word);
-		wordList = new JList<>(words);
+			wordDefaultListModel.addElement(word);
+		wordList = new JList<>(wordDefaultListModel);
 		wordList.setCellRenderer(new WordCellRenderer());
 		wordListScrollPane = new JScrollPane(wordList);
 
@@ -84,12 +83,13 @@ public class EnglishWarehouseViewImp extends JFrame implements EnglishWarehouseV
 		Button button = (Button) e.getSource();
 		if (button == addWordBtn) {
 			String text = searchAndAddWordEd.getText();
-			words.addElement(new Word(text));
+
+			wordDefaultListModel.addElement(new Word(text));
 		} else if (button == removeWordBtn) {
 			String text = searchAndAddWordEd.getText();
-			for (int i = 0; i < words.size(); i++)
-				if (words.getElementAt(i).getWord().equals(text))
-					words.remove(i);
+			for (int i = 0; i < wordDefaultListModel.size(); i++)
+				if (wordDefaultListModel.getElementAt(i).getWord().equals(text))
+					wordDefaultListModel.remove(i);
 		}
 	}
 }
