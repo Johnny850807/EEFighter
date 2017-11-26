@@ -131,7 +131,7 @@ public class MainView extends JFrame implements ActionListener {
 		try {
 			mainView = new MainView();
 			mainView.setVisible(true);
-			SoundPlayer.getInstance().playLoopMusic("sounds/after-journey.wav");
+			//SoundPlayer.getInstance().playLoopMusic("sounds/after-journey.wav");
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
