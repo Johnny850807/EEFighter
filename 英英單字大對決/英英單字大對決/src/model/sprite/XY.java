@@ -62,7 +62,7 @@ public class XY implements Cloneable{
 	}
 	
 	/**
-	 * @return any of the x or y < 0
+	 * @return any of the x or y < 0.
 	 */
 	public boolean hasNegative(){
 		return getX() < 0 || getY() < 0;
