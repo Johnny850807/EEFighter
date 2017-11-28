@@ -1,5 +1,9 @@
 package model.sprite;
 
+/**
+ * @author WaterBall
+ *
+ */
 public class XY implements Cloneable{
 	private XY lastXY;
 	private int x;
@@ -28,17 +32,26 @@ public class XY implements Cloneable{
 		this.y = y;
 	}
 	
-	public void move(
-			int x, int y){
+	/**
+	 * @param x plus x
+	 * @param y plus y
+	 */
+	public void move(int x, int y){
 		move(new XY(x, y));
 	}
 	
+	/**
+	 * @param xy plus(x,y)
+	 */
 	public void move(XY xy){
 		this.lastXY = new XY(getX(), getY());
 		this.x += xy.getX();
 		this.y += xy.getY();
 	}
 	
+	/**
+	 * move back to the last (x,y)
+	 */
 	public void rollback(){
 		if(lastXY != null)
 		{
@@ -48,6 +61,9 @@ public class XY implements Cloneable{
 		}
 	}
 	
+	/**
+	 * @return any of the x or y < 0
+	 */
 	public boolean hasNegative(){
 		return getX() < 0 || getY() < 0;
 	}
