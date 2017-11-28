@@ -23,7 +23,7 @@ import utils.SoundPlayer;
  * The Main view where contains the main function buttons.
  */
 public class MainView extends JFrame implements ActionListener {
-	private static final int BUTTONS_WIDTH = 360;
+	private static final int BUTTON_WIDTH = 360;
 	private static final int BUTTON_HEIGHT = 105;
 	private static final String LOGO_PATH = "pic/logo.png";
 	private Panel logoPanel;
@@ -44,7 +44,7 @@ public class MainView extends JFrame implements ActionListener {
 		initializeAllComponents();
 		setupLogoPanel();
 		setButtonsFont(new Font("·L³n¥¿¶ÂÅé", Font.BOLD, 25));
-		setButtonsSize(new Dimension(BUTTONS_WIDTH, BUTTON_HEIGHT));
+		setButtonsSize(new Dimension(BUTTON_WIDTH, BUTTON_HEIGHT));
 		addButtonsActionListener(this);
 	}
 

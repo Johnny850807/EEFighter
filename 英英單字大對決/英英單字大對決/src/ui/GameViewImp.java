@@ -8,17 +8,25 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
+import model.sprite.BasicMapBuilder;
 import model.sprite.GameMap;
+import model.sprite.MapBuilder;
+import model.sprite.MapDirector;
+import model.sprite.BasicMapDirector;
+import model.sprite.MapSprite;
+import model.sprite.Sprite;
 
 /*
  * The game view where showing the playing game.
  */
 public class GameViewImp extends JPanel implements GameView {
-	private static final String BLOCK_PATH = "pic/block.png";
-	private static final String GRASS_PATH = "pic/grass.png";
 
-	public GameViewImp() {
-		setBounds(0, 0, 1100, 700);
+	private BasicMapDirector mapDirector;
+	private GameMap gameMap;
+
+	public GameViewImp(MapDirector mapDirector) {
+		gameMap = mapDirector.buildMap();
+		setBounds(0, 0, 1110, 700);
 		setupViews();
 		setupLayout();
 		drawBasicMap();
@@ -31,13 +39,14 @@ public class GameViewImp extends JPanel implements GameView {
 	@Override
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
-		Image image = null;
-		try {
-			image = ImageIO.read(new File(BLOCK_PATH));
-			System.out.println(g.drawImage(image, 0, 0, null));
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		
+		for(int x = 0; x < gameMap.getWidth(); x++)
+			for (int y = 0; y < gameMap.getHeight(); y++) {
+				Sprite sprite = gameMap.getSprite(x, y);
+				Image image = sprite.getImage();
+				g.drawImage(image, sprite.getX() * sprite.getW(), sprite.getY() * sprite.getH(), null);
+			}
+				
 	}
 
 	private void setupLayout() {
