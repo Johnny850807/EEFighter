@@ -1,18 +1,33 @@
 package model.sprite;
-
+//todo ®œ®‰Iterable
 public class GameMap {
-	private int row = 10;
-	private int columns = 10;
-	private int[][] mapNumber = new int[10][10];
 	
-	public void recordMap() {
-		for (int i = 0; i < row; i++)
-			for(int j = 0; j < columns; j++)
-				mapNumber[i][j] = (int)(Math.random() * 2);
+	private final int WIDTH;
+	private final int HEIGHT;
+	
+	public GameMap(int wIDTH, int hEIGHT) {
+		super();
+		WIDTH = wIDTH;
+		HEIGHT = hEIGHT;
+		blockSprites = new Sprite[HEIGHT][WIDTH];
 	}
 
-	public int[][] getMapNumber() {
-		return mapNumber;
+	private Sprite[][] blockSprites;
+
+	public void setBlockSprite(int x, int y, Sprite sprite) {
+		blockSprites[y][x] = sprite;
+	}
+	
+	public int getWidth() {
+		return WIDTH;
+	}
+	
+	public int getHeight() {
+		return HEIGHT;
+	}
+	
+	public Sprite getSprite(int x, int y) {
+		return blockSprites[y][x];
 	}
 	
 }
