@@ -13,7 +13,7 @@ import model.sprite.GameMap;
 import model.sprite.MapBuilder;
 import model.sprite.MapDirector;
 import model.sprite.BasicMapDirector;
-import model.sprite.MapSprite;
+import model.sprite.MapSpriteEnum;
 import model.sprite.Sprite;
 
 /*

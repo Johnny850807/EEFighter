@@ -14,6 +14,7 @@ import javax.swing.JPanel;
 
 import model.sprite.BasicMapBuilder;
 import model.sprite.BasicMapDirector;
+import model.sprite.WaterBallMapDirector;
 
 public class GameStartView extends JFrame {
 
@@ -39,9 +40,9 @@ public class GameStartView extends JFrame {
 	}
 
 	private void setupViewsBackground() {
-		player1Lab.setBackground(Color.gray);
-		player2Lab.setBackground(Color.gray);
-		wordDefinitionLab.setBackground(new Color(155, 55, 55));
+		player1Lab.setBackground(new Color(40, 45, 49));
+		player2Lab.setBackground(new Color(40, 45, 49));
+		wordDefinitionLab.setBackground(new Color(45, 54, 73));
 	}
 
 	private void setupViewsLocation() {
@@ -58,7 +59,8 @@ public class GameStartView extends JFrame {
 	private void setupViews() {
 		initializeAll();
 		setupGameViewPanel();
-		setViewsFont(new Font(null, Font.BOLD, 20));
+		Font font = new Font("·L³n¥¿¶ÂÅé", Font.BOLD, 20);
+		setViewsFont(font);
 		setViewsSize(new Dimension(400, 100));
 		setViewsText();
 	}
@@ -77,8 +79,11 @@ public class GameStartView extends JFrame {
 
 	private void setViewsFont(Font font) {
 		player1Lab.setFont(font);
+		player1Lab.setForeground(Color.white);
 		player2Lab.setFont(font);
+		player2Lab.setForeground(Color.white);
 		wordDefinitionLab.setFont(font);
+		wordDefinitionLab.setForeground(Color.white);
 	}
 
 	private void setupGameViewPanel() {
@@ -90,7 +95,7 @@ public class GameStartView extends JFrame {
 		player2Lab = new Label();
 		wordDefinitionLab = new Label();
 		gbc = new GridBagConstraints();
-		gameViewPanel = new GameViewImp(new BasicMapDirector(new BasicMapBuilder()));
+		gameViewPanel = new GameViewImp(new WaterBallMapDirector(new BasicMapBuilder()));
 	}
 
 	public void addComponent(Component c, Double weightX, Double weightY, int row, int column, int width, int height) {
