@@ -14,6 +14,7 @@ import javax.swing.JPanel;
 
 import model.sprite.BasicMapBuilder;
 import model.sprite.BasicMapDirector;
+import model.sprite.BasicRandomMapDirector;
 import model.sprite.WaterBallMapDirector;
 
 public class GameStartView extends JFrame {

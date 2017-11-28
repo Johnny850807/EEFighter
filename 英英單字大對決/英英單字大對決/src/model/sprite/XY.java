@@ -1,30 +1,59 @@
 package model.sprite;
 
-public class XY {
+public class XY implements Cloneable{
+	private XY lastXY;
 	private int x;
 	private int y;
+	
 	public XY(int x, int y) {
 		this.x = x;
 		this.y = y;
 	}
+	
 	public int getX() {
 		return x;
 	}
+	
 	public void setX(int x) {
+		this.lastXY = new XY(getX(), getY());
 		this.x = x;
 	}
+	
 	public int getY() {
 		return y;
 	}
+	
 	public void setY(int y) {
+		this.lastXY = new XY(getX(), getY());
 		this.y = y;
 	}
-	public void move(int x, int y){
+	
+	public void move(
+			int x, int y){
 		move(new XY(x, y));
 	}
+	
 	public void move(XY xy){
+		this.lastXY = new XY(getX(), getY());
 		this.x += xy.getX();
 		this.y += xy.getY();
+	}
+	
+	public void rollback(){
+		if(lastXY != null)
+		{
+			XY xy = new XY(lastXY.getX(), lastXY.getY());
+			this.x = xy.getX();
+			this.y = xy.getY();
+		}
+	}
+	
+	public boolean hasNegative(){
+		return getX() < 0 || getY() < 0;
+	}
+	
+	public XY getLastXY() {
+		return lastXY;
 	}
 	
 	@Override
@@ -51,6 +80,19 @@ public class XY {
 			return false;
 		return true;
 	}
+
+	@Override
+	public String toString() {
+		return "(" + getX() + "," + getY() + ")";
+	}
 	
+	public XY clone(){
+		try {
+			return (XY)super.clone();
+		} catch (CloneNotSupportedException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
 	
 }
