@@ -23,16 +23,6 @@ public class GameViewImp extends JPanel implements GameView {
 		setupLayout();
 		drawBasicMap();
 	}
-	
-	@Override
-	protected void paintComponent(Graphics g) {
-		super.paintComponent(g);
-	}
-	
-	@Override
-	public void draw() {
-		repaint();
-	}
 
 	private void drawBasicMap() {
 		draw();
@@ -50,11 +40,6 @@ public class GameViewImp extends JPanel implements GameView {
 		}
 	}
 
-	@Override
-	public void draw() {
-		repaint();
-	}
-
 	private void setupLayout() {
 		setLayout(new FlowLayout());
 	}
@@ -64,8 +49,12 @@ public class GameViewImp extends JPanel implements GameView {
 
 	@Override
 	public void close() {
-		// TODO Auto-generated method stub
+		
+	}
 
+	@Override
+	public void draw() {
+		
 	}
 
 }
