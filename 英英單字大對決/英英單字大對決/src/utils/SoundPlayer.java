@@ -13,6 +13,7 @@ import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 
 /**
+ * @author Waterball
  * The singleton sound player playing the sound or the looping background music. (Notice, only when any UI component such
  * as JFrame created and showing cause this work.)
  */

@@ -59,12 +59,16 @@ public abstract class TemplateRandomMapDirector extends MapDirector{
 		 */
 		public boolean move(XY xy){
 			this.xy.move(xy);
-			if (outOfMap(this.xy) || hasRoadInRound())
+			if (outOfMap(this.xy) || backToSamePlace(this.xy) || hasRoadInRound())
 			{
 				this.xy.rollback();
 				return false;
 			}
 			return true;
+		}
+		
+		public boolean backToSamePlace(XY xy) {
+			return mapString[xy.getY()][xy.getX()] == '0';
 		}
 		
 		public boolean outOfMap(XY xy){
@@ -104,7 +108,7 @@ public abstract class TemplateRandomMapDirector extends MapDirector{
 				if (opposite && oppositeXY != null && oppositeXY.equals(randomXY))
 					continue;
 				success = move(randomXY);
-			} while (!success && ++count < 1000);
+			} while (!success && ++count < 1000000000);
 			System.out.println(randomXY);
 			return true;
 		}

@@ -105,6 +105,7 @@ class WordCellRenderer extends JLabel implements ListCellRenderer {
 			boolean cellHasFocus) {
 		Word word = (Word) value;
 		setText(word.getWord());
+		this.setSize(100, 200);
 		if (isSelected) {
 			setBackground(HIGHLIGHT_COLOR);
 			setForeground(Color.white);
