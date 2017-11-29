@@ -10,12 +10,12 @@ import org.ietf.jgss.Oid;
  * @author WaterBall
  */
 public abstract class TemplateRandomMapDirector extends MapDirector{
-	private final static int NORTH = 0;
-	private final static int EAST = 1;
-	private final static int SOUTH = 2;
-	private final static int WEST = 3;
+	protected final static int NORTH = 0;
+	protected final static int EAST = 1;
+	protected final static int SOUTH = 2;
+	protected final static int WEST = 3;
 	protected XY[] directionDiffs = new XY[]{new XY(0, -1), new XY(1, 0), new XY(0, 1), new XY(-1, 0)}; // N-E-S-W
-	private char[][] mapString;
+	protected char[][] mapString;
 	private Mouse mouse;  // the (x,y) where the mouse starts.
 	
 	public TemplateRandomMapDirector(MapBuilder builder) {
@@ -32,16 +32,14 @@ public abstract class TemplateRandomMapDirector extends MapDirector{
 		return product;
 	}
 	
-	protected Mouse createMouse(){
-		return new Mouse(new XY(0, 0));
-	}
+	protected abstract Mouse createMouse();
 	
 	protected abstract void startMove(Mouse mouse);
 
 	protected char[][] createFullBarriersMapString(){
-		char[][] mapString = new char[9][17];
-		for (int i = 0 ; i < 9 ; i ++)
-			for(int j = 0 ; j < 17 ; j ++)
+		char[][] mapString = new char[MAPHEIGHT][MAPWIDTH];
+		for (int i = 0 ; i < MAPHEIGHT ; i ++)
+			for(int j = 0 ; j < MAPWIDTH ; j ++)
 				mapString[i][j] = '1';
 		return mapString;
 	}
@@ -59,54 +57,17 @@ public abstract class TemplateRandomMapDirector extends MapDirector{
 		 */
 		public boolean move(XY xy){
 			this.xy.move(xy);
-			if (outOfMap(this.xy) || hasRoadInRound())
+			if (outOfMap(this.xy))
 			{
 				this.xy.rollback();
 				return false;
 			}
+			System.out.println(this.xy);
 			return true;
 		}
 		
 		public boolean outOfMap(XY xy){
-			return this.xy.hasNegative() || this.xy.getX() >= 17  || this.xy.getY() >= 9;
-		}
-		
-		public boolean hasRoadInRound(){
-			XY origin = xy.clone();
-			XY north = xy.clone();
-			north.move(directionDiffs[NORTH]);
-			XY east = xy.clone();
-			east.move(directionDiffs[EAST]);
-			XY south = xy.clone();
-			south.move(directionDiffs[SOUTH]);
-			XY west = xy.clone();
-			west.move(directionDiffs[WEST]);
-			XY[] roundsXY = new XY[]{origin, north, east, south, west};
-			for (XY xy : roundsXY)
-				if (!xy.hasNegative() && outOfMap(xy))
-				if (!this.xy.getLastXY().equals(xy) && mapString[xy.getY()][xy.getX()] == '0')
-					return true;
-			return false;
-		}
-		
-		public XY getRandomDirectionDiff(){
-			int randInt = new Random().nextInt(directionDiffs.length);
-			return directionDiffs[randInt];
-		}
-		
-		public boolean successfullyRandomMove(boolean opposite){
-			boolean success = false;
-			int count = 0;
-			XY randomXY = null;
-			do{
-				XY oppositeXY = xy.getLastXY() == null ? null : new XY(xy.getLastXY().getX() * -1, xy.getLastXY().getY() * -1);
-				randomXY = getRandomDirectionDiff();
-				if (opposite && oppositeXY != null && oppositeXY.equals(randomXY))
-					continue;
-				success = move(randomXY);
-			} while (!success && ++count < 1000);
-			System.out.println(randomXY);
-			return true;
+			return xy.hasNegative() || xy.getX() >= MAPWIDTH  || xy.getY() >= MAPHEIGHT;
 		}
 		
 		public Mouse sculpture(char type){
@@ -114,32 +75,25 @@ public abstract class TemplateRandomMapDirector extends MapDirector{
 			return this;
 		}
 		
-		public boolean goNorth(){
-			return move(directionDiffs[NORTH]);
-		}
-		
-		public boolean goEast(){
-			return move(directionDiffs[EAST]);
-		}
-		
-		public boolean goSouth(){
-			return move(directionDiffs[SOUTH]);
-		}
-		
-		public boolean goWest(){
-			return move(directionDiffs[WEST]);
-		}
 		
 		public String[] buildNormalizedMap(){
-			String[] product = new String[9];
-			for (int i = 0 ; i < 9 ; i ++)
+			String[] product = new String[MAPHEIGHT];
+			for (int i = 0 ; i < MAPHEIGHT ; i ++)
 			{
 				StringBuilder strb = new StringBuilder();
-				for(int j = 0 ; j < 17 ; j ++)
+				for(int j = 0 ; j < MAPWIDTH ; j ++)
 					strb.append(mapString[i][j]);
 				product[i] = strb.toString();
 			}
 			return product;
+		}
+		
+		public void setXy(XY xy){
+			this.xy = xy;
+		}
+		
+		public XY getXy() {
+			return xy;
 		}
 	}
 }

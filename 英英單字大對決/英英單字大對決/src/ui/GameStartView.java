@@ -96,7 +96,7 @@ public class GameStartView extends JFrame {
 		player2Lab = new Label();
 		wordDefinitionLab = new Label();
 		gbc = new GridBagConstraints();
-		gameViewPanel = new GameViewImp(new WaterBallMapDirector(new BasicMapBuilder()));
+		gameViewPanel = new GameViewImp(new BasicRandomMapDirector(new BasicMapBuilder()));
 	}
 
 	public void addComponent(Component c, Double weightX, Double weightY, int row, int column, int width, int height) {

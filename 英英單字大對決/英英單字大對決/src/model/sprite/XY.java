@@ -111,4 +111,11 @@ public class XY implements Cloneable{
 		return null;
 	}
 	
+	/**
+	 * @param xy the another point to figure the distance.
+	 * @return the distance between self and the another xy.
+	 */
+	public double getDistance(XY xy){
+		return Math.sqrt(Math.pow(xy.getX() - this.getX(), 2) + Math.pow(xy.getY() - this.getY(), 2));
+	}
 }
