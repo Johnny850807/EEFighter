@@ -5,6 +5,7 @@ import java.awt.Button;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
+import java.awt.EventQueue;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.TextField;
@@ -25,7 +26,6 @@ import javax.swing.JProgressBar;
 import javax.swing.JScrollPane;
 import javax.swing.ListCellRenderer;
 import javax.swing.Timer;
-import javax.swing.border.Border;
 
 import model.words.Word;
 
@@ -91,10 +91,12 @@ public class EnglishWarehouseViewImp extends JFrame implements EnglishWarehouseV
 	}
 
 	public void start() {
-		setBounds(500, 200, 400, 650);
-		setupViews();
-		setupLayout();
-		addButtonsActionListener(this);
+		EventQueue.invokeLater(() -> {
+			setBounds(500, 200, 400, 650);
+			setupViews();
+			setupLayout();
+			addButtonsActionListener(this);
+		});
 	}
 
 	@Override
