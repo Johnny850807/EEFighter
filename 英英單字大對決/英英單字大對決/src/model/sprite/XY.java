@@ -1,10 +1,12 @@
 package model.sprite;
 
+import java.io.Serializable;
+
 /**
  * @author WaterBall
  *
  */
-public class XY implements Cloneable{
+public class XY implements Cloneable, Serializable{
 	private XY lastXY;
 	private int x;
 	private int y;
