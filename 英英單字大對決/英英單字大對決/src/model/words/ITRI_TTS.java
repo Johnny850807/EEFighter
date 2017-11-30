@@ -88,6 +88,7 @@ public class ITRI_TTS implements TTS{
 		Element resuleElm = (Element) nodeList.item(0);
 		return resuleElm.getTextContent().trim();
 	}
+
     
 	private String repeatedlyAskingForTheTTSProduct(int convertId) throws TTSException{
 		String resourceUrl = null;

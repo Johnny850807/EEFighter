@@ -57,7 +57,11 @@ public abstract class TemplateRandomMapDirector extends MapDirector{
 		 */
 		public boolean move(XY xy){
 			this.xy.move(xy);
+<<<<<<< HEAD
 			if (outOfMap(this.xy))
+=======
+			if (outOfMap(this.xy) || backToSamePlace(this.xy) || hasRoadInRound())
+>>>>>>> 3ca422fee04cdfafd7e30d597a76c5886d5195e3
 			{
 				this.xy.rollback();
 				return false;
@@ -66,8 +70,54 @@ public abstract class TemplateRandomMapDirector extends MapDirector{
 			return true;
 		}
 		
+		public boolean backToSamePlace(XY xy) {
+			return mapString[xy.getY()][xy.getX()] == '0';
+		}
+		
 		public boolean outOfMap(XY xy){
+<<<<<<< HEAD
 			return xy.hasNegative() || xy.getX() >= MAPWIDTH  || xy.getY() >= MAPHEIGHT;
+=======
+			return this.xy.hasNegative() || this.xy.getX() >= 17  || this.xy.getY() >= 9;
+		}
+		
+		public boolean hasRoadInRound(){
+			XY origin = xy.clone();
+			XY north = xy.clone();
+			north.move(directionDiffs[NORTH]);
+			XY east = xy.clone();
+			east.move(directionDiffs[EAST]);
+			XY south = xy.clone();
+			south.move(directionDiffs[SOUTH]);
+			XY west = xy.clone();
+			west.move(directionDiffs[WEST]);
+			XY[] roundsXY = new XY[]{origin, north, east, south, west};
+			for (XY xy : roundsXY)
+				if (!xy.hasNegative() && outOfMap(xy))
+				if (!this.xy.getLastXY().equals(xy) && mapString[xy.getY()][xy.getX()] == '0')
+					return true;
+			return false;
+		}
+		
+		public XY getRandomDirectionDiff(){
+			int randInt = new Random().nextInt(directionDiffs.length);
+			return directionDiffs[randInt];
+		}
+		
+		public boolean successfullyRandomMove(boolean opposite){
+			boolean success = false;
+			int count = 0;
+			XY randomXY = null;
+			do{
+				XY oppositeXY = xy.getLastXY() == null ? null : new XY(xy.getLastXY().getX() * -1, xy.getLastXY().getY() * -1);
+				randomXY = getRandomDirectionDiff();
+				if (opposite && oppositeXY != null && oppositeXY.equals(randomXY))
+					continue;
+				success = move(randomXY);
+			} while (!success && ++count < 1000000000);
+			System.out.println(randomXY);
+			return true;
+>>>>>>> 3ca422fee04cdfafd7e30d597a76c5886d5195e3
 		}
 		
 		public Mouse sculpture(char type){

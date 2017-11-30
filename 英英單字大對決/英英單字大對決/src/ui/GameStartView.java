@@ -7,15 +7,12 @@ import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Label;
-import java.awt.Panel;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import model.sprite.BasicMapBuilder;
 import model.sprite.BasicMapDirector;
-import model.sprite.BasicRandomMapDirector;
-import model.sprite.WaterBallMapDirector;
 
 public class GameStartView extends JFrame {
 
@@ -41,9 +38,9 @@ public class GameStartView extends JFrame {
 	}
 
 	private void setupViewsBackground() {
-		player1Lab.setBackground(new Color(40, 45, 49));
-		player2Lab.setBackground(new Color(40, 45, 49));
-		wordDefinitionLab.setBackground(new Color(45, 54, 73));
+		player1Lab.setBackground(ColorHelper.getPrimaryDark());
+		player2Lab.setBackground(ColorHelper.getPrimaryDark());
+		wordDefinitionLab.setBackground(ColorHelper.getPrimaryBlue());
 	}
 
 	private void setupViewsLocation() {
@@ -96,7 +93,11 @@ public class GameStartView extends JFrame {
 		player2Lab = new Label();
 		wordDefinitionLab = new Label();
 		gbc = new GridBagConstraints();
+<<<<<<< HEAD
 		gameViewPanel = new GameViewImp(new BasicRandomMapDirector(new BasicMapBuilder()));
+=======
+		gameViewPanel = new GameViewImp(new BasicMapDirector(new BasicMapBuilder()));
+>>>>>>> 3ca422fee04cdfafd7e30d597a76c5886d5195e3
 	}
 
 	public void addComponent(Component c, Double weightX, Double weightY, int row, int column, int width, int height) {

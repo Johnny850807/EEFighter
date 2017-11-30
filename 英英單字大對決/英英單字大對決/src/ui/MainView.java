@@ -5,19 +5,19 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
+import java.awt.GraphicsEnvironment;
 import java.awt.Image;
 import java.awt.Panel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
+import java.util.Arrays;
 
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-
-import utils.SoundPlayer;
 
 /*
  * The Main view where contains the main function buttons.
@@ -43,7 +43,7 @@ public class MainView extends JFrame implements ActionListener {
 	private void setupViews() throws IOException {
 		initializeAllComponents();
 		setupLogoPanel();
-		setButtonsFont(new Font("·L³n¥¿¶ÂÅé", Font.BOLD, 25));
+		setButtonsFont(FontHelper.microsoftJhenghei(Font.BOLD, 25));
 		setButtonsSize(new Dimension(BUTTON_WIDTH, BUTTON_HEIGHT));
 		addButtonsActionListener(this);
 	}
@@ -85,7 +85,7 @@ public class MainView extends JFrame implements ActionListener {
 	}
 
 	private void setupLayout() {
-		getContentPane().setBackground(new Color(55, 55, 55));
+		getContentPane().setBackground(ColorHelper.getPrimaryDark());
 		getContentPane().setLayout(new FlowLayout());
 		add(logoPanel);
 		add(playBtn);
@@ -128,6 +128,8 @@ public class MainView extends JFrame implements ActionListener {
 
 	public static void main(String[] argv) {
 		MainView mainView;
+		String[] fonts = GraphicsEnvironment.getLocalGraphicsEnvironment().getAvailableFontFamilyNames();
+		System.out.println(Arrays.toString(fonts));
 		try {
 			mainView = new MainView();
 			mainView.setVisible(true);
