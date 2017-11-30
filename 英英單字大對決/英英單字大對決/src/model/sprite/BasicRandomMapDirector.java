@@ -23,16 +23,9 @@ public class BasicRandomMapDirector extends TemplateRandomMapDirector{
 
 	@Override
 	protected void startMove(Mouse mouse) {
-<<<<<<< HEAD
 		do{
 			System.out.println("Reselect entry.");
 			mouse.setXy(getNextRandomAliveXY()); 
-=======
-		mouse.sculpture('0');
-		for (int i = 0 ; i < 50 ; i ++)
-		{
-			mouse.successfullyRandomMove(true);
->>>>>>> 3ca422fee04cdfafd7e30d597a76c5886d5195e3
 			mouse.sculpture('0');
 			while(!isDieEntry(mouse.getXy()))
 			{
