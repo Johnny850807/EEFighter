@@ -13,7 +13,7 @@ import model.sprite.GameMap;
 import model.sprite.MapBuilder;
 import model.sprite.MapDirector;
 import model.sprite.BasicMapDirector;
-import model.sprite.MapSprite;
+import model.sprite.MapSpriteEnum;
 import model.sprite.Sprite;
 
 /*
@@ -49,11 +49,6 @@ public class GameViewImp extends JPanel implements GameView {
 				
 	}
 
-	@Override
-	public void draw() {
-		repaint();
-	}
-
 	private void setupLayout() {
 		setLayout(new FlowLayout());
 	}
@@ -63,8 +58,12 @@ public class GameViewImp extends JPanel implements GameView {
 
 	@Override
 	public void close() {
-		// TODO Auto-generated method stub
+		
+	}
 
+	@Override
+	public void draw() {
+		
 	}
 
 }

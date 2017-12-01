@@ -1,12 +1,31 @@
 package ui;
 
-import java.awt.*;
+import java.awt.BorderLayout;
+import java.awt.Button;
+import java.awt.Color;
+import java.awt.Component;
+import java.awt.Dimension;
+import java.awt.EventQueue;
+import java.awt.FlowLayout;
+import java.awt.Font;
+import java.awt.TextField;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
-import javax.swing.*;
+import javax.swing.BorderFactory;
+import javax.swing.DefaultListModel;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JList;
+import javax.swing.JPanel;
+import javax.swing.JProgressBar;
+import javax.swing.JScrollPane;
+import javax.swing.ListCellRenderer;
+import javax.swing.Timer;
 
 import model.words.Word;
 
@@ -72,10 +91,12 @@ public class EnglishWarehouseViewImp extends JFrame implements EnglishWarehouseV
 	}
 
 	public void start() {
-		setBounds(500, 200, 400, 650);
-		setupViews();
-		setupLayout();
-		addButtonsActionListener(this);
+		EventQueue.invokeLater(() -> {
+			setBounds(500, 200, 400, 650);
+			setupViews();
+			setupLayout();
+			addButtonsActionListener(this);
+		});
 	}
 
 	@Override
@@ -83,6 +104,7 @@ public class EnglishWarehouseViewImp extends JFrame implements EnglishWarehouseV
 		Button button = (Button) e.getSource();
 		if (button == addWordBtn) {
 			String text = searchAndAddWordEd.getText();
+
 			wordDefaultListModel.addElement(new Word(text));
 		} else if (button == removeWordBtn) {
 			String text = searchAndAddWordEd.getText();
@@ -93,24 +115,52 @@ public class EnglishWarehouseViewImp extends JFrame implements EnglishWarehouseV
 	}
 }
 
-class WordCellRenderer extends JLabel implements ListCellRenderer {
+class WordCellRenderer extends JPanel implements ListCellRenderer {
 	private static final Color HIGHLIGHT_COLOR = new Color(0, 0, 128);
-
+	private static Map<JPanel, JProgressBar> barMap = new HashMap<>();
+	private JLabel label;
 	public WordCellRenderer() {
 		setOpaque(true);
+		setLayout(new BorderLayout());
+		label = new JLabel();
+		add(label, BorderLayout.WEST);
 	}
 
 	public Component getListCellRendererComponent(JList list, Object value, int index, boolean isSelected,
 			boolean cellHasFocus) {
 		Word word = (Word) value;
-		setText(word.getWord());
+		JProgressBar progressBar;
+		if (barMap.containsKey(this))
+			progressBar = barMap.get(this);
+		else
+		{
+			progressBar = createProgressBar();
+			add(progressBar, BorderLayout.EAST);
+			barMap.put(this, progressBar);
+		}
+		label.setText(word.getWord());
 		if (isSelected) {
 			setBackground(HIGHLIGHT_COLOR);
-			setForeground(Color.white);
+			label.setForeground(Color.white);
 		} else {
 			setBackground(Color.white);
-			setForeground(Color.black);
+			label.setForeground(Color.black);
 		}
 		return this;
 	}
+	
+	private JProgressBar createProgressBar() {
+		JProgressBar progressBar = new JProgressBar();
+		progressBar.setUI(new ProgressCircleBar());
+		progressBar.setBackground(Color.WHITE);
+		progressBar.setForeground(Color.ORANGE);
+		progressBar.setBorder(BorderFactory.createEmptyBorder(8, 8, 8, 8));
+		progressBar.setSize(50, 50);
+		(new Timer(50, e -> {
+		      int iv = Math.min(100, (progressBar.getValue() + 1) % 100);
+		      progressBar.setValue(iv);
+		    })).start();
+		return progressBar;
+	}
+	
 }

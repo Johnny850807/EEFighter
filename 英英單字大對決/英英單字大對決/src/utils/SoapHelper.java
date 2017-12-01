@@ -16,7 +16,7 @@ import javax.xml.soap.SOAPPart;
 import javax.xml.stream.events.Namespace;
 
 /**
- * @author Johnny850807
+ * @author Waterball
  * A SOAP helper used for sending any soap requests with specified properties.
  */
 public class SoapHelper {

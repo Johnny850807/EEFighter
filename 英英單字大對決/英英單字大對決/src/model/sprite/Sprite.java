@@ -3,16 +3,14 @@ package model.sprite;
 import java.awt.Image;
 
 public class Sprite {
-	private int x;
-	private int y;
+	private XY xy;
 	private int w;
 	private int h;
 	private Image image;
 	
 	public Sprite(int x, int y, int w, int h, Image image) {
 		super();
-		this.x = x;
-		this.y = y;
+		this.xy = new XY(x, y);
 		this.w = w;
 		this.h = h;
 		this.image = image;
@@ -35,16 +33,16 @@ public class Sprite {
 	}
 
 	public int getX() {
-		return x;
+		return xy.getX();
 	}
 	public void setX(int x) {
-		this.x = x;
+		this.xy.setX(x);
 	}
 	public int getY() {
-		return y;
+		return xy.getY();
 	}
 	public void setY(int y) {
-		this.y = y;
+		this.xy.setY(y);
 	}
 	public Image getImage() {
 		return image;

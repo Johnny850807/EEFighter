@@ -54,7 +54,7 @@ public class ITRI_TTS implements TTS{
 	@Override
 	public String saveWordTTS(String directoryPath, String word) throws TTSException {
 		if (word == null || word.isEmpty())
-			throw new IllegalArgumentException("The word is not valid.");
+			throw new NullPointerException("The word is not valid.");
 		word = word.trim();
 		int convertId = getConvertId(word);
 		String resourceUrl = repeatedlyAskingForTheTTSProduct(convertId);
@@ -88,6 +88,7 @@ public class ITRI_TTS implements TTS{
 		Element resuleElm = (Element) nodeList.item(0);
 		return resuleElm.getTextContent().trim();
 	}
+
     
 	private String repeatedlyAskingForTheTTSProduct(int convertId) throws TTSException{
 		String resourceUrl = null;
