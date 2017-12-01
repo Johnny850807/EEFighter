@@ -46,6 +46,12 @@ public class GameViewImp extends JPanel implements GameView {
 				Image image = sprite.getImage();
 				g.drawImage(image, sprite.getX() * sprite.getW(), sprite.getY() * sprite.getH(), sprite.getW(), sprite.getH(), null);
 			}
+		try {
+			g.drawImage(ImageIO.read(new File("D:\\NativeGit\\OOD-Design-Pattern-Course\\英英單字大對決\\素材區\\small a-z\\B.png")), 127+5, 123, null);
+			g.drawImage(ImageIO.read(new File("D:\\NativeGit\\OOD-Design-Pattern-Course\\英英單字大對決\\素材區\\small a-z\\I.png")), 128+5, -4, null);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 	private void setupLayout() {
