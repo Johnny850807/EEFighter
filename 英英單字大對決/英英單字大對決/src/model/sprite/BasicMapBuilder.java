@@ -7,7 +7,7 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 
 public class BasicMapBuilder implements MapBuilder {
-
+	
 	private static final String BLOCK_PATH = "pic/block.png";
 	private static final String GRASS_PATH = "pic/grass.png";
 	private GameMap gameMap = new GameMap(17, 9);

@@ -44,9 +44,8 @@ public class GameViewImp extends JPanel implements GameView {
 			for (int y = 0; y < gameMap.getHeight(); y++) {
 				Sprite sprite = gameMap.getSprite(x, y);
 				Image image = sprite.getImage();
-				g.drawImage(image, sprite.getX() * sprite.getW(), sprite.getY() * sprite.getH(), null);
+				g.drawImage(image, sprite.getX() * sprite.getW(), sprite.getY() * sprite.getH(), sprite.getW(), sprite.getH(), null);
 			}
-				
 	}
 
 	private void setupLayout() {
