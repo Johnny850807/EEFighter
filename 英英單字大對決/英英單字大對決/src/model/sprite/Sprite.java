@@ -55,4 +55,7 @@ public class Sprite {
 		
 	}
 	
+	public void move(XY xy){
+		this.xy.move(xy);
+	}
 }
