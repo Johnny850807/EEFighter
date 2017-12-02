@@ -7,7 +7,6 @@ import java.util.Map;
 
 import javax.imageio.ImageIO;
 
-import model.sprite.MapSpriteEnum;
 import model.sprite.Sprite;
 import model.sprite.SpriteName;
 
