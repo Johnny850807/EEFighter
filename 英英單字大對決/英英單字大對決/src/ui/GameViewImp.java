@@ -209,8 +209,6 @@ public class GameViewImp extends JPanel implements GameView, KeyListener {
 		case KeyEvent.VK_H:
 			keyInputP2 &= 0b11111110;
 			break;
-		default:
-			break;
 		}
 	}
 
