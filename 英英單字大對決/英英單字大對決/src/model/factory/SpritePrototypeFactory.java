@@ -2,8 +2,11 @@ package model.factory;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 import javax.imageio.ImageIO;
 
@@ -11,7 +14,6 @@ import model.sprite.Sprite;
 import model.sprite.SpriteName;
 
 public class SpritePrototypeFactory {
-
 	private Map<SpriteName, Sprite> spriteMap = new HashMap<>();
 
 	public SpritePrototypeFactory() {
