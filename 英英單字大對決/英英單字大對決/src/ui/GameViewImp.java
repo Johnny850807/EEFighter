@@ -28,12 +28,10 @@ public class GameViewImp extends JPanel implements GameView, KeyListener {
 	private GameMap gameMap;
 	private Sprite testSpriteP1;
 	private Sprite testSpriteP2;
-	private SpritePrototypeFactory prototypeFactory = new SpritePrototypeFactory();
 
 	public GameViewImp(MapDirector mapDirector) {
 		gameMap = mapDirector.buildMap();
 
-		
 		setBounds(0, 0, 1110, 700);
 		setupViews();
 		setFocusable(true);
@@ -82,7 +80,7 @@ public class GameViewImp extends JPanel implements GameView, KeyListener {
 					if(testMap[i].charAt(j) == '0'&& new Random().nextBoolean())
 					{
 						ascii = ascii + 1 > 90 ? 65 : ascii + 1;
-						g.drawImage(ImageIO.read(new File("D:\\NativeGit\\OOD-Design-Pattern-Course\\英英單字大對決\\素材區\\small a-z\\" + (char)ascii + ".png")), j*64, i*64, null);
+						g.drawImage(ImageIO.read(new File("pic/" + (char)ascii + ".png")), j*64, i*64, null);
 					}
 		} catch (IOException e) {
 			e.printStackTrace();

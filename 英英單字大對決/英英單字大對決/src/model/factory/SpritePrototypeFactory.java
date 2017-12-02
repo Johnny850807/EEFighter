@@ -7,12 +7,11 @@ import java.util.Map;
 
 import javax.imageio.ImageIO;
 
-import model.sprite.MapSpriteEnum;
 import model.sprite.Sprite;
 import model.sprite.SpriteName;
 
 public class SpritePrototypeFactory {
-
+	private static SpritePrototypeFactory instance = null;
 	private Map<SpriteName, Sprite> spriteMap = new HashMap<>();
 
 	public SpritePrototypeFactory() {
@@ -21,6 +20,13 @@ public class SpritePrototypeFactory {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	public static SpritePrototypeFactory getInstance() {
+		if (instance == null)
+			instance = new SpritePrototypeFactory();
+		
+		return instance;
 	}
 
 	public void prepareSprites() throws IOException {
