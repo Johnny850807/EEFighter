@@ -32,6 +32,7 @@ public class GameViewImp extends JPanel implements GameView, KeyListener {
 
 	public GameViewImp(MapDirector mapDirector) {
 		gameMap = mapDirector.buildMap();
+
 		
 		setBounds(0, 0, 1110, 700);
 		setupViews();
@@ -40,6 +41,7 @@ public class GameViewImp extends JPanel implements GameView, KeyListener {
 		addKeyListener(this);
 		setupLayout();
 		drawBasicMap();
+		
 	}
 
 	private void drawBasicMap() {
@@ -92,6 +94,7 @@ public class GameViewImp extends JPanel implements GameView, KeyListener {
 			g.drawImage(testSpriteP1.getImage(), testSpriteP1.getX(), testSpriteP1.getY(), 64, 64, null);
 			g.drawImage(testSpriteP2.getImage(), testSpriteP2.getX(), testSpriteP2.getY(), 64, 64, null);
 		}catch (Exception e) {}  //TESTING
+
 	}
 
 	private void setupLayout() {
