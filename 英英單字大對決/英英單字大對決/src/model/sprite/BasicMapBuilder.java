@@ -5,7 +5,7 @@ import model.factory.SpritePrototypeFactory;
 public class BasicMapBuilder implements MapBuilder {
 
 	private GameMap gameMap = new GameMap(17, 9);
-	private SpritePrototypeFactory spritePrototypeFactory = new SpritePrototypeFactory();
+	private SpritePrototypeFactory spritePrototypeFactory = SpritePrototypeFactory.getInstance();
 
 	@Override
 	public void buildBarrier(int coordinateX, int coordinateY) {
