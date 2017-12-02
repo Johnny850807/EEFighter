@@ -103,4 +103,5 @@ public class WordRepositoryImp implements WordRepository {
 			}
 		}	
 	}
+
 }

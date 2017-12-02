@@ -2,6 +2,11 @@ package model.sprite;
 
 import java.awt.Image;
 
+/*TODO
+ * (1) SpriteName 屬性
+ * (2) 方向、狀態
+ * (3) Image 應該要是一個Map<方向, 圖片>，每個方向對應到一張圖片，為此原型工廠也要為此提供每個Sprite的Map<方向, 圖片>，程式繁雜，請消除重複部分。
+ */
 public class Sprite implements Cloneable {
 	private XY xy;
 	private int w;

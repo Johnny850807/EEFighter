@@ -1,11 +1,11 @@
 package model.sprite;
 
-public enum MapSpriteEnum {
+public enum MapItemName {
 	GRASS('0'), BLOCK('1');
 
 	private char number;
 
-	private MapSpriteEnum(char number) {
+	private MapItemName(char number) {
 		this.number = number;
 	}
 

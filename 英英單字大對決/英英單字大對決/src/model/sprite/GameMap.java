@@ -2,7 +2,6 @@ package model.sprite;
 
 import java.util.Iterator;
 
-//Todo ®œ®‰Iterable
 
 public class GameMap implements Iterable<Sprite> {
 

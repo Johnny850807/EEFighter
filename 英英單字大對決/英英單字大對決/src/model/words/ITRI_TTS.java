@@ -159,12 +159,13 @@ public class ITRI_TTS implements TTS{
 	public static void main(String[] argv){
 		try {
 			TTS tts = new ITRI_TTS(Secret.TTS_ACCOUNT, Secret.TTS_PASSWORD);
-			String path = tts.saveWordTTS("sounds/vocabulary", "extraterrestrial");
+			String path = tts.saveWordTTS("sounds/vocabulary", "Question one, listen carefully.");
 			new MainView().setVisible(true);
 			SoundPlayer.getInstance().playSound(path);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
+
 	
 }
