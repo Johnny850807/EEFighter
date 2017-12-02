@@ -37,7 +37,7 @@ public class GameViewImp extends JPanel implements GameView, KeyListener {
 	}
 
 	private void drawBasicMap() {
-		draw();
+		//onDraw();
 	}
 
 	@Override
@@ -73,12 +73,12 @@ public class GameViewImp extends JPanel implements GameView, KeyListener {
 	}
 
 	@Override
-	public void close() {
+	public void onClose() {
 
 	}
 
 	@Override
-	public void draw() {
+	public void onDraw(GameMap gameMap, Sprite[] letters, Sprite player1, Sprite player2) {
 
 	}
 
