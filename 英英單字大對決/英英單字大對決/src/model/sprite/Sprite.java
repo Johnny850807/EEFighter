@@ -18,7 +18,6 @@ public class Sprite implements Cloneable {
 	private Image image;
 
 	/**
-	 * 
 	 * @param w width
 	 * @param h height
 	 * @param biasWithX 
@@ -126,7 +125,6 @@ public class Sprite implements Cloneable {
 		try {
 			return (Sprite) super.clone();
 		} catch (CloneNotSupportedException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 			return null;
 		}

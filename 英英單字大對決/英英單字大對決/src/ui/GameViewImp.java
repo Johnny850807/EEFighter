@@ -52,7 +52,6 @@ public class GameViewImp extends JPanel implements GameView, KeyListener {
 
 		for (Sprite sprite : gameMap)
 			g.drawImage(sprite.getImage(), sprite.getX() * sprite.getW(), sprite.getY() * sprite.getH(), null);
-
 		
 		for(int x = 0; x < gameMap.getWidth(); x++)
 			for (int y = 0; y < gameMap.getHeight(); y++) {
@@ -208,8 +207,6 @@ public class GameViewImp extends JPanel implements GameView, KeyListener {
 			break;
 		case KeyEvent.VK_H:
 			keyInputP2 &= 0b11111110;
-			break;
-		default:
 			break;
 		}
 	}
