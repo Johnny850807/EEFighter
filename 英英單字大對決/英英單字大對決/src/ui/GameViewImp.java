@@ -12,8 +12,7 @@ import java.util.Random;
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
-import org.jsoup.parser.XmlTreeBuilder;
-
+import model.factory.SpritePrototypeFactory;
 import model.sprite.BasicMapDirector;
 import model.sprite.GameMap;
 import model.sprite.MapDirector;
@@ -29,15 +28,11 @@ public class GameViewImp extends JPanel implements GameView, KeyListener {
 	private GameMap gameMap;
 	private Sprite testSpriteP1;
 	private Sprite testSpriteP2;
+	private SpritePrototypeFactory prototypeFactory = new SpritePrototypeFactory();
 
 	public GameViewImp(MapDirector mapDirector) {
 		gameMap = mapDirector.buildMap();
-		try {
-			testSpriteP1 = new Sprite(128, 128, 64, 64, ImageIO.read(new File("D:\\NativeGit\\OOD-Design-Pattern-Course\\英英單字大對決\\素材區\\A-Z\\A.png")));
-			testSpriteP2 = new Sprite(256, 256, 64, 64, ImageIO.read(new File("D:\\NativeGit\\OOD-Design-Pattern-Course\\英英單字大對決\\素材區\\A-Z\\Z.png")));
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		
 		setBounds(0, 0, 1110, 700);
 		setupViews();
 		setFocusable(true);
@@ -54,6 +49,10 @@ public class GameViewImp extends JPanel implements GameView, KeyListener {
 	@Override
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
+
+		for (Sprite sprite : gameMap)
+			g.drawImage(sprite.getImage(), sprite.getX() * sprite.getW(), sprite.getY() * sprite.getH(), null);
+
 		
 		for(int x = 0; x < gameMap.getWidth(); x++)
 			for (int y = 0; y < gameMap.getHeight(); y++) {
@@ -105,24 +104,25 @@ public class GameViewImp extends JPanel implements GameView, KeyListener {
 
 	@Override
 	public void close() {
-		
+
 	}
 
 	@Override
 	public void draw() {
-		
+
 	}
-	
+
 	/**
-	 * Use 8-bit to store the key pressing status. Each bit corresponding action key from left to right is:
-	 * None, None, None, pop the eaten letter, move up,  move down, move left, move right.
-	 * If the bit showing 1 means the corresponding action key should be pressing, and the bit should be set as 0 once
-	 * the key is released. Due to this strategy, we can perform composite moving keys such as 'move top-left' by simply
-	 * storing 0b00001010.
+	 * Use 8-bit to store the key pressing status. Each bit corresponding action key
+	 * from left to right is: None, None, None, pop the eaten letter, move up, move
+	 * down, move left, move right. If the bit showing 1 means the corresponding
+	 * action key should be pressing, and the bit should be set as 0 once the key is
+	 * released. Due to this strategy, we can perform composite moving keys such as
+	 * 'move top-left' by simply storing 0b00001010.
 	 */
 	private int keyInputP1 = 0b00000000;
 	private int keyInputP2 = 0b00000000;
-	
+
 	@Override
 	public void keyTyped(KeyEvent e) {}
 
@@ -156,7 +156,7 @@ public class GameViewImp extends JPanel implements GameView, KeyListener {
 		default:
 			break;
 		}
-		
+
 		if ((keyInputP1 & 0b001000) != 0)
 			moveRoleSprite(testSpriteP1, new XY(0, -4));
 		if ((keyInputP1 & 0b000100) != 0)
@@ -175,10 +175,10 @@ public class GameViewImp extends JPanel implements GameView, KeyListener {
 			moveRoleSprite(testSpriteP2, new XY(4, 0));
 		repaint();
 	}
-	
-	private void moveRoleSprite(Sprite sprite, XY xy){
-		//TODO send a moving request to the controller
-		sprite.move(xy);  // this is testing, please remove.
+
+	private void moveRoleSprite(Sprite sprite, XY xy) {
+		// TODO send a moving request to the controller
+		sprite.move(xy); // this is testing, please remove.
 	}
 
 	@Override
