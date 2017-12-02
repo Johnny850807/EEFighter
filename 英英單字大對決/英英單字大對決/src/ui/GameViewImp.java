@@ -5,14 +5,9 @@ import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.io.File;
-import java.io.IOException;
-import java.util.Random;
 
-import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
-import model.factory.SpritePrototypeFactory;
 import model.sprite.BasicMapDirector;
 import model.sprite.GameMap;
 import model.sprite.MapDirector;
@@ -26,8 +21,8 @@ public class GameViewImp extends JPanel implements GameView, KeyListener {
 
 	private BasicMapDirector mapDirector;
 	private GameMap gameMap;
-	private Sprite testSpriteP1;
-	private Sprite testSpriteP2;
+	private Sprite spriteP1;
+	private Sprite spriteP2;
 
 	public GameViewImp(MapDirector mapDirector) {
 		gameMap = mapDirector.buildMap();
@@ -39,7 +34,6 @@ public class GameViewImp extends JPanel implements GameView, KeyListener {
 		addKeyListener(this);
 		setupLayout();
 		drawBasicMap();
-		
 	}
 
 	private void drawBasicMap() {
@@ -59,38 +53,14 @@ public class GameViewImp extends JPanel implements GameView, KeyListener {
 				Image image = sprite.getImage();
 				g.drawImage(image, sprite.getX() * sprite.getW(), sprite.getY() * sprite.getH(), sprite.getW(), sprite.getH(), null);
 			}
-		testDrawAllLetters(g);  //TESTING
-		//testDrawTwoRoleSprites(g);
+		testDrawTwoRoleSprites(g);
 	}
 	
-	private void testDrawAllLetters(Graphics g){
-		String[] testMap = new String[] {"00000000000000000",
-				"01010101010101010",
-				"00000000000000000",
-				"10101010101010101",
-				"00000000000000000",
-				"01010101010101010",
-				"00000000000000000",
-				"10101010101010101",
-				"00000000000000000"};
-		try {
-			int ascii = 65;
-			for(int i = 0 ; i < 9 ; i ++)
-				for (int j = 0 ; j < 17 ; j ++)
-					if(testMap[i].charAt(j) == '0'&& new Random().nextBoolean())
-					{
-						ascii = ascii + 1 > 90 ? 65 : ascii + 1;
-						g.drawImage(ImageIO.read(new File("pic/" + (char)ascii + ".png")), j*64, i*64, null);
-					}
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
 	
 	private void testDrawTwoRoleSprites(Graphics g){
 		try{
-			g.drawImage(testSpriteP1.getImage(), testSpriteP1.getX(), testSpriteP1.getY(), 64, 64, null);
-			g.drawImage(testSpriteP2.getImage(), testSpriteP2.getX(), testSpriteP2.getY(), 64, 64, null);
+			g.drawImage(spriteP1.getImage(), spriteP1.getX(), spriteP1.getY(), 64, 64, null);
+			g.drawImage(spriteP2.getImage(), spriteP2.getX(), spriteP2.getY(), 64, 64, null);
 		}catch (Exception e) {}  //TESTING
 
 	}
@@ -158,21 +128,21 @@ public class GameViewImp extends JPanel implements GameView, KeyListener {
 		}
 
 		if ((keyInputP1 & 0b001000) != 0)
-			moveRoleSprite(testSpriteP1, new XY(0, -4));
+			moveRoleSprite(spriteP1, new XY(0, -4));
 		if ((keyInputP1 & 0b000100) != 0)
-			moveRoleSprite(testSpriteP1, new XY(0, 4));
+			moveRoleSprite(spriteP1, new XY(0, 4));
 		if ((keyInputP1 & 0b000010) != 0)
-			moveRoleSprite(testSpriteP1, new XY(-4, 0));
+			moveRoleSprite(spriteP1, new XY(-4, 0));
 		if ((keyInputP1 & 0b000001) != 0)
-			moveRoleSprite(testSpriteP1, new XY(4, 0));
+			moveRoleSprite(spriteP1, new XY(4, 0));
 		if ((keyInputP2 & 0b001000) != 0)
-			moveRoleSprite(testSpriteP2, new XY(0, -4));
+			moveRoleSprite(spriteP2, new XY(0, -4));
 		if ((keyInputP2 & 0b000100) != 0)
-			moveRoleSprite(testSpriteP2, new XY(0, 4));
+			moveRoleSprite(spriteP2, new XY(0, 4));
 		if ((keyInputP2 & 0b000010) != 0)
-			moveRoleSprite(testSpriteP2, new XY(-4, 0));
+			moveRoleSprite(spriteP2, new XY(-4, 0));
 		if ((keyInputP2 & 0b000001) != 0)
-			moveRoleSprite(testSpriteP2, new XY(4, 0));
+			moveRoleSprite(spriteP2, new XY(4, 0));
 		repaint();
 	}
 
