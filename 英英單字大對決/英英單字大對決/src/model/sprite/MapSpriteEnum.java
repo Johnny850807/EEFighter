@@ -12,5 +12,5 @@ public enum MapSpriteEnum {
 	public char getNumber() {
 		return number;
 	}
-	
+
 }

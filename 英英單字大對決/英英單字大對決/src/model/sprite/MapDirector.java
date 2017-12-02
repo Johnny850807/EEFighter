@@ -4,13 +4,13 @@ public abstract class MapDirector {
 	protected static final int MAPWIDTH = 17;
 	protected static final int MAPHEIGHT = 9;
 	private MapBuilder builder;
-	
+
 	public MapDirector(MapBuilder builder) {
 		this.builder = builder;
 	}
-	
+
 	public abstract String[] createMapString();
-	
+
 	public GameMap buildMap() {
 		String[] mapString = createMapString();
 
@@ -24,5 +24,5 @@ public abstract class MapDirector {
 			}
 		return builder.build();
 	};
-	
+
 }
