@@ -2,7 +2,6 @@ package model.sprite;
 
 import java.util.Iterator;
 
-
 public class GameMap implements Iterable<Sprite> {
 
 	private final int WIDTH;

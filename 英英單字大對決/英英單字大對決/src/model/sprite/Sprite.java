@@ -1,6 +1,8 @@
 package model.sprite;
 
 import java.awt.Image;
+import java.util.HashMap;
+import java.util.Map;
 
 /*TODO
  * (1) SpriteName 屬性
@@ -15,16 +17,21 @@ public class Sprite implements Cloneable {
 	private int biasWithY;
 	private int bodyHeight;
 	private int bodyLength;
+	private SpriteName spriteName;
+	private Direction direction;
+	private Status status;
+	private Map<Direction, Image> imageMap = new HashMap<>();
 	private Image image;
 
 	/**
-	 * @param w width
-	 * @param h height
-	 * @param biasWithX 
-	 * @param biasWithY
-	 * @param bodyHeight
-	 * @param bodyLength
-	 * @param image
+	 * 
+	 * @param w width of this sprite
+	 * @param h height of this sprite
+	 * @param biasWithX 圖片左側與圖片身體的偏差值
+	 * @param biasWithY 圖片上方與圖片身體的偏差值
+	 * @param bodyHeight 圖片的身體部分的高度
+	 * @param bodyLength 圖片的身體部分的長度
+	 * @param image image of this sprite
 	 */
 	public Sprite(int w, int h, int biasWithX, int biasWithY, int bodyHeight, int bodyLength, Image image) {
 		super();
@@ -113,6 +120,7 @@ public class Sprite implements Cloneable {
 		this.image = image;
 	}
 
+	//每17微秒 依照他的方向、狀態去更新座標
 	public void update() {
 
 	}
@@ -128,6 +136,14 @@ public class Sprite implements Cloneable {
 			e.printStackTrace();
 			return null;
 		}
+	}
+	
+	public enum Direction {
+		UP, LEFT, RIGHT, DOWN;
+	}
+	
+	public enum Status {
+		MOVE, STOP;
 	}
 
 }
