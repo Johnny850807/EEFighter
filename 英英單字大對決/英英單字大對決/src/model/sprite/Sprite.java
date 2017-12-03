@@ -1,10 +1,13 @@
 package model.sprite;
 
 import java.awt.Image;
+import java.io.File;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
 import ui.GameView;
+import javax.imageio.ImageIO;
 
 /*TODO
  * (1) SpriteName ÄÝ©Ê
@@ -44,6 +47,23 @@ public class Sprite implements Cloneable {
 		this.bodyHeight = bodyHeight;
 		this.bodyLength = bodyLength;
 		this.image = image;
+		try {
+			prepare();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public void prepare() throws IOException{
+		imageMap.put(Direction.UP, ImageIO.read(new File("pic/North_T0.png")));
+		imageMap.put(Direction.LEFT, ImageIO.read(new File("pic/West_T0.png")));
+		imageMap.put(Direction.DOWN, ImageIO.read(new File("pic/South_T0.png")));
+		imageMap.put(Direction.RIGHT, ImageIO.read(new File("pic/East_T0.png")));
+	}
+
+	public Image getDirectionImage(Direction direction) {
+		return imageMap.get(direction);
 	}
 
 	public int getBiasWithX() {
