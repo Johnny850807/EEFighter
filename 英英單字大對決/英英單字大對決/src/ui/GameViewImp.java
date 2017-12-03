@@ -55,8 +55,10 @@ public class GameViewImp extends JPanel implements GameView, KeyListener {
 		if (gameMap != null)
 			for (Sprite sprite : gameMap)
 				g.drawImage(sprite.getImage(), sprite.getX(), sprite.getY(), null);
-		g.drawImage(spriteP1.getImage(), spriteP1.getX(), spriteP1.getY(), null);
-		g.drawImage(spriteP2.getImage(), spriteP2.getX(), spriteP2.getY(), null);
+		if (spriteP1 != null) 
+			g.drawImage(spriteP1.getImage(), spriteP1.getX(), spriteP1.getY(), null);
+		if (spriteP2 != null) 
+			g.drawImage(spriteP2.getImage(), spriteP2.getX(), spriteP2.getY(), null);
 	}
 
 	private void setupLayout() {
@@ -183,21 +185,21 @@ public class GameViewImp extends JPanel implements GameView, KeyListener {
 			break;
 		}
 		
-		if ((keyInputP1 & 0b001000) != 0)
+		if ((keyInputP1 & 0b001000) == 0)
 			eeFighter.move(spriteP1, Direction.UP, Status.STOP);
-		if ((keyInputP1 & 0b000100) != 0)
+		if ((keyInputP1 & 0b000100) == 0)
 			eeFighter.move(spriteP1, Direction.DOWN, Status.STOP);
-		if ((keyInputP1 & 0b000010) != 0)
+		if ((keyInputP1 & 0b000010) == 0)
 			eeFighter.move(spriteP1, Direction.LEFT, Status.STOP);
-		if ((keyInputP1 & 0b000001) != 0)
+		if ((keyInputP1 & 0b000001) == 0)
 			eeFighter.move(spriteP1, Direction.RIGHT, Status.STOP);
-		if ((keyInputP2 & 0b001000) != 0)
+		if ((keyInputP2 & 0b001000) == 0)
 			eeFighter.move(spriteP2, Direction.UP, Status.STOP);
-		if ((keyInputP2 & 0b000100) != 0)
+		if ((keyInputP2 & 0b000100) == 0)
 			eeFighter.move(spriteP2, Direction.DOWN, Status.STOP);
-		if ((keyInputP2 & 0b000010) != 0)
+		if ((keyInputP2 & 0b000010) == 0)
 			eeFighter.move(spriteP2, Direction.LEFT, Status.STOP);
-		if ((keyInputP2 & 0b000001) != 0)
+		if ((keyInputP2 & 0b000001) == 0)
 			eeFighter.move(spriteP2, Direction.RIGHT, Status.STOP);
 	}
 

@@ -23,8 +23,8 @@ public class Sprite implements Cloneable {
 	private int bodyHeight;
 	private int bodyLength;
 	private SpriteName spriteName;
-	private Direction direction;
-	private Status status;
+	private Direction direction = Direction.UP;
+	private Status status = Status.STOP;
 	private Map<Direction, Image> imageMap = new HashMap<>();
 	private Image image;
 
@@ -90,7 +90,7 @@ public class Sprite implements Cloneable {
 		this.bodyHeight = bodyHeight;
 	}
 
-	public int getBodyLength() {
+	public int getBodyWidth() {
 		return bodyLength;
 	}
 
@@ -138,6 +138,10 @@ public class Sprite implements Cloneable {
 		this.status = status;
 	}
 
+	public XY getXy() {
+		return xy;
+	}
+	
 	public void setXY(int x, int y) {
 		this.xy = new XY(x, y);
 	}
@@ -171,22 +175,22 @@ public class Sprite implements Cloneable {
 		if (status == Status.MOVE) {
 			switch (direction) {
 				case UP:
-					xy.move(0, -1);
+					xy.move(0, -4);
 					break;
 				case DOWN:
-					xy.move(0, 1);
+					xy.move(0, 4);
 					break;
 				case LEFT:
-					xy.move(-1, 0);
+					xy.move(-4, 0);
 					break;
 				case RIGHT:
-					xy.move(1, 0);
+					xy.move(4, 0);
 					break;
 				default:
 					break;
 			}	
 		}
-		if (gameMap.getSprite(xy.getX() / gameMap.ITEM_SIZE, xy.getY() / gameMap.ITEM_SIZE).getSpriteName() == spriteName.BARRIER) {
+		if (gameMap.outOfMap(this) || gameMap.getSprite(xy.getX() / gameMap.ITEM_SIZE, xy.getY() / gameMap.ITEM_SIZE).getSpriteName() == spriteName.BARRIER) {
 			xy.rollback();
 			gameView.onHitWall(this);
 		}
