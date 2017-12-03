@@ -9,6 +9,8 @@ import model.sprite.BasicMapDirector;
 import model.sprite.GameMap;
 import model.sprite.MapDirector;
 import model.sprite.Sprite;
+import model.sprite.Sprite.Direction;
+import model.sprite.Sprite.Status;
 import ui.GameView;
 
 public class EEFighter {
@@ -44,7 +46,12 @@ public class EEFighter {
 	public void setGameView(GameView gameView) {
 		this.gameView = gameView;
 	}
+	
+	public void move(Sprite sprite, Direction direction, Status status) {
 		
+	}
+	
+	
 	public boolean isOver() {
 		return false;
 	}
