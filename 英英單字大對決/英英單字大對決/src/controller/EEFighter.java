@@ -1,5 +1,8 @@
 package controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import model.factory.SpritePrototypeFactory;
 import model.sprite.BasicMapBuilder;
 import model.sprite.BasicMapDirector;
@@ -12,17 +15,17 @@ public class EEFighter {
 
 	private GameView gameView;
 	private MapDirector mapDirector;
+	private GameMap gameMap;
+	private List<Sprite> letters = new ArrayList<Sprite>();
+	private Sprite player1;
+	private Sprite player2;
 	
 	public EEFighter(MapDirector mapDirector) {
 		this.mapDirector = mapDirector;
+		gameMap = mapDirector.buildMap();
 	}
 	
 	public void startGame() {
-		GameMap gameMap = mapDirector.buildMap();
-		SpritePrototypeFactory spritePrototypeFactory = SpritePrototypeFactory.getInstance();
-		Sprite[] letters = null;
-		Sprite player1 = null;
-		Sprite player2 = null;
 		new Thread() {
 			public void run() {
 				while (true) {
@@ -41,7 +44,7 @@ public class EEFighter {
 	public void setGameView(GameView gameView) {
 		this.gameView = gameView;
 	}
-	
+		
 	public boolean isOver() {
 		return false;
 	}

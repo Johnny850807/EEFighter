@@ -91,6 +91,30 @@ public class Sprite implements Cloneable {
 	public void setH(int h) {
 		this.h = h;
 	}
+	
+	public SpriteName getSpriteName() {
+		return spriteName;
+	}
+
+	public void setSpriteName(SpriteName spriteName) {
+		this.spriteName = spriteName;
+	}
+
+	public Direction getDirection() {
+		return direction;
+	}
+
+	public void setDirection(Direction direction) {
+		this.direction = direction;
+	}
+
+	public Status getStatus() {
+		return status;
+	}
+
+	public void setStatus(Status status) {
+		this.status = status;
+	}
 
 	public void setXY(int x, int y) {
 		this.xy = new XY(x, y);

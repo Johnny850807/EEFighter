@@ -4,6 +4,7 @@ import java.awt.FlowLayout;
 import java.awt.Graphics;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.List;
 
 import javax.swing.JPanel;
 
@@ -63,7 +64,7 @@ public class GameViewImp extends JPanel implements GameView, KeyListener {
 	}
 
 	@Override
-	public void onDraw(GameMap gameMap, Sprite[] letters, Sprite player1, Sprite player2) {
+	public void onDraw(GameMap gameMap, List<Sprite> letters, Sprite player1, Sprite player2) {
 		this.gameMap = gameMap;
 		this.spriteP1 = player1;
 		this.spriteP2 = player2;
