@@ -12,6 +12,7 @@ import java.util.Random;
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
+import controller.EEFighter;
 import model.factory.SpritePrototypeFactory;
 import model.sprite.BasicMapDirector;
 import model.sprite.GameMap;
@@ -28,9 +29,15 @@ public class GameViewImp extends JPanel implements GameView, KeyListener {
 	private GameMap gameMap;
 	private Sprite testSpriteP1;
 	private Sprite testSpriteP2;
+	private EEFighter eeFighter;
 
-	public GameViewImp(MapDirector mapDirector) {
-		gameMap = mapDirector.buildMap();
+	public GameViewImp(EEFighter eeFighter) {
+		this.eeFighter = eeFighter;
+	}
+	
+	@Override
+	public void start() {
+		eeFighter.setGameView(this);
 
 		setBounds(0, 0, 1110, 700);
 		setupViews();
@@ -38,60 +45,17 @@ public class GameViewImp extends JPanel implements GameView, KeyListener {
 		requestFocusInWindow();
 		addKeyListener(this);
 		setupLayout();
-		drawBasicMap();
-		
-	}
 
-	private void drawBasicMap() {
-		//onDraw();
+		eeFighter.startGame();
 	}
 
 	@Override
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
 
-		for (Sprite sprite : gameMap)
-			g.drawImage(sprite.getImage(), sprite.getX() * sprite.getW(), sprite.getY() * sprite.getH(), null);
-		
-		for(int x = 0; x < gameMap.getWidth(); x++)
-			for (int y = 0; y < gameMap.getHeight(); y++) {
-				Sprite sprite = gameMap.getSprite(x, y);
-				Image image = sprite.getImage();
-				g.drawImage(image, sprite.getX() * sprite.getW(), sprite.getY() * sprite.getH(), sprite.getW(), sprite.getH(), null);
-			}
-		testDrawAllLetters(g);  //TESTING
-		//testDrawTwoRoleSprites(g);
-	}
-	
-	private void testDrawAllLetters(Graphics g){
-		String[] testMap = new String[] {"00000000000000000",
-				"01010101010101010",
-				"00000000000000000",
-				"10101010101010101",
-				"00000000000000000",
-				"01010101010101010",
-				"00000000000000000",
-				"10101010101010101",
-				"00000000000000000"};
-		try {
-			int ascii = 65;
-			for(int i = 0 ; i < 9 ; i ++)
-				for (int j = 0 ; j < 17 ; j ++)
-					if(testMap[i].charAt(j) == '0'&& new Random().nextBoolean())
-					{
-						ascii = ascii + 1 > 90 ? 65 : ascii + 1;
-						g.drawImage(ImageIO.read(new File("pic/" + (char)ascii + ".png")), j*64, i*64, null);
-					}
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
-	
-	private void testDrawTwoRoleSprites(Graphics g){
-		try{
-			g.drawImage(testSpriteP1.getImage(), testSpriteP1.getX(), testSpriteP1.getY(), 64, 64, null);
-			g.drawImage(testSpriteP2.getImage(), testSpriteP2.getX(), testSpriteP2.getY(), 64, 64, null);
-		}catch (Exception e) {}  //TESTING
+		if (gameMap != null)
+			for (Sprite sprite : gameMap)
+				g.drawImage(sprite.getImage(), sprite.getX(), sprite.getY(), null);
 
 	}
 
@@ -103,13 +67,16 @@ public class GameViewImp extends JPanel implements GameView, KeyListener {
 	}
 
 	@Override
-	public void onClose() {
+	public void onGameClose() {
 
 	}
 
 	@Override
 	public void onDraw(GameMap gameMap, Sprite[] letters, Sprite player1, Sprite player2) {
-
+		this.gameMap = gameMap;
+		this.testSpriteP1 = player1;
+		this.testSpriteP2 = player2;
+		repaint();
 	}
 
 	/**
@@ -124,7 +91,8 @@ public class GameViewImp extends JPanel implements GameView, KeyListener {
 	private int keyInputP2 = 0b00000000;
 
 	@Override
-	public void keyTyped(KeyEvent e) {}
+	public void keyTyped(KeyEvent e) {
+	}
 
 	@Override
 	public void keyPressed(KeyEvent e) {
@@ -210,6 +178,17 @@ public class GameViewImp extends JPanel implements GameView, KeyListener {
 			keyInputP2 &= 0b11111110;
 			break;
 		}
+	}
+
+	@Override
+	public void onGameStarted() {
+		
+	}
+
+	@Override
+	public void onGameOver() {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

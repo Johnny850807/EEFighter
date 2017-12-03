@@ -3,7 +3,7 @@ package model.sprite;
 import java.util.Iterator;
 
 public class GameMap implements Iterable<Sprite> {
-
+	public static final int ITEM_SIZE = 64;
 	private final int WIDTH;
 	private final int HEIGHT;
 
@@ -18,7 +18,7 @@ public class GameMap implements Iterable<Sprite> {
 
 	public void setBlockSprite(int x, int y, Sprite sprite) {
 		blockSprites[y][x] = sprite;
-		sprite.setXY(x, y);
+		sprite.setXY(x * ITEM_SIZE, y * ITEM_SIZE);
 	}
 
 	public int getWidth() {

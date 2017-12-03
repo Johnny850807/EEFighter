@@ -5,5 +5,8 @@ import model.sprite.Sprite;
 
 public interface GameView {
 	void onDraw(GameMap gameMap, Sprite[] letters, Sprite player1, Sprite player2);
-	void onClose();
+	void onGameStarted();
+	void onGameOver();
+	void onGameClose();
+	void start();
 }

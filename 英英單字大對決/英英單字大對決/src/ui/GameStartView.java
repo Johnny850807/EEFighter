@@ -11,6 +11,7 @@ import java.awt.Label;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import controller.EEFighter;
 import model.sprite.BasicMapBuilder;
 import model.sprite.BasicMapDirector;
 import model.sprite.BasicRandomMapDirector;
@@ -21,7 +22,7 @@ public class GameStartView extends JFrame {
 	private Label player2Lab;
 	private Label wordDefinitionLab;
 	private GridBagConstraints gbc;
-	private JPanel gameViewPanel;
+	private GameViewImp gameViewPanel;
 
 	public GameStartView() {
 		super("英英單字大對決");
@@ -94,7 +95,8 @@ public class GameStartView extends JFrame {
 		player2Lab = new Label();
 		wordDefinitionLab = new Label();
 		gbc = new GridBagConstraints();
-		gameViewPanel = new GameViewImp(new BasicMapDirector(new BasicMapBuilder()));
+		gameViewPanel = new GameViewImp(new EEFighter(new BasicMapDirector(new BasicMapBuilder())));
+		gameViewPanel.start();
 	}
 
 	public void addComponent(Component c, Double weightX, Double weightY, int row, int column, int width, int height) {
