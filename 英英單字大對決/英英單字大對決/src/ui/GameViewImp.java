@@ -55,15 +55,6 @@ public class GameViewImp extends JPanel implements GameView, KeyListener {
 			}
 		testDrawTwoRoleSprites(g);
 	}
-	
-	
-	private void testDrawTwoRoleSprites(Graphics g){
-		try{
-			g.drawImage(spriteP1.getImage(), spriteP1.getX(), spriteP1.getY(), 64, 64, null);
-			g.drawImage(spriteP2.getImage(), spriteP2.getX(), spriteP2.getY(), 64, 64, null);
-		}catch (Exception e) {}  //TESTING
-
-	}
 
 	private void setupLayout() {
 		setLayout(new FlowLayout());
