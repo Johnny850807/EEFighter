@@ -14,4 +14,5 @@ public interface GameView {
 	void onGameClose();
 	void start();
 	void onMovedSuccessfuly(Sprite sprite, Direction direction, Status status);
+	void onHitWall(Sprite sprite);
 }

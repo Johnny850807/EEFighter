@@ -4,6 +4,8 @@ import java.awt.Image;
 import java.util.HashMap;
 import java.util.Map;
 
+import ui.GameView;
+
 /*TODO
  * (1) SpriteName 屬性
  * (2) 方向、狀態
@@ -144,9 +146,30 @@ public class Sprite implements Cloneable {
 		this.image = image;
 	}
 
-	//每17微秒 依照他的方向、狀態去更新座標
-	public void update() {
-
+	//每17微秒 依照他的方向、狀態去更新座標 判斷碰撞
+	public synchronized void update(GameMap gameMap, GameView gameView) {
+		if (status == Status.MOVE) {
+			switch (direction) {
+				case UP:
+					xy.move(0, -1);
+					break;
+				case DOWN:
+					xy.move(0, 1);
+					break;
+				case LEFT:
+					xy.move(-1, 0);
+					break;
+				case RIGHT:
+					xy.move(1, 0);
+					break;
+				default:
+					break;
+			}	
+		}
+		if (gameMap.getSprite(xy.getX() / gameMap.ITEM_SIZE, xy.getY() / gameMap.ITEM_SIZE).getSpriteName() == spriteName.BARRIER) {
+			xy.rollback();
+			gameView.onHitWall(this);
+		}
 	}
 
 	public void move(XY xy) {

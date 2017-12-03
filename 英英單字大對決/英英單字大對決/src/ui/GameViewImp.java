@@ -191,4 +191,10 @@ public class GameViewImp extends JPanel implements GameView, KeyListener {
 		
 	}
 
+	@Override
+	public void onHitWall(Sprite sprite) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }
