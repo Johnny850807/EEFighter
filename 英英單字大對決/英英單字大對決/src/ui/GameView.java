@@ -2,6 +2,8 @@ package ui;
 
 import model.sprite.GameMap;
 import model.sprite.Sprite;
+import model.sprite.Sprite.Direction;
+import model.sprite.Sprite.Status;
 
 public interface GameView {
 	void onDraw(GameMap gameMap, Sprite[] letters, Sprite player1, Sprite player2);
@@ -9,4 +11,5 @@ public interface GameView {
 	void onGameOver();
 	void onGameClose();
 	void start();
+	void onMovedSuccessfuly(Sprite sprite, Direction direction, Status status);
 }

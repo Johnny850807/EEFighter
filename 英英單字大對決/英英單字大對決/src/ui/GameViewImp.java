@@ -11,6 +11,8 @@ import controller.EEFighter;
 import model.sprite.BasicMapDirector;
 import model.sprite.GameMap;
 import model.sprite.Sprite;
+import model.sprite.Sprite.Direction;
+import model.sprite.Sprite.Status;
 import model.sprite.XY;
 
 /*
@@ -55,6 +57,7 @@ public class GameViewImp extends JPanel implements GameView, KeyListener {
 	}
 
 	private void setupViews() {
+		
 	}
 
 	@Override
@@ -178,6 +181,11 @@ public class GameViewImp extends JPanel implements GameView, KeyListener {
 
 	@Override
 	public void onGameOver() {
+		
+	}
+
+	@Override
+	public void onMovedSuccessfuly(Sprite sprite, Direction direction, Status status) {
 		// TODO Auto-generated method stub
 		
 	}
