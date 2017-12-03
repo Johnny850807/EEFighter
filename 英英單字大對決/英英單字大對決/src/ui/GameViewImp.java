@@ -53,7 +53,6 @@ public class GameViewImp extends JPanel implements GameView, KeyListener {
 				Image image = sprite.getImage();
 				g.drawImage(image, sprite.getX() * sprite.getW(), sprite.getY() * sprite.getH(), sprite.getW(), sprite.getH(), null);
 			}
-		testDrawTwoRoleSprites(g);
 	}
 
 	private void setupLayout() {
