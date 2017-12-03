@@ -38,7 +38,7 @@ public class Sprite implements Cloneable {
 	 * @param bodyLength 圖片的身體部分的長度
 	 * @param image image of this sprite
 	 */
-	public Sprite(int w, int h, int biasWithX, int biasWithY, int bodyHeight, int bodyLength, Image image) {
+	public Sprite(int w, int h, int biasWithX, int biasWithY, int bodyHeight, int bodyLength,SpriteName spriteName, Image image) {
 		super();
 		this.w = w;
 		this.h = h;
@@ -46,6 +46,7 @@ public class Sprite implements Cloneable {
 		this.biasWithY = biasWithY;
 		this.bodyHeight = bodyHeight;
 		this.bodyLength = bodyLength;
+		this.spriteName = spriteName;
 		this.image = image;
 		try {
 			prepare();

@@ -9,6 +9,7 @@ import model.sprite.BasicMapDirector;
 import model.sprite.GameMap;
 import model.sprite.MapDirector;
 import model.sprite.Sprite;
+import model.sprite.SpriteName;
 import model.sprite.Sprite.Direction;
 import model.sprite.Sprite.Status;
 import ui.GameView;
@@ -34,8 +35,8 @@ public class EEFighter {
 	
 	private void createPlayers() {
 		SpritePrototypeFactory spritePrototypeFactory = SpritePrototypeFactory.getInstance();
-		//player1 = spritePrototypeFactory.createSprite(spriteName);
-		//player2 = spritePrototypeFactory.createSprite(spriteName);
+		player1 = spritePrototypeFactory.createSprite(SpriteName.PLAYER);
+		player2 = spritePrototypeFactory.createSprite(SpriteName.PLAYER);
 	}
 	
 	public void startGame() {
