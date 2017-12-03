@@ -9,11 +9,13 @@ import java.util.List;
 import javax.swing.JPanel;
 
 import controller.EEFighter;
+import model.factory.SpritePrototypeFactory;
 import model.sprite.BasicMapDirector;
 import model.sprite.GameMap;
 import model.sprite.Sprite;
 import model.sprite.Sprite.Direction;
 import model.sprite.Sprite.Status;
+import model.sprite.SpriteName;
 import model.sprite.XY;
 
 /*
@@ -28,6 +30,7 @@ public class GameViewImp extends JPanel implements GameView, KeyListener {
 
 	public GameViewImp(EEFighter eeFighter) {
 		this.eeFighter = eeFighter;
+		
 	}
 	
 	@Override
@@ -42,15 +45,18 @@ public class GameViewImp extends JPanel implements GameView, KeyListener {
 		setupLayout();
 
 		eeFighter.startGame();
+
 	}
 
 	@Override
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
-
+		
 		if (gameMap != null)
 			for (Sprite sprite : gameMap)
 				g.drawImage(sprite.getImage(), sprite.getX(), sprite.getY(), null);
+		g.drawImage(spriteP1.getImage(), spriteP1.getX(), spriteP1.getY(), null);
+		g.drawImage(spriteP2.getImage(), spriteP2.getX(), spriteP2.getY(), null);
 	}
 
 	private void setupLayout() {
@@ -94,54 +100,57 @@ public class GameViewImp extends JPanel implements GameView, KeyListener {
 		switch (e.getKeyCode()) {
 		case KeyEvent.VK_UP:
 			keyInputP1 |= 0b00001000;
+			spriteP1.setImage(spriteP1.getDirectionImage(Direction.UP));
 			break;
 		case KeyEvent.VK_DOWN:
 			keyInputP1 |= 0b00000100;
+			spriteP1.setImage(spriteP1.getDirectionImage(Direction.DOWN));
 			break;
 		case KeyEvent.VK_LEFT:
 			keyInputP1 |= 0b00000010;
+			spriteP1.setImage(spriteP1.getDirectionImage(Direction.LEFT));
 			break;
 		case KeyEvent.VK_RIGHT:
 			keyInputP1 |= 0b00000001;
+			spriteP1.setImage(spriteP1.getDirectionImage(Direction.RIGHT));
 			break;
 		case KeyEvent.VK_T:
 			keyInputP2 |= 0b00001000;
+			spriteP2.setImage(spriteP1.getDirectionImage(Direction.UP));
 			break;
 		case KeyEvent.VK_G:
 			keyInputP2 |= 0b00000100;
+			spriteP2.setImage(spriteP1.getDirectionImage(Direction.DOWN));
 			break;
 		case KeyEvent.VK_F:
 			keyInputP2 |= 0b00000010;
+			spriteP2.setImage(spriteP1.getDirectionImage(Direction.LEFT));
 			break;
 		case KeyEvent.VK_H:
 			keyInputP2 |= 0b00000001;
+			spriteP2.setImage(spriteP1.getDirectionImage(Direction.RIGHT));
 			break;
 		default:
 			break;
 		}
 
 		if ((keyInputP1 & 0b001000) != 0)
-			moveRoleSprite(spriteP1, new XY(0, -4));
+			eeFighter.move(spriteP1, Direction.UP, Status.MOVE);
 		if ((keyInputP1 & 0b000100) != 0)
-			moveRoleSprite(spriteP1, new XY(0, 4));
+			eeFighter.move(spriteP1, Direction.DOWN, Status.MOVE);
 		if ((keyInputP1 & 0b000010) != 0)
-			moveRoleSprite(spriteP1, new XY(-4, 0));
+			eeFighter.move(spriteP1, Direction.LEFT, Status.MOVE);
 		if ((keyInputP1 & 0b000001) != 0)
-			moveRoleSprite(spriteP1, new XY(4, 0));
+			eeFighter.move(spriteP1, Direction.RIGHT, Status.MOVE);
 		if ((keyInputP2 & 0b001000) != 0)
-			moveRoleSprite(spriteP2, new XY(0, -4));
+			eeFighter.move(spriteP2, Direction.UP, Status.MOVE);
 		if ((keyInputP2 & 0b000100) != 0)
-			moveRoleSprite(spriteP2, new XY(0, 4));
+			eeFighter.move(spriteP2, Direction.DOWN, Status.MOVE);
 		if ((keyInputP2 & 0b000010) != 0)
-			moveRoleSprite(spriteP2, new XY(-4, 0));
+			eeFighter.move(spriteP2, Direction.LEFT, Status.MOVE);
 		if ((keyInputP2 & 0b000001) != 0)
-			moveRoleSprite(spriteP2, new XY(4, 0));
+			eeFighter.move(spriteP2, Direction.RIGHT, Status.MOVE);
 		repaint();
-	}
-
-	private void moveRoleSprite(Sprite sprite, XY xy) {
-		// TODO send a moving request to the controller
-		sprite.move(xy); // this is testing, please remove.
 	}
 
 	@Override
@@ -173,6 +182,23 @@ public class GameViewImp extends JPanel implements GameView, KeyListener {
 			keyInputP2 &= 0b11111110;
 			break;
 		}
+		
+		if ((keyInputP1 & 0b001000) != 0)
+			eeFighter.move(spriteP1, Direction.UP, Status.STOP);
+		if ((keyInputP1 & 0b000100) != 0)
+			eeFighter.move(spriteP1, Direction.DOWN, Status.STOP);
+		if ((keyInputP1 & 0b000010) != 0)
+			eeFighter.move(spriteP1, Direction.LEFT, Status.STOP);
+		if ((keyInputP1 & 0b000001) != 0)
+			eeFighter.move(spriteP1, Direction.RIGHT, Status.STOP);
+		if ((keyInputP2 & 0b001000) != 0)
+			eeFighter.move(spriteP2, Direction.UP, Status.STOP);
+		if ((keyInputP2 & 0b000100) != 0)
+			eeFighter.move(spriteP2, Direction.DOWN, Status.STOP);
+		if ((keyInputP2 & 0b000010) != 0)
+			eeFighter.move(spriteP2, Direction.LEFT, Status.STOP);
+		if ((keyInputP2 & 0b000001) != 0)
+			eeFighter.move(spriteP2, Direction.RIGHT, Status.STOP);
 	}
 
 	@Override
