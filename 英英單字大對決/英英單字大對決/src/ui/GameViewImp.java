@@ -2,21 +2,14 @@ package ui;
 
 import java.awt.FlowLayout;
 import java.awt.Graphics;
-import java.awt.Image;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.io.File;
-import java.io.IOException;
-import java.util.Random;
 
-import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
 import controller.EEFighter;
-import model.factory.SpritePrototypeFactory;
 import model.sprite.BasicMapDirector;
 import model.sprite.GameMap;
-import model.sprite.MapDirector;
 import model.sprite.Sprite;
 import model.sprite.XY;
 
@@ -25,11 +18,10 @@ import model.sprite.XY;
  */
 public class GameViewImp extends JPanel implements GameView, KeyListener {
 
-	private BasicMapDirector mapDirector;
 	private GameMap gameMap;
-	private Sprite testSpriteP1;
-	private Sprite testSpriteP2;
 	private EEFighter eeFighter;
+	private Sprite spriteP1;
+	private Sprite spriteP2;
 
 	public GameViewImp(EEFighter eeFighter) {
 		this.eeFighter = eeFighter;
@@ -56,7 +48,6 @@ public class GameViewImp extends JPanel implements GameView, KeyListener {
 		if (gameMap != null)
 			for (Sprite sprite : gameMap)
 				g.drawImage(sprite.getImage(), sprite.getX(), sprite.getY(), null);
-
 	}
 
 	private void setupLayout() {
@@ -74,8 +65,8 @@ public class GameViewImp extends JPanel implements GameView, KeyListener {
 	@Override
 	public void onDraw(GameMap gameMap, Sprite[] letters, Sprite player1, Sprite player2) {
 		this.gameMap = gameMap;
-		this.testSpriteP1 = player1;
-		this.testSpriteP2 = player2;
+		this.spriteP1 = player1;
+		this.spriteP2 = player2;
 		repaint();
 	}
 
@@ -126,21 +117,21 @@ public class GameViewImp extends JPanel implements GameView, KeyListener {
 		}
 
 		if ((keyInputP1 & 0b001000) != 0)
-			moveRoleSprite(testSpriteP1, new XY(0, -4));
+			moveRoleSprite(spriteP1, new XY(0, -4));
 		if ((keyInputP1 & 0b000100) != 0)
-			moveRoleSprite(testSpriteP1, new XY(0, 4));
+			moveRoleSprite(spriteP1, new XY(0, 4));
 		if ((keyInputP1 & 0b000010) != 0)
-			moveRoleSprite(testSpriteP1, new XY(-4, 0));
+			moveRoleSprite(spriteP1, new XY(-4, 0));
 		if ((keyInputP1 & 0b000001) != 0)
-			moveRoleSprite(testSpriteP1, new XY(4, 0));
+			moveRoleSprite(spriteP1, new XY(4, 0));
 		if ((keyInputP2 & 0b001000) != 0)
-			moveRoleSprite(testSpriteP2, new XY(0, -4));
+			moveRoleSprite(spriteP2, new XY(0, -4));
 		if ((keyInputP2 & 0b000100) != 0)
-			moveRoleSprite(testSpriteP2, new XY(0, 4));
+			moveRoleSprite(spriteP2, new XY(0, 4));
 		if ((keyInputP2 & 0b000010) != 0)
-			moveRoleSprite(testSpriteP2, new XY(-4, 0));
+			moveRoleSprite(spriteP2, new XY(-4, 0));
 		if ((keyInputP2 & 0b000001) != 0)
-			moveRoleSprite(testSpriteP2, new XY(4, 0));
+			moveRoleSprite(spriteP2, new XY(4, 0));
 		repaint();
 	}
 
