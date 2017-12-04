@@ -13,6 +13,10 @@ import model.sprite.Sprite;
 import model.sprite.SpriteName;
 import model.sprite.Sprite.Direction;
 
+
+/**
+ * @author Lin (ªL©v»õ)
+ */
 public class SpritePrototypeFactory {
 	private static SpritePrototypeFactory instance = null;
 	private Map<SpriteName, Sprite> spriteMap = new HashMap<>();
