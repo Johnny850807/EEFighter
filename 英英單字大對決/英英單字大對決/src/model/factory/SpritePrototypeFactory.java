@@ -18,7 +18,6 @@ public class SpritePrototypeFactory {
 	private Map<SpriteName, Sprite> spriteMap = new HashMap<>();
 	private Map<Direction, Image> imageMap = new HashMap<>();
 
-	//TODO PRIVATE «Øºc¤l
 	private SpritePrototypeFactory() {
 		try {
 			preparePlayerImageMap();
