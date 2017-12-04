@@ -19,7 +19,7 @@ import javax.sound.sampled.UnsupportedAudioFileException;
  */
 public class SoundPlayer {
 	private static SoundPlayer instance = new SoundPlayer();
-	private Clip backgroundMusic;  //背景音樂 一次只能撥一首 
+	private Clip backgroundMusic; 
 	
 	public static SoundPlayer getInstance(){
 		return instance;
