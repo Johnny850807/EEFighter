@@ -1,5 +1,7 @@
 package controller;
 
+import java.util.List;
+
 import model.Secret;
 import model.words.CrawlerVocabularycom;
 import model.words.ITRI_TTS;
@@ -41,14 +43,13 @@ public class EnglishWarehouseController {
 					englishWarehouseView.onWordCreateSuccessfully(word);
 				} catch (Exception e) {
 					e.printStackTrace();
-					englishWarehouseView.onWordCreateFailed(wordtxt, e);  //TODO 例外也要給他喔~ 也許它需要
+					englishWarehouseView.onWordCreateFailed(wordtxt, e); 
 				}
 			}
 		}.start();
 	}
 	
 	public void readWord(String wordtext) throws ReadWordFailedException {
-		//TODO 這個也是要時間的唷!! 所以一樣要開執行緒跟呼叫觀察者~~~ 你可以開始了解 所有有延遲的操作都要非同步!
 		new Thread() {
 			@Override
 			public void run() {
@@ -64,19 +65,35 @@ public class EnglishWarehouseController {
 		}.start();
 	}
 	
+	public void readAllWord() throws ReadWordFailedException {
+		new Thread() {
+			@Override
+			public void run() {
+				List<Word> words;
+				try {
+					words = wordRepository.readAllWord();
+					englishWarehouseView.onWordReadSuccessfully(words);
+				} catch (ReadWordFailedException e) {
+					e.printStackTrace();
+					englishWarehouseView.onWordReadFailed(e);
+				}
+			}
+		}.start();
+	}
+	
 	public void removeWord(Word word) {
 		new Thread() {
 			@Override
 			public void run() {
-				wordRepository.removeWord(word);  //TODO 非同步~~~ crud基本上都要對應到一個觀察者函數!!! 不要客氣!!
+				wordRepository.removeWord(word);  
 				englishWarehouseView.onWordRemoveSuccessfully(word);
 			}
 		}.start();
 	}
 	
 	public static void main(String[] argv) {
-		EnglishWarehouseController controller = new EnglishWarehouseController(new EnglishWarehouseViewImp());
-		controller.addWord("Taiwan");
+		EnglishWarehouseController controller = new EnglishWarehouseController(new EnglishWarehouseViewImp()); 
+		controller.addWord("eat");
 		controller.addWord("pineapple");
 	}
 	

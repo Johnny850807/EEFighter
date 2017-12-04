@@ -5,6 +5,7 @@ import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -14,6 +15,14 @@ public class WordRepositoryImp implements WordRepository {
 	
 	public WordRepositoryImp() {
 		readFile();
+		for (String w : words.keySet()) {
+			try {
+				System.out.println("1"+readWord(w).toString());
+			} catch (ReadWordFailedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
 	}
 
 	@Override
@@ -37,6 +46,11 @@ public class WordRepositoryImp implements WordRepository {
 		if (wordExists(wordtext))
 			return words.get(wordtext);
 		throw new ReadWordFailedException();
+	}
+
+	@Override
+	public List<Word> readAllWord() throws ReadWordFailedException {
+		return new ArrayList(this.words.values());
 	}
 
 	private boolean wordExists(String wordtext) {

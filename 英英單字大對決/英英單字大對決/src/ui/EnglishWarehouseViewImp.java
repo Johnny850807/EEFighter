@@ -151,6 +151,18 @@ public class EnglishWarehouseViewImp extends JFrame implements EnglishWarehouseV
 		// TODO Auto-generated method stub
 		
 	}
+
+	@Override
+	public void onWordReadSuccessfully(List<Word> words) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void onWordReadFailed(Exception exception) {
+		// TODO Auto-generated method stub
+		
+	}
 }
 
 class WordCellRenderer extends JPanel implements ListCellRenderer {
