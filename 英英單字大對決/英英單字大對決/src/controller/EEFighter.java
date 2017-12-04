@@ -4,17 +4,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 import model.factory.SpritePrototypeFactory;
-import model.sprite.BasicMapBuilder;
-import model.sprite.BasicMapDirector;
 import model.sprite.GameMap;
 import model.sprite.MapDirector;
 import model.sprite.Sprite;
-import model.sprite.SpriteName;
 import model.sprite.Sprite.Direction;
 import model.sprite.Sprite.Status;
 import model.sprite.SpriteName;
 import ui.GameView;
 
+
+/**
+ * @author Joanna (±i®ÑÞ±)
+ */
 public class EEFighter {
 
 	private GameView gameView;

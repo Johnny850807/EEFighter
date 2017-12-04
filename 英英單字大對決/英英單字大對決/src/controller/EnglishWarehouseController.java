@@ -11,6 +11,9 @@ import model.words.WordRepositoryImp;
 import ui.EnglishWarehouseView;
 import ui.EnglishWarehouseViewImp;
 
+/**
+ * @author Joanna (±i®ÑÞ±)
+ */
 public class EnglishWarehouseController {
 
 	private EnglishWarehouseView englishWarehouseView;
