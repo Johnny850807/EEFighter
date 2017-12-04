@@ -15,14 +15,6 @@ public class WordRepositoryImp implements WordRepository {
 	
 	public WordRepositoryImp() {
 		readFile();
-		for (String w : words.keySet()) {
-			try {
-				System.out.println("1"+readWord(w).toString());
-			} catch (ReadWordFailedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
 	}
 
 	@Override
