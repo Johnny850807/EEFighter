@@ -54,11 +54,11 @@ public class GameViewImp extends JPanel implements GameView, KeyListener {
 		
 		if (gameMap != null)
 			for (Sprite sprite : gameMap)
-				g.drawImage(sprite.getImage(), sprite.getX(), sprite.getY(), null);
+				g.drawImage(sprite.getImage(sprite.getDirection()), sprite.getX(), sprite.getY(), null);
 		if (spriteP1 != null) 
-			g.drawImage(spriteP1.getImage(), spriteP1.getX(), spriteP1.getY(), null);
+			g.drawImage(spriteP1.getImage(spriteP1.getDirection()), spriteP1.getX(), spriteP1.getY(), null);
 		if (spriteP2 != null) 
-			g.drawImage(spriteP2.getImage(), spriteP2.getX(), spriteP2.getY(), null);
+			g.drawImage(spriteP2.getImage(spriteP2.getDirection()), spriteP2.getX(), spriteP2.getY(), null);
 	}
 
 	private void setupLayout() {
@@ -102,56 +102,56 @@ public class GameViewImp extends JPanel implements GameView, KeyListener {
 		switch (e.getKeyCode()) {
 		case KeyEvent.VK_UP:
 			keyInputP1 |= 0b00001000;
-			spriteP1.setImage(spriteP1.getDirectionImage(Direction.UP));
+			spriteP1.setDirection(Direction.NORTH);
 			break;
 		case KeyEvent.VK_DOWN:
 			keyInputP1 |= 0b00000100;
-			spriteP1.setImage(spriteP1.getDirectionImage(Direction.DOWN));
+			spriteP1.setDirection(Direction.SOUTH);
 			break;
 		case KeyEvent.VK_LEFT:
 			keyInputP1 |= 0b00000010;
-			spriteP1.setImage(spriteP1.getDirectionImage(Direction.LEFT));
+			spriteP1.setDirection(Direction.WEST);
 			break;
 		case KeyEvent.VK_RIGHT:
 			keyInputP1 |= 0b00000001;
-			spriteP1.setImage(spriteP1.getDirectionImage(Direction.RIGHT));
+			spriteP1.setDirection(Direction.EAST);
 			break;
 		case KeyEvent.VK_T:
 			keyInputP2 |= 0b00001000;
-			spriteP2.setImage(spriteP1.getDirectionImage(Direction.UP));
+			spriteP2.setDirection(Direction.NORTH);
 			break;
 		case KeyEvent.VK_G:
 			keyInputP2 |= 0b00000100;
-			spriteP2.setImage(spriteP1.getDirectionImage(Direction.DOWN));
+			spriteP2.setDirection(Direction.SOUTH);
 			break;
 		case KeyEvent.VK_F:
 			keyInputP2 |= 0b00000010;
-			spriteP2.setImage(spriteP1.getDirectionImage(Direction.LEFT));
+			spriteP2.setDirection(Direction.WEST);
 			break;
 		case KeyEvent.VK_H:
 			keyInputP2 |= 0b00000001;
-			spriteP2.setImage(spriteP1.getDirectionImage(Direction.RIGHT));
+			spriteP2.setDirection(Direction.EAST);
 			break;
 		default:
 			break;
 		}
 
 		if ((keyInputP1 & 0b001000) != 0)
-			eeFighter.move(spriteP1, Direction.UP, Status.MOVE);
+			eeFighter.move(spriteP1, Direction.NORTH, Status.MOVE);
 		if ((keyInputP1 & 0b000100) != 0)
-			eeFighter.move(spriteP1, Direction.DOWN, Status.MOVE);
+			eeFighter.move(spriteP1, Direction.SOUTH, Status.MOVE);
 		if ((keyInputP1 & 0b000010) != 0)
-			eeFighter.move(spriteP1, Direction.LEFT, Status.MOVE);
+			eeFighter.move(spriteP1, Direction.WEST, Status.MOVE);
 		if ((keyInputP1 & 0b000001) != 0)
-			eeFighter.move(spriteP1, Direction.RIGHT, Status.MOVE);
+			eeFighter.move(spriteP1, Direction.EAST, Status.MOVE);
 		if ((keyInputP2 & 0b001000) != 0)
-			eeFighter.move(spriteP2, Direction.UP, Status.MOVE);
+			eeFighter.move(spriteP2, Direction.NORTH, Status.MOVE);
 		if ((keyInputP2 & 0b000100) != 0)
-			eeFighter.move(spriteP2, Direction.DOWN, Status.MOVE);
+			eeFighter.move(spriteP2, Direction.SOUTH, Status.MOVE);
 		if ((keyInputP2 & 0b000010) != 0)
-			eeFighter.move(spriteP2, Direction.LEFT, Status.MOVE);
+			eeFighter.move(spriteP2, Direction.WEST, Status.MOVE);
 		if ((keyInputP2 & 0b000001) != 0)
-			eeFighter.move(spriteP2, Direction.RIGHT, Status.MOVE);
+			eeFighter.move(spriteP2, Direction.EAST, Status.MOVE);
 		repaint();
 	}
 
@@ -186,21 +186,21 @@ public class GameViewImp extends JPanel implements GameView, KeyListener {
 		}
 		
 		if ((keyInputP1 & 0b001000) == 0)
-			eeFighter.move(spriteP1, Direction.UP, Status.STOP);
+			eeFighter.move(spriteP1, Direction.NORTH, Status.STOP);
 		if ((keyInputP1 & 0b000100) == 0)
-			eeFighter.move(spriteP1, Direction.DOWN, Status.STOP);
+			eeFighter.move(spriteP1, Direction.SOUTH, Status.STOP);
 		if ((keyInputP1 & 0b000010) == 0)
-			eeFighter.move(spriteP1, Direction.LEFT, Status.STOP);
+			eeFighter.move(spriteP1, Direction.WEST, Status.STOP);
 		if ((keyInputP1 & 0b000001) == 0)
-			eeFighter.move(spriteP1, Direction.RIGHT, Status.STOP);
+			eeFighter.move(spriteP1, Direction.EAST, Status.STOP);
 		if ((keyInputP2 & 0b001000) == 0)
-			eeFighter.move(spriteP2, Direction.UP, Status.STOP);
+			eeFighter.move(spriteP2, Direction.NORTH, Status.STOP);
 		if ((keyInputP2 & 0b000100) == 0)
-			eeFighter.move(spriteP2, Direction.DOWN, Status.STOP);
+			eeFighter.move(spriteP2, Direction.SOUTH, Status.STOP);
 		if ((keyInputP2 & 0b000010) == 0)
-			eeFighter.move(spriteP2, Direction.LEFT, Status.STOP);
+			eeFighter.move(spriteP2, Direction.WEST, Status.STOP);
 		if ((keyInputP2 & 0b000001) == 0)
-			eeFighter.move(spriteP2, Direction.RIGHT, Status.STOP);
+			eeFighter.move(spriteP2, Direction.EAST, Status.STOP);
 	}
 
 	@Override

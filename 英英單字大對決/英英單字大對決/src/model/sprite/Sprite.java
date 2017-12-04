@@ -22,10 +22,9 @@ public class Sprite implements Cloneable {
 	protected int bodyHeight;
 	protected int bodyLength;
 	protected SpriteName spriteName;
-	protected Direction direction = Direction.UP;
+	protected Direction direction = Direction.NORTH;
 	protected Status status = Status.STOP;
 	protected Map<Direction, Image> imageMap = new HashMap<>();
-	protected Image image;
 	protected GameMap gameMap;
 	protected GameView gameView;
 
@@ -39,7 +38,7 @@ public class Sprite implements Cloneable {
 	 * @param bodyLength 圖片的身體部分的長度
 	 * @param image image of this sprite
 	 */
-	public Sprite(int w, int h, int biasWithX, int biasWithY, int bodyHeight, int bodyLength,SpriteName spriteName, Image image) {
+	public Sprite(int w, int h, int biasWithX, int biasWithY, int bodyHeight, int bodyLength,SpriteName spriteName, Map<Direction, Image> imageMap) {
 		super();
 		this.w = w;
 		this.h = h;
@@ -48,24 +47,12 @@ public class Sprite implements Cloneable {
 		this.bodyHeight = bodyHeight;
 		this.bodyLength = bodyLength;
 		this.spriteName = spriteName;
-		this.image = image;
-		try {
-			prepare();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
 	}
 	
 	public Sprite() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public void prepare() throws IOException{
-		imageMap.put(Direction.UP, ImageIO.read(new File("pic/North_T0.png")));
-		imageMap.put(Direction.LEFT, ImageIO.read(new File("pic/West_T0.png")));
-		imageMap.put(Direction.DOWN, ImageIO.read(new File("pic/South_T0.png")));
-		imageMap.put(Direction.RIGHT, ImageIO.read(new File("pic/East_T0.png")));
-	}
 
 	public Image getDirectionImage(Direction direction) {
 		return imageMap.get(direction);
@@ -167,13 +154,10 @@ public class Sprite implements Cloneable {
 		this.xy.setY(y);
 	}
 
-	public Image getImage() {
-		return image;
+	public Image getImage(Direction direction) {
+		return imageMap.get(direction);
 	}
 
-	public void setImage(Image image) {
-		this.image = image;
-	}
 
 	public GameMap getGameMap() {
 		return gameMap;
@@ -215,7 +199,7 @@ public class Sprite implements Cloneable {
 	}
 	
 	public enum Direction {
-		UP, LEFT, RIGHT, DOWN;
+		NORTH, WEST, EAST, SOUTH;
 	}
 	
 	public enum Status {
