@@ -1,6 +1,0 @@
-dangerous D:\GitHub\EEFighter\英英單字大對決\英英單字大對決\sounds\vocabulary\dangerous.wav 1
-adj/involving or causing danger or risk; liable to hurt or harm/causing fear or anxiety by threatening great harm
-pineapple D:\NativeGit\OOD-Design-Pattern-Course\英英單字大對決\英英單字大對決\sounds\vocabulary\pineapple.wav 1
-n/a tropical American plant bearing a large fleshy edible fruit with a terminal tuft of stiff leaves; widely cultivated in the tropics/large sweet fleshy tropical fruit with a terminal tuft of stiff leaves; widely cultivated
-Taiwan D:\NativeGit\OOD-Design-Pattern-Course\英英單字大對決\英英單字大對決\sounds\vocabulary\Taiwan.wav 1
-n/an island in southeastern Asia 100 miles off the coast of mainland China in the South China Sea/a government on the island of Taiwan established in 1949 by Chiang Kai-shek after the conquest of mainland China by the Communists led by Mao Zedong

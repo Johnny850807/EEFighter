@@ -135,8 +135,7 @@ public class EnglishWarehouseViewImp extends JFrame implements EnglishWarehouseV
 
 	@Override
 	public void onWordRemoveSuccessfully(Word word) {
-		// TODO Auto-generated method stub
-		
+		JOptionPane.showMessageDialog(null, word.getWord() + " remove successfuly");
 	}
 }
 
