@@ -23,7 +23,7 @@ public class EnglishWarehouseController {
 	
 	public EnglishWarehouseController(EnglishWarehouseView englishWarehouseView) {
 		this.englishWarehouseView = englishWarehouseView;
-		wordRepository = new WordRepositoryImp();
+		wordRepository = new WordRepositoryImp();  //TODO 感覺到抽象工廠的重要性了吧~~
 		crawler = new CrawlerVocabularycom();
 		tts = new ITRI_TTS(Secret.TTS_ACCOUNT, Secret.TTS_PASSWORD);
 	}
