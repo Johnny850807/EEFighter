@@ -140,7 +140,6 @@ public class EnglishWarehouseViewImp extends JFrame implements EnglishWarehouseV
 	@Override
 	public void onWordCreateFailed(String word, Exception exception) {
 		JOptionPane.showMessageDialog(null, word + " create failed");
-		exception.printStackTrace();
 	}
 
 	@Override
