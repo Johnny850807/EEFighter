@@ -21,12 +21,20 @@ public class SpritePrototypeFactory {
 	//TODO PRIVATE «Øºc¤l
 	private SpritePrototypeFactory() {
 		try {
+			preparePlayerImageMap();
 			prepareSprites();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
 	
+	private void preparePlayerImageMap() throws IOException{
+		imageMap.put(Direction.NORTH, ImageIO.read(new File("pic/North_T0.png")));
+		imageMap.put(Direction.WEST, ImageIO.read(new File("pic/West_T0.png")));
+		imageMap.put(Direction.SOUTH, ImageIO.read(new File("pic/South_T0.png")));
+		imageMap.put(Direction.EAST, ImageIO.read(new File("pic/East_T0.png")));
+	}
+
 	private Map<Direction, Image> createImageMap(Image image) {
 		Map<Direction, Image> imageMap = new HashMap<>();
 		imageMap.put(Direction.NORTH, image);
@@ -69,10 +77,6 @@ public class SpritePrototypeFactory {
 		spriteMap.put(SpriteName.X, new Sprite(64, 64, 10, 12, 50, 50, SpriteName.X, createImageMap(ImageIO.read(new File("pic/X.png")))));
 		spriteMap.put(SpriteName.Y, new Sprite(64, 64, 11, 13, 50, 50, SpriteName.Y, createImageMap(ImageIO.read(new File("pic/Y.png")))));
 		spriteMap.put(SpriteName.Z, new Sprite(64, 64, 13, 15, 50, 50, SpriteName.Z, createImageMap(ImageIO.read(new File("pic/Z.png")))));
-		imageMap.put(Direction.NORTH, ImageIO.read(new File("pic/North_T0.png")));
-		imageMap.put(Direction.WEST, ImageIO.read(new File("pic/West_T0.png")));
-		imageMap.put(Direction.SOUTH, ImageIO.read(new File("pic/South_T0.png")));
-		imageMap.put(Direction.EAST, ImageIO.read(new File("pic/East_T0.png")));
 		spriteMap.put(SpriteName.PLAYER, new PlayerSprite(64, 64, 0, 0, 50, 50, SpriteName.PLAYER, imageMap));
 	}
 

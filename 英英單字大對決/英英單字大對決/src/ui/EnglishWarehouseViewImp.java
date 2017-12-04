@@ -21,6 +21,7 @@ import javax.swing.DefaultListModel;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JProgressBar;
 import javax.swing.JScrollPane;
@@ -116,12 +117,16 @@ public class EnglishWarehouseViewImp extends JFrame implements EnglishWarehouseV
 
 	@Override
 	public void onWordCreateSuccessfully(Word word) {
-		// TODO Auto-generated method stub
-		
+		JOptionPane.showMessageDialog(null, word.getWord() + " create successfuly");
 	}
 
 	@Override
 	public void onWordCreateFailed(String word) {
+		JOptionPane.showMessageDialog(null, word + "create Failed");
+	}
+
+	@Override
+	public void onWordRemoveSuccessfully(Word word) {
 		// TODO Auto-generated method stub
 		
 	}
