@@ -10,23 +10,22 @@ import ui.GameView;
 import javax.imageio.ImageIO;
 
 /*TODO
- * (1) SpriteName 屬性
- * (2) 方向、狀態
- * (3) Image 應該要是一個Map<方向, 圖片>，每個方向對應到一張圖片，為此原型工廠也要為此提供每個Sprite的Map<方向, 圖片>，程式繁雜，請消除重複部分。
+ * (1) Image 應該要是一個Map<方向, 圖片>，每個方向對應到一張圖片，為此原型工廠也要為此提供每個Sprite的Map<方向, 圖片>，程式繁雜，請消除重複部分。
+ * (2) 提供 isConflict(Sprite sprite) 函數  判斷兩sprite是否有碰撞發生 回傳 boolean
  */
 public class Sprite implements Cloneable {
-	private XY xy;
-	private int w;
-	private int h;
-	private int biasWithX;
-	private int biasWithY;
-	private int bodyHeight;
-	private int bodyLength;
-	private SpriteName spriteName;
-	private Direction direction = Direction.UP;
-	private Status status = Status.STOP;
-	private Map<Direction, Image> imageMap = new HashMap<>();
-	private Image image;
+	protected XY xy;
+	protected int w;
+	protected int h;
+	protected int biasWithX;
+	protected int biasWithY;
+	protected int bodyHeight;
+	protected int bodyLength;
+	protected SpriteName spriteName;
+	protected Direction direction = Direction.UP;
+	protected Status status = Status.STOP;
+	protected Map<Direction, Image> imageMap = new HashMap<>();
+	protected Image image;
 
 	/**
 	 * 
@@ -51,7 +50,6 @@ public class Sprite implements Cloneable {
 		try {
 			prepare();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -171,30 +169,9 @@ public class Sprite implements Cloneable {
 		this.image = image;
 	}
 
-	//每17微秒 依照他的方向、狀態去更新座標 判斷碰撞
+	//TODO 不要在呼叫update的時候才傳入 gameMap跟gameView，何不用setter 直接set進這個sprite的屬性呢? 沒有魔術。
 	public synchronized void update(GameMap gameMap, GameView gameView) {
-		if (status == Status.MOVE) {
-			switch (direction) {
-				case UP:
-					xy.move(0, -4);
-					break;
-				case DOWN:
-					xy.move(0, 4);
-					break;
-				case LEFT:
-					xy.move(-4, 0);
-					break;
-				case RIGHT:
-					xy.move(4, 0);
-					break;
-				default:
-					break;
-			}	
-		}
-		if (gameMap.outOfMap(this) || gameMap.getSprite(xy.getX() / gameMap.ITEM_SIZE, xy.getY() / gameMap.ITEM_SIZE).getSpriteName() == spriteName.BARRIER) {
-			xy.rollback();
-			gameView.onHitWall(this);
-		}
+		//do nothing as default
 	}
 
 	public void move(XY xy) {

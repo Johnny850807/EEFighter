@@ -2,14 +2,12 @@ package model.factory;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.Arrays;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Map;
-import java.util.Set;
 
 import javax.imageio.ImageIO;
 
+import model.sprite.PlayerSprite;
 import model.sprite.Sprite;
 import model.sprite.SpriteName;
 
@@ -17,6 +15,7 @@ public class SpritePrototypeFactory {
 	private static SpritePrototypeFactory instance = null;
 	private Map<SpriteName, Sprite> spriteMap = new HashMap<>();
 
+	//TODO PRIVATE «Øºc¤l
 	public SpritePrototypeFactory() {
 		try {
 			prepareSprites();
@@ -63,7 +62,7 @@ public class SpritePrototypeFactory {
 		spriteMap.put(SpriteName.Y, new Sprite(64, 64, 11, 13, 50, 50, SpriteName.Y, ImageIO.read(new File("pic/Y.png"))));
 		spriteMap.put(SpriteName.Z, new Sprite(64, 64, 13, 15, 50, 50, SpriteName.Z, ImageIO.read(new File("pic/Z.png"))));
 		
-		spriteMap.put(SpriteName.PLAYER, new Sprite(64, 64, 0, 0, 50, 50, SpriteName.PLAYER, ImageIO.read(new File("pic/East_T0.png"))));
+		spriteMap.put(SpriteName.PLAYER, new PlayerSprite(64, 64, 0, 0, 50, 50, SpriteName.PLAYER, ImageIO.read(new File("pic/East_T0.png"))));
 	}
 
 	public Sprite createSprite(SpriteName spriteName) {

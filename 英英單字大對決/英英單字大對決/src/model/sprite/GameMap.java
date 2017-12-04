@@ -2,6 +2,9 @@ package model.sprite;
 
 import java.util.Iterator;
 
+/*
+ * TODO ¹ê§@ Composite pattern ½Æ¼g  update() ¸ò  isConflict(sprite) ¨ç¼Æ
+ */
 public class GameMap implements Iterable<Sprite> {
 	public static final int ITEM_SIZE = 64;
 	private final int WIDTH;
