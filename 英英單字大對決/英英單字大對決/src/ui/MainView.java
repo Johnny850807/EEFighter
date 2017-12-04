@@ -128,8 +128,6 @@ public class MainView extends JFrame implements ActionListener {
 
 	public static void main(String[] argv) {
 		MainView mainView;
-		String[] fonts = GraphicsEnvironment.getLocalGraphicsEnvironment().getAvailableFontFamilyNames();
-		System.out.println(Arrays.toString(fonts));
 		try {
 			mainView = new MainView();
 			mainView.setVisible(true);
