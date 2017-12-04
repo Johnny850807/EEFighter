@@ -129,12 +129,25 @@ public class EnglishWarehouseViewImp extends JFrame implements EnglishWarehouseV
 	}
 
 	@Override
-	public void onWordCreateFailed(String word) {
-		JOptionPane.showMessageDialog(null, word + " create Failed");
+	public void onWordRemoveSuccessfully(Word word) {
+		// TODO Auto-generated method stub
+		
 	}
 
 	@Override
-	public void onWordRemoveSuccessfully(Word word) {
+	public void onWordReadSuccessfully(Word word) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void onWordCreateFailed(String word, Exception exception) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void onWordReadFailed(String word, Exception exception) {
 		// TODO Auto-generated method stub
 		
 	}
