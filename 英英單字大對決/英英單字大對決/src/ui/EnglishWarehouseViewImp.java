@@ -125,6 +125,12 @@ public class EnglishWarehouseViewImp extends JFrame implements EnglishWarehouseV
 		// TODO Auto-generated method stub
 		
 	}
+
+	@Override
+	public void onWordRemoveSuccessfully(Word word) {
+		// TODO Auto-generated method stub
+		
+	}
 }
 
 class WordCellRenderer extends JPanel implements ListCellRenderer {
