@@ -11,6 +11,9 @@ import model.words.WordRepositoryImp;
 import ui.EnglishWarehouseView;
 import ui.EnglishWarehouseViewImp;
 
+/**
+ * @author Joanna (張書瑄)
+ */
 public class EnglishWarehouseController {
 
 	private EnglishWarehouseView englishWarehouseView;
@@ -20,7 +23,7 @@ public class EnglishWarehouseController {
 	
 	public EnglishWarehouseController(EnglishWarehouseView englishWarehouseView) {
 		this.englishWarehouseView = englishWarehouseView;
-		wordRepository = new WordRepositoryImp();
+		wordRepository = new WordRepositoryImp();  //TODO 這些都要依賴注入喔!!感覺到抽象工廠的重要性了吧~~ 
 		crawler = new CrawlerVocabularycom();
 		tts = new ITRI_TTS(Secret.TTS_ACCOUNT, Secret.TTS_PASSWORD);
 	}
@@ -38,24 +41,26 @@ public class EnglishWarehouseController {
 					englishWarehouseView.onWordCreateSuccessfully(word);
 				} catch (Exception e) {
 					e.printStackTrace();
-					System.out.println(e.getMessage());
-					englishWarehouseView.onWordCreateFailed(wordtxt);
+					System.out.println(e.getMessage());  //TODO printStackTrace 就會印出來了! 不用再這樣印~~
+					englishWarehouseView.onWordCreateFailed(wordtxt);  //TODO 例外也要給他喔~ 也許它需要
 				}
 			}
 		}.start();
 	}
 	
 	public Word readWord(String wordtext) throws ReadWordFailedException {
-		return wordRepository.readWord(wordtext);
+		return wordRepository.readWord(wordtext);  //TODO 這個也是要時間的唷!! 所以一樣要開執行緒跟呼叫觀察者~~~ 你可以開始了解 所有有延遲的操作都要非同步!
 	}
 	
 	public void removeWord(Word word) {
-		wordRepository.removeWord(word);
+		wordRepository.removeWord(word);  //TODO 非同步~~~ crud基本上都要對應到一個觀察者函數!!! 不要客氣!!
 		englishWarehouseView.onWordRemoveSuccessfully(word);
 	}
 	
 	public static void main(String[] argv) {
-		new EnglishWarehouseController(new EnglishWarehouseViewImp()).addWord("apple");
+		EnglishWarehouseController controller = new EnglishWarehouseController(new EnglishWarehouseViewImp());
+		controller.addWord("Taiwan");
+		controller.addWord("pineapple");
 	}
 	
 }
