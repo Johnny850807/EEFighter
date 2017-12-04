@@ -41,19 +41,19 @@ public class EnglishWarehouseController {
 					englishWarehouseView.onWordCreateSuccessfully(word);
 				} catch (Exception e) {
 					e.printStackTrace();
-					System.out.println(e.getMessage());
-					englishWarehouseView.onWordCreateFailed(wordtxt);
+					System.out.println(e.getMessage());  //TODO printStackTrace 就會印出來了! 不用再這樣印~~
+					englishWarehouseView.onWordCreateFailed(wordtxt);  //TODO 例外也要給他喔~ 也許它需要
 				}
 			}
 		}.start();
 	}
 	
 	public Word readWord(String wordtext) throws ReadWordFailedException {
-		return wordRepository.readWord(wordtext);
+		return wordRepository.readWord(wordtext);  //TODO 這個也是要時間的唷!! 所以一樣要開執行緒跟呼叫觀察者~~~ 你可以開始了解 所有有延遲的操作都要非同步!
 	}
 	
 	public void removeWord(Word word) {
-		wordRepository.removeWord(word);
+		wordRepository.removeWord(word);  //TODO 非同步~~~ crud基本上都要對應到一個觀察者函數!!! 不要客氣!!
 		englishWarehouseView.onWordRemoveSuccessfully(word);
 	}
 	
