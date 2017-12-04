@@ -124,6 +124,12 @@ public class EnglishWarehouseViewImp extends JFrame implements EnglishWarehouseV
 	public void onWordCreateFailed(String word) {
 		JOptionPane.showMessageDialog(null, word + "create Failed");
 	}
+
+	@Override
+	public void onWordRemoveSuccessfully(Word word) {
+		// TODO Auto-generated method stub
+		
+	}
 }
 
 class WordCellRenderer extends JPanel implements ListCellRenderer {

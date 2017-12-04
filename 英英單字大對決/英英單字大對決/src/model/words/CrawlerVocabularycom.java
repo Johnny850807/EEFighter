@@ -18,6 +18,8 @@ public class CrawlerVocabularycom implements Crawler{
 			
 			Word word = new Word(wordSpelling);
 			int i = 1;
+			if (definitions.isEmpty()) 
+				throw new WordNotExistException();
 			for (Element element : definitions) {
 				String[] e = element.text().split(" ", 2);
 				String partOfSpeech = e[0];
@@ -30,12 +32,12 @@ public class CrawlerVocabularycom implements Crawler{
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		throw new WordNotExistException();
+		return null;
 	}
 	
 	
 	public static void main(String[] args) {
-		String wordtext = "volunteer";
+		String wordtext = "acrgillj";
 		WordRepository wordRepository = new WordRepositoryImp();
 		CrawlerVocabularycom c = new CrawlerVocabularycom();
 		Word word;
