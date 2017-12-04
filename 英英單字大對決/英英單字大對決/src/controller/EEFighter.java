@@ -38,6 +38,10 @@ public class EEFighter {
 		SpritePrototypeFactory spritePrototypeFactory = SpritePrototypeFactory.getInstance();
 		player1 = spritePrototypeFactory.createSprite(SpriteName.PLAYER);
 		player2 = spritePrototypeFactory.createSprite(SpriteName.PLAYER);
+		player1.setGameView(gameView);
+		player2.setGameView(gameView);
+		player1.setGameMap(gameMap);
+		player2.setGameMap(gameMap);
 		player1.setXY(128, 128);
 		player2.setXY(256, 128);
 	}
@@ -48,8 +52,8 @@ public class EEFighter {
 				while (true) {
 					try {
 						Thread.sleep(17);
-						player1.update(gameMap, gameView);
-						player2.update(gameMap, gameView);
+						player1.update();
+						player2.update();
 						gameView.onDraw(gameMap, letters, player1, player2);
 					} catch (InterruptedException e) {
 						e.printStackTrace();

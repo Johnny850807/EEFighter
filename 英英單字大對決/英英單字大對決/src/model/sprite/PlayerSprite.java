@@ -12,7 +12,7 @@ public class PlayerSprite extends Sprite{
 	}
 	
 	@Override
-	public synchronized void update(GameMap gameMap, GameView gameView) {
+	public synchronized void update() {
 		if (status == Status.MOVE) {
 			switch (direction) {
 				case UP:
@@ -35,6 +35,11 @@ public class PlayerSprite extends Sprite{
 			xy.rollback();
 			gameView.onHitWall(this);
 		}
+	}
+	
+	@Override
+	public synchronized boolean isCollisions() {
+		return super.isCollisions();
 	}
 	
 	private boolean moveFailed(GameMap gameMap){

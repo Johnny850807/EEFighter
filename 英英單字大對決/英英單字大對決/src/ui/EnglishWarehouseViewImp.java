@@ -113,6 +113,18 @@ public class EnglishWarehouseViewImp extends JFrame implements EnglishWarehouseV
 					wordDefaultListModel.remove(i);
 		}
 	}
+
+	@Override
+	public void onWordCreateSuccessfully(Word word) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void onWordCreateFailed(String word) {
+		// TODO Auto-generated method stub
+		
+	}
 }
 
 class WordCellRenderer extends JPanel implements ListCellRenderer {

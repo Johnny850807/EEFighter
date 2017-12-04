@@ -26,6 +26,8 @@ public class Sprite implements Cloneable {
 	protected Status status = Status.STOP;
 	protected Map<Direction, Image> imageMap = new HashMap<>();
 	protected Image image;
+	protected GameMap gameMap;
+	protected GameView gameView;
 
 	/**
 	 * 
@@ -54,6 +56,10 @@ public class Sprite implements Cloneable {
 		}
 	}
 	
+	public Sprite() {
+		// TODO Auto-generated constructor stub
+	}
+
 	public void prepare() throws IOException{
 		imageMap.put(Direction.UP, ImageIO.read(new File("pic/North_T0.png")));
 		imageMap.put(Direction.LEFT, ImageIO.read(new File("pic/West_T0.png")));
@@ -169,9 +175,30 @@ public class Sprite implements Cloneable {
 		this.image = image;
 	}
 
+	public GameMap getGameMap() {
+		return gameMap;
+	}
+
+	public void setGameMap(GameMap gameMap) {
+		this.gameMap = gameMap;
+	}
+
+	public GameView getGameView() {
+		return gameView;
+	}
+
+	public void setGameView(GameView gameView) {
+		this.gameView = gameView;
+	}
+
 	//TODO 不要在呼叫update的時候才傳入 gameMap跟gameView，何不用setter 直接set進這個sprite的屬性呢? 沒有魔術。
-	public synchronized void update(GameMap gameMap, GameView gameView) {
+	public synchronized void update() {
 		//do nothing as default
+	}
+	
+	public synchronized boolean isCollisions() {
+		//do nothing as default
+		return false;
 	}
 
 	public void move(XY xy) {

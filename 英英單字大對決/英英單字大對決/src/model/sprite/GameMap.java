@@ -5,7 +5,7 @@ import java.util.Iterator;
 /*
  * TODO ¹ê§@ Composite pattern ½Æ¼g  update() ¸ò  isConflict(sprite) ¨ç¼Æ
  */
-public class GameMap implements Iterable<Sprite> {
+public class GameMap extends Sprite implements Iterable<Sprite> {
 	public static final int ITEM_SIZE = 64;
 	private final int WIDTH;
 	private final int HEIGHT;
@@ -34,6 +34,18 @@ public class GameMap implements Iterable<Sprite> {
 
 	public Sprite getSprite(int x, int y) {
 		return blockSprites[y][x];
+	}
+	
+	@Override
+	public synchronized void update() {
+		// TODO Auto-generated method stub
+		super.update();
+	}
+	
+	@Override
+	public synchronized boolean isCollisions() {
+		// TODO Auto-generated method stub
+		return super.isCollisions();
 	}
 	
 	public boolean outOfMap(Sprite sprite) {
