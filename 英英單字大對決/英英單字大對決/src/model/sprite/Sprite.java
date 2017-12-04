@@ -47,6 +47,7 @@ public class Sprite implements Cloneable {
 		this.bodyHeight = bodyHeight;
 		this.bodyLength = bodyLength;
 		this.spriteName = spriteName;
+		this.imageMap = imageMap;
 	}
 	
 	public Sprite() {
