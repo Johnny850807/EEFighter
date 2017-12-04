@@ -19,6 +19,8 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
+import controller.EEFighter;
+
 /*
  * The Main view where contains the main function buttons.
  */

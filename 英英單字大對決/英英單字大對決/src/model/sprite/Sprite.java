@@ -1,8 +1,13 @@
 package model.sprite;
 
 import java.awt.Image;
+import java.io.File;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+
+import ui.GameView;
+import javax.imageio.ImageIO;
 
 /*TODO
  * (1) SpriteName 屬性
@@ -18,8 +23,8 @@ public class Sprite implements Cloneable {
 	private int bodyHeight;
 	private int bodyLength;
 	private SpriteName spriteName;
-	private Direction direction;
-	private Status status;
+	private Direction direction = Direction.UP;
+	private Status status = Status.STOP;
 	private Map<Direction, Image> imageMap = new HashMap<>();
 	private Image image;
 
@@ -33,7 +38,7 @@ public class Sprite implements Cloneable {
 	 * @param bodyLength 圖片的身體部分的長度
 	 * @param image image of this sprite
 	 */
-	public Sprite(int w, int h, int biasWithX, int biasWithY, int bodyHeight, int bodyLength, Image image) {
+	public Sprite(int w, int h, int biasWithX, int biasWithY, int bodyHeight, int bodyLength,SpriteName spriteName, Image image) {
 		super();
 		this.w = w;
 		this.h = h;
@@ -41,7 +46,25 @@ public class Sprite implements Cloneable {
 		this.biasWithY = biasWithY;
 		this.bodyHeight = bodyHeight;
 		this.bodyLength = bodyLength;
+		this.spriteName = spriteName;
 		this.image = image;
+		try {
+			prepare();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public void prepare() throws IOException{
+		imageMap.put(Direction.UP, ImageIO.read(new File("pic/North_T0.png")));
+		imageMap.put(Direction.LEFT, ImageIO.read(new File("pic/West_T0.png")));
+		imageMap.put(Direction.DOWN, ImageIO.read(new File("pic/South_T0.png")));
+		imageMap.put(Direction.RIGHT, ImageIO.read(new File("pic/East_T0.png")));
+	}
+
+	public Image getDirectionImage(Direction direction) {
+		return imageMap.get(direction);
 	}
 
 	public int getBiasWithX() {
@@ -68,7 +91,7 @@ public class Sprite implements Cloneable {
 		this.bodyHeight = bodyHeight;
 	}
 
-	public int getBodyLength() {
+	public int getBodyWidth() {
 		return bodyLength;
 	}
 
@@ -91,7 +114,35 @@ public class Sprite implements Cloneable {
 	public void setH(int h) {
 		this.h = h;
 	}
+	
+	public SpriteName getSpriteName() {
+		return spriteName;
+	}
 
+	public void setSpriteName(SpriteName spriteName) {
+		this.spriteName = spriteName;
+	}
+
+	public Direction getDirection() {
+		return direction;
+	}
+
+	public void setDirection(Direction direction) {
+		this.direction = direction;
+	}
+
+	public Status getStatus() {
+		return status;
+	}
+
+	public void setStatus(Status status) {
+		this.status = status;
+	}
+
+	public XY getXy() {
+		return xy;
+	}
+	
 	public void setXY(int x, int y) {
 		this.xy = new XY(x, y);
 	}
@@ -120,9 +171,30 @@ public class Sprite implements Cloneable {
 		this.image = image;
 	}
 
-	//每17微秒 依照他的方向、狀態去更新座標
-	public void update() {
-
+	//每17微秒 依照他的方向、狀態去更新座標 判斷碰撞
+	public synchronized void update(GameMap gameMap, GameView gameView) {
+		if (status == Status.MOVE) {
+			switch (direction) {
+				case UP:
+					xy.move(0, -4);
+					break;
+				case DOWN:
+					xy.move(0, 4);
+					break;
+				case LEFT:
+					xy.move(-4, 0);
+					break;
+				case RIGHT:
+					xy.move(4, 0);
+					break;
+				default:
+					break;
+			}	
+		}
+		if (gameMap.outOfMap(this) || gameMap.getSprite(xy.getX() / gameMap.ITEM_SIZE, xy.getY() / gameMap.ITEM_SIZE).getSpriteName() == spriteName.BARRIER) {
+			xy.rollback();
+			gameView.onHitWall(this);
+		}
 	}
 
 	public void move(XY xy) {
