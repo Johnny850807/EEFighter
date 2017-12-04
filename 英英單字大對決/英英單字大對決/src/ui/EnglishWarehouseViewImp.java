@@ -130,11 +130,8 @@ public class EnglishWarehouseViewImp extends JFrame implements EnglishWarehouseV
 
 	@Override
 	public void onWordRemoveSuccessfully(Word word) {
-		// TODO Auto-generated method stub
-		
+		JOptionPane.showMessageDialog(null, word.getWord() + " remove successfuly");
 	}
-
-	@Override
 	public void onWordReadSuccessfully(Word word) {
 		// TODO Auto-generated method stub
 		
@@ -142,8 +139,7 @@ public class EnglishWarehouseViewImp extends JFrame implements EnglishWarehouseV
 
 	@Override
 	public void onWordCreateFailed(String word, Exception exception) {
-		// TODO Auto-generated method stub
-		
+		JOptionPane.showMessageDialog(null, word + " create failed");
 	}
 
 	@Override
