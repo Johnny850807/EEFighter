@@ -49,7 +49,7 @@ public class EnglishWarehouseViewImp extends JFrame implements EnglishWarehouseV
 		englishWarehouseController = new EnglishWarehouseController(this);
 		wordRepository = new WordRepositoryImp();
 		try {
-			words = wordRepository.readAllWord();
+			words = wordRepository.readAllWord(); 
 		} catch (ReadWordFailedException e) {
 			e.printStackTrace();
 		}

@@ -65,11 +65,13 @@ public class WordXMLRepository implements WordRepository{
 	@Override
 	public void addWord(Word word) {
 		try {
-			Document document = documentBuilder.parse(file);
-			Element englishWareHouseElement = filterElements(document.getElementsByTagName(ENGLISH_WAREHOUSE)).get(0);
-			removeDuplicatedWordElement(document, englishWareHouseElement, word.getWord());
-			englishWareHouseElement.appendChild(wordToElement(document, word));
-			outputDocument(document);
+			synchronized (this) {
+				Document document = documentBuilder.parse(file);
+				Element englishWareHouseElement = filterElements(document.getElementsByTagName(ENGLISH_WAREHOUSE)).get(0);
+				removeDuplicatedWordElement(document, englishWareHouseElement, word.getWord());
+				englishWareHouseElement.appendChild(wordToElement(document, word));
+				outputDocument(document);
+			}
 		} catch (SAXException | IOException | TransformerException | XPathExpressionException e) {
 			e.printStackTrace();
 		}
@@ -94,11 +96,13 @@ public class WordXMLRepository implements WordRepository{
 	@Override
 	public List<Word> readAllWord() throws ReadWordFailedException {
 		try {
-			Document document = documentBuilder.parse(file);
-			List<Element> wordElements = filterElements(document.getElementsByTagName(WORD));
-			return wordElements.stream()
-								.map(e -> elementToWord(e))
-								.collect(Collectors.toList());
+			synchronized (this) {
+				Document document = documentBuilder.parse(file);
+				List<Element> wordElements = filterElements(document.getElementsByTagName(WORD));
+				return wordElements.stream()
+									.map(e -> elementToWord(e))
+									.collect(Collectors.toList());
+			}
 		} catch (SAXException | IOException e) {
 			e.printStackTrace();
 			throw new ReadWordFailedException(e);
@@ -109,9 +113,11 @@ public class WordXMLRepository implements WordRepository{
 	@Override
 	public Word readWord(String wordName) throws ReadWordFailedException {
 		try{
-			Document document = documentBuilder.parse(file);
-			Element wordElement = findWordElements(document, wordName).get(0);
-			return elementToWord(wordElement);
+			synchronized (this) {
+				Document document = documentBuilder.parse(file);
+				Element wordElement = findWordElements(document, wordName).get(0);
+				return elementToWord(wordElement);
+			}
 		}catch (XPathExpressionException | SAXException | IOException e) {
 			e.printStackTrace();
 			throw new ReadWordFailedException(e);
