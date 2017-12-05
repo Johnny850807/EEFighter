@@ -2,18 +2,20 @@ package model.words;
 
 import java.io.File;
 import java.io.IOException;
-import java.security.interfaces.ECKey;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.soap.Node;
 
-import org.w3c.dom.*;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
 /**
@@ -53,15 +55,23 @@ public class WordXMLRepository implements WordRepository{
 		
 	}
 	
-
 	@Override
-	public Word readWord(String wordtext) throws ReadWordFailedException {
+	public List<Word> readAllWord() throws ReadWordFailedException {
 		try {
 			Document document = documentBuilder.parse(file);
 			List<Element> wordElements = filterElements(document.getElementsByTagName(WORD));
+			return wordElements.stream()
+								.map(e -> elementToWord(e))
+								.collect(Collectors.toList());
 		} catch (SAXException | IOException e) {
 			e.printStackTrace();
 		}
+		return null;
+	}
+	
+
+	@Override
+	public Word readWord(String wordtext) throws ReadWordFailedException {
 		return null;
 	}
 	
@@ -104,4 +114,13 @@ public class WordXMLRepository implements WordRepository{
 		
 	}
 
+	
+	public static void main(String[] argv) throws Exception{
+		WordXMLRepository repository = new WordXMLRepository("words");
+		Word apple = new CrawlerVocabularycom().crawlWordAndGetSentence("apple");
+		System.out.println(apple);
+		repository.readAllWord()
+					.stream()
+					.forEach(w -> System.out.println(w));
+	}
 }

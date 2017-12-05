@@ -44,4 +44,17 @@ public class Word {
 			definitions.put(partOfSpeech, new ArrayList<>());
 		definitions.get(partOfSpeech).add(sentence);
 	}
+	
+	@Override
+	public String toString() {
+		StringBuilder strb = new StringBuilder();
+		strb.append(getWord()).append(", ").append(getSoundPath()).append(":\n");
+		for (String partOfSpeech : definitions.keySet())
+		{
+			strb.append("====   ").append(partOfSpeech).append("   ====\n");
+			for (String definition : definitions.get(partOfSpeech))
+				strb.append("    ").append(definition).append("\n");
+		}
+		return strb.toString();
+	}
 }
