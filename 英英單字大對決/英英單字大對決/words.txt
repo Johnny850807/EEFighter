@@ -1,4 +1,0 @@
-banana D:\NativeGit\OOD-Design-Pattern-Course\英英單字大對決\英英單字大對決\sounds\vocabulary\banana.wav 1
-n/any of several tropical and subtropical treelike herbs of the genus Musa having a terminal crown of large entire leaves and usually bearing hanging clusters of elongated fruits/elongated crescent-shaped yellow fruit with soft sweet flesh
-apple D:\NativeGit\OOD-Design-Pattern-Course\英英單字大對決\英英單字大對決\sounds\vocabulary\apple.wav 1
-n/native Eurasian tree widely cultivated in many varieties for its firm rounded edible fruits/fruit with red or yellow or green skin and sweet to tart crisp whitish flesh

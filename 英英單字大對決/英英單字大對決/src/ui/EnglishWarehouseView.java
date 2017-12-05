@@ -1,5 +1,7 @@
 package ui;
 
+import java.util.List;
+
 import model.words.Word;
 
 public interface EnglishWarehouseView {
@@ -7,5 +9,7 @@ public interface EnglishWarehouseView {
 	void onWordCreateFailed(String word, Exception exception);
 	void onWordReadSuccessfully(Word word);
 	void onWordReadFailed(String word, Exception exception);
+	void onWordReadSuccessfully(List<Word> words);
+	void onWordReadFailed(Exception exception);
 	void onWordRemoveSuccessfully(Word word);
 }
