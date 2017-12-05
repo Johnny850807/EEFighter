@@ -10,6 +10,7 @@ import model.words.TTS;
 import model.words.Word;
 import model.words.WordRepository;
 import model.words.WordRepositoryImp;
+import model.words.WordXMLRepository;
 import ui.EnglishWarehouseView;
 import ui.EnglishWarehouseViewImp;
 
@@ -25,7 +26,7 @@ public class EnglishWarehouseController {
 	
 	public EnglishWarehouseController(EnglishWarehouseView englishWarehouseView) {
 		this.englishWarehouseView = englishWarehouseView;
-		wordRepository = new WordRepositoryImp();  //TODO 這些都要依賴注入喔!!感覺到抽象工廠的重要性了吧~~ 
+		wordRepository = new WordXMLRepository("words");  //TODO 這些都要依賴注入喔!!感覺到抽象工廠的重要性了吧~~ 
 		crawler = new CrawlerVocabularycom();
 		tts = new ITRI_TTS(Secret.TTS_ACCOUNT, Secret.TTS_PASSWORD);
 	}
