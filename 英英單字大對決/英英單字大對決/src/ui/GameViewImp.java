@@ -55,10 +55,8 @@ public class GameViewImp extends JPanel implements GameView, KeyListener {
 		if (gameMap != null)
 			for (Sprite sprite : gameMap)
 				g.drawImage(sprite.getImage(sprite.getDirection()), sprite.getX(), sprite.getY(), null);
-		if (spriteP1 != null) {
+		if (spriteP1 != null)
 			g.drawImage(spriteP1.getImage(spriteP1.getDirection()), spriteP1.getX(), spriteP1.getY(), null);
-			System.out.println(spriteP1.getDirection());
-		}
 		if (spriteP2 != null) 
 			g.drawImage(spriteP2.getImage(spriteP2.getDirection()), spriteP2.getX(), spriteP2.getY(), null);
 	}
