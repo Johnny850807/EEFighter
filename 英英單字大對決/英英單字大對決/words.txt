@@ -1,1 +1,4 @@
-
+pineapple D:\GitHub\OOD-Design-Pattern-Course\英英單字大對決\英英單字大對決\sounds\vocabulary\pineapple.wav 1
+n/a tropical American plant bearing a large fleshy edible fruit with a terminal tuft of stiff leaves; widely cultivated in the tropics/large sweet fleshy tropical fruit with a terminal tuft of stiff leaves; widely cultivated
+eat D:\GitHub\OOD-Design-Pattern-Course\英英單字大對決\英英單字大對決\sounds\vocabulary\eat.wav 1
+v/take in solid food/take in food; used of animals only/eat a meal; take a meal/use up (resources or materials)/cause to deteriorate due to the action of water, air, or an acid/worry or cause anxiety in a persistent way

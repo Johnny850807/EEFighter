@@ -22,6 +22,7 @@ public class CrawlerVocabularycom implements Crawler{
 				throw new WordNotExistException();
 			for (Element element : definitions) {
 				String[] e = element.text().split(" ", 2);
+				e[0].toUpperCase();
 				String partOfSpeech = e[0];
 				String sentence = e[1];
 				word.addDefinition(partOfSpeech, sentence);
