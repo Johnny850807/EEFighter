@@ -125,13 +125,14 @@ public class EnglishWarehouseViewImp extends JFrame implements EnglishWarehouseV
 
 	@Override
 	public void onWordCreateSuccessfully(Word word) {
-		JOptionPane.showMessageDialog(null, word.getWord() + " create successfuly");
+		JOptionPane.showMessageDialog(null, word.getWord() + " create successfuly"); //TODO 把等待環消除
 	}
 
 	@Override
 	public void onWordRemoveSuccessfully(Word word) {
-		JOptionPane.showMessageDialog(null, word.getWord() + " remove successfuly");
+		JOptionPane.showMessageDialog(null, word.getWord() + " remove successfuly"); //TODO 把等待環消除
 	}
+	
 	public void onWordReadSuccessfully(Word word) {
 		// TODO Auto-generated method stub
 		
@@ -139,8 +140,7 @@ public class EnglishWarehouseViewImp extends JFrame implements EnglishWarehouseV
 
 	@Override
 	public void onWordCreateFailed(String word, Exception exception) {
-		JOptionPane.showMessageDialog(null, word + " create failed");
-		exception.printStackTrace();
+		JOptionPane.showMessageDialog(null, word + " create failed");  
 	}
 
 	@Override

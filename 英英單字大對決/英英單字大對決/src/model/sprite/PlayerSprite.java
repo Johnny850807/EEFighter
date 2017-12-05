@@ -7,7 +7,7 @@ import model.sprite.Sprite.Direction;
 import ui.GameView;
 
 public class PlayerSprite extends Sprite{
-
+	
 	public PlayerSprite(int w, int h, int biasWithX, int biasWithY, int bodyHeight, int bodyLength,
 			SpriteName spriteName, Map<Direction, Image> imageMap) {
 		super(w, h, biasWithX, biasWithY, bodyHeight, bodyLength, spriteName, imageMap);
@@ -15,6 +15,7 @@ public class PlayerSprite extends Sprite{
 	
 	@Override
 	public synchronized void update() {
+		System.out.println(direction.toString() + "," + status.toString());
 		if (status == Status.MOVE) {
 			switch (direction) {
 				case NORTH:
