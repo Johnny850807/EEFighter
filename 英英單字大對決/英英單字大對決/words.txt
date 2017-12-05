@@ -1,4 +1,4 @@
-pineapple D:\NativeGit\OOD-Design-Pattern-Course\英英單字大對決\英英單字大對決\sounds\vocabulary\pineapple.wav 1
-n/a tropical American plant bearing a large fleshy edible fruit with a terminal tuft of stiff leaves; widely cultivated in the tropics/large sweet fleshy tropical fruit with a terminal tuft of stiff leaves; widely cultivated
-Taiwan D:\NativeGit\OOD-Design-Pattern-Course\英英單字大對決\英英單字大對決\sounds\vocabulary\Taiwan.wav 1
-n/an island in southeastern Asia 100 miles off the coast of mainland China in the South China Sea/a government on the island of Taiwan established in 1949 by Chiang Kai-shek after the conquest of mainland China by the Communists led by Mao Zedong
+banana D:\NativeGit\OOD-Design-Pattern-Course\英英單字大對決\英英單字大對決\sounds\vocabulary\banana.wav 1
+n/any of several tropical and subtropical treelike herbs of the genus Musa having a terminal crown of large entire leaves and usually bearing hanging clusters of elongated fruits/elongated crescent-shaped yellow fruit with soft sweet flesh
+apple D:\NativeGit\OOD-Design-Pattern-Course\英英單字大對決\英英單字大對決\sounds\vocabulary\apple.wav 1
+n/native Eurasian tree widely cultivated in many varieties for its firm rounded edible fruits/fruit with red or yellow or green skin and sweet to tart crisp whitish flesh

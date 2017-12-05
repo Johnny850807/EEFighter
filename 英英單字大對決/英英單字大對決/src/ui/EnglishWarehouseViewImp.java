@@ -28,6 +28,7 @@ import javax.swing.JScrollPane;
 import javax.swing.ListCellRenderer;
 import javax.swing.Timer;
 
+import controller.EnglishWarehouseController;
 import model.words.Word;
 
 public class EnglishWarehouseViewImp extends JFrame implements EnglishWarehouseView, ActionListener {
@@ -38,7 +39,12 @@ public class EnglishWarehouseViewImp extends JFrame implements EnglishWarehouseV
 	private JList<Word> wordList;
 	private JScrollPane wordListScrollPane;
 	private List<Word> mockWords = new ArrayList<>();
+	private EnglishWarehouseController englishWarehouseController;
 
+	public EnglishWarehouseViewImp() {
+		englishWarehouseController = new EnglishWarehouseController(this);
+	}
+	
 	private void setupLayout() {
 		getContentPane().setBackground(new Color(55, 55, 55));
 		getContentPane().setLayout(new FlowLayout());
@@ -105,28 +111,40 @@ public class EnglishWarehouseViewImp extends JFrame implements EnglishWarehouseV
 		Button button = (Button) e.getSource();
 		if (button == addWordBtn) {
 			String text = searchAndAddWordEd.getText();
-
+			englishWarehouseController.addWord(text);
 			wordDefaultListModel.addElement(new Word(text));
 		} else if (button == removeWordBtn) {
 			String text = searchAndAddWordEd.getText();
 			for (int i = 0; i < wordDefaultListModel.size(); i++)
-				if (wordDefaultListModel.getElementAt(i).getWord().equals(text))
+				if (wordDefaultListModel.getElementAt(i).getWord().equals(text)) {
+					englishWarehouseController.removeWord(new Word(text));
 					wordDefaultListModel.remove(i);
+				}
 		}
 	}
 
 	@Override
 	public void onWordCreateSuccessfully(Word word) {
-		JOptionPane.showMessageDialog(null, word.getWord() + " create successfuly");
-	}
-
-	@Override
-	public void onWordCreateFailed(String word) {
-		JOptionPane.showMessageDialog(null, word + "create Failed");
+		JOptionPane.showMessageDialog(null, word.getWord() + " create successfuly"); //TODO 把等待環消除
 	}
 
 	@Override
 	public void onWordRemoveSuccessfully(Word word) {
+		JOptionPane.showMessageDialog(null, word.getWord() + " remove successfuly"); //TODO 把等待環消除
+	}
+	
+	public void onWordReadSuccessfully(Word word) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void onWordCreateFailed(String word, Exception exception) {
+		JOptionPane.showMessageDialog(null, word + " create failed");  
+	}
+
+	@Override
+	public void onWordReadFailed(String word, Exception exception) {
 		// TODO Auto-generated method stub
 		
 	}

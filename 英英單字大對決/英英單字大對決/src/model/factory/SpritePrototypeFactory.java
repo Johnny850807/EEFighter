@@ -16,13 +16,13 @@ import model.sprite.Sprite.Direction;
 
 /**
  * @author Lin (林宗億)
+ * TODO 別亂開 package 移回去model.sprite
  */
 public class SpritePrototypeFactory {
 	private static SpritePrototypeFactory instance = null;
 	private Map<SpriteName, Sprite> spriteMap = new HashMap<>();
 	private Map<Direction, Image> imageMap = new HashMap<>();
 
-	//TODO PRIVATE 建構子
 	private SpritePrototypeFactory() {
 		try {
 			preparePlayerImageMap();
