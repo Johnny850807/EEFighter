@@ -33,14 +33,14 @@ public class EEFighter {
 	
 	public void setGameView(GameView gameView) {
 		this.gameView = gameView;
+		player1.setGameView(gameView);
+		player2.setGameView(gameView);
 	}
 	
 	private void createPlayers() {
 		SpritePrototypeFactory spritePrototypeFactory = SpritePrototypeFactory.getInstance();
 		player1 = spritePrototypeFactory.createSprite(SpriteName.PLAYER);
 		player2 = spritePrototypeFactory.createSprite(SpriteName.PLAYER);
-		player1.setGameView(gameView);
-		player2.setGameView(gameView);
 		player1.setGameMap(gameMap);
 		player2.setGameMap(gameMap);
 		player1.setXY(128, 128);
