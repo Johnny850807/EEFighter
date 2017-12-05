@@ -29,7 +29,10 @@ import javax.swing.ListCellRenderer;
 import javax.swing.Timer;
 
 import controller.EnglishWarehouseController;
+import model.words.ReadWordFailedException;
 import model.words.Word;
+import model.words.WordRepository;
+import model.words.WordRepositoryImp;
 
 public class EnglishWarehouseViewImp extends JFrame implements EnglishWarehouseView, ActionListener {
 	private Button addWordBtn;
@@ -38,11 +41,18 @@ public class EnglishWarehouseViewImp extends JFrame implements EnglishWarehouseV
 	private DefaultListModel<Word> wordDefaultListModel;
 	private JList<Word> wordList;
 	private JScrollPane wordListScrollPane;
-	private List<Word> mockWords = new ArrayList<>();
+	private List<Word> words = new ArrayList<>();
+	private WordRepository wordRepository;
 	private EnglishWarehouseController englishWarehouseController;
 
 	public EnglishWarehouseViewImp() {
 		englishWarehouseController = new EnglishWarehouseController(this);
+		wordRepository = new WordRepositoryImp();
+		try {
+			words = wordRepository.readAllWord();
+		} catch (ReadWordFailedException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	private void setupLayout() {
@@ -89,7 +99,7 @@ public class EnglishWarehouseViewImp extends JFrame implements EnglishWarehouseV
 	public void showWordList() {
 	
 		wordDefaultListModel = new DefaultListModel<>();
-		for (Word word : mockWords)
+		for (Word word : words)
 			wordDefaultListModel.addElement(word);
 		wordList = new JList<>(wordDefaultListModel);
 		wordList.setCellRenderer(new WordCellRenderer());

@@ -54,11 +54,6 @@ public class Sprite implements Cloneable {
 		// TODO Auto-generated constructor stub
 	}
 
-
-	public Image getDirectionImage(Direction direction) {
-		return imageMap.get(direction);
-	}
-
 	public int getBiasWithX() {
 		return biasWithX;
 	}
