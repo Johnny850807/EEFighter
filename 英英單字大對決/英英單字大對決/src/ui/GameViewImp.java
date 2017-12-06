@@ -9,14 +9,11 @@ import java.util.List;
 import javax.swing.JPanel;
 
 import controller.EEFighter;
-import model.factory.SpritePrototypeFactory;
-import model.sprite.BasicMapDirector;
 import model.sprite.GameMap;
+import model.sprite.IGameStartView;
 import model.sprite.Sprite;
 import model.sprite.Sprite.Direction;
 import model.sprite.Sprite.Status;
-import model.sprite.SpriteName;
-import model.sprite.XY;
 
 /*
  * The game view where showing the playing game.
@@ -27,12 +24,13 @@ public class GameViewImp extends JPanel implements GameView, KeyListener {
 	private EEFighter eeFighter;
 	private Sprite spriteP1;
 	private Sprite spriteP2;
+	private IGameStartView gameStartView;
 
-	public GameViewImp(EEFighter eeFighter) {
+	public GameViewImp(EEFighter eeFighter, IGameStartView gameStartView) {
 		this.eeFighter = eeFighter;
-		
+		this.gameStartView = gameStartView;
 	}
-	
+
 	@Override
 	public void start() {
 		eeFighter.setGameView(this);
@@ -51,13 +49,13 @@ public class GameViewImp extends JPanel implements GameView, KeyListener {
 	@Override
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
-		
+
 		if (gameMap != null)
 			for (Sprite sprite : gameMap)
 				g.drawImage(sprite.getImage(sprite.getDirection()), sprite.getX(), sprite.getY(), null);
 		if (spriteP1 != null)
 			g.drawImage(spriteP1.getImage(spriteP1.getDirection()), spriteP1.getX(), spriteP1.getY(), null);
-		if (spriteP2 != null) 
+		if (spriteP2 != null)
 			g.drawImage(spriteP2.getImage(spriteP2.getDirection()), spriteP2.getX(), spriteP2.getY(), null);
 	}
 
@@ -66,12 +64,20 @@ public class GameViewImp extends JPanel implements GameView, KeyListener {
 	}
 
 	private void setupViews() {
-		
+
 	}
 
 	@Override
 	public void onGameClose() {
 
+	}
+	
+	public void nextQuestion() {
+		try {
+			Thread.sleep(3000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 	}
 
 	@Override
@@ -79,6 +85,7 @@ public class GameViewImp extends JPanel implements GameView, KeyListener {
 		this.gameMap = gameMap;
 		this.spriteP1 = player1;
 		this.spriteP2 = player2;
+		gameStartView.onNextQuestion("bring into existence");
 		repaint();
 	}
 
@@ -184,7 +191,7 @@ public class GameViewImp extends JPanel implements GameView, KeyListener {
 			keyInputP2 &= 0b11111110;
 			break;
 		}
-		
+
 		if ((keyInputP1 & 0b001000) == 0)
 			eeFighter.move(spriteP1, Direction.NORTH, Status.STOP);
 		if ((keyInputP1 & 0b000100) == 0)
@@ -205,23 +212,22 @@ public class GameViewImp extends JPanel implements GameView, KeyListener {
 
 	@Override
 	public void onGameStarted() {
-		
+
 	}
 
 	@Override
 	public void onGameOver() {
-		
+
 	}
 
 	@Override
 	public void onMovedSuccessfuly(Sprite sprite, Direction direction, Status status) {
-		
-		
+
 	}
 
 	@Override
 	public void onHitWall(Sprite sprite) {
-		
+
 	}
 
 }

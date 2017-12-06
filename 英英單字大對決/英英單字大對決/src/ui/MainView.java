@@ -1,25 +1,26 @@
 package ui;
 
 import java.awt.Button;
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
-import java.awt.GraphicsEnvironment;
 import java.awt.Image;
 import java.awt.Panel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
-import java.util.Arrays;
 
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
-import controller.EEFighter;
+import controller.EnglishWarehouseController;
+import model.Secret;
+import model.words.CrawlerVocabularycom;
+import model.words.ITRI_TTS;
+import model.words.WordXMLRepository;
 
 /*
  * The Main view where contains the main function buttons.
@@ -123,7 +124,7 @@ public class MainView extends JFrame implements ActionListener {
 	}
 
 	private void goToEnglishWarehouse() {
-		EnglishWarehouseViewImp englishWarehouseViewImp = new EnglishWarehouseViewImp();
+		EnglishWarehouseViewImp englishWarehouseViewImp = new EnglishWarehouseViewImp(new EnglishWarehouseController(new WordXMLRepository("words"), new CrawlerVocabularycom(), new ITRI_TTS(Secret.TTS_ACCOUNT, Secret.TTS_PASSWORD)));
 		englishWarehouseViewImp.setVisible(true);
 		englishWarehouseViewImp.start();
 	}

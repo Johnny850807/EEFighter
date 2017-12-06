@@ -11,7 +11,6 @@ import java.awt.Font;
 import java.awt.TextField;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -29,14 +28,7 @@ import javax.swing.ListCellRenderer;
 import javax.swing.Timer;
 
 import controller.EnglishWarehouseController;
-import model.Secret;
-import model.words.CrawlerVocabularycom;
-import model.words.ITRI_TTS;
-import model.words.ReadWordFailedException;
 import model.words.Word;
-import model.words.WordRepository;
-import model.words.WordRepositoryImp;
-import model.words.WordXMLRepository;
 
 public class EnglishWarehouseViewImp extends JFrame implements EnglishWarehouseView, ActionListener {
 	private Button addWordBtn;
@@ -45,12 +37,13 @@ public class EnglishWarehouseViewImp extends JFrame implements EnglishWarehouseV
 	private DefaultListModel<Word> wordDefaultListModel;
 	private JList<Word> wordList;
 	private JScrollPane wordListScrollPane;
-	private List<Word> words = new ArrayList<>();
+	private List<Word> words;
 	private EnglishWarehouseController englishWarehouseController;
 
-	public EnglishWarehouseViewImp() {
+	public EnglishWarehouseViewImp(EnglishWarehouseController englishWarehouseController) {
 		super("英文單字庫");
-		englishWarehouseController = new EnglishWarehouseController(new WordXMLRepository("words"), new CrawlerVocabularycom(), new ITRI_TTS(Secret.TTS_ACCOUNT, Secret.TTS_PASSWORD));
+		this.englishWarehouseController = englishWarehouseController;
+		englishWarehouseController.setEnglishWarehouseView(this);
 		englishWarehouseController.readAllWord();
 	}
 	
@@ -121,23 +114,21 @@ public class EnglishWarehouseViewImp extends JFrame implements EnglishWarehouseV
 			englishWarehouseController.addWord(text);
 			wordDefaultListModel.addElement(new Word(text));
 		} else if (button == removeWordBtn) {
-			String text = searchAndAddWordEd.getText();
-			for (int i = 0; i < wordDefaultListModel.size(); i++)
-				if (wordDefaultListModel.getElementAt(i).getWord().equals(text)) {
-					englishWarehouseController.removeWord(new Word(text));
-					wordDefaultListModel.remove(i);
-				}
+			Word word = wordList.getSelectedValue();
+			int index = wordList.getSelectedIndex();
+			englishWarehouseController.removeWord(word);
+			wordDefaultListModel.removeElementAt(index);
 		}
 	}
 
 	@Override
 	public void onWordCreateSuccessfully(Word word) {
-		JOptionPane.showMessageDialog(null, word.getWord() + " create successfuly"); //TODO 把等待環消除
+		JOptionPane.showMessageDialog(null, word.getWord() + " create successfuly"); 
 	}
 
 	@Override
 	public void onWordRemoveSuccessfully(Word word) {
-		JOptionPane.showMessageDialog(null, word.getWord() + " remove successfuly"); //TODO 把等待環消除
+		JOptionPane.showMessageDialog(null, word.getWord() + " remove successfuly"); 
 	}
 	
 	public void onWordReadSuccessfully(Word word) {
@@ -182,15 +173,15 @@ class WordCellRenderer extends JPanel implements ListCellRenderer {
 	public Component getListCellRendererComponent(JList list, Object value, int index, boolean isSelected,
 			boolean cellHasFocus) {
 		Word word = (Word) value;
-		JProgressBar progressBar;
-		if (barMap.containsKey(this))
-			progressBar = barMap.get(this);
-		else
-		{
-			progressBar = createProgressBar();
-			add(progressBar, BorderLayout.EAST);
-			barMap.put(this, progressBar);
-		}
+//		JProgressBar progressBar;
+//		if (barMap.containsKey(this))
+//			progressBar = barMap.get(this);
+//		else
+//		{
+//			progressBar = createProgressBar();
+//			add(progressBar, BorderLayout.EAST);
+//			barMap.put(this, progressBar);
+//		}
 		label.setText(word.getWord());
 		if (isSelected) {
 			setBackground(HIGHLIGHT_COLOR);
