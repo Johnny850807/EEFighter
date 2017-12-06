@@ -41,12 +41,13 @@ public class EnglishWarehouseViewImp extends JFrame implements EnglishWarehouseV
 	private DefaultListModel<Word> wordDefaultListModel;
 	private JList<Word> wordList;
 	private JScrollPane wordListScrollPane;
-	private List<Word> words = new ArrayList<>();
+	private List<Word> words;
 	private EnglishWarehouseController englishWarehouseController;
 
-	public EnglishWarehouseViewImp() {
+	public EnglishWarehouseViewImp(EnglishWarehouseController englishWarehouseController) {
 		super("­^¤å³æ¦r®w");
-		englishWarehouseController = new EnglishWarehouseController(this);
+		this.englishWarehouseController = englishWarehouseController;
+		englishWarehouseController.setEnglishWarehouseView(this);
 		englishWarehouseController.readAllWord();
 	}
 	
@@ -117,12 +118,10 @@ public class EnglishWarehouseViewImp extends JFrame implements EnglishWarehouseV
 			englishWarehouseController.addWord(text);
 			wordDefaultListModel.addElement(new Word(text));
 		} else if (button == removeWordBtn) {
-			String text = searchAndAddWordEd.getText();
-			for (int i = 0; i < wordDefaultListModel.size(); i++)
-				if (wordDefaultListModel.getElementAt(i).getWord().equals(text)) {
-					englishWarehouseController.removeWord(new Word(text));
-					wordDefaultListModel.remove(i);
-				}
+			Word word = wordList.getSelectedValue();
+			int index = wordList.getSelectedIndex();
+			englishWarehouseController.removeWord(word);
+			wordDefaultListModel.removeElementAt(index);
 		}
 	}
 
@@ -178,15 +177,15 @@ class WordCellRenderer extends JPanel implements ListCellRenderer {
 	public Component getListCellRendererComponent(JList list, Object value, int index, boolean isSelected,
 			boolean cellHasFocus) {
 		Word word = (Word) value;
-		JProgressBar progressBar;
-		if (barMap.containsKey(this))
-			progressBar = barMap.get(this);
-		else
-		{
-			progressBar = createProgressBar();
-			add(progressBar, BorderLayout.EAST);
-			barMap.put(this, progressBar);
-		}
+//		JProgressBar progressBar;
+//		if (barMap.containsKey(this))
+//			progressBar = barMap.get(this);
+//		else
+//		{
+//			progressBar = createProgressBar();
+//			add(progressBar, BorderLayout.EAST);
+//			barMap.put(this, progressBar);
+//		}
 		label.setText(word.getWord());
 		if (isSelected) {
 			setBackground(HIGHLIGHT_COLOR);

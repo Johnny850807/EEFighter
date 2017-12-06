@@ -20,6 +20,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 
 import controller.EEFighter;
+import controller.EnglishWarehouseController;
 
 /*
  * The Main view where contains the main function buttons.
@@ -123,7 +124,7 @@ public class MainView extends JFrame implements ActionListener {
 	}
 
 	private void goToEnglishWarehouse() {
-		EnglishWarehouseViewImp englishWarehouseViewImp = new EnglishWarehouseViewImp();
+		EnglishWarehouseViewImp englishWarehouseViewImp = new EnglishWarehouseViewImp(new EnglishWarehouseController());
 		englishWarehouseViewImp.setVisible(true);
 		englishWarehouseViewImp.start();
 	}

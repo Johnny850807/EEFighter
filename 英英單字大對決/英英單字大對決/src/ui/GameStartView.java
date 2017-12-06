@@ -101,9 +101,8 @@ public class GameStartView extends JFrame implements IGameStartView{
 	}
 	
 	@Override
-	public void onQuestionUpdate(String question) {
-		String str = wordDefinitionLab.getText();
-		wordDefinitionLab.setText(str + question);
+	public void onNextQuestion(String question) {
+		wordDefinitionLab.setText(question);
 	}
 
 	public void addComponent(Component c, Double weightX, Double weightY, int row, int column, int width, int height) {

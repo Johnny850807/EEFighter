@@ -75,13 +75,22 @@ public class GameViewImp extends JPanel implements GameView, KeyListener {
 	public void onGameClose() {
 
 	}
+	
+	public void nextQuestion() {
+		try {
+			Thread.sleep(3000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 
 	@Override
 	public void onDraw(GameMap gameMap, List<Sprite> letters, Sprite player1, Sprite player2) {
 		this.gameMap = gameMap;
 		this.spriteP1 = player1;
 		this.spriteP2 = player2;
-		gameStartView.onQuestionUpdate("apple");
+		gameStartView.onNextQuestion("bring into existence");
 		repaint();
 	}
 
