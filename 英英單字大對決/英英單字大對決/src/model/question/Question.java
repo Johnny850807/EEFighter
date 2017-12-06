@@ -7,7 +7,6 @@ public class Question {
 	private String definition;
 	
 	public Question(String word, String soundPath, String partOfSpeech, String definition) {
-		super();
 		this.word = word;
 		this.soundPath = soundPath;
 		this.partOfSpeech = partOfSpeech;

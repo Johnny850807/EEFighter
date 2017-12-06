@@ -2,6 +2,7 @@ package model.question;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
@@ -13,9 +14,10 @@ import model.words.WordRepository;
 import model.words.WordXMLRepository;
 
 
-public class QuestionManger {
+public class QuestionManger implements Iterable<Question> {
 
 	private List<Question> questions = new ArrayList<Question>();
+	private int index = 0;
 
 	public QuestionManger(WordRepository wordRepository) {
 		createQuestions(wordRepository);
@@ -44,8 +46,18 @@ public class QuestionManger {
 		return questions;
 	}
 	
-	public Question getQuestion(int index) {
+	public Question getNowQuestion() {
 		return questions.get(index);
+	}
+	
+	public Question getNextQuestion() {
+		if (index != questions.size())
+			return questions.get(++index);
+		throw new IllegalStateException("No more questions.");
+	}
+	
+	public boolean hasNext() {
+		return index != questions.size();
 	}
 	
 	public int getAllQuestionAmount() {
@@ -58,6 +70,11 @@ public class QuestionManger {
 		for (Question question : questions) {
 			System.out.println(question.getWord() + question.getPartOfSpeech() + question.getDefinition());
 		}
+	}
+
+	@Override
+	public Iterator<Question> iterator() {
+		return questions.iterator();
 	}
 	
 }
