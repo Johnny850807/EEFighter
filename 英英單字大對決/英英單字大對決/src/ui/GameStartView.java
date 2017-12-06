@@ -15,8 +15,9 @@ import controller.EEFighter;
 import model.sprite.BasicMapBuilder;
 import model.sprite.BasicMapDirector;
 import model.sprite.BasicRandomMapDirector;
+import model.sprite.IGameStartView;
 
-public class GameStartView extends JFrame {
+public class GameStartView extends JFrame implements IGameStartView{
 
 	private Label player1Lab;
 	private Label player2Lab;
@@ -95,8 +96,14 @@ public class GameStartView extends JFrame {
 		player2Lab = new Label();
 		wordDefinitionLab = new Label();
 		gbc = new GridBagConstraints();
-		gameViewPanel = new GameViewImp(new EEFighter(new BasicMapDirector(new BasicMapBuilder())));
+		gameViewPanel = new GameViewImp(new EEFighter(new BasicMapDirector(new BasicMapBuilder())), this);
 		gameViewPanel.start();
+	}
+	
+	@Override
+	public void onQuestionUpdate(String question) {
+		String str = wordDefinitionLab.getText();
+		wordDefinitionLab.setText(str + question);
 	}
 
 	public void addComponent(Component c, Double weightX, Double weightY, int row, int column, int width, int height) {
