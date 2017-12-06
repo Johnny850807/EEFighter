@@ -19,9 +19,10 @@ public class CrawlerVocabularycom implements Crawler{
 			Word word = new Word(wordSpelling);
 			int i = 1;
 			if (definitions.isEmpty()) 
-				throw new WordNotExistException();
+				throw new WordNotExistException(wordSpelling);
 			for (Element element : definitions) {
 				String[] e = element.text().split(" ", 2);
+				e[0].toUpperCase();
 				String partOfSpeech = e[0];
 				String sentence = e[1];
 				word.addDefinition(partOfSpeech, sentence);

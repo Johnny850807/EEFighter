@@ -24,7 +24,7 @@ import utils.SoapHelper;
 import utils.SoundPlayer;
 
 /**
- * @author Johnny850807
+ * @author Waterball
  * The web service API referencing to http://tts.itri.org.tw/development/web_service_api.php#step2 which
  * provided by ITRI TTS in SOAP protocol. There might be several sequential actions within a TTS request:
  * 1. Send a request for synthesizing a TTS file from a vocabulary in SOAP.

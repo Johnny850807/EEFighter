@@ -9,4 +9,9 @@ public enum SpriteName {
 		SpriteName[] allNames = values();
 		return Arrays.copyOfRange(allNames, 2, 2 + 26);
 	}
+	
+	public boolean isLetter(){
+		assert values()[2+25] == SpriteName.Z;
+		return this.ordinal() >= 2 && this.ordinal() < 2 + 26;
+	}
 }

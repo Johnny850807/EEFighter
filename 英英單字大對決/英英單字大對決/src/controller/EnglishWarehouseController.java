@@ -1,5 +1,6 @@
 package controller;
 
+import java.io.IOException;
 import java.util.List;
 
 import model.Secret;
@@ -10,8 +11,11 @@ import model.words.TTS;
 import model.words.Word;
 import model.words.WordRepository;
 import model.words.WordRepositoryImp;
+import model.words.WordXMLRepository;
 import ui.EnglishWarehouseView;
 import ui.EnglishWarehouseViewImp;
+import ui.MainView;
+import utils.SoundPlayer;
 
 /**
  * @author Joanna (張書瑄)
@@ -23,11 +27,19 @@ public class EnglishWarehouseController {
 	private CrawlerVocabularycom crawler;
 	private TTS tts;
 	
-	public EnglishWarehouseController(EnglishWarehouseView englishWarehouseView) {
-		this.englishWarehouseView = englishWarehouseView;
-		wordRepository = new WordRepositoryImp();  //TODO 這些都要依賴注入喔!!感覺到抽象工廠的重要性了吧~~ 
+	public EnglishWarehouseController() {
+		wordRepository = new WordXMLRepository("words");  //TODO 這些都要依賴注入喔!!感覺到抽象工廠的重要性了吧~~ 
 		crawler = new CrawlerVocabularycom();
 		tts = new ITRI_TTS(Secret.TTS_ACCOUNT, Secret.TTS_PASSWORD);
+	}
+	
+	public EnglishWarehouseController(EnglishWarehouseView englishWarehouseView) {
+		this();
+		this.englishWarehouseView = englishWarehouseView;
+	}
+	
+	public void setEnglishWarehouseView(EnglishWarehouseView englishWarehouseView) {
+		this.englishWarehouseView = englishWarehouseView;
 	}
 
 	public void addWord(String wordtxt) {
@@ -65,7 +77,8 @@ public class EnglishWarehouseController {
 		}.start();
 	}
 	
-	public void readAllWord() throws ReadWordFailedException {
+
+	public void readAllWord(){
 		new Thread() {
 			@Override
 			public void run() {
@@ -91,10 +104,49 @@ public class EnglishWarehouseController {
 		}.start();
 	}
 	
-	public static void main(String[] argv) {
-		EnglishWarehouseController controller = new EnglishWarehouseController(new EnglishWarehouseViewImp()); 
-		controller.addWord("eat");
-		controller.addWord("pineapple");
+	public static void main(String[] argv) throws IOException{
+		String[] words = {"apple", "banana", "vocabulary", "subtropical", "several", "genus", "have", "terminal", "egg", 
+				"small", "elephant",  "elder", "control", "model", "view", "stick", "fade", "still",
+				"visible", "search", "customer", "play", "sound", "voice"};
+		new MainView().setVisible(true);  //for playing sounds
+		EnglishWarehouseController controller = new EnglishWarehouseController();
+		controller.setEnglishWarehouseView(new EnglishWarehouseView() {
+			int success = 0;
+			@Override
+			public void onWordRemoveSuccessfully(Word word) {}
+			
+			@Override
+			public void onWordReadSuccessfully(List<Word> words) {
+				for (Word word : words)
+				{
+					SoundPlayer.getInstance().playSound(word.getSoundPath());
+					try {Thread.sleep(1000);} catch (InterruptedException e) {e.printStackTrace();}
+				}
+			}
+			
+			@Override
+			public void onWordReadSuccessfully(Word word) {}
+			
+			@Override
+			public void onWordReadFailed(Exception exception) {}
+			
+			@Override
+			public void onWordReadFailed(String word, Exception exception) {
+				System.out.println(word + ", read failed.");
+			}
+			
+			@Override
+			public void onWordCreateSuccessfully(Word word) {
+				System.out.println("Successfully added : " + word);
+				if(++success == words.length)  // all created completed
+					controller.readAllWord();
+			}
+			
+			@Override
+			public void onWordCreateFailed(String word, Exception exception) {}
+		}); 
+		for(String word : words)
+			controller.addWord(word);
 	}
 	
 }

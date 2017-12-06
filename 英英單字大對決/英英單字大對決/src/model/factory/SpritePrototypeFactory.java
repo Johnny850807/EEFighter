@@ -16,6 +16,7 @@ import model.sprite.Sprite.Direction;
 
 /**
  * @author Lin (林宗億)
+ * TODO 別亂開 package 移回去model.sprite
  */
 public class SpritePrototypeFactory {
 	private static SpritePrototypeFactory instance = null;

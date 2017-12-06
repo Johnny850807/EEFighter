@@ -65,6 +65,7 @@ public class WordRepositoryImp implements WordRepository {
 					for (int j = 1; j < define.length; j++)
 						word.addDefinition(define[0], define[j]);
 				}
+				words.put(wordtext, word);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
