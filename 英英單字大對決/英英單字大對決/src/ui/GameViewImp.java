@@ -9,15 +9,11 @@ import java.util.List;
 import javax.swing.JPanel;
 
 import controller.EEFighter;
-import model.factory.SpritePrototypeFactory;
-import model.sprite.BasicMapDirector;
 import model.sprite.GameMap;
 import model.sprite.IGameStartView;
 import model.sprite.Sprite;
 import model.sprite.Sprite.Direction;
 import model.sprite.Sprite.Status;
-import model.sprite.SpriteName;
-import model.sprite.XY;
 
 /*
  * The game view where showing the playing game.
@@ -80,7 +76,6 @@ public class GameViewImp extends JPanel implements GameView, KeyListener {
 		try {
 			Thread.sleep(3000);
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}

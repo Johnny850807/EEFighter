@@ -102,7 +102,7 @@ public class GameStartView extends JFrame implements IGameStartView{
 	
 	@Override
 	public void onNextQuestion(String question) {
-		wordDefinitionLab.setText(question);
+		wordDefinitionLab.setText("1. " + question + " ( v. )");
 	}
 
 	public void addComponent(Component c, Double weightX, Double weightY, int row, int column, int width, int height) {

@@ -11,7 +11,6 @@ import java.awt.Font;
 import java.awt.TextField;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -29,10 +28,7 @@ import javax.swing.ListCellRenderer;
 import javax.swing.Timer;
 
 import controller.EnglishWarehouseController;
-import model.words.ReadWordFailedException;
 import model.words.Word;
-import model.words.WordRepository;
-import model.words.WordRepositoryImp;
 
 public class EnglishWarehouseViewImp extends JFrame implements EnglishWarehouseView, ActionListener {
 	private Button addWordBtn;
@@ -127,12 +123,12 @@ public class EnglishWarehouseViewImp extends JFrame implements EnglishWarehouseV
 
 	@Override
 	public void onWordCreateSuccessfully(Word word) {
-		JOptionPane.showMessageDialog(null, word.getWord() + " create successfuly"); //TODO 把等待環消除
+		JOptionPane.showMessageDialog(null, word.getWord() + " create successfuly"); 
 	}
 
 	@Override
 	public void onWordRemoveSuccessfully(Word word) {
-		JOptionPane.showMessageDialog(null, word.getWord() + " remove successfuly"); //TODO 把等待環消除
+		JOptionPane.showMessageDialog(null, word.getWord() + " remove successfuly"); 
 	}
 	
 	public void onWordReadSuccessfully(Word word) {

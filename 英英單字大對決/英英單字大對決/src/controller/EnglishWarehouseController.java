@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.List;
 
 import model.Secret;
+import model.words.Crawler;
 import model.words.CrawlerVocabularycom;
 import model.words.ITRI_TTS;
 import model.words.ReadWordFailedException;
@@ -24,19 +25,15 @@ public class EnglishWarehouseController {
 
 	private EnglishWarehouseView englishWarehouseView;
 	private WordRepository wordRepository;
-	private CrawlerVocabularycom crawler;
+	private Crawler crawler;
 	private TTS tts;
 	
-	public EnglishWarehouseController() {
-		wordRepository = new WordXMLRepository("words");  //TODO 這些都要依賴注入喔!!感覺到抽象工廠的重要性了吧~~ 
-		crawler = new CrawlerVocabularycom();
-		tts = new ITRI_TTS(Secret.TTS_ACCOUNT, Secret.TTS_PASSWORD);
+	public EnglishWarehouseController(WordRepository wordRepository, Crawler crawler, TTS tts) {
+		this.wordRepository = wordRepository;  
+		this.crawler = crawler;
+		this.tts = tts;
 	}
 	
-	public EnglishWarehouseController(EnglishWarehouseView englishWarehouseView) {
-		this();
-		this.englishWarehouseView = englishWarehouseView;
-	}
 	
 	public void setEnglishWarehouseView(EnglishWarehouseView englishWarehouseView) {
 		this.englishWarehouseView = englishWarehouseView;
@@ -109,7 +106,7 @@ public class EnglishWarehouseController {
 				"small", "elephant",  "elder", "control", "model", "view", "stick", "fade", "still",
 				"visible", "search", "customer", "play", "sound", "voice"};
 		new MainView().setVisible(true);  //for playing sounds
-		EnglishWarehouseController controller = new EnglishWarehouseController();
+		EnglishWarehouseController controller = new EnglishWarehouseController(new WordXMLRepository("words"), new CrawlerVocabularycom(), new ITRI_TTS(Secret.TTS_ACCOUNT, Secret.TTS_PASSWORD));
 		controller.setEnglishWarehouseView(new EnglishWarehouseView() {
 			int success = 0;
 			@Override
