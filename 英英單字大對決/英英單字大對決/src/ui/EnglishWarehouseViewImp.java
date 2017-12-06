@@ -46,17 +46,12 @@ public class EnglishWarehouseViewImp extends JFrame implements EnglishWarehouseV
 	private JList<Word> wordList;
 	private JScrollPane wordListScrollPane;
 	private List<Word> words = new ArrayList<>();
-	private WordRepository wordRepository;
 	private EnglishWarehouseController englishWarehouseController;
 
 	public EnglishWarehouseViewImp() {
-		wordRepository = new WordXMLRepository("words");
-		englishWarehouseController = new EnglishWarehouseController(wordRepository, new CrawlerVocabularycom(), new ITRI_TTS(Secret.TTS_ACCOUNT, Secret.TTS_PASSWORD));
-		try {
-			words = wordRepository.readAllWord(); 
-		} catch (ReadWordFailedException e) {
-			e.printStackTrace();
-		}
+		super("英文單字庫");
+		englishWarehouseController = new EnglishWarehouseController(new WordXMLRepository("words"), new CrawlerVocabularycom(), new ITRI_TTS(Secret.TTS_ACCOUNT, Secret.TTS_PASSWORD));
+		englishWarehouseController.readAllWord();
 	}
 	
 	private void setupLayout() {
@@ -83,7 +78,6 @@ public class EnglishWarehouseViewImp extends JFrame implements EnglishWarehouseV
 		addWordBtn = new Button("加入");
 		removeWordBtn = new Button("刪除");
 		searchAndAddWordEd = new TextField();
-		showWordList();
 	}
 
 	private void setViewsFont(Font font) {
@@ -101,19 +95,18 @@ public class EnglishWarehouseViewImp extends JFrame implements EnglishWarehouseV
 	}
 
 	public void showWordList() {
-	
 		wordDefaultListModel = new DefaultListModel<>();
 		for (Word word : words)
 			wordDefaultListModel.addElement(word);
 		wordList = new JList<>(wordDefaultListModel);
 		wordList.setCellRenderer(new WordCellRenderer());
 		wordListScrollPane = new JScrollPane(wordList);
-
 	}
 
 	public void start() {
 		EventQueue.invokeLater(() -> {
 			setBounds(500, 200, 400, 650);
+			showWordList();
 			setupViews();
 			setupLayout();
 			addButtonsActionListener(this);
@@ -165,8 +158,7 @@ public class EnglishWarehouseViewImp extends JFrame implements EnglishWarehouseV
 
 	@Override
 	public void onWordReadSuccessfully(List<Word> words) {
-		// TODO Auto-generated method stub
-		
+		this.words = words;
 	}
 
 	@Override
