@@ -46,6 +46,7 @@ public class EnglishWarehouseViewImp extends JFrame implements EnglishWarehouseV
 	private EnglishWarehouseController englishWarehouseController;
 
 	public EnglishWarehouseViewImp() {
+		super("­^¤å³æ¦r®w");
 		englishWarehouseController = new EnglishWarehouseController(this);
 		wordRepository = new WordRepositoryImp();
 		try {

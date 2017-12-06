@@ -1,2 +1,3 @@
-create D:\GitHub\EEFighter\英英單字大對決\英英單字大對決\sounds\vocabulary\create.wav 1
-v/bring into existence/make or cause to be or to become/pursue a creative activity; be engaged in a creative activity/create by artistic means/create or manufacture a man-made product/invest with a new title, office, or rank
+code D:\GitHub\EEFighter\英英單字大對決\英英單字大對決\sounds\vocabulary\code.wav 2
+v/convert ordinary language into code/attach a code to
+n/a set of rules or principles or laws (especially written ones)/a coding system used for transmitting messages requiring brevity or secrecy/(computer science) the symbolic arrangement of data or instructions in a computer program or the set of such instructions
