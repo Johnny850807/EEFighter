@@ -87,7 +87,6 @@ public class GameViewImp extends JPanel implements GameView, KeyListener {
 		this.gameMap = gameMap;
 		this.spriteP1 = player1;
 		this.spriteP2 = player2;
-		nextQuestion();
 		repaint();
 	}
 

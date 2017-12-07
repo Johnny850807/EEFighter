@@ -34,7 +34,6 @@ public class GameStartView extends JFrame implements IGameStartView{
 
 	private void setupLayout() {
 		getContentPane().setBackground(Color.GRAY);
-
 		getContentPane().setLayout(new GridBagLayout());
 		getContentPane().add(gameViewPanel);
 		setupViewsLocation();
