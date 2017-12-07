@@ -9,6 +9,7 @@ import java.util.List;
 import javax.swing.JPanel;
 
 import controller.EEFighter;
+import model.question.Question;
 import model.sprite.GameMap;
 import model.sprite.IGameStartView;
 import model.sprite.Sprite;
@@ -85,7 +86,6 @@ public class GameViewImp extends JPanel implements GameView, KeyListener {
 		this.gameMap = gameMap;
 		this.spriteP1 = player1;
 		this.spriteP2 = player2;
-		gameStartView.onNextQuestion("bring into existence");
 		repaint();
 	}
 
@@ -228,6 +228,11 @@ public class GameViewImp extends JPanel implements GameView, KeyListener {
 	@Override
 	public void onHitWall(Sprite sprite) {
 
+	}
+
+	@Override
+	public void onNextQuestion(Question question) {
+		gameStartView.onNextQuestion(question);
 	}
 
 }

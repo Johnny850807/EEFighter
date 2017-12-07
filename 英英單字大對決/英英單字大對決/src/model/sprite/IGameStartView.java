@@ -1,5 +1,7 @@
 package model.sprite;
 
+import model.question.Question;
+
 public interface IGameStartView {
-	void onNextQuestion(String question);
+	void onNextQuestion(Question question);
 }

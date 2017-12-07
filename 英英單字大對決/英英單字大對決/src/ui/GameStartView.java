@@ -12,6 +12,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import controller.EEFighter;
+import model.question.Question;
 import model.sprite.BasicMapBuilder;
 import model.sprite.BasicMapDirector;
 import model.sprite.BasicRandomMapDirector;
@@ -101,8 +102,8 @@ public class GameStartView extends JFrame implements IGameStartView{
 	}
 	
 	@Override
-	public void onNextQuestion(String question) {
-		wordDefinitionLab.setText("1. " + question + " ( v. )");
+	public void onNextQuestion(Question question) {
+		wordDefinitionLab.setText("1. ( " + question.getPartOfSpeech() + ". ) " + question.getDefinition());
 	}
 
 	public void addComponent(Component c, Double weightX, Double weightY, int row, int column, int width, int height) {
