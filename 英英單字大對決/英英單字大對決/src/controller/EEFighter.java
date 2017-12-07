@@ -4,11 +4,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 import model.factory.SpritePrototypeFactory;
+import model.question.Question;
+import model.question.QuestionManger;
 import model.sprite.GameMap;
 import model.sprite.MapDirector;
 import model.sprite.Sprite;
 import model.sprite.Sprite.Direction;
 import model.sprite.Sprite.Status;
+import model.words.ReadWordFailedException;
+import model.words.Word;
+import model.words.WordRepository;
+import model.words.WordXMLRepository;
 import model.sprite.SpriteName;
 import ui.GameView;
 
@@ -21,6 +27,7 @@ public class EEFighter {
 	private GameView gameView;
 	private MapDirector mapDirector;
 	private GameMap gameMap;
+	private QuestionManger questionManger;
 	private List<Sprite> letters = new ArrayList<Sprite>();
 	private Sprite player1;
 	private Sprite player2;
@@ -28,6 +35,7 @@ public class EEFighter {
 	public EEFighter(MapDirector mapDirector) {
 		this.mapDirector = mapDirector;
 		gameMap = mapDirector.buildMap();
+		questionManger = new QuestionManger(new WordXMLRepository("words"));
 		createPlayers();
 	}
 	
@@ -68,6 +76,10 @@ public class EEFighter {
 		sprite.setDirection(direction);
 		sprite.setStatus(status);
 		gameView.onMovedSuccessfuly(sprite, direction, status);
+	}
+	
+	public void nextQuestion() {
+		gameView.onNextQuestion(questionManger.getNextQuestion());
 	}
 	
 	public boolean isOver() {

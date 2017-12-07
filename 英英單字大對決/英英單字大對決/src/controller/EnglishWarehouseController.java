@@ -11,10 +11,8 @@ import model.words.ReadWordFailedException;
 import model.words.TTS;
 import model.words.Word;
 import model.words.WordRepository;
-import model.words.WordRepositoryImp;
 import model.words.WordXMLRepository;
 import ui.EnglishWarehouseView;
-import ui.EnglishWarehouseViewImp;
 import ui.MainView;
 import utils.SoundPlayer;
 
