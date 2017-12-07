@@ -75,7 +75,8 @@ public class GameViewImp extends JPanel implements GameView, KeyListener {
 	
 	public void nextQuestion() {
 		try {
-			Thread.sleep(3000);
+			Thread.sleep(1000);
+			eeFighter.nextQuestion();
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
@@ -86,6 +87,7 @@ public class GameViewImp extends JPanel implements GameView, KeyListener {
 		this.gameMap = gameMap;
 		this.spriteP1 = player1;
 		this.spriteP2 = player2;
+		nextQuestion();
 		repaint();
 	}
 
@@ -192,22 +194,10 @@ public class GameViewImp extends JPanel implements GameView, KeyListener {
 			break;
 		}
 
-		if ((keyInputP1 & 0b001000) == 0)
-			eeFighter.move(spriteP1, Direction.NORTH, Status.STOP);
-		if ((keyInputP1 & 0b000100) == 0)
-			eeFighter.move(spriteP1, Direction.SOUTH, Status.STOP);
-		if ((keyInputP1 & 0b000010) == 0)
-			eeFighter.move(spriteP1, Direction.WEST, Status.STOP);
-		if ((keyInputP1 & 0b000001) == 0)
-			eeFighter.move(spriteP1, Direction.EAST, Status.STOP);
-		if ((keyInputP2 & 0b001000) == 0)
-			eeFighter.move(spriteP2, Direction.NORTH, Status.STOP);
-		if ((keyInputP2 & 0b000100) == 0)
-			eeFighter.move(spriteP2, Direction.SOUTH, Status.STOP);
-		if ((keyInputP2 & 0b000010) == 0)
-			eeFighter.move(spriteP2, Direction.WEST, Status.STOP);
-		if ((keyInputP2 & 0b000001) == 0)
-			eeFighter.move(spriteP2, Direction.EAST, Status.STOP);
+		if ( ((keyInputP1 & 0b001000) == 0) || ((keyInputP1 & 0b000100) == 0) || ((keyInputP1 & 0b000010) == 0) || ((keyInputP1 & 0b000001) == 0) )
+			eeFighter.move(spriteP1, spriteP1.getDirection(), Status.STOP);
+		if ( ((keyInputP2 & 0b001000) == 0) || ((keyInputP2 & 0b000100) == 0) || ((keyInputP2 & 0b000010) == 0) || ((keyInputP2 & 0b000001) == 0) )
+			eeFighter.move(spriteP2, spriteP2.getDirection(), Status.STOP);
 	}
 
 	@Override

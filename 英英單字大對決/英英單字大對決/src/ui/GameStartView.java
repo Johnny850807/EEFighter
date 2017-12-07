@@ -3,19 +3,18 @@ package ui;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Label;
 
 import javax.swing.JFrame;
-import javax.swing.JPanel;
 
 import controller.EEFighter;
 import model.question.Question;
 import model.sprite.BasicMapBuilder;
 import model.sprite.BasicMapDirector;
-import model.sprite.BasicRandomMapDirector;
 import model.sprite.IGameStartView;
 
 public class GameStartView extends JFrame implements IGameStartView{
@@ -35,6 +34,7 @@ public class GameStartView extends JFrame implements IGameStartView{
 
 	private void setupLayout() {
 		getContentPane().setBackground(Color.GRAY);
+
 		getContentPane().setLayout(new GridBagLayout());
 		getContentPane().add(gameViewPanel);
 		setupViewsLocation();
@@ -48,10 +48,17 @@ public class GameStartView extends JFrame implements IGameStartView{
 	}
 
 	private void setupViewsLocation() {
+		
+		
+		add(player1Lab);
+		add(wordDefinitionLab);
+		add(player2Lab);
+		
+		getContentPane().setLayout(new GridBagLayout());
 		gbc.fill = GridBagConstraints.BOTH;
 		gbc.anchor = GridBagConstraints.NORTHWEST;
 		addComponent(player1Lab, 1.5, 1.0, 0, 0, 1, 2);
-		addComponent(wordDefinitionLab, 3.0, 1.0, 3, 0, 2, 2);
+		addComponent(wordDefinitionLab, 3.0, 1.0, 2, 0, 2, 2);
 		addComponent(player2Lab, 1.5, 1.0, 5, 0, 1, 2);
 		gbc.fill = GridBagConstraints.BOTH;
 		gbc.anchor = GridBagConstraints.WEST;
