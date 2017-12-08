@@ -12,6 +12,7 @@ import controller.EEFighter;
 import model.question.Question;
 import model.sprite.GameMap;
 import model.sprite.IGameStartView;
+import model.sprite.LetterPool;
 import model.sprite.Sprite;
 import model.sprite.Sprite.Direction;
 import model.sprite.Sprite.Status;
@@ -44,7 +45,6 @@ public class GameViewImp extends JPanel implements GameView, KeyListener {
 		setupLayout();
 
 		eeFighter.startGame();
-
 	}
 
 	@Override
