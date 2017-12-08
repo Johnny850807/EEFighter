@@ -4,23 +4,29 @@ import java.util.ArrayList;
 import java.util.List;
 
 import model.factory.SpritePrototypeFactory;
+import model.question.QuestionManger;
 import model.sprite.GameMap;
+import model.sprite.LetterCreateListener;
+import model.sprite.LetterManager;
 import model.sprite.MapDirector;
 import model.sprite.Sprite;
 import model.sprite.Sprite.Direction;
 import model.sprite.Sprite.Status;
 import model.sprite.SpriteName;
+import model.words.WordXMLRepository;
 import ui.GameView;
 
 
 /**
  * @author Joanna (±i®ÑÞ±)
  */
-public class EEFighter {
+public class EEFighter implements LetterCreateListener {
 
 	private GameView gameView;
 	private MapDirector mapDirector;
 	private GameMap gameMap;
+	private LetterManager letterManager;
+	private QuestionManger questionManger;
 	private List<Sprite> letters = new ArrayList<Sprite>();
 	private Sprite player1;
 	private Sprite player2;
@@ -28,6 +34,9 @@ public class EEFighter {
 	public EEFighter(MapDirector mapDirector) {
 		this.mapDirector = mapDirector;
 		gameMap = mapDirector.buildMap();
+		questionManger = new QuestionManger(new WordXMLRepository("words"));
+		letterManager = new LetterManager(gameMap);
+		letterManager.setLetterCreateListener(this);
 		createPlayers();
 	}
 	
@@ -48,6 +57,7 @@ public class EEFighter {
 	}
 	
 	public void startGame() {
+		letterManager.createLetter();
 		new Thread() {
 			public void run() {
 				while (true) {
@@ -70,7 +80,16 @@ public class EEFighter {
 		gameView.onMovedSuccessfuly(sprite, direction, status);
 	}
 	
+	public void nextQuestion() {
+		gameView.onNextQuestion(questionManger.getNextQuestion());
+	}
+	
 	public boolean isOver() {
 		return false;
+	}
+
+	@Override
+	public void onCreateLetter(List<Sprite> letters) {
+		this.letters = letters;
 	}
 }

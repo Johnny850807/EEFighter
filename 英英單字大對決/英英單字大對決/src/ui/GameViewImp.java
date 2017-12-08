@@ -9,14 +9,13 @@ import java.util.List;
 import javax.swing.JPanel;
 
 import controller.EEFighter;
-import model.factory.SpritePrototypeFactory;
-import model.sprite.BasicMapDirector;
+import model.question.Question;
 import model.sprite.GameMap;
+import model.sprite.IGameStartView;
+import model.sprite.LetterPool;
 import model.sprite.Sprite;
 import model.sprite.Sprite.Direction;
 import model.sprite.Sprite.Status;
-import model.sprite.SpriteName;
-import model.sprite.XY;
 
 /*
  * The game view where showing the playing game.
@@ -27,12 +26,14 @@ public class GameViewImp extends JPanel implements GameView, KeyListener {
 	private EEFighter eeFighter;
 	private Sprite spriteP1;
 	private Sprite spriteP2;
+	private List<Sprite> letters;
+	private IGameStartView gameStartView;
 
-	public GameViewImp(EEFighter eeFighter) {
+	public GameViewImp(EEFighter eeFighter, IGameStartView gameStartView) {
 		this.eeFighter = eeFighter;
-		
+		this.gameStartView = gameStartView;
 	}
-	
+
 	@Override
 	public void start() {
 		eeFighter.setGameView(this);
@@ -45,7 +46,6 @@ public class GameViewImp extends JPanel implements GameView, KeyListener {
 		setupLayout();
 
 		eeFighter.startGame();
-
 	}
 
 	@Override
@@ -57,8 +57,11 @@ public class GameViewImp extends JPanel implements GameView, KeyListener {
 				g.drawImage(sprite.getImage(sprite.getDirection()), sprite.getX(), sprite.getY(), null);
 		if (spriteP1 != null)
 			g.drawImage(spriteP1.getImage(spriteP1.getDirection()), spriteP1.getX(), spriteP1.getY(), null);
-		if (spriteP2 != null) 
+		if (spriteP2 != null)
 			g.drawImage(spriteP2.getImage(spriteP2.getDirection()), spriteP2.getX(), spriteP2.getY(), null);
+		if (letters != null)
+			for (int i = 0; i < letters.size(); i++)
+				g.drawImage(letters.get(i).getImage(letters.get(i).getDirection()), letters.get(i).getX(), letters.get(i).getY(), null);
 	}
 
 	private void setupLayout() {
@@ -66,7 +69,7 @@ public class GameViewImp extends JPanel implements GameView, KeyListener {
 	}
 
 	private void setupViews() {
-		
+
 	}
 
 	@Override
@@ -74,9 +77,19 @@ public class GameViewImp extends JPanel implements GameView, KeyListener {
 
 	}
 
+	public void nextQuestion() {
+		try {
+			Thread.sleep(1000);
+			eeFighter.nextQuestion();
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+	}
+
 	@Override
 	public void onDraw(GameMap gameMap, List<Sprite> letters, Sprite player1, Sprite player2) {
 		this.gameMap = gameMap;
+		this.letters = letters;
 		this.spriteP1 = player1;
 		this.spriteP2 = player2;
 		repaint();
@@ -184,44 +197,38 @@ public class GameViewImp extends JPanel implements GameView, KeyListener {
 			keyInputP2 &= 0b11111110;
 			break;
 		}
-		
-		if ((keyInputP1 & 0b001000) == 0)
-			eeFighter.move(spriteP1, Direction.NORTH, Status.STOP);
-		if ((keyInputP1 & 0b000100) == 0)
-			eeFighter.move(spriteP1, Direction.SOUTH, Status.STOP);
-		if ((keyInputP1 & 0b000010) == 0)
-			eeFighter.move(spriteP1, Direction.WEST, Status.STOP);
-		if ((keyInputP1 & 0b000001) == 0)
-			eeFighter.move(spriteP1, Direction.EAST, Status.STOP);
-		if ((keyInputP2 & 0b001000) == 0)
-			eeFighter.move(spriteP2, Direction.NORTH, Status.STOP);
-		if ((keyInputP2 & 0b000100) == 0)
-			eeFighter.move(spriteP2, Direction.SOUTH, Status.STOP);
-		if ((keyInputP2 & 0b000010) == 0)
-			eeFighter.move(spriteP2, Direction.WEST, Status.STOP);
-		if ((keyInputP2 & 0b000001) == 0)
-			eeFighter.move(spriteP2, Direction.EAST, Status.STOP);
+
+		if (((keyInputP1 & 0b001000) == 0) || ((keyInputP1 & 0b000100) == 0) || ((keyInputP1 & 0b000010) == 0)
+				|| ((keyInputP1 & 0b000001) == 0))
+			eeFighter.move(spriteP1, spriteP1.getDirection(), Status.STOP);
+		if (((keyInputP2 & 0b001000) == 0) || ((keyInputP2 & 0b000100) == 0) || ((keyInputP2 & 0b000010) == 0)
+				|| ((keyInputP2 & 0b000001) == 0))
+			eeFighter.move(spriteP2, spriteP2.getDirection(), Status.STOP);
 	}
 
 	@Override
 	public void onGameStarted() {
-		
+
 	}
 
 	@Override
 	public void onGameOver() {
-		
+
 	}
 
 	@Override
 	public void onMovedSuccessfuly(Sprite sprite, Direction direction, Status status) {
-		
-		
+
 	}
 
 	@Override
 	public void onHitWall(Sprite sprite) {
-		
+
+	}
+
+	@Override
+	public void onNextQuestion(Question question) {
+		gameStartView.onNextQuestion(question);
 	}
 
 }

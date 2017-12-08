@@ -2,6 +2,7 @@ package ui;
 
 import java.util.List;
 
+import model.question.Question;
 import model.sprite.GameMap;
 import model.sprite.Sprite;
 import model.sprite.Sprite.Direction;
@@ -15,4 +16,5 @@ public interface GameView {
 	void start();
 	void onMovedSuccessfuly(Sprite sprite, Direction direction, Status status);
 	void onHitWall(Sprite sprite);
+	void onNextQuestion(Question question);
 }

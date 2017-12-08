@@ -10,8 +10,7 @@ import ui.GameView;
 import javax.imageio.ImageIO;
 
 /*TODO
- * (1) Image 應該要是一個Map<方向, 圖片>，每個方向對應到一張圖片，為此原型工廠也要為此提供每個Sprite的Map<方向, 圖片>，程式繁雜，請消除重複部分。
- * (2) 提供 isConflict(Sprite sprite) 函數  判斷兩sprite是否有碰撞發生 回傳 boolean
+ * 提供 isConflict(Sprite sprite) 函數  判斷兩sprite是否有碰撞發生 回傳 boolean
  */
 public class Sprite implements Cloneable {
 	protected XY xy;
@@ -171,7 +170,6 @@ public class Sprite implements Cloneable {
 		this.gameView = gameView;
 	}
 
-	//TODO 不要在呼叫update的時候才傳入 gameMap跟gameView，何不用setter 直接set進這個sprite的屬性呢? 沒有魔術。
 	public synchronized void update() {
 		//do nothing as default
 	}

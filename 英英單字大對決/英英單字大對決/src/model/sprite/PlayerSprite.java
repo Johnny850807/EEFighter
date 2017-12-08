@@ -15,7 +15,6 @@ public class PlayerSprite extends Sprite{
 	
 	@Override
 	public synchronized void update() {
-		System.out.println(direction.toString() + "," + status.toString());
 		if (status == Status.MOVE) {
 			switch (direction) {
 				case NORTH:

@@ -3,20 +3,23 @@ package ui;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Label;
+import java.awt.TextArea;
 
 import javax.swing.JFrame;
-import javax.swing.JPanel;
+import javax.swing.JTextArea;
 
 import controller.EEFighter;
+import model.question.Question;
 import model.sprite.BasicMapBuilder;
 import model.sprite.BasicMapDirector;
-import model.sprite.BasicRandomMapDirector;
+import model.sprite.IGameStartView;
 
-public class GameStartView extends JFrame {
+public class GameStartView extends JFrame implements IGameStartView{
 
 	private Label player1Lab;
 	private Label player2Lab;
@@ -46,11 +49,18 @@ public class GameStartView extends JFrame {
 	}
 
 	private void setupViewsLocation() {
+		
+		
+		add(player1Lab);
+		add(wordDefinitionLab);
+		add(player2Lab);
+		
+		getContentPane().setLayout(new GridBagLayout());
 		gbc.fill = GridBagConstraints.BOTH;
 		gbc.anchor = GridBagConstraints.NORTHWEST;
-		addComponent(player1Lab, 1.5, 1.0, 0, 0, 1, 2);
-		addComponent(wordDefinitionLab, 3.0, 1.0, 3, 0, 2, 2);
-		addComponent(player2Lab, 1.5, 1.0, 5, 0, 1, 2);
+		addComponent(player1Lab, 2.0, 1.0, 0, 0, 1, 2);
+		addComponent(wordDefinitionLab, 4.0, 1.0, 2, 0, 1, 2);
+		addComponent(player2Lab, 2.0, 1.0, 5, 0, 1, 2);
 		gbc.fill = GridBagConstraints.BOTH;
 		gbc.anchor = GridBagConstraints.WEST;
 		addComponent(gameViewPanel, 1.0, 10.0, 0, 5, 7, 7);
@@ -75,6 +85,7 @@ public class GameStartView extends JFrame {
 		player1Lab.setSize(dimension);
 		player2Lab.setSize(dimension);
 		wordDefinitionLab.setSize(new Dimension(100, 700));
+		wordDefinitionLab.setMaximumSize(new Dimension(100, 400));
 	}
 
 	private void setViewsFont(Font font) {
@@ -95,8 +106,17 @@ public class GameStartView extends JFrame {
 		player2Lab = new Label();
 		wordDefinitionLab = new Label();
 		gbc = new GridBagConstraints();
-		gameViewPanel = new GameViewImp(new EEFighter(new BasicRandomMapDirector(new BasicMapBuilder())));
+		gameViewPanel = new GameViewImp(new EEFighter(new BasicMapDirector(new BasicMapBuilder())), this);
 		gameViewPanel.start();
+	}
+	
+	@Override
+	public void onNextQuestion(Question question) {
+		String definition = "1. ( " + question.getPartOfSpeech() + ". ) " + question.getDefinition();
+		StringBuilder strBuilder = new StringBuilder("<html>");  
+        strBuilder.append(definition);  
+        strBuilder.append("</html>");  
+		wordDefinitionLab.setText(strBuilder.toString());
 	}
 
 	public void addComponent(Component c, Double weightX, Double weightY, int row, int column, int width, int height) {

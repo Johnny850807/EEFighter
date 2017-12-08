@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 
 public class Word {
 	private String word;
@@ -34,7 +35,13 @@ public class Word {
 	public Map<String, List<String>> getSentences() {
 		return definitions;
 	}
-
+	
+	public String getSentence(String partOfSpeech) {
+		Random random = new Random();
+		List<String> definition = definitions.get(partOfSpeech);
+		return definition.get(random.nextInt(definition.size()));
+	}
+	
 	public void setSentences(Map<String, List<String>> sentences) {
 		this.definitions = sentences;
 	}

@@ -1,5 +1,6 @@
 package model.words;
 
 public enum PartOfSpeech {
-	N, V, ADJ, ADV
+	N, V, ADJ, ADV;
+	
 }
