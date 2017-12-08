@@ -13,7 +13,6 @@ public class LetterPool implements ILetterPool {
 	private List<Sprite> availableLetters;
 	private List<Sprite> inUseLetters;
 	private SpritePrototypeFactory prototypeFactory = SpritePrototypeFactory.getInstance();
-	private static final byte[] lock = new byte[] {};
 
 	public LetterPool() {
 		availableLetters = new ArrayList<>();
@@ -75,7 +74,7 @@ public class LetterPool implements ILetterPool {
 	}
 
 	@Override
-	public void relaseSprite(Sprite sprite) {
+	public void releaseSprite(Sprite sprite) {
 			inUseLetters.remove(sprite);
 			availableLetters.add(sprite);
 	}

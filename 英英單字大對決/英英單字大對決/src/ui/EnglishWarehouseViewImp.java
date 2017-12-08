@@ -11,6 +11,7 @@ import java.awt.Font;
 import java.awt.TextField;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -37,7 +38,7 @@ public class EnglishWarehouseViewImp extends JFrame implements EnglishWarehouseV
 	private DefaultListModel<Word> wordDefaultListModel;
 	private JList<Word> wordList;
 	private JScrollPane wordListScrollPane;
-	private List<Word> words;
+	private List<Word> words = new ArrayList<Word>();
 	private EnglishWarehouseController englishWarehouseController;
 
 	public EnglishWarehouseViewImp(EnglishWarehouseController englishWarehouseController) {
