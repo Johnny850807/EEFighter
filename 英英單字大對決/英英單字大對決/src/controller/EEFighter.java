@@ -3,22 +3,17 @@ package controller;
 import java.util.ArrayList;
 import java.util.List;
 
-import model.question.Question;
 import model.question.QuestionManger;
 import model.sprite.GameMap;
 import model.sprite.LetterCreateListener;
 import model.sprite.LetterManager;
-import model.sprite.LetterPool;
 import model.sprite.MapDirector;
 import model.sprite.Sprite;
 import model.sprite.Sprite.Direction;
 import model.sprite.Sprite.Status;
-import model.words.ReadWordFailedException;
-import model.words.Word;
-import model.words.WordRepository;
-import model.words.WordXMLRepository;
 import model.sprite.SpriteName;
 import model.sprite.SpritePrototypeFactory;
+import model.words.WordXMLRepository;
 import ui.GameView;
 
 

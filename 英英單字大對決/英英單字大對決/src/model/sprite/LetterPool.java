@@ -71,7 +71,7 @@ public class LetterPool implements ILetterPool {
 	}
 
 	@Override
-	public void relaseSprite(Sprite sprite) {
+	public void releaseSprite(Sprite sprite) {
 			inUseLetters.remove(sprite);
 			availableLetters.add(sprite);
 	}
