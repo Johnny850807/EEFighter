@@ -124,7 +124,10 @@ public class MainView extends JFrame implements ActionListener {
 	}
 
 	private void goToEnglishWarehouse() {
-		EnglishWarehouseViewImp englishWarehouseViewImp = new EnglishWarehouseViewImp(new EnglishWarehouseController(new WordXMLRepository("words"), new CrawlerVocabularycom(), new ITRI_TTS(Secret.TTS_ACCOUNT, Secret.TTS_PASSWORD)));
+		EnglishWarehouseViewImp englishWarehouseViewImp = new EnglishWarehouseViewImp
+							(new EnglishWarehouseController(new WordXMLRepository("wordwarehouse"), 
+															new CrawlerVocabularycom(), 
+															new ITRI_TTS(Secret.TTS_ACCOUNT, Secret.TTS_PASSWORD)));
 		englishWarehouseViewImp.setVisible(true);
 		englishWarehouseViewImp.start();
 	}
