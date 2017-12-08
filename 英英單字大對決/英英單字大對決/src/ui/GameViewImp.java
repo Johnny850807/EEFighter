@@ -51,7 +51,7 @@ public class GameViewImp extends JPanel implements GameView, KeyListener {
 	@Override
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
-
+		
 		if (gameMap != null)
 			for (Sprite sprite : gameMap)
 				g.drawImage(sprite.getImage(sprite.getDirection()), sprite.getX(), sprite.getY(), null);
