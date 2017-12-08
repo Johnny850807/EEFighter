@@ -40,8 +40,8 @@ public class EEFighter implements LetterCreateListener {
 		this.mapDirector = mapDirector;
 		gameMap = mapDirector.buildMap();
 		questionManger = new QuestionManger(new WordXMLRepository("words"));
-		letterManager = new LetterManager(gameMap, this);
-		letterManager.createLetter();
+		letterManager = new LetterManager(gameMap);
+		letterManager.setLetterCreateListener(this);
 		createPlayers();
 	}
 	
@@ -62,6 +62,7 @@ public class EEFighter implements LetterCreateListener {
 	}
 	
 	public void startGame() {
+		letterManager.createLetter();
 		new Thread() {
 			public void run() {
 				while (true) {
