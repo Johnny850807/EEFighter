@@ -50,3 +50,5 @@ local.properties
 
 # server secret
 Secret.java
+
+words.xml
