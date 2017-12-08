@@ -26,6 +26,7 @@ public class GameViewImp extends JPanel implements GameView, KeyListener {
 	private EEFighter eeFighter;
 	private Sprite spriteP1;
 	private Sprite spriteP2;
+	private List<Sprite> letters;
 	private IGameStartView gameStartView;
 
 	public GameViewImp(EEFighter eeFighter, IGameStartView gameStartView) {
@@ -58,6 +59,9 @@ public class GameViewImp extends JPanel implements GameView, KeyListener {
 			g.drawImage(spriteP1.getImage(spriteP1.getDirection()), spriteP1.getX(), spriteP1.getY(), null);
 		if (spriteP2 != null)
 			g.drawImage(spriteP2.getImage(spriteP2.getDirection()), spriteP2.getX(), spriteP2.getY(), null);
+		if (letters != null)
+			for (int i = 0; i < letters.size(); i++)
+				g.drawImage(letters.get(i).getImage(letters.get(i).getDirection()), letters.get(i).getX(), letters.get(i).getY(), null);
 	}
 
 	private void setupLayout() {
@@ -72,7 +76,7 @@ public class GameViewImp extends JPanel implements GameView, KeyListener {
 	public void onGameClose() {
 
 	}
-	
+
 	public void nextQuestion() {
 		try {
 			Thread.sleep(1000);
@@ -85,6 +89,7 @@ public class GameViewImp extends JPanel implements GameView, KeyListener {
 	@Override
 	public void onDraw(GameMap gameMap, List<Sprite> letters, Sprite player1, Sprite player2) {
 		this.gameMap = gameMap;
+		this.letters = letters;
 		this.spriteP1 = player1;
 		this.spriteP2 = player2;
 		repaint();
@@ -193,9 +198,11 @@ public class GameViewImp extends JPanel implements GameView, KeyListener {
 			break;
 		}
 
-		if ( ((keyInputP1 & 0b001000) == 0) || ((keyInputP1 & 0b000100) == 0) || ((keyInputP1 & 0b000010) == 0) || ((keyInputP1 & 0b000001) == 0) )
+		if (((keyInputP1 & 0b001000) == 0) || ((keyInputP1 & 0b000100) == 0) || ((keyInputP1 & 0b000010) == 0)
+				|| ((keyInputP1 & 0b000001) == 0))
 			eeFighter.move(spriteP1, spriteP1.getDirection(), Status.STOP);
-		if ( ((keyInputP2 & 0b001000) == 0) || ((keyInputP2 & 0b000100) == 0) || ((keyInputP2 & 0b000010) == 0) || ((keyInputP2 & 0b000001) == 0) )
+		if (((keyInputP2 & 0b001000) == 0) || ((keyInputP2 & 0b000100) == 0) || ((keyInputP2 & 0b000010) == 0)
+				|| ((keyInputP2 & 0b000001) == 0))
 			eeFighter.move(spriteP2, spriteP2.getDirection(), Status.STOP);
 	}
 
