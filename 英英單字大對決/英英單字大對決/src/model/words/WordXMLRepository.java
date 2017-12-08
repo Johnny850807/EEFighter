@@ -54,12 +54,16 @@ public class WordXMLRepository implements WordRepository{
 			documentBuilder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
 			this.file = new File(this.fileName);
 			if (!file.exists())
-				file.createNewFile();
+				createNewXmlFile(file);
 		} catch (ParserConfigurationException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	private void createNewXmlFile(File file) throws IOException{
+		file.createNewFile();
 	}
 	
 	@Override

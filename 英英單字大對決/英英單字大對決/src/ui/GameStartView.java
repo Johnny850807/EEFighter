@@ -95,7 +95,7 @@ public class GameStartView extends JFrame {
 		player2Lab = new Label();
 		wordDefinitionLab = new Label();
 		gbc = new GridBagConstraints();
-		gameViewPanel = new GameViewImp(new EEFighter(new BasicMapDirector(new BasicMapBuilder())));
+		gameViewPanel = new GameViewImp(new EEFighter(new BasicRandomMapDirector(new BasicMapBuilder())));
 		gameViewPanel.start();
 	}
 
