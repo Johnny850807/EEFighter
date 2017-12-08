@@ -4,7 +4,6 @@ import java.io.Serializable;
 
 /**
  * @author WaterBall
- *
  */
 public class XY implements Cloneable, Serializable{
 	private XY lastXY;

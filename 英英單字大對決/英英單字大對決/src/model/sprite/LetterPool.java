@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ * @author Lin (ªL©v»õ)
+ */
 public class LetterPool implements ILetterPool {
 
 	private static LetterPool instance = null;
