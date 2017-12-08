@@ -3,8 +3,7 @@ package controller;
 import java.util.ArrayList;
 import java.util.List;
 
-import model.factory.SpritePrototypeFactory;
-import model.question.QuestionManger;
+import model.QuestionManger;
 import model.sprite.GameMap;
 import model.sprite.LetterCreateListener;
 import model.sprite.LetterManager;
@@ -13,6 +12,7 @@ import model.sprite.Sprite;
 import model.sprite.Sprite.Direction;
 import model.sprite.Sprite.Status;
 import model.sprite.SpriteName;
+import model.sprite.SpritePrototypeFactory;
 import model.words.WordXMLRepository;
 import ui.GameView;
 

@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import model.factory.SpritePrototypeFactory;
-
 public class LetterPool implements ILetterPool {
 
 	private static LetterPool instance = null;

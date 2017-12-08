@@ -9,7 +9,7 @@ import java.util.List;
 import javax.swing.JPanel;
 
 import controller.EEFighter;
-import model.question.Question;
+import model.Question;
 import model.sprite.GameMap;
 import model.sprite.IGameStartView;
 import model.sprite.LetterPool;

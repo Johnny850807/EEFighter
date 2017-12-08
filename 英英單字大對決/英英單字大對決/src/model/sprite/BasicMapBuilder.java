@@ -1,7 +1,5 @@
 package model.sprite;
 
-import model.factory.SpritePrototypeFactory;
-
 public class BasicMapBuilder implements MapBuilder {
 
 	private GameMap gameMap = new GameMap(17, 9);

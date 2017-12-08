@@ -1,4 +1,4 @@
-package model.factory;
+package model.sprite;
 
 import java.awt.Image;
 import java.io.File;
@@ -8,9 +8,6 @@ import java.util.Map;
 
 import javax.imageio.ImageIO;
 
-import model.sprite.PlayerSprite;
-import model.sprite.Sprite;
-import model.sprite.SpriteName;
 import model.sprite.Sprite.Direction;
 
 
