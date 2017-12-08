@@ -24,11 +24,11 @@ public class LetterManager {
 			public void run() {
 				while (true) {
 					try {
-						Thread.sleep(5);
+						Thread.sleep(1000);
 						Sprite sprite = letterPool.requireSprite();
 						Random random = new Random();
-						int x = random.nextInt(gameMap.getHeight());
-						int y = random.nextInt(gameMap.getWidth());
+						int x = random.nextInt(gameMap.getHeight()) * GameMap.ITEM_SIZE;
+						int y = random.nextInt(gameMap.getWidth()) * GameMap.ITEM_SIZE;
 						sprite.setXY(x, y);
 						letters.add(sprite);
 						eeFighter.onCreateLetter(letters);
