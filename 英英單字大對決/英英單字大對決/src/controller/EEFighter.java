@@ -41,6 +41,7 @@ public class EEFighter implements LetterCreateListener {
 		gameMap = mapDirector.buildMap();
 		questionManger = new QuestionManger(new WordXMLRepository("words"));
 		letterManager = new LetterManager(gameMap, this);
+		letterManager.createLetter();
 		createPlayers();
 	}
 	
