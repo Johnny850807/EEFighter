@@ -1,6 +1,6 @@
 package model.sprite;
 
 public interface ILetterPool {
-	Sprite requireReusable();
-	void relaseReusable(Sprite sprite);
+	Sprite requireSprite();
+	void relaseSprite(Sprite sprite);
 }

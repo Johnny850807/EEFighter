@@ -7,6 +7,9 @@ import model.factory.SpritePrototypeFactory;
 import model.question.Question;
 import model.question.QuestionManger;
 import model.sprite.GameMap;
+import model.sprite.LetterCreateListener;
+import model.sprite.LetterManager;
+import model.sprite.LetterPool;
 import model.sprite.MapDirector;
 import model.sprite.Sprite;
 import model.sprite.Sprite.Direction;
@@ -22,11 +25,12 @@ import ui.GameView;
 /**
  * @author Joanna (±i®ÑÞ±)
  */
-public class EEFighter {
+public class EEFighter implements LetterCreateListener {
 
 	private GameView gameView;
 	private MapDirector mapDirector;
 	private GameMap gameMap;
+	private LetterManager letterManager;
 	private QuestionManger questionManger;
 	private List<Sprite> letters = new ArrayList<Sprite>();
 	private Sprite player1;
@@ -36,6 +40,7 @@ public class EEFighter {
 		this.mapDirector = mapDirector;
 		gameMap = mapDirector.buildMap();
 		questionManger = new QuestionManger(new WordXMLRepository("words"));
+		letterManager = new LetterManager(gameMap, this);
 		createPlayers();
 	}
 	
@@ -84,5 +89,10 @@ public class EEFighter {
 	
 	public boolean isOver() {
 		return false;
+	}
+
+	@Override
+	public void onCreateLetter(List<Sprite> letters) {
+		this.letters = letters;
 	}
 }

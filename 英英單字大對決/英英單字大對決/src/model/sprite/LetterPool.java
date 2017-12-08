@@ -63,7 +63,7 @@ public class LetterPool implements ILetterPool {
 	}
 
 	@Override
-	public Sprite requireReusable() {
+	public Sprite requireSprite() {
 		if (availableLetters.size() > 0) {
 			Sprite sprite = availableLetters.get(0);
 			availableLetters.remove(0);
@@ -74,7 +74,7 @@ public class LetterPool implements ILetterPool {
 	}
 
 	@Override
-	public void relaseReusable(Sprite sprite) {
+	public void relaseSprite(Sprite sprite) {
 			inUseLetters.remove(sprite);
 			availableLetters.add(sprite);
 	}
