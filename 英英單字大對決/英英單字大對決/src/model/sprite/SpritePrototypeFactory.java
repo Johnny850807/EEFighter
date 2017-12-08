@@ -1,4 +1,4 @@
-package model.factory;
+package model.sprite;
 
 import java.awt.Image;
 import java.io.File;
@@ -8,15 +8,11 @@ import java.util.Map;
 
 import javax.imageio.ImageIO;
 
-import model.sprite.PlayerSprite;
-import model.sprite.Sprite;
-import model.sprite.SpriteName;
 import model.sprite.Sprite.Direction;
 
 
 /**
  * @author Lin (林宗億)
- * TODO 別亂開 package 移回去model.sprite
  */
 public class SpritePrototypeFactory {
 	private static SpritePrototypeFactory instance = null;

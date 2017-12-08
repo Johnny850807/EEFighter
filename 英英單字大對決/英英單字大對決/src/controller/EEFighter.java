@@ -3,7 +3,6 @@ package controller;
 import java.util.ArrayList;
 import java.util.List;
 
-import model.factory.SpritePrototypeFactory;
 import model.question.Question;
 import model.question.QuestionManger;
 import model.sprite.GameMap;
@@ -19,6 +18,7 @@ import model.words.Word;
 import model.words.WordRepository;
 import model.words.WordXMLRepository;
 import model.sprite.SpriteName;
+import model.sprite.SpritePrototypeFactory;
 import ui.GameView;
 
 

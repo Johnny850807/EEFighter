@@ -4,15 +4,12 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import model.factory.SpritePrototypeFactory;
-
 public class LetterPool implements ILetterPool {
 
 	private static LetterPool instance = null;
 	private List<Sprite> availableLetters;
 	private List<Sprite> inUseLetters;
 	private SpritePrototypeFactory prototypeFactory = SpritePrototypeFactory.getInstance();
-	private static final byte[] lock = new byte[] {};
 
 	public LetterPool() {
 		availableLetters = new ArrayList<>();
