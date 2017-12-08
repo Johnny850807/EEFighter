@@ -1,29 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <EnglishWarehouse>
 
-
-
-
-
-
-
-
-<Word name="view">
-        <SoundPath>D:\NativeGit\OOD-Design-Pattern-Course\英英單字大對決\英英單字大對決\sounds\vocabulary\view.wav</SoundPath>
-        <Definition partOfSpeech="v">see or watch</Definition>
-        <Definition partOfSpeech="v">look at carefully; study mentally</Definition>
-        <Definition partOfSpeech="v">deem to be</Definition>
-        <Definition partOfSpeech="n">the visual percept of a region</Definition>
-        <Definition partOfSpeech="n">outward appearance</Definition>
-        <Definition partOfSpeech="n">the act of looking or seeing or observing</Definition>
-        <Definition partOfSpeech="n">the range of the eye</Definition>
-        <Definition partOfSpeech="n">graphic art consisting of the graphic or photographic representation of a visual percept</Definition>
-        <Definition partOfSpeech="n">a way of regarding situations or topics etc.</Definition>
-        <Definition partOfSpeech="n">a personal belief or judgment that is not founded on proof or certainty</Definition>
-        <Definition partOfSpeech="n">a message expressing a belief about something; the expression of a belief that is held with confidence but not substantiated by positive knowledge or proof</Definition>
-        <Definition partOfSpeech="n">purpose; the phrase `with a view to' means `with the intention of' or `for the purpose of'</Definition>
-        <Definition partOfSpeech="n">the range of interest or activity that can be anticipated</Definition>
-    </Word>
 <Word name="egg">
         <SoundPath>D:\NativeGit\OOD-Design-Pattern-Course\英英單字大對決\英英單字大對決\sounds\vocabulary\egg.wav</SoundPath>
         <Definition partOfSpeech="v">throw eggs at</Definition>
