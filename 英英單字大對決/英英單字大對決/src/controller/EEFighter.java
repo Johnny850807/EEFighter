@@ -99,7 +99,7 @@ public class EEFighter implements LetterCreateListener {
 		if (letter == null)
 			gameView.onLetterPopedFailed(player);
 		player.removeLetter(letter);
-		gameView.onLetterPopedSuccessfuly(player, letter);
+		gameView.onLetterPopedSuccessfuly(player, player.getLetters());
 	}
 	
 	public void isLetterCollide(PlayerSprite player) {
@@ -107,7 +107,7 @@ public class EEFighter implements LetterCreateListener {
 			if (letter.isCollisions(player)) {
 				player.addLetter(letter);
 				letterManager.releaseLettter(letter);
-				gameView.onLetterGotten(player, letter);
+				gameView.onLetterGotten(player, player.getLetters());
 			}	
 	}
 	

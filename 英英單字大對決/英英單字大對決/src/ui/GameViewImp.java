@@ -253,7 +253,7 @@ public class GameViewImp extends JPanel implements GameView, KeyListener {
 	}
 
 	@Override
-	public void onLetterPopedSuccessfuly(Sprite player, Sprite letter) {
+	public void onLetterPopedSuccessfuly(Sprite player, List<Sprite> letter) {
 		// TODO Auto-generated method stub
 		
 	}
@@ -265,7 +265,7 @@ public class GameViewImp extends JPanel implements GameView, KeyListener {
 	}
 
 	@Override
-	public void onLetterGotten(Sprite player, Sprite letter) {
+	public void onLetterGotten(Sprite player, List<Sprite> letter) {
 		// TODO Auto-generated method stub
 		
 	}
