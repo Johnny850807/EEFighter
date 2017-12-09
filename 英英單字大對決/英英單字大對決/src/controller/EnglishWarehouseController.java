@@ -48,7 +48,7 @@ public class EnglishWarehouseController {
 					word.setSoundPath(path);
 					wordRepository.addWord(word);
 					englishWarehouseView.onWordCreateSuccessfully(word);
-				} catch (Exception e) {
+				} catch (Exception e) {  //TODO 不要直接處理Exception 仔細去查看 每個例外被拋出的原因 仔細思考 哪些是可以一起處理的 哪些要分開
 					e.printStackTrace();
 					englishWarehouseView.onWordCreateFailed(wordtxt, e); 
 				}
