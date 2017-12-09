@@ -90,23 +90,23 @@ public class EEFighter implements LetterCreateListener {
 	}
 
 	@Override
-	public void onCreateLetter(List<Sprite> letters) {
+	public void onCreateLetters(List<Sprite> letters) {
 		this.letters = letters;
 	}
 	
 	public void popLetter(PlayerSprite player) {
 		Sprite letter = player.getLastLetter();
 		if (letter == null)
-			gameView.onLetterPopedFailed(player);
+			gameView.onLetterPoppedFailed(player);
 		player.removeLetter(letter);
-		gameView.onLetterPopedSuccessfuly(player, player.getLetters());
+		gameView.onLetterPoppedSuccessfuly(player, player.getLetters());
 	}
 	
-	public void isLetterCollide(PlayerSprite player) {
+	public void isLetterCollided(PlayerSprite player) {
 		for (Sprite letter : letters)
 			if (letter.isCollisions(player)) {
 				player.addLetter(letter);
-				letterManager.releaseLettter(letter);
+				letterManager.releaseLetter(letter);
 				gameView.onLetterGotten(player, player.getLetters());
 			}	
 	}

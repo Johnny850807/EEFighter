@@ -1,13 +1,10 @@
 package model.sprite;
 
 import java.awt.Image;
-import java.io.File;
-import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
 import ui.GameView;
-import javax.imageio.ImageIO;
 
 /*TODO
  * 提供 isConflict(Sprite sprite) 函數  判斷兩sprite是否有碰撞發生 回傳 boolean

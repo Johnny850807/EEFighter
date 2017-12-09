@@ -5,9 +5,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import model.sprite.Sprite.Direction;
-import ui.GameView;
-
 public class PlayerSprite extends Sprite{
 	
 	private List<Sprite> letters = new ArrayList<>();  //TODO 換更適合的資料結構
