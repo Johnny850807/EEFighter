@@ -226,5 +226,5 @@ public class Sprite implements Cloneable {
 	public enum Status {
 		MOVE, STOP;
 	}
-
+	
 }

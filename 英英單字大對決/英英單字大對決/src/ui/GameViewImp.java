@@ -24,8 +24,8 @@ public class GameViewImp extends JPanel implements GameView, KeyListener {
 
 	private GameMap gameMap;
 	private EEFighter eeFighter;
-	private Sprite spriteP1;
-	private Sprite spriteP2;
+	private PlayerSprite spriteP1;
+	private PlayerSprite spriteP2;
 	private List<Sprite> letters;
 	private IGameStartView gameStartView;
 
@@ -102,7 +102,7 @@ public class GameViewImp extends JPanel implements GameView, KeyListener {
 	}
 
 	@Override
-	public void onDraw(GameMap gameMap, List<Sprite> letters, Sprite player1, Sprite player2) {
+	public void onDraw(GameMap gameMap, List<Sprite> letters, PlayerSprite player1, PlayerSprite player2) {
 		this.gameMap = gameMap;
 		this.letters = letters;
 		this.spriteP1 = player1;

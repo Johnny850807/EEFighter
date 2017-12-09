@@ -4,12 +4,13 @@ import java.util.List;
 
 import model.Question;
 import model.sprite.GameMap;
+import model.sprite.PlayerSprite;
 import model.sprite.Sprite;
 import model.sprite.Sprite.Direction;
 import model.sprite.Sprite.Status;
 
 public interface GameView {
-	void onDraw(GameMap gameMap, List<Sprite> letters, Sprite player1, Sprite player2);
+	void onDraw(GameMap gameMap, List<Sprite> letters, PlayerSprite player1, PlayerSprite player2);
 	void onGameStarted();
 	void onGameOver();
 	void onGameClose();

@@ -30,8 +30,8 @@ public class EEFighter implements LetterCreateListener {
 	private LetterManager letterManager;
 	private QuestionManger questionManger;
 	private List<Sprite> letters = new ArrayList<Sprite>();
-	private Sprite player1;
-	private Sprite player2;
+	private PlayerSprite player1;
+	private PlayerSprite player2;
 	
 	public EEFighter(MapDirector mapDirector) {
 		this.mapDirector = mapDirector;
@@ -50,8 +50,8 @@ public class EEFighter implements LetterCreateListener {
 	
 	private void createPlayers() {
 		SpritePrototypeFactory spritePrototypeFactory = SpritePrototypeFactory.getInstance();
-		player1 = spritePrototypeFactory.createSprite(SpriteName.PLAYER);
-		player2 = spritePrototypeFactory.createSprite(SpriteName.PLAYER);
+		player1 = (PlayerSprite) spritePrototypeFactory.createSprite(SpriteName.PLAYER);
+		player2 = (PlayerSprite) spritePrototypeFactory.createSprite(SpriteName.PLAYER);
 		player1.setGameMap(gameMap);
 		player2.setGameMap(gameMap);
 		player1.setXY(128, 128);
@@ -95,11 +95,8 @@ public class EEFighter implements LetterCreateListener {
 		this.letters = letters;
 	}
 	
-	public void popLetter(Sprite player) {
-		Sprite letter = player.getLastLetter();
-		if (letter == null)
-			gameView.onLetterPoppedFailed(player);
-		player.removeLetter(letter);
+	public void popLetter(PlayerSprite player) {
+		player.popLetter();
 		gameView.onLetterPoppedSuccessfuly(player, player.getLetters());
 	}
 	
