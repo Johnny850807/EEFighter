@@ -58,6 +58,9 @@ public class PlayerSprite extends Sprite{
 	}
 	
 	public List<Sprite> getLetters() {
+		for (Sprite sprite : letters) {
+			System.out.println(sprite.spriteName.toString());
+		}
 		return letters;
 	}
 	

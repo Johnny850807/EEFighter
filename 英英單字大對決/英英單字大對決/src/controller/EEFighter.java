@@ -66,6 +66,8 @@ public class EEFighter implements LetterCreateListener {
 						Thread.sleep(17);
 						player1.update();
 						player2.update();
+						isLetterCollided(player1);
+						isLetterCollided(player2);
 						gameView.onDraw(gameMap, letters, player1, player2);
 					} catch (InterruptedException e) {
 						e.printStackTrace();
@@ -75,10 +77,10 @@ public class EEFighter implements LetterCreateListener {
 		}.start();
 	}	
 	
-	public void move(Sprite sprite, Direction direction, Status status) {
-		sprite.setDirection(direction);
-		sprite.setStatus(status);
-		gameView.onMovedSuccessfuly(sprite, direction, status);
+	public void move(PlayerSprite player, Direction direction, Status status) {
+		player.setDirection(direction);
+		player.setStatus(status);
+		gameView.onMovedSuccessfuly(player, direction, status);
 	}
 	
 	public void nextQuestion() {
@@ -101,11 +103,17 @@ public class EEFighter implements LetterCreateListener {
 	}
 	
 	public void isLetterCollided(PlayerSprite player) {
-		for (Sprite letter : letters)
-			if (letter.isCollisions(player)) {
-				player.addLetter(letter);
-				gameView.onLetterGotten(player, player.getLetters());
-			}	
+		Sprite letter = null;
+		for (Sprite l : letters)
+			if (l.isCollisions(player)) {
+				player.addLetter(l);
+				letter = l;
+				break;
+			}
+		if (letter != null) {
+			letters.remove(letter);
+			gameView.onLetterGotten(player, player.getLetters());
+		}
 	}
 	
 }
