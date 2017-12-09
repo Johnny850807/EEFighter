@@ -1,6 +1,8 @@
 package model.sprite;
 
+import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 
 /*
  * TODO ¹ê§@ Composite pattern ½Æ¼g  update() ¸ò  isConflict(sprite) ¨ç¼Æ
@@ -43,9 +45,20 @@ public class GameMap extends Sprite implements Iterable<Sprite> {
 	}
 	
 	@Override
-	public synchronized boolean isCollisions() {
-		// TODO Auto-generated method stub
-		return super.isCollisions();
+	public synchronized boolean isCollisions(Sprite sprite) {
+		for (Sprite terrain : getAllTerrains())
+			if (sprite.isCollisions(sprite))
+				return true;
+		return false;
+	}
+	
+	public List<Sprite> getAllTerrains() {
+		List<Sprite> terrains = new ArrayList<>();
+		for (int i = 0; i < HEIGHT; i++)
+			for (int j = 0; j < WIDTH; j++)
+				if (blockSprites[i][j].getSpriteName() == SpriteName.TERRAIN)
+					terrains.add(blockSprites[i][j]);
+		return terrains;
 	}
 	
 	public boolean outOfMap(Sprite sprite) {

@@ -60,4 +60,7 @@ public class LetterManager {
 		return gameMap.getSprite(x, y).getSpriteName() == SpriteName.GRASS;
 	}
 	
+	public void releaseLettter(Sprite sprite) {
+		letterPool.releaseSprite(sprite);
+	}
 }
