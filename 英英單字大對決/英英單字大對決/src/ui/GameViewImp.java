@@ -8,15 +8,11 @@ import java.util.List;
 
 import javax.swing.JPanel;
 
-import org.omg.CORBA.PRIVATE_MEMBER;
-
 import controller.EEFighter;
 import model.Question;
 import model.sprite.GameMap;
 import model.sprite.IGameStartView;
-import model.sprite.LetterPool;
 import model.sprite.Sprite;
-import model.sprite.SpriteName;
 import model.sprite.Sprite.Direction;
 import model.sprite.Sprite.Status;
 
