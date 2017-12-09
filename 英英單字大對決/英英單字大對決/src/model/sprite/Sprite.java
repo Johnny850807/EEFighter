@@ -190,14 +190,22 @@ public class Sprite implements Cloneable {
 	}
 	
 	public synchronized boolean isCollisions(Sprite sprite) {
-		for (int i = sprite.getBiasWithX(); i < sprite.getBiasWithX() + sprite.getBodyWidth(); i++) 
-			for (int j = getBiasWithX(); i < getBiasWithX() + getBodyWidth(); j++) 
-				if (i == j)
-					return true;
-		for (int i = sprite.getBiasWithY(); i < sprite.getBiasWithY() + sprite.getBodyWidth(); i++) 
-			for (int j = getBiasWithY(); i < getBiasWithY() + getBodyWidth(); j++) 
-				if (i == j)
-					return true;
+		int xStartSelf = getX() + getBiasWithX();
+		int yStartSelf = getY() + getBiasWithY();
+		int xEndSelf = xStartSelf + getBodyWidth();
+		int yEndSelf = yStartSelf + getBodyWidth();
+		int xStartOther = sprite.getX() + sprite.getBiasWithX();
+		int yStartOther = sprite.getY() + sprite.getBiasWithY();
+		int xEndOther = xStartOther + sprite.getBodyWidth();
+		int yEndOther = yStartOther + sprite.getBodyWidth();
+		if (xStartSelf < xStartOther && xStartOther < xEndSelf && yStartSelf < yStartOther && yStartOther < yEndSelf) 
+			return true;
+		if (xStartSelf < xStartOther && xStartOther < xEndSelf && yStartSelf < yEndOther && yEndOther < yEndSelf) 
+			return true;
+		if (xStartSelf < xEndOther && xEndOther < xEndSelf && yStartSelf < yStartOther && yStartOther < yEndSelf) 
+			return true;
+		if (xStartSelf < xEndOther && xEndOther < xEndSelf && yStartSelf < yEndOther && yEndOther < yEndSelf) 
+			return true;
 		return false;
 	}
 
