@@ -5,11 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import model.sprite.Sprite.Direction;
-import ui.GameView;
-
 public class PlayerSprite extends Sprite{
-	
 	private List<Sprite> letters = new ArrayList<>();  //TODO 換更適合的資料結構
 	
 	public PlayerSprite(int w, int h, int biasWithX, int biasWithY, int bodyHeight, int bodyLength,
@@ -44,7 +40,12 @@ public class PlayerSprite extends Sprite{
 	}
 	
 	private boolean moveFailed(GameMap gameMap){
-		return gameMap.outOfMap(this) || gameMap.isCollisions(this);
+		if (gameMap.outOfMap(this))
+			return true;
+		for (Sprite terrain : gameMap.getAllTerrains()) 
+			if (terrain.isCollisions(this))
+				return true;
+		return false;
 	}
 
 	public void addLetter(Sprite sprite) {

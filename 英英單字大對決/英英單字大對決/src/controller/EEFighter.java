@@ -7,8 +7,8 @@ import model.QuestionManger;
 import model.sprite.GameMap;
 import model.sprite.LetterCreateListener;
 import model.sprite.LetterManager;
+import model.sprite.LetterPool;
 import model.sprite.MapDirector;
-import model.sprite.PlayerSprite;
 import model.sprite.Sprite;
 import model.sprite.Sprite.Direction;
 import model.sprite.Sprite.Status;
@@ -22,7 +22,6 @@ import ui.GameView;
  * @author Joanna (±i®ÑÞ±)
  */
 public class EEFighter implements LetterCreateListener {
-
 	private GameView gameView;
 	private MapDirector mapDirector;
 	private GameMap gameMap;
@@ -36,7 +35,7 @@ public class EEFighter implements LetterCreateListener {
 		this.mapDirector = mapDirector;
 		gameMap = mapDirector.buildMap();
 		questionManger = new QuestionManger(new WordXMLRepository("words"));
-		letterManager = new LetterManager(gameMap);
+		letterManager = new LetterManager(gameMap, new LetterPool());
 		letterManager.setLetterCreateListener(this);
 		createPlayers();
 	}
@@ -53,8 +52,8 @@ public class EEFighter implements LetterCreateListener {
 		player2 = spritePrototypeFactory.createSprite(SpriteName.PLAYER);
 		player1.setGameMap(gameMap);
 		player2.setGameMap(gameMap);
-		player1.setXY(130, 130);
-		player2.setXY(258, 130);
+		player1.setXY(128, 128);
+		player2.setXY(256, 128);
 	}
 	
 	public void startGame() {
@@ -94,7 +93,7 @@ public class EEFighter implements LetterCreateListener {
 		this.letters = letters;
 	}
 	
-	public void popLetter(PlayerSprite player) {
+	public void popLetter(Sprite player) {
 		Sprite letter = player.getLastLetter();
 		if (letter == null)
 			gameView.onLetterPopedFailed(player);
@@ -102,7 +101,7 @@ public class EEFighter implements LetterCreateListener {
 		gameView.onLetterPopedSuccessfuly(player, player.getLetters());
 	}
 	
-	public void isLetterCollide(PlayerSprite player) {
+	public void isLetterCollide(Sprite player) {
 		for (Sprite letter : letters)
 			if (letter.isCollisions(player)) {
 				player.addLetter(letter);

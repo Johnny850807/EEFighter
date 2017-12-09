@@ -1,13 +1,11 @@
 package model.sprite;
 
 import java.awt.Image;
-import java.io.File;
-import java.io.IOException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import ui.GameView;
-import javax.imageio.ImageIO;
 
 /*TODO
  * 提供 isConflict(Sprite sprite) 函數  判斷兩sprite是否有碰撞發生 回傳 boolean
@@ -174,15 +172,39 @@ public class Sprite implements Cloneable {
 		//do nothing as default
 	}
 	
+	public void addLetter(Sprite sprite) {
+		
+	}
+	
+	public void removeLetter(Sprite sprite) {
+		
+	}
+	
+	public Sprite getLastLetter() {
+		return null;
+	}
+	
+	public List<Sprite> getLetters() {
+		return null;
+	}
+	
 	public synchronized boolean isCollisions(Sprite sprite) {
-		for (int i = sprite.getBiasWithX(); i < sprite.getBiasWithX() + sprite.getBodyWidth(); i++) 
-			for (int j = getBiasWithX(); i < getBiasWithX() + getBodyWidth(); j++) 
-				if (i == j)
-					return true;
-		for (int i = sprite.getBiasWithY(); i < sprite.getBiasWithY() + sprite.getBodyWidth(); i++) 
-			for (int j = getBiasWithY(); i < getBiasWithY() + getBodyWidth(); j++) 
-				if (i == j)
-					return true;
+		int xStartSelf = getX() + getBiasWithX();
+		int yStartSelf = getY() + getBiasWithY();
+		int xEndSelf = xStartSelf + getBodyWidth();
+		int yEndSelf = yStartSelf + getBodyWidth();
+		int xStartOther = sprite.getX() + sprite.getBiasWithX();
+		int yStartOther = sprite.getY() + sprite.getBiasWithY();
+		int xEndOther = xStartOther + sprite.getBodyWidth();
+		int yEndOther = yStartOther + sprite.getBodyWidth();
+		if (xStartSelf < xStartOther && xStartOther < xEndSelf && yStartSelf < yStartOther && yStartOther < yEndSelf) 
+			return true;
+		if (xStartSelf < xStartOther && xStartOther < xEndSelf && yStartSelf < yEndOther && yEndOther < yEndSelf) 
+			return true;
+		if (xStartSelf < xEndOther && xEndOther < xEndSelf && yStartSelf < yStartOther && yStartOther < yEndSelf) 
+			return true;
+		if (xStartSelf < xEndOther && xEndOther < xEndSelf && yStartSelf < yEndOther && yEndOther < yEndSelf) 
+			return true;
 		return false;
 	}
 
