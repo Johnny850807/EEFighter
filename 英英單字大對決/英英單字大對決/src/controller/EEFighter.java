@@ -7,6 +7,7 @@ import model.QuestionManger;
 import model.sprite.GameMap;
 import model.sprite.LetterCreateListener;
 import model.sprite.LetterManager;
+import model.sprite.LetterPool;
 import model.sprite.MapDirector;
 import model.sprite.PlayerSprite;
 import model.sprite.Sprite;
@@ -36,7 +37,7 @@ public class EEFighter implements LetterCreateListener {
 		this.mapDirector = mapDirector;
 		gameMap = mapDirector.buildMap();
 		questionManger = new QuestionManger(new WordXMLRepository("words"));
-		letterManager = new LetterManager(gameMap);
+		letterManager = new LetterManager(gameMap, new LetterPool());
 		letterManager.setLetterCreateListener(this);
 		createPlayers();
 	}
@@ -94,7 +95,7 @@ public class EEFighter implements LetterCreateListener {
 		this.letters = letters;
 	}
 	
-	public void popLetter(PlayerSprite player) {
+	public void popLetter(Sprite player) {
 		Sprite letter = player.getLastLetter();
 		if (letter == null)
 			gameView.onLetterPoppedFailed(player);

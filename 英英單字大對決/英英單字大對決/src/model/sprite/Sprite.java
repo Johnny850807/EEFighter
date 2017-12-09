@@ -2,6 +2,7 @@ package model.sprite;
 
 import java.awt.Image;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import ui.GameView;
@@ -169,6 +170,20 @@ public class Sprite implements Cloneable {
 
 	public synchronized void update() {
 		//do nothing as default
+	}
+	
+	public void addLetter(Sprite sprite) {
+	}
+	
+	public void removeLetter(Sprite sprite) {
+	}
+	
+	public Sprite getLastLetter() {
+		return null;
+	}
+	
+	public List<Sprite> getLetters() {
+		return null;
 	}
 	
 	public synchronized boolean isCollisions(Sprite sprite) {

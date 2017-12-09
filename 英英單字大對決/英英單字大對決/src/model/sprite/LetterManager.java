@@ -11,8 +11,8 @@ public class LetterManager {
 	private ILetterPool letterPool;
 	private GameMap gameMap;
 	
-	public LetterManager(GameMap gameMap) {
-		letterPool = LetterPool.getInstance();
+	public LetterManager(GameMap gameMap, ILetterPool letterPool) {
+		this.letterPool = letterPool;
 		this.gameMap = gameMap;
 	}
 	
@@ -63,4 +63,5 @@ public class LetterManager {
 	public void releaseLetter(Sprite sprite) {
 		letterPool.releaseSprite(sprite);
 	}
+	
 }
