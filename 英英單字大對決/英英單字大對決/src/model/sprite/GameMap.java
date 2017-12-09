@@ -47,7 +47,7 @@ public class GameMap extends Sprite implements Iterable<Sprite> {
 	@Override
 	public synchronized boolean isCollisions(Sprite sprite) {
 		for (Sprite terrain : getAllTerrains())
-			if (sprite.isCollisions(sprite))
+			if (sprite.isCollisions(terrain))
 				return true;
 		return false;
 	}
