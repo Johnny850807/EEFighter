@@ -28,7 +28,7 @@ public class LetterManager {
 						Thread.sleep(500);
 						Sprite sprite = getLetter();
 						letters.add(sprite);
-						letterCreateListener.onCreateLetter(letters);
+						letterCreateListener.onCreateLetters(letters);
 					} catch (InterruptedException e) {
 						e.printStackTrace();
 					}
@@ -60,7 +60,7 @@ public class LetterManager {
 		return gameMap.getSprite(x, y).getSpriteName() == SpriteName.GRASS;
 	}
 	
-	public void releaseLettter(Sprite sprite) {
+	public void releaseLetter(Sprite sprite) {
 		letterPool.releaseSprite(sprite);
 	}
 	

@@ -1,12 +1,13 @@
 package model.sprite;
 
 import java.awt.Image;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import java.util.Stack;
+
 public class PlayerSprite extends Sprite{
-	private List<Sprite> letters = new ArrayList<>();  //TODO 換更適合的資料結構
+	private Stack<Sprite> letters = new Stack<Sprite>();
 	
 	public PlayerSprite(int w, int h, int biasWithX, int biasWithY, int bodyHeight, int bodyLength,
 			SpriteName spriteName, Map<Direction, Image> imageMap) {
@@ -49,17 +50,11 @@ public class PlayerSprite extends Sprite{
 	}
 
 	public void addLetter(Sprite sprite) {
-		letters.add(sprite);
+		letters.push(sprite);
 	}
 	
-	public void removeLetter(Sprite sprite) {
-		letters.remove(sprite);
-	}
-	
-	public Sprite getLastLetter() {
-		if (!letters.isEmpty()) 
-			return letters.get(letters.size() - 1);
-		return null;
+	public void popLetter() {
+		letters.pop();
 	}
 	
 	public List<Sprite> getLetters() {

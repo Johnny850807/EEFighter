@@ -9,6 +9,7 @@ import model.sprite.LetterCreateListener;
 import model.sprite.LetterManager;
 import model.sprite.LetterPool;
 import model.sprite.MapDirector;
+import model.sprite.PlayerSprite;
 import model.sprite.Sprite;
 import model.sprite.Sprite.Direction;
 import model.sprite.Sprite.Status;
@@ -28,8 +29,8 @@ public class EEFighter implements LetterCreateListener {
 	private LetterManager letterManager;
 	private QuestionManger questionManger;
 	private List<Sprite> letters = new ArrayList<Sprite>();
-	private Sprite player1;
-	private Sprite player2;
+	private PlayerSprite player1;
+	private PlayerSprite player2;
 	
 	public EEFighter(MapDirector mapDirector) {
 		this.mapDirector = mapDirector;
@@ -48,8 +49,8 @@ public class EEFighter implements LetterCreateListener {
 	
 	private void createPlayers() {
 		SpritePrototypeFactory spritePrototypeFactory = SpritePrototypeFactory.getInstance();
-		player1 = spritePrototypeFactory.createSprite(SpriteName.PLAYER);
-		player2 = spritePrototypeFactory.createSprite(SpriteName.PLAYER);
+		player1 = (PlayerSprite) spritePrototypeFactory.createSprite(SpriteName.PLAYER);
+		player2 = (PlayerSprite) spritePrototypeFactory.createSprite(SpriteName.PLAYER);
 		player1.setGameMap(gameMap);
 		player2.setGameMap(gameMap);
 		player1.setXY(128, 128);
@@ -89,23 +90,20 @@ public class EEFighter implements LetterCreateListener {
 	}
 
 	@Override
-	public void onCreateLetter(List<Sprite> letters) {
+	public void onCreateLetters(List<Sprite> letters) {
 		this.letters = letters;
 	}
 	
-	public void popLetter(Sprite player) {
-		Sprite letter = player.getLastLetter();
-		if (letter == null)
-			gameView.onLetterPopedFailed(player);
-		player.removeLetter(letter);
-		gameView.onLetterPopedSuccessfuly(player, player.getLetters());
+	public void popLetter(PlayerSprite player) {
+		player.popLetter();
+		gameView.onLetterPoppedSuccessfuly(player, player.getLetters());
 	}
 	
-	public void isLetterCollide(Sprite player) {
+	public void isLetterCollided(PlayerSprite player) {
 		for (Sprite letter : letters)
 			if (letter.isCollisions(player)) {
 				player.addLetter(letter);
-				letterManager.releaseLettter(letter);
+				letterManager.releaseLetter(letter);
 				gameView.onLetterGotten(player, player.getLetters());
 			}	
 	}

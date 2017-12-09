@@ -12,6 +12,7 @@ import controller.EEFighter;
 import model.Question;
 import model.sprite.GameMap;
 import model.sprite.IGameStartView;
+import model.sprite.PlayerSprite;
 import model.sprite.Sprite;
 import model.sprite.Sprite.Direction;
 import model.sprite.Sprite.Status;
@@ -22,8 +23,8 @@ import model.sprite.Sprite.Status;
 public class GameViewImp extends JPanel implements GameView, KeyListener {
 	private GameMap gameMap;
 	private EEFighter eeFighter;
-	private Sprite spriteP1;
-	private Sprite spriteP2;
+	private PlayerSprite spriteP1;
+	private PlayerSprite spriteP2;
 	private List<Sprite> letters;
 	private IGameStartView gameStartView;
 
@@ -100,7 +101,7 @@ public class GameViewImp extends JPanel implements GameView, KeyListener {
 	}
 
 	@Override
-	public void onDraw(GameMap gameMap, List<Sprite> letters, Sprite player1, Sprite player2) {
+	public void onDraw(GameMap gameMap, List<Sprite> letters, PlayerSprite player1, PlayerSprite player2) {
 		this.gameMap = gameMap;
 		this.letters = letters;
 		this.spriteP1 = player1;
@@ -263,7 +264,7 @@ public class GameViewImp extends JPanel implements GameView, KeyListener {
 	}
 
 	@Override
-	public void onLetterPopedSuccessfuly(Sprite player, List<Sprite> letter) {
+	public void onLetterPoppedSuccessfuly(Sprite player, List<Sprite> letter) {
 		if (spriteP1 == player)
 			gameStartView.onPlayerPopedLetter("player1", letter);
 		else if (spriteP2 == player)
@@ -271,7 +272,7 @@ public class GameViewImp extends JPanel implements GameView, KeyListener {
 	}
 
 	@Override
-	public void onLetterPopedFailed(Sprite player) {
+	public void onLetterPoppedFailed(Sprite player) {
 		// TODO Auto-generated method stub
 	}
 
