@@ -252,4 +252,22 @@ public class GameViewImp extends JPanel implements GameView, KeyListener {
 		gameStartView.onNextQuestion(question);
 	}
 
+	@Override
+	public void onLetterPopedSuccessfuly(Sprite player, Sprite letter) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void onLetterPopedFailed(Sprite player) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void onLetterGotten(Sprite player, Sprite letter) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

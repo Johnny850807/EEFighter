@@ -8,6 +8,7 @@ import model.sprite.GameMap;
 import model.sprite.LetterCreateListener;
 import model.sprite.LetterManager;
 import model.sprite.MapDirector;
+import model.sprite.PlayerSprite;
 import model.sprite.Sprite;
 import model.sprite.Sprite.Direction;
 import model.sprite.Sprite.Status;
@@ -92,4 +93,22 @@ public class EEFighter implements LetterCreateListener {
 	public void onCreateLetter(List<Sprite> letters) {
 		this.letters = letters;
 	}
+	
+	public void popLetter(PlayerSprite player) {
+		Sprite letter = player.getLastLetter();
+		if (letter == null)
+			gameView.onLetterPopedFailed(player);
+		player.removeLetter(letter);
+		gameView.onLetterPopedSuccessfuly(player, letter);
+	}
+	
+	public void isLetterCollide(PlayerSprite player) {
+		for (Sprite letter : letters)
+			if (letter.isCollisions(player)) {
+				player.addLetter(letter);
+				letterManager.releaseLettter(letter);
+				gameView.onLetterGotten(player, letter);
+			}	
+	}
+	
 }

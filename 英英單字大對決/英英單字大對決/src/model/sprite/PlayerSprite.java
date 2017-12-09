@@ -1,12 +1,16 @@
 package model.sprite;
 
 import java.awt.Image;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 import model.sprite.Sprite.Direction;
 import ui.GameView;
 
 public class PlayerSprite extends Sprite{
+	
+	private List<Sprite> letters = new ArrayList<>();
 	
 	public PlayerSprite(int w, int h, int biasWithX, int biasWithY, int bodyHeight, int bodyLength,
 			SpriteName spriteName, Map<Direction, Image> imageMap) {
@@ -40,12 +44,30 @@ public class PlayerSprite extends Sprite{
 	}
 	
 	@Override
-	public synchronized boolean isCollisions() {
-		return super.isCollisions();
+	public synchronized boolean isCollisions(Sprite sprite) {
+		return super.isCollisions(sprite);
 	}
 	
 	private boolean moveFailed(GameMap gameMap){
 		return gameMap.outOfMap(this) || gameMap.getSprite(xy.getX() / gameMap.ITEM_SIZE, xy.getY() / gameMap.ITEM_SIZE).getSpriteName() == spriteName.TERRAIN;
 	}
 
+	public void addLetter(Sprite sprite) {
+		letters.add(sprite);
+	}
+	
+	public void removeLetter(Sprite sprite) {
+		letters.remove(sprite);
+	}
+	
+	public Sprite getLastLetter() {
+		if (!letters.isEmpty()) 
+			return letters.get(letters.size() - 1);
+		return null;
+	}
+	
+	public List<Sprite> getLetters() {
+		return letters;
+	}
+	
 }
