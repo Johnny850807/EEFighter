@@ -4,9 +4,6 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-/*
- * TODO ¹ê§@ Composite pattern ½Æ¼g  update() ¸ò  isConflict(sprite) ¨ç¼Æ
- */
 public class GameMap extends Sprite implements Iterable<Sprite> {
 	public static final int ITEM_SIZE = 64;
 	private final int WIDTH;

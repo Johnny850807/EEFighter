@@ -7,9 +7,6 @@ import java.util.Map;
 
 import ui.GameView;
 
-/*TODO
- * 提供 isConflict(Sprite sprite) 函數  判斷兩sprite是否有碰撞發生 回傳 boolean
- */
 public class Sprite implements Cloneable {
 	protected XY xy;
 	protected int w;

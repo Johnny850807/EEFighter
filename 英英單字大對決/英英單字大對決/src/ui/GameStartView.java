@@ -3,16 +3,13 @@ package ui;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
-import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Label;
-import java.awt.TextArea;
 import java.util.List;
 
 import javax.swing.JFrame;
-import javax.swing.JTextArea;
 
 import controller.EEFighter;
 import model.Question;
@@ -20,7 +17,6 @@ import model.sprite.BasicMapBuilder;
 import model.sprite.BasicMapDirector;
 import model.sprite.IGameStartView;
 import model.sprite.Sprite;
-import model.sprite.SpriteName;
 
 /**
  * @author Lin

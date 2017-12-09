@@ -7,7 +7,7 @@ import java.util.Stack;
 
 public class PlayerSprite extends Sprite{
 	
-	private Stack<Sprite> letters = new Stack<Sprite>();  //TODO 換更適合的資料結構
+	private Stack<Sprite> letters = new Stack<Sprite>();
 	
 	public PlayerSprite(int w, int h, int biasWithX, int biasWithY, int bodyHeight, int bodyLength,
 			SpriteName spriteName, Map<Direction, Image> imageMap) {
