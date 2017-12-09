@@ -92,4 +92,13 @@ public class EEFighter implements LetterCreateListener {
 	public void onCreateLetter(List<Sprite> letters) {
 		this.letters = letters;
 	}
+	
+	public void popLetter(Sprite player) {
+		
+	}
+	
+	public void isLetterCollide(Sprite player) {
+		
+	}
+	
 }
