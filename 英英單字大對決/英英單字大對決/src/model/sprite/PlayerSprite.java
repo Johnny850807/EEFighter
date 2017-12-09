@@ -44,7 +44,12 @@ public class PlayerSprite extends Sprite{
 	}
 	
 	private boolean moveFailed(GameMap gameMap){
-		return gameMap.outOfMap(this) || gameMap.isCollisions(this);
+		if (gameMap.outOfMap(this))
+			return true;
+		for (Sprite terrain : gameMap.getAllTerrains()) 
+			if (terrain.isCollisions(this))
+				return true;
+		return false;
 	}
 
 	public void addLetter(Sprite sprite) {

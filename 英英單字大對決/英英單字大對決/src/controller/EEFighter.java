@@ -53,8 +53,8 @@ public class EEFighter implements LetterCreateListener {
 		player2 = spritePrototypeFactory.createSprite(SpriteName.PLAYER);
 		player1.setGameMap(gameMap);
 		player2.setGameMap(gameMap);
-		player1.setXY(130, 130);
-		player2.setXY(258, 130);
+		player1.setXY(128, 128);
+		player2.setXY(256, 128);
 	}
 	
 	public void startGame() {
