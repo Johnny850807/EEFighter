@@ -23,7 +23,6 @@ import ui.GameView;
  * @author Joanna (±i®ÑÞ±)
  */
 public class EEFighter implements LetterCreateListener {
-
 	private GameView gameView;
 	private MapDirector mapDirector;
 	private GameMap gameMap;

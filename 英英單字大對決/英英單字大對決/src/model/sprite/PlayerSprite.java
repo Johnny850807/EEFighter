@@ -3,10 +3,10 @@ package model.sprite;
 import java.awt.Image;
 import java.util.List;
 import java.util.Map;
+
 import java.util.Stack;
 
 public class PlayerSprite extends Sprite{
-	
 	private Stack<Sprite> letters = new Stack<Sprite>();
 	
 	public PlayerSprite(int w, int h, int biasWithX, int biasWithY, int bodyHeight, int bodyLength,

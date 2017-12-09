@@ -170,9 +170,11 @@ public class Sprite implements Cloneable {
 	}
 	
 	public void addLetter(Sprite sprite) {
+		
 	}
 	
 	public void removeLetter(Sprite sprite) {
+		
 	}
 	
 	public Sprite getLastLetter() {

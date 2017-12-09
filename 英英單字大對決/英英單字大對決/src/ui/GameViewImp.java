@@ -21,7 +21,6 @@ import model.sprite.Sprite.Status;
  * @author Lin The game view where showing the playing game.
  */
 public class GameViewImp extends JPanel implements GameView, KeyListener {
-
 	private GameMap gameMap;
 	private EEFighter eeFighter;
 	private PlayerSprite spriteP1;
