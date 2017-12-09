@@ -66,6 +66,8 @@ public class EEFighter implements LetterCreateListener {
 						Thread.sleep(17);
 						player1.update();
 						player2.update();
+						isLetterCollided(player1);
+						isLetterCollided(player2);
 						gameView.onDraw(gameMap, letters, player1, player2);
 					} catch (InterruptedException e) {
 						e.printStackTrace();
@@ -100,12 +102,17 @@ public class EEFighter implements LetterCreateListener {
 	}
 	
 	public void isLetterCollided(PlayerSprite player) {
+		List<Sprite> removedSprites = new ArrayList<>();
 		for (Sprite letter : letters)
 			if (letter.isCollisions(player)) {
 				player.addLetter(letter);
+				player.getLetters().forEach(l -> System.out.print(l.getSpriteName()));
+				System.out.println();
 				letterManager.releaseLetter(letter);
+				removedSprites.add(letter);
 				gameView.onLetterGotten(player, player.getLetters());
 			}	
+		removedSprites.parallelStream().forEach(s -> letters.remove(s));
 	}
 	
 }
