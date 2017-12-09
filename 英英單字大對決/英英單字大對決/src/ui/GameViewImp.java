@@ -8,20 +8,17 @@ import java.util.List;
 
 import javax.swing.JPanel;
 
-import org.omg.CORBA.PRIVATE_MEMBER;
-
 import controller.EEFighter;
 import model.Question;
 import model.sprite.GameMap;
 import model.sprite.IGameStartView;
-import model.sprite.LetterPool;
+import model.sprite.PlayerSprite;
 import model.sprite.Sprite;
-import model.sprite.SpriteName;
 import model.sprite.Sprite.Direction;
 import model.sprite.Sprite.Status;
 
-/*
- * The game view where showing the playing game.
+/**
+ * @author Lin The game view where showing the playing game.
  */
 public class GameViewImp extends JPanel implements GameView, KeyListener {
 
@@ -58,30 +55,27 @@ public class GameViewImp extends JPanel implements GameView, KeyListener {
 		drawLetters(g);
 		drawBothPlayers(g);
 	}
-	
-	private void drawGameMap(Graphics g){
+
+	private void drawGameMap(Graphics g) {
 		if (gameMap != null)
 			for (Sprite sprite : gameMap)
 				drawSprite(g, sprite);
 	}
-	
-	private void drawLetters(Graphics g){
+
+	private void drawLetters(Graphics g) {
 		if (letters != null)
-			for (int i = 0 ; i < letters.size() ; i ++ )
+			for (int i = 0; i < letters.size(); i++)
 				drawSprite(g, letters.get(i));
 	}
-	
-	private void drawBothPlayers(Graphics g){
+
+	private void drawBothPlayers(Graphics g) {
 		if (spriteP1 != null)
 			drawSprite(g, spriteP1);
 		if (spriteP2 != null)
 			drawSprite(g, spriteP2);
 	}
-	
-	
-	
-	
-	private void drawSprite(Graphics g, Sprite sprite){
+
+	private void drawSprite(Graphics g, Sprite sprite) {
 		g.drawImage(sprite.getImage(sprite.getDirection()), sprite.getX(), sprite.getY(), null);
 	}
 
@@ -150,6 +144,9 @@ public class GameViewImp extends JPanel implements GameView, KeyListener {
 			keyInputP1 |= 0b00000001;
 			spriteP1.setDirection(Direction.EAST);
 			break;
+		case KeyEvent.VK_K:
+			keyInputP1 |= 0b00010000;
+			break;
 		case KeyEvent.VK_T:
 			keyInputP2 |= 0b00001000;
 			spriteP2.setDirection(Direction.NORTH);
@@ -166,26 +163,49 @@ public class GameViewImp extends JPanel implements GameView, KeyListener {
 			keyInputP2 |= 0b00000001;
 			spriteP2.setDirection(Direction.EAST);
 			break;
+		case KeyEvent.VK_Z:
+			keyInputP2 |= 0b00010000;
+			break;
 		default:
 			break;
 		}
 
-		if ((keyInputP1 & 0b001000) != 0)
+		if ((keyInputP1 & 0b001000) != 0) {
 			eeFighter.move(spriteP1, Direction.NORTH, Status.MOVE);
-		if ((keyInputP1 & 0b000100) != 0)
+			eeFighter.isLetterCollide(spriteP1);
+		}
+		if ((keyInputP1 & 0b000100) != 0) {
 			eeFighter.move(spriteP1, Direction.SOUTH, Status.MOVE);
-		if ((keyInputP1 & 0b000010) != 0)
+			eeFighter.isLetterCollide(spriteP1);
+		}
+		if ((keyInputP1 & 0b000010) != 0) {
 			eeFighter.move(spriteP1, Direction.WEST, Status.MOVE);
-		if ((keyInputP1 & 0b000001) != 0)
+			eeFighter.isLetterCollide(spriteP1);
+		}
+		if ((keyInputP1 & 0b000001) != 0) {
 			eeFighter.move(spriteP1, Direction.EAST, Status.MOVE);
-		if ((keyInputP2 & 0b001000) != 0)
+			eeFighter.isLetterCollide(spriteP1);
+		}
+		if ((keyInputP1 & 0b010000) != 0)
+			eeFighter.popLetter(spriteP1);
+		if ((keyInputP2 & 0b001000) != 0) {
 			eeFighter.move(spriteP2, Direction.NORTH, Status.MOVE);
-		if ((keyInputP2 & 0b000100) != 0)
+			eeFighter.isLetterCollide(spriteP2);
+		}
+		if ((keyInputP2 & 0b000100) != 0) {
 			eeFighter.move(spriteP2, Direction.SOUTH, Status.MOVE);
-		if ((keyInputP2 & 0b000010) != 0)
+			eeFighter.isLetterCollide(spriteP2);
+		}
+		if ((keyInputP2 & 0b000010) != 0) {
 			eeFighter.move(spriteP2, Direction.WEST, Status.MOVE);
-		if ((keyInputP2 & 0b000001) != 0)
+			eeFighter.isLetterCollide(spriteP2);
+		}
+		if ((keyInputP2 & 0b000001) != 0) {
 			eeFighter.move(spriteP2, Direction.EAST, Status.MOVE);
+			eeFighter.isLetterCollide(spriteP2);
+		}
+		if ((keyInputP2 & 0b010000) != 0)
+			eeFighter.popLetter(spriteP2);
 		repaint();
 	}
 
@@ -205,6 +225,9 @@ public class GameViewImp extends JPanel implements GameView, KeyListener {
 		case KeyEvent.VK_RIGHT:
 			keyInputP1 &= 0b11111110;
 			break;
+		case KeyEvent.VK_K:
+			keyInputP1 &= 0b11101111;
+			break;
 		case KeyEvent.VK_T:
 			keyInputP2 &= 0b11110111;
 			break;
@@ -216,6 +239,9 @@ public class GameViewImp extends JPanel implements GameView, KeyListener {
 			break;
 		case KeyEvent.VK_H:
 			keyInputP2 &= 0b11111110;
+			break;
+		case KeyEvent.VK_Z:
+			keyInputP2 &= 0b11101111;
 			break;
 		}
 
@@ -254,20 +280,24 @@ public class GameViewImp extends JPanel implements GameView, KeyListener {
 
 	@Override
 	public void onLetterPopedSuccessfuly(Sprite player, Sprite letter) {
-		// TODO Auto-generated method stub
-		
+		if (spriteP1.equals(player)) {
+			gameStartView.onPlayerPopedLetter("player1", letter);
+			System.out.println("pop");
+		} else if (spriteP2.equals(player))
+			gameStartView.onPlayerPopedLetter("player2", letter);
 	}
 
 	@Override
 	public void onLetterPopedFailed(Sprite player) {
 		// TODO Auto-generated method stub
-		
 	}
 
 	@Override
 	public void onLetterGotten(Sprite player, Sprite letter) {
-		// TODO Auto-generated method stub
-		
+		if (spriteP1.equals(player))
+			gameStartView.onPlayerEatLetter("player1", letter);
+		else if (spriteP2.equals(player))
+			gameStartView.onPlayerEatLetter("player2", letter);
 	}
 
 }

@@ -9,7 +9,6 @@ import java.util.List;
  */
 public class LetterPool implements ILetterPool {
 
-	private static LetterPool instance = null;
 	private List<Sprite> availableLetters;
 	private List<Sprite> inUseLetters;
 	private SpritePrototypeFactory prototypeFactory = SpritePrototypeFactory.getInstance();
@@ -19,12 +18,6 @@ public class LetterPool implements ILetterPool {
 		inUseLetters = new ArrayList<>();
 		createLetters();
 		shuffleLetters();
-	}
-
-	public static LetterPool getInstance() {
-		if (instance == null)
-			instance = new LetterPool();
-		return instance;
 	}
 
 	private void shuffleLetters() {

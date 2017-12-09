@@ -18,6 +18,13 @@ import model.Question;
 import model.sprite.BasicMapBuilder;
 import model.sprite.BasicMapDirector;
 import model.sprite.IGameStartView;
+import model.sprite.Sprite;
+import model.sprite.SpriteName;
+
+/**
+ * @author Lin
+ *
+ */
 
 public class GameStartView extends JFrame implements IGameStartView{
 
@@ -127,6 +134,26 @@ public class GameStartView extends JFrame implements IGameStartView{
 		gbc.gridwidth = width;
 		gbc.gridheight = height;
 		add(c, gbc);
+	}
+	
+	public interface IGameStartView {
+		void onNextQuestion(Question question);
+		void onPlayerEatLetter(Sprite sprite);
+	}
+
+	@Override
+	public void onPlayerEatLetter(String player, Sprite letter) {
+		String str1 = player1Lab.getText();
+		String str2 = player2Lab.getText();
+		if (player.equals("player1"))
+			player1Lab.setText(str1 + " " + letter.getSpriteName());
+		else if (player.equals("player2"))
+			player2Lab.setText(str2 + " " + letter.getSpriteName());
+	}
+
+	@Override
+	public void onPlayerPopedLetter(String player, Sprite letter) {
+		
 	}
 
 }
