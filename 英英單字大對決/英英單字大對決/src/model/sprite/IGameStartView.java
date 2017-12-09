@@ -1,6 +1,6 @@
 package model.sprite;
 
-import model.question.Question;
+import model.Question;
 
 public interface IGameStartView {
 	void onNextQuestion(Question question);

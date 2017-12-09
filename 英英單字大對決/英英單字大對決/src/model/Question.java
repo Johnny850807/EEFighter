@@ -1,4 +1,4 @@
-package model.question;
+package model;
 
 public class Question {
 	private String word;

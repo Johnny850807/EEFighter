@@ -2,7 +2,7 @@ package ui;
 
 import java.util.List;
 
-import model.question.Question;
+import model.Question;
 import model.sprite.GameMap;
 import model.sprite.Sprite;
 import model.sprite.Sprite.Direction;

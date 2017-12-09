@@ -1,7 +1,6 @@
 package utils;
 
 import java.util.Map;
-import java.util.jar.Attributes.Name;
 
 import javax.xml.soap.MessageFactory;
 import javax.xml.soap.MimeHeaders;
@@ -13,7 +12,6 @@ import javax.xml.soap.SOAPEnvelope;
 import javax.xml.soap.SOAPException;
 import javax.xml.soap.SOAPMessage;
 import javax.xml.soap.SOAPPart;
-import javax.xml.stream.events.Namespace;
 
 /**
  * @author Waterball
