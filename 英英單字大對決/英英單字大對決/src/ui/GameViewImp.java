@@ -170,42 +170,28 @@ public class GameViewImp extends JPanel implements GameView, KeyListener {
 			break;
 		}
 
-		if ((keyInputP1 & 0b001000) != 0) {
+		if ((keyInputP1 & 0b001000) != 0) 
 			eeFighter.move(spriteP1, Direction.NORTH, Status.MOVE);
-			eeFighter.isLetterCollide(spriteP1);
-		}
-		if ((keyInputP1 & 0b000100) != 0) {
+		if ((keyInputP1 & 0b000100) != 0) 
 			eeFighter.move(spriteP1, Direction.SOUTH, Status.MOVE);
-			eeFighter.isLetterCollide(spriteP1);
-		}
-		if ((keyInputP1 & 0b000010) != 0) {
+		if ((keyInputP1 & 0b000010) != 0) 
 			eeFighter.move(spriteP1, Direction.WEST, Status.MOVE);
-			eeFighter.isLetterCollide(spriteP1);
-		}
-		if ((keyInputP1 & 0b000001) != 0) {
+		if ((keyInputP1 & 0b000001) != 0) 
 			eeFighter.move(spriteP1, Direction.EAST, Status.MOVE);
-			eeFighter.isLetterCollide(spriteP1);
-		}
+		//eeFighter.isLetterCollide(spriteP1);
 		if ((keyInputP1 & 0b010000) != 0)
 			eeFighter.popLetter(spriteP1);
-		if ((keyInputP2 & 0b001000) != 0) {
+		if ((keyInputP2 & 0b001000) != 0) 
 			eeFighter.move(spriteP2, Direction.NORTH, Status.MOVE);
-			eeFighter.isLetterCollide(spriteP2);
-		}
-		if ((keyInputP2 & 0b000100) != 0) {
+		if ((keyInputP2 & 0b000100) != 0) 
 			eeFighter.move(spriteP2, Direction.SOUTH, Status.MOVE);
-			eeFighter.isLetterCollide(spriteP2);
-		}
-		if ((keyInputP2 & 0b000010) != 0) {
+		if ((keyInputP2 & 0b000010) != 0) 
 			eeFighter.move(spriteP2, Direction.WEST, Status.MOVE);
-			eeFighter.isLetterCollide(spriteP2);
-		}
-		if ((keyInputP2 & 0b000001) != 0) {
+		if ((keyInputP2 & 0b000001) != 0) 
 			eeFighter.move(spriteP2, Direction.EAST, Status.MOVE);
-			eeFighter.isLetterCollide(spriteP2);
-		}
 		if ((keyInputP2 & 0b010000) != 0)
 			eeFighter.popLetter(spriteP2);
+		//eeFighter.isLetterCollide(spriteP2);
 		repaint();
 	}
 
@@ -279,11 +265,10 @@ public class GameViewImp extends JPanel implements GameView, KeyListener {
 	}
 
 	@Override
-	public void onLetterPopedSuccessfuly(Sprite player, Sprite letter) {
-		if (spriteP1.equals(player)) {
+	public void onLetterPopedSuccessfuly(Sprite player, List<Sprite> letter) {
+		if (spriteP1 == player)
 			gameStartView.onPlayerPopedLetter("player1", letter);
-			System.out.println("pop");
-		} else if (spriteP2.equals(player))
+		else if (spriteP2 == player)
 			gameStartView.onPlayerPopedLetter("player2", letter);
 	}
 
@@ -293,10 +278,10 @@ public class GameViewImp extends JPanel implements GameView, KeyListener {
 	}
 
 	@Override
-	public void onLetterGotten(Sprite player, Sprite letter) {
-		if (spriteP1.equals(player))
+	public void onLetterGotten(Sprite player, List<Sprite> letter) {
+		if (spriteP1 == player)
 			gameStartView.onPlayerEatLetter("player1", letter);
-		else if (spriteP2.equals(player))
+		else if (spriteP2 == player)
 			gameStartView.onPlayerEatLetter("player2", letter);
 	}
 

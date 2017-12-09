@@ -10,7 +10,7 @@ import ui.GameView;
 
 public class PlayerSprite extends Sprite{
 	
-	private List<Sprite> letters = new ArrayList<>();
+	private List<Sprite> letters = new ArrayList<>();  //TODO 換更適合的資料結構
 	
 	public PlayerSprite(int w, int h, int biasWithX, int biasWithY, int bodyHeight, int bodyLength,
 			SpriteName spriteName, Map<Direction, Image> imageMap) {
@@ -43,13 +43,8 @@ public class PlayerSprite extends Sprite{
 		}
 	}
 	
-	@Override
-	public synchronized boolean isCollisions(Sprite sprite) {
-		return super.isCollisions(sprite);
-	}
-	
 	private boolean moveFailed(GameMap gameMap){
-		return gameMap.outOfMap(this) || gameMap.getSprite(xy.getX() / gameMap.ITEM_SIZE, xy.getY() / gameMap.ITEM_SIZE).getSpriteName() == spriteName.TERRAIN;
+		return gameMap.outOfMap(this) || gameMap.isCollisions(this);
 	}
 
 	public void addLetter(Sprite sprite) {

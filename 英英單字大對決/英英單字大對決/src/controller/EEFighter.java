@@ -54,8 +54,8 @@ public class EEFighter implements LetterCreateListener {
 		player2 = spritePrototypeFactory.createSprite(SpriteName.PLAYER);
 		player1.setGameMap(gameMap);
 		player2.setGameMap(gameMap);
-		player1.setXY(128, 128);
-		player2.setXY(256, 128);
+		player1.setXY(130, 130);
+		player2.setXY(258, 130);
 	}
 	
 	public void startGame() {
@@ -95,12 +95,12 @@ public class EEFighter implements LetterCreateListener {
 		this.letters = letters;
 	}
 	
-	public void popLetter(Sprite spriteP1) {
-		Sprite letter = spriteP1.getLastLetter();
+	public void popLetter(Sprite player) {
+		Sprite letter = player.getLastLetter();
 		if (letter == null)
-			gameView.onLetterPopedFailed(spriteP1);
-		spriteP1.removeLetter(letter);
-		gameView.onLetterPopedSuccessfuly(spriteP1, letter);
+			gameView.onLetterPopedFailed(player);
+		player.removeLetter(letter);
+		gameView.onLetterPopedSuccessfuly(player, player.getLetters());
 	}
 	
 	public void isLetterCollide(Sprite player) {
@@ -108,7 +108,7 @@ public class EEFighter implements LetterCreateListener {
 			if (letter.isCollisions(player)) {
 				player.addLetter(letter);
 				letterManager.releaseLettter(letter);
-				gameView.onLetterGotten(player, letter);
+				gameView.onLetterGotten(player, player.getLetters());
 			}	
 	}
 	

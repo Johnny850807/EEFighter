@@ -4,6 +4,7 @@ import java.awt.Image;
 import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import ui.GameView;
@@ -181,6 +182,10 @@ public class Sprite implements Cloneable {
 	}
 	
 	public Sprite getLastLetter() {
+		return null;
+	}
+	
+	public List<Sprite> getLetters() {
 		return null;
 	}
 	

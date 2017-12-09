@@ -9,6 +9,7 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Label;
 import java.awt.TextArea;
+import java.util.List;
 
 import javax.swing.JFrame;
 import javax.swing.JTextArea;
@@ -26,7 +27,7 @@ import model.sprite.SpriteName;
  *
  */
 
-public class GameStartView extends JFrame implements IGameStartView{
+public class GameStartView extends JFrame implements IGameStartView {
 
 	private Label player1Lab;
 	private Label player2Lab;
@@ -56,12 +57,11 @@ public class GameStartView extends JFrame implements IGameStartView{
 	}
 
 	private void setupViewsLocation() {
-		
-		
+
 		add(player1Lab);
 		add(wordDefinitionLab);
 		add(player2Lab);
-		
+
 		getContentPane().setLayout(new GridBagLayout());
 		gbc.fill = GridBagConstraints.BOTH;
 		gbc.anchor = GridBagConstraints.NORTHWEST;
@@ -116,13 +116,13 @@ public class GameStartView extends JFrame implements IGameStartView{
 		gameViewPanel = new GameViewImp(new EEFighter(new BasicMapDirector(new BasicMapBuilder())), this);
 		gameViewPanel.start();
 	}
-	
+
 	@Override
 	public void onNextQuestion(Question question) {
 		String definition = "1. ( " + question.getPartOfSpeech() + ". ) " + question.getDefinition();
-		StringBuilder strBuilder = new StringBuilder("<html>");  
-        strBuilder.append(definition);  
-        strBuilder.append("</html>");  
+		StringBuilder strBuilder = new StringBuilder("<html>");
+		strBuilder.append(definition);
+		strBuilder.append("</html>");
 		wordDefinitionLab.setText(strBuilder.toString());
 	}
 
@@ -135,25 +135,33 @@ public class GameStartView extends JFrame implements IGameStartView{
 		gbc.gridheight = height;
 		add(c, gbc);
 	}
-	
+
 	public interface IGameStartView {
 		void onNextQuestion(Question question);
+
 		void onPlayerEatLetter(Sprite sprite);
 	}
 
 	@Override
-	public void onPlayerEatLetter(String player, Sprite letter) {
-		String str1 = player1Lab.getText();
-		String str2 = player2Lab.getText();
-		if (player.equals("player1"))
-			player1Lab.setText(str1 + " " + letter.getSpriteName());
-		else if (player.equals("player2"))
-			player2Lab.setText(str2 + " " + letter.getSpriteName());
+	public void onPlayerEatLetter(String player, List<Sprite> letter) {
+		addPlayerLetter(player, letter);
 	}
 
 	@Override
-	public void onPlayerPopedLetter(String player, Sprite letter) {
-		
+	public void onPlayerPopedLetter(String player, List<Sprite> letter) {
+
 	}
 
+	public void addPlayerLetter(String player, List<Sprite> letter) {
+		if (player.equals("player1"))
+			for (int i = 0; i < letter.size(); i++) {
+				String str = player1Lab.getText();
+				player1Lab.setText(str + letter.get(i).getSpriteName() + " ");
+			}
+		else if (player.equals("player2")) {
+			String str = player2Lab.getText();
+			for (int i = 0; i < letter.size(); i++)
+				player2Lab.setText(str + letter.get(i).getSpriteName() + " ");
+		}
+	}
 }
