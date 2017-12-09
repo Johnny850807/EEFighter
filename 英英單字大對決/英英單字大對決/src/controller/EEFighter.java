@@ -96,7 +96,8 @@ public class EEFighter implements LetterCreateListener {
 	}
 	
 	public void popLetter(PlayerSprite player) {
-		player.popLetter();
+		Sprite letter = player.popLetter();
+		letterManager.releaseLetter(letter);
 		gameView.onLetterPoppedSuccessfuly(player, player.getLetters());
 	}
 	
@@ -104,7 +105,6 @@ public class EEFighter implements LetterCreateListener {
 		for (Sprite letter : letters)
 			if (letter.isCollisions(player)) {
 				player.addLetter(letter);
-				letterManager.releaseLetter(letter);
 				gameView.onLetterGotten(player, player.getLetters());
 			}	
 	}

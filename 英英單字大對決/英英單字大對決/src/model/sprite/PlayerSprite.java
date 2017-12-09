@@ -53,8 +53,8 @@ public class PlayerSprite extends Sprite{
 		letters.push(sprite);
 	}
 	
-	public void popLetter() {
-		letters.pop();
+	public Sprite popLetter() {
+		return letters.pop();
 	}
 	
 	public List<Sprite> getLetters() {
