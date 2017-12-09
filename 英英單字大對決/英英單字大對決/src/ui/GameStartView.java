@@ -14,7 +14,7 @@ import javax.swing.JFrame;
 import javax.swing.JTextArea;
 
 import controller.EEFighter;
-import model.question.Question;
+import model.Question;
 import model.sprite.BasicMapBuilder;
 import model.sprite.BasicMapDirector;
 import model.sprite.IGameStartView;

@@ -38,7 +38,7 @@ public class EnglishWarehouseViewImp extends JFrame implements EnglishWarehouseV
 	private DefaultListModel<Word> wordDefaultListModel;
 	private JList<Word> wordList;
 	private JScrollPane wordListScrollPane;
-	private List<Word> words = new ArrayList<Word>();
+	private List<Word> words;
 	private EnglishWarehouseController englishWarehouseController;
 
 	public EnglishWarehouseViewImp(EnglishWarehouseController englishWarehouseController) {
@@ -46,6 +46,7 @@ public class EnglishWarehouseViewImp extends JFrame implements EnglishWarehouseV
 		this.englishWarehouseController = englishWarehouseController;
 		englishWarehouseController.setEnglishWarehouseView(this);
 		englishWarehouseController.readAllWord();
+		words = new ArrayList<Word>();
 	}
 	
 	private void setupLayout() {

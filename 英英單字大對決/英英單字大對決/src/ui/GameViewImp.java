@@ -8,12 +8,15 @@ import java.util.List;
 
 import javax.swing.JPanel;
 
+import org.omg.CORBA.PRIVATE_MEMBER;
+
 import controller.EEFighter;
-import model.question.Question;
+import model.Question;
 import model.sprite.GameMap;
 import model.sprite.IGameStartView;
 import model.sprite.LetterPool;
 import model.sprite.Sprite;
+import model.sprite.SpriteName;
 import model.sprite.Sprite.Direction;
 import model.sprite.Sprite.Status;
 
@@ -51,17 +54,35 @@ public class GameViewImp extends JPanel implements GameView, KeyListener {
 	@Override
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
-		
+		drawGameMap(g);
+		drawLetters(g);
+		drawBothPlayers(g);
+	}
+	
+	private void drawGameMap(Graphics g){
 		if (gameMap != null)
 			for (Sprite sprite : gameMap)
-				g.drawImage(sprite.getImage(sprite.getDirection()), sprite.getX(), sprite.getY(), null);
-		if (spriteP1 != null)
-			g.drawImage(spriteP1.getImage(spriteP1.getDirection()), spriteP1.getX(), spriteP1.getY(), null);
-		if (spriteP2 != null)
-			g.drawImage(spriteP2.getImage(spriteP2.getDirection()), spriteP2.getX(), spriteP2.getY(), null);
+				drawSprite(g, sprite);
+	}
+	
+	private void drawLetters(Graphics g){
 		if (letters != null)
-			for (int i = 0; i < letters.size(); i++)
-				g.drawImage(letters.get(i).getImage(letters.get(i).getDirection()), letters.get(i).getX(), letters.get(i).getY(), null);
+			for (int i = 0 ; i < letters.size() ; i ++ )
+				drawSprite(g, letters.get(i));
+	}
+	
+	private void drawBothPlayers(Graphics g){
+		if (spriteP1 != null)
+			drawSprite(g, spriteP1);
+		if (spriteP2 != null)
+			drawSprite(g, spriteP2);
+	}
+	
+	
+	
+	
+	private void drawSprite(Graphics g, Sprite sprite){
+		g.drawImage(sprite.getImage(sprite.getDirection()), sprite.getX(), sprite.getY(), null);
 	}
 
 	private void setupLayout() {

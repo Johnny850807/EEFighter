@@ -1,4 +1,4 @@
-package model.question;
+package model;
 
 import java.util.ArrayList;
 import java.util.Collections;

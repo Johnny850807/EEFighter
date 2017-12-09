@@ -3,7 +3,7 @@ package controller;
 import java.util.ArrayList;
 import java.util.List;
 
-import model.question.QuestionManger;
+import model.QuestionManger;
 import model.sprite.GameMap;
 import model.sprite.LetterCreateListener;
 import model.sprite.LetterManager;

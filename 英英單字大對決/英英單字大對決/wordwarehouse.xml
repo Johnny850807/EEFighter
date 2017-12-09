@@ -1,16 +1,24 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <EnglishWarehouse>
-
-<Word name="egg">
-        <SoundPath>D:\NativeGit\OOD-Design-Pattern-Course\英英單字大對決\英英單字大對決\sounds\vocabulary\egg.wav</SoundPath>
+    <Word name="egg">
+        <SoundPath>D:\GitHub\EEFighter\英英單字大對決\英英單字大對決\sounds\vocabulary\egg.wav</SoundPath>
         <Definition partOfSpeech="v">throw eggs at</Definition>
         <Definition partOfSpeech="v">coat with beaten egg</Definition>
         <Definition partOfSpeech="n">animal reproductive body consisting of an ovum or embryo together with nutritive and protective envelopes; especially the thin-shelled reproductive body laid by e.g. female birds</Definition>
         <Definition partOfSpeech="n">oval reproductive body of a fowl (especially a hen) used as food</Definition>
         <Definition partOfSpeech="n">one of the two male reproductive glands that produce spermatozoa and secrete androgens</Definition>
     </Word>
-<Word name="have">
-        <SoundPath>D:\NativeGit\OOD-Design-Pattern-Course\英英單字大對決\英英單字大對決\sounds\vocabulary\have.wav</SoundPath>
+    <Word name="fade">
+        <SoundPath>D:\GitHub\EEFighter\英英單字大對決\英英單字大對決\sounds\vocabulary\fade.wav</SoundPath>
+        <Definition partOfSpeech="v">become less clearly visible or distinguishable; disappear gradually or seemingly</Definition>
+        <Definition partOfSpeech="v">disappear gradually</Definition>
+        <Definition partOfSpeech="v">lose freshness, vigor, or vitality</Definition>
+        <Definition partOfSpeech="v">become feeble</Definition>
+        <Definition partOfSpeech="n">gradually ceasing to be visible</Definition>
+        <Definition partOfSpeech="n">a golf shot that curves to the right for a right-handed golfer</Definition>
+    </Word>
+    <Word name="have">
+        <SoundPath>D:\GitHub\EEFighter\英英單字大對決\英英單字大對決\sounds\vocabulary\have.wav</SoundPath>
         <Definition partOfSpeech="v">have or possess, either in a concrete or an abstract sense</Definition>
         <Definition partOfSpeech="v">have as a feature</Definition>
         <Definition partOfSpeech="v">have ownership or possession of</Definition>
@@ -32,8 +40,24 @@
         <Definition partOfSpeech="v">organize or be responsible for</Definition>
         <Definition partOfSpeech="n">a person who possesses great material wealth</Definition>
     </Word>
-<Word name="play">
-        <SoundPath>D:\NativeGit\OOD-Design-Pattern-Course\英英單字大對決\英英單字大對決\sounds\vocabulary\play.wav</SoundPath>
+    <Word name="view">
+        <SoundPath>D:\GitHub\EEFighter\英英單字大對決\英英單字大對決\sounds\vocabulary\view.wav</SoundPath>
+        <Definition partOfSpeech="v">see or watch</Definition>
+        <Definition partOfSpeech="v">look at carefully; study mentally</Definition>
+        <Definition partOfSpeech="v">deem to be</Definition>
+        <Definition partOfSpeech="n">the visual percept of a region</Definition>
+        <Definition partOfSpeech="n">outward appearance</Definition>
+        <Definition partOfSpeech="n">the act of looking or seeing or observing</Definition>
+        <Definition partOfSpeech="n">the range of the eye</Definition>
+        <Definition partOfSpeech="n">graphic art consisting of the graphic or photographic representation of a visual percept</Definition>
+        <Definition partOfSpeech="n">a way of regarding situations or topics etc.</Definition>
+        <Definition partOfSpeech="n">a personal belief or judgment that is not founded on proof or certainty</Definition>
+        <Definition partOfSpeech="n">a message expressing a belief about something; the expression of a belief that is held with confidence but not substantiated by positive knowledge or proof</Definition>
+        <Definition partOfSpeech="n">purpose; the phrase `with a view to' means `with the intention of' or `for the purpose of'</Definition>
+        <Definition partOfSpeech="n">the range of interest or activity that can be anticipated</Definition>
+    </Word>
+    <Word name="play">
+        <SoundPath>D:\GitHub\EEFighter\英英單字大對決\英英單字大對決\sounds\vocabulary\play.wav</SoundPath>
         <Definition partOfSpeech="v">engage in recreational activities rather than work; occupy oneself in a diversion</Definition>
         <Definition partOfSpeech="v">be at play; be engaged in playful activity; amuse oneself in a way characteristic of children</Definition>
         <Definition partOfSpeech="v">participate in games or sport</Definition>
@@ -87,17 +111,8 @@
         <Definition partOfSpeech="n">a weak and tremulous light</Definition>
         <Definition partOfSpeech="n">the act of playing for stakes in the hope of winning (including the payment of a price for a chance to win a prize)</Definition>
     </Word>
-<Word name="fade">
-        <SoundPath>D:\NativeGit\OOD-Design-Pattern-Course\英英單字大對決\英英單字大對決\sounds\vocabulary\fade.wav</SoundPath>
-        <Definition partOfSpeech="v">become less clearly visible or distinguishable; disappear gradually or seemingly</Definition>
-        <Definition partOfSpeech="v">disappear gradually</Definition>
-        <Definition partOfSpeech="v">lose freshness, vigor, or vitality</Definition>
-        <Definition partOfSpeech="v">become feeble</Definition>
-        <Definition partOfSpeech="n">gradually ceasing to be visible</Definition>
-        <Definition partOfSpeech="n">a golf shot that curves to the right for a right-handed golfer</Definition>
-    </Word>
-<Word name="voice">
-        <SoundPath>D:\NativeGit\OOD-Design-Pattern-Course\英英單字大對決\英英單字大對決\sounds\vocabulary\voice.wav</SoundPath>
+    <Word name="voice">
+        <SoundPath>D:\GitHub\EEFighter\英英單字大對決\英英單字大對決\sounds\vocabulary\voice.wav</SoundPath>
         <Definition partOfSpeech="v">utter with vibrating vocal chords</Definition>
         <Definition partOfSpeech="v">give voice to</Definition>
         <Definition partOfSpeech="n">the sound made by the vibration of vocal folds modified by the resonance of the vocal tract</Definition>
@@ -112,31 +127,42 @@
         <Definition partOfSpeech="n">(metonymy) a singer</Definition>
         <Definition partOfSpeech="n">(linguistics) the grammatical relation (active or passive) of the grammatical subject of a verb to the action that the verb denotes</Definition>
     </Word>
-<Word name="elder">
-        <SoundPath>D:\NativeGit\OOD-Design-Pattern-Course\英英單字大對決\英英單字大對決\sounds\vocabulary\elder.wav</SoundPath>
+    <Word name="sound">
+        <SoundPath>D:\GitHub\EEFighter\英英單字大對決\英英單字大對決\sounds\vocabulary\sound.wav</SoundPath>
+        <Definition partOfSpeech="v">make a certain noise or sound</Definition>
+        <Definition partOfSpeech="v">give off a certain sound or sounds</Definition>
+        <Definition partOfSpeech="v">cause to sound</Definition>
+        <Definition partOfSpeech="v">announce by means of a sound</Definition>
+        <Definition partOfSpeech="v">utter with vibrating vocal chords</Definition>
+        <Definition partOfSpeech="v">appear in a certain way</Definition>
+        <Definition partOfSpeech="v">measure the depth of (a body of water) with a sounding line</Definition>
+        <Definition partOfSpeech="adj">in good condition; free from defect or damage or decay</Definition>
+        <Definition partOfSpeech="adj">in excellent physical condition</Definition>
+        <Definition partOfSpeech="adj">free from moral defect</Definition>
+        <Definition partOfSpeech="adj">exercising or showing good judgment</Definition>
+        <Definition partOfSpeech="adj">financially secure and safe</Definition>
+        <Definition partOfSpeech="adj">logically valid</Definition>
+        <Definition partOfSpeech="adj">having legal efficacy or force</Definition>
+        <Definition partOfSpeech="adj">thorough</Definition>
+        <Definition partOfSpeech="adj">(of sleep) deep and complete</Definition>
+        <Definition partOfSpeech="n">mechanical vibrations transmitted by an elastic medium</Definition>
+        <Definition partOfSpeech="n">the subjective sensation of hearing something</Definition>
+        <Definition partOfSpeech="n">the particular auditory effect produced by a given cause</Definition>
+        <Definition partOfSpeech="n">the sudden occurrence of an audible event</Definition>
+        <Definition partOfSpeech="n">the audible part of a transmitted signal</Definition>
+        <Definition partOfSpeech="n">(phonetics) an individual sound unit of speech without concern as to whether or not it is a phoneme of some language</Definition>
+        <Definition partOfSpeech="n">a narrow channel of the sea joining two larger bodies of water</Definition>
+        <Definition partOfSpeech="n">a large ocean inlet or deep bay</Definition>
+    </Word>
+    <Word name="elder">
+        <SoundPath>D:\GitHub\EEFighter\英英單字大對決\英英單字大對決\sounds\vocabulary\elder.wav</SoundPath>
         <Definition partOfSpeech="adj">used of the older of two persons of the same name especially used to distinguish a father from his son</Definition>
         <Definition partOfSpeech="n">a person who is older than you are</Definition>
         <Definition partOfSpeech="n">any of various church officers</Definition>
         <Definition partOfSpeech="n">any of numerous shrubs or small trees of temperate and subtropical northern hemisphere having white flowers and berrylike fruit</Definition>
     </Word>
-<Word name="small">
-        <SoundPath>D:\NativeGit\OOD-Design-Pattern-Course\英英單字大對決\英英單字大對決\sounds\vocabulary\small.wav</SoundPath>
-        <Definition partOfSpeech="adv">on a small scale</Definition>
-        <Definition partOfSpeech="adj">limited or below average in number or quantity or magnitude or extent</Definition>
-        <Definition partOfSpeech="adj">limited in size or scope</Definition>
-        <Definition partOfSpeech="adj">slight or limited; especially in degree or intensity or scope</Definition>
-        <Definition partOfSpeech="adj">(of children and animals) young, immature</Definition>
-        <Definition partOfSpeech="adj">not large but sufficient in size or amount</Definition>
-        <Definition partOfSpeech="adj">lowercase</Definition>
-        <Definition partOfSpeech="adj">have fine or very small constituent particles</Definition>
-        <Definition partOfSpeech="adj">low or inferior in station or quality</Definition>
-        <Definition partOfSpeech="adj">made to seem smaller or less (especially in worth)</Definition>
-        <Definition partOfSpeech="adj">(of a voice) faint</Definition>
-        <Definition partOfSpeech="n">a garment size for a small person</Definition>
-        <Definition partOfSpeech="n">the slender part of the back</Definition>
-    </Word>
-<Word name="still">
-        <SoundPath>D:\NativeGit\OOD-Design-Pattern-Course\英英單字大對決\英英單字大對決\sounds\vocabulary\still.wav</SoundPath>
+    <Word name="still">
+        <SoundPath>D:\GitHub\EEFighter\英英單字大對決\英英單字大對決\sounds\vocabulary\still.wav</SoundPath>
         <Definition partOfSpeech="adv">without moving or making a sound</Definition>
         <Definition partOfSpeech="adv">with reference to action or condition; without change, interruption, or cessation</Definition>
         <Definition partOfSpeech="adv">despite anything to the contrary (usually following a concession)</Definition>
@@ -156,13 +182,27 @@
         <Definition partOfSpeech="n">an apparatus used for the distillation of liquids; consists of a vessel in which a substance is vaporized by heat and a condenser where the vapor is condensed</Definition>
         <Definition partOfSpeech="n">a plant and works where alcoholic drinks are made by distillation</Definition>
     </Word>
-<Word name="apple">
-        <SoundPath>D:\NativeGit\OOD-Design-Pattern-Course\英英單字大對決\英英單字大對決\sounds\vocabulary\apple.wav</SoundPath>
-        <Definition partOfSpeech="n">native Eurasian tree widely cultivated in many varieties for its firm rounded edible fruits</Definition>
-        <Definition partOfSpeech="n">fruit with red or yellow or green skin and sweet to tart crisp whitish flesh</Definition>
+    <Word name="model">
+        <SoundPath>D:\GitHub\EEFighter\英英單字大對決\英英單字大對決\sounds\vocabulary\model.wav</SoundPath>
+        <Definition partOfSpeech="v">create a representation or model of</Definition>
+        <Definition partOfSpeech="v">construct a model of</Definition>
+        <Definition partOfSpeech="v">form in clay, wax, etc</Definition>
+        <Definition partOfSpeech="v">plan or create according to a model or models</Definition>
+        <Definition partOfSpeech="v">assume a posture as for artistic purposes</Definition>
+        <Definition partOfSpeech="v">display (clothes) as a mannequin</Definition>
+        <Definition partOfSpeech="adj">worthy of imitation</Definition>
+        <Definition partOfSpeech="n">a representation of something (sometimes on a smaller scale)</Definition>
+        <Definition partOfSpeech="n">the act of representing something (usually on a smaller scale)</Definition>
+        <Definition partOfSpeech="n">a hypothetical description of a complex entity or process</Definition>
+        <Definition partOfSpeech="n">a representative form or pattern</Definition>
+        <Definition partOfSpeech="n">a person who poses for a photographer or painter or sculptor</Definition>
+        <Definition partOfSpeech="n">a person who wears clothes to display fashions</Definition>
+        <Definition partOfSpeech="n">something to be imitated</Definition>
+        <Definition partOfSpeech="n">someone worthy of imitation</Definition>
+        <Definition partOfSpeech="n">a type of product</Definition>
     </Word>
-<Word name="stick">
-        <SoundPath>D:\NativeGit\OOD-Design-Pattern-Course\英英單字大對決\英英單字大對決\sounds\vocabulary\stick.wav</SoundPath>
+    <Word name="stick">
+        <SoundPath>D:\GitHub\EEFighter\英英單字大對決\英英單字大對決\sounds\vocabulary\stick.wav</SoundPath>
         <Definition partOfSpeech="v">put, fix, force, or implant</Definition>
         <Definition partOfSpeech="v">pierce or penetrate or puncture with something pointed</Definition>
         <Definition partOfSpeech="v">pierce with a thrust using a pointed instrument</Definition>
@@ -189,59 +229,34 @@
         <Definition partOfSpeech="n">a rectangular quarter pound block of butter or margarine</Definition>
         <Definition partOfSpeech="n">marijuana leaves rolled into a cigarette for smoking</Definition>
     </Word>
-<Word name="genus">
-        <SoundPath>D:\NativeGit\OOD-Design-Pattern-Course\英英單字大對決\英英單字大對決\sounds\vocabulary\genus.wav</SoundPath>
+    <Word name="small">
+        <SoundPath>D:\GitHub\EEFighter\英英單字大對決\英英單字大對決\sounds\vocabulary\small.wav</SoundPath>
+        <Definition partOfSpeech="adv">on a small scale</Definition>
+        <Definition partOfSpeech="adj">limited or below average in number or quantity or magnitude or extent</Definition>
+        <Definition partOfSpeech="adj">limited in size or scope</Definition>
+        <Definition partOfSpeech="adj">slight or limited; especially in degree or intensity or scope</Definition>
+        <Definition partOfSpeech="adj">(of children and animals) young, immature</Definition>
+        <Definition partOfSpeech="adj">not large but sufficient in size or amount</Definition>
+        <Definition partOfSpeech="adj">lowercase</Definition>
+        <Definition partOfSpeech="adj">have fine or very small constituent particles</Definition>
+        <Definition partOfSpeech="adj">low or inferior in station or quality</Definition>
+        <Definition partOfSpeech="adj">made to seem smaller or less (especially in worth)</Definition>
+        <Definition partOfSpeech="adj">(of a voice) faint</Definition>
+        <Definition partOfSpeech="n">a garment size for a small person</Definition>
+        <Definition partOfSpeech="n">the slender part of the back</Definition>
+    </Word>
+    <Word name="apple">
+        <SoundPath>D:\GitHub\EEFighter\英英單字大對決\英英單字大對決\sounds\vocabulary\apple.wav</SoundPath>
+        <Definition partOfSpeech="n">native Eurasian tree widely cultivated in many varieties for its firm rounded edible fruits</Definition>
+        <Definition partOfSpeech="n">fruit with red or yellow or green skin and sweet to tart crisp whitish flesh</Definition>
+    </Word>
+    <Word name="genus">
+        <SoundPath>D:\GitHub\EEFighter\英英單字大對決\英英單字大對決\sounds\vocabulary\genus.wav</SoundPath>
         <Definition partOfSpeech="n">(biology) taxonomic group containing one or more species</Definition>
         <Definition partOfSpeech="n">a general kind of something</Definition>
     </Word>
-<Word name="model">
-        <SoundPath>D:\NativeGit\OOD-Design-Pattern-Course\英英單字大對決\英英單字大對決\sounds\vocabulary\model.wav</SoundPath>
-        <Definition partOfSpeech="v">create a representation or model of</Definition>
-        <Definition partOfSpeech="v">construct a model of</Definition>
-        <Definition partOfSpeech="v">form in clay, wax, etc</Definition>
-        <Definition partOfSpeech="v">plan or create according to a model or models</Definition>
-        <Definition partOfSpeech="v">assume a posture as for artistic purposes</Definition>
-        <Definition partOfSpeech="v">display (clothes) as a mannequin</Definition>
-        <Definition partOfSpeech="adj">worthy of imitation</Definition>
-        <Definition partOfSpeech="n">a representation of something (sometimes on a smaller scale)</Definition>
-        <Definition partOfSpeech="n">the act of representing something (usually on a smaller scale)</Definition>
-        <Definition partOfSpeech="n">a hypothetical description of a complex entity or process</Definition>
-        <Definition partOfSpeech="n">a representative form or pattern</Definition>
-        <Definition partOfSpeech="n">a person who poses for a photographer or painter or sculptor</Definition>
-        <Definition partOfSpeech="n">a person who wears clothes to display fashions</Definition>
-        <Definition partOfSpeech="n">something to be imitated</Definition>
-        <Definition partOfSpeech="n">someone worthy of imitation</Definition>
-        <Definition partOfSpeech="n">a type of product</Definition>
-    </Word>
-<Word name="sound">
-        <SoundPath>D:\NativeGit\OOD-Design-Pattern-Course\英英單字大對決\英英單字大對決\sounds\vocabulary\sound.wav</SoundPath>
-        <Definition partOfSpeech="v">make a certain noise or sound</Definition>
-        <Definition partOfSpeech="v">give off a certain sound or sounds</Definition>
-        <Definition partOfSpeech="v">cause to sound</Definition>
-        <Definition partOfSpeech="v">announce by means of a sound</Definition>
-        <Definition partOfSpeech="v">utter with vibrating vocal chords</Definition>
-        <Definition partOfSpeech="v">appear in a certain way</Definition>
-        <Definition partOfSpeech="v">measure the depth of (a body of water) with a sounding line</Definition>
-        <Definition partOfSpeech="adj">in good condition; free from defect or damage or decay</Definition>
-        <Definition partOfSpeech="adj">in excellent physical condition</Definition>
-        <Definition partOfSpeech="adj">free from moral defect</Definition>
-        <Definition partOfSpeech="adj">exercising or showing good judgment</Definition>
-        <Definition partOfSpeech="adj">financially secure and safe</Definition>
-        <Definition partOfSpeech="adj">logically valid</Definition>
-        <Definition partOfSpeech="adj">having legal efficacy or force</Definition>
-        <Definition partOfSpeech="adj">thorough</Definition>
-        <Definition partOfSpeech="adj">(of sleep) deep and complete</Definition>
-        <Definition partOfSpeech="n">mechanical vibrations transmitted by an elastic medium</Definition>
-        <Definition partOfSpeech="n">the subjective sensation of hearing something</Definition>
-        <Definition partOfSpeech="n">the particular auditory effect produced by a given cause</Definition>
-        <Definition partOfSpeech="n">the sudden occurrence of an audible event</Definition>
-        <Definition partOfSpeech="n">the audible part of a transmitted signal</Definition>
-        <Definition partOfSpeech="n">(phonetics) an individual sound unit of speech without concern as to whether or not it is a phoneme of some language</Definition>
-        <Definition partOfSpeech="n">a narrow channel of the sea joining two larger bodies of water</Definition>
-        <Definition partOfSpeech="n">a large ocean inlet or deep bay</Definition>
-    </Word>
-<Word name="search">
-        <SoundPath>D:\NativeGit\OOD-Design-Pattern-Course\英英單字大對決\英英單字大對決\sounds\vocabulary\search.wav</SoundPath>
+    <Word name="search">
+        <SoundPath>D:\GitHub\EEFighter\英英單字大對決\英英單字大對決\sounds\vocabulary\search.wav</SoundPath>
         <Definition partOfSpeech="v">search or seek</Definition>
         <Definition partOfSpeech="v">try to locate or discover, or try to establish the existence of</Definition>
         <Definition partOfSpeech="v">subject to a search</Definition>
@@ -252,19 +267,19 @@
         <Definition partOfSpeech="n">the examination of alternative hypotheses</Definition>
         <Definition partOfSpeech="n">an operation that determines whether one or more of a set of items has a specified property</Definition>
     </Word>
-<Word name="banana">
-        <SoundPath>D:\NativeGit\OOD-Design-Pattern-Course\英英單字大對決\英英單字大對決\sounds\vocabulary\banana.wav</SoundPath>
+    <Word name="banana">
+        <SoundPath>D:\GitHub\EEFighter\英英單字大對決\英英單字大對決\sounds\vocabulary\banana.wav</SoundPath>
         <Definition partOfSpeech="n">any of several tropical and subtropical treelike herbs of the genus Musa having a terminal crown of large entire leaves and usually bearing hanging clusters of elongated fruits</Definition>
         <Definition partOfSpeech="n">elongated crescent-shaped yellow fruit with soft sweet flesh</Definition>
     </Word>
-<Word name="visible">
-        <SoundPath>D:\NativeGit\OOD-Design-Pattern-Course\英英單字大對決\英英單字大對決\sounds\vocabulary\visible.wav</SoundPath>
+    <Word name="visible">
+        <SoundPath>D:\GitHub\EEFighter\英英單字大對決\英英單字大對決\sounds\vocabulary\visible.wav</SoundPath>
         <Definition partOfSpeech="adj">capable of being seen; or open to easy view</Definition>
         <Definition partOfSpeech="adj">obvious to the eye</Definition>
         <Definition partOfSpeech="adj">present and easily available</Definition>
     </Word>
-<Word name="control">
-        <SoundPath>D:\NativeGit\OOD-Design-Pattern-Course\英英單字大對決\英英單字大對決\sounds\vocabulary\control.wav</SoundPath>
+    <Word name="control">
+        <SoundPath>D:\GitHub\EEFighter\英英單字大對決\英英單字大對決\sounds\vocabulary\control.wav</SoundPath>
         <Definition partOfSpeech="v">exercise authoritative control or power over</Definition>
         <Definition partOfSpeech="v">be careful or certain to do something; make certain of something</Definition>
         <Definition partOfSpeech="v">handle and cause to function</Definition>
@@ -285,33 +300,19 @@
         <Definition partOfSpeech="n">great skillfulness and knowledge of some subject or activity</Definition>
         <Definition partOfSpeech="n">a spiritual agency that is assumed to assist the medium during a seance</Definition>
     </Word>
-<Word name="several">
-        <SoundPath>D:\NativeGit\OOD-Design-Pattern-Course\英英單字大對決\英英單字大對決\sounds\vocabulary\several.wav</SoundPath>
+    <Word name="several">
+        <SoundPath>D:\GitHub\EEFighter\英英單字大對決\英英單字大對決\sounds\vocabulary\several.wav</SoundPath>
         <Definition partOfSpeech="adj">(used with count nouns) of an indefinite number more than 2 or 3 but not many</Definition>
         <Definition partOfSpeech="adj">distinct and individual</Definition>
         <Definition partOfSpeech="adj">considered individually</Definition>
     </Word>
-<Word name="elephant">
-        <SoundPath>D:\NativeGit\OOD-Design-Pattern-Course\英英單字大對決\英英單字大對決\sounds\vocabulary\elephant.wav</SoundPath>
+    <Word name="elephant">
+        <SoundPath>D:\GitHub\EEFighter\英英單字大對決\英英單字大對決\sounds\vocabulary\elephant.wav</SoundPath>
         <Definition partOfSpeech="n">five-toed pachyderm</Definition>
         <Definition partOfSpeech="n">the symbol of the Republican Party; introduced in cartoons by Thomas Nast in 1874</Definition>
     </Word>
-<Word name="customer">
-        <SoundPath>D:\NativeGit\OOD-Design-Pattern-Course\英英單字大對決\英英單字大對決\sounds\vocabulary\customer.wav</SoundPath>
-        <Definition partOfSpeech="n">someone who pays for goods or services</Definition>
-    </Word>
-<Word name="vocabulary">
-        <SoundPath>D:\NativeGit\OOD-Design-Pattern-Course\英英單字大對決\英英單字大對決\sounds\vocabulary\vocabulary.wav</SoundPath>
-        <Definition partOfSpeech="n">a language user's knowledge of words</Definition>
-        <Definition partOfSpeech="n">a listing of the words used in some enterprise</Definition>
-        <Definition partOfSpeech="n">the system of techniques or symbols serving as a means of expression (as in arts or crafts)</Definition>
-    </Word>
-<Word name="subtropical">
-        <SoundPath>D:\NativeGit\OOD-Design-Pattern-Course\英英單字大對決\英英單字大對決\sounds\vocabulary\subtropical.wav</SoundPath>
-        <Definition partOfSpeech="adj">of or relating to or characteristic of conditions in the subtropics</Definition>
-    </Word>
-<Word name="terminal">
-        <SoundPath>D:\NativeGit\OOD-Design-Pattern-Course\英英單字大對決\英英單字大對決\sounds\vocabulary\terminal.wav</SoundPath>
+    <Word name="terminal">
+        <SoundPath>D:\GitHub\EEFighter\英英單字大對決\英英單字大對決\sounds\vocabulary\terminal.wav</SoundPath>
         <Definition partOfSpeech="adj">occurring at or forming an end or termination</Definition>
         <Definition partOfSpeech="adj">being or situated at an end</Definition>
         <Definition partOfSpeech="adj">of or relating to or situated at the ends of a delivery route</Definition>
@@ -321,5 +322,19 @@
         <Definition partOfSpeech="n">station where transport vehicles load or unload passengers or goods</Definition>
         <Definition partOfSpeech="n">a contact on an electrical device (such as a battery) at which electric current enters or leaves</Definition>
         <Definition partOfSpeech="n">electronic equipment consisting of a device providing access to a computer; has a keyboard and display</Definition>
+    </Word>
+    <Word name="customer">
+        <SoundPath>D:\GitHub\EEFighter\英英單字大對決\英英單字大對決\sounds\vocabulary\customer.wav</SoundPath>
+        <Definition partOfSpeech="n">someone who pays for goods or services</Definition>
+    </Word>
+    <Word name="vocabulary">
+        <SoundPath>D:\GitHub\EEFighter\英英單字大對決\英英單字大對決\sounds\vocabulary\vocabulary.wav</SoundPath>
+        <Definition partOfSpeech="n">a language user's knowledge of words</Definition>
+        <Definition partOfSpeech="n">a listing of the words used in some enterprise</Definition>
+        <Definition partOfSpeech="n">the system of techniques or symbols serving as a means of expression (as in arts or crafts)</Definition>
+    </Word>
+    <Word name="subtropical">
+        <SoundPath>D:\GitHub\EEFighter\英英單字大對決\英英單字大對決\sounds\vocabulary\subtropical.wav</SoundPath>
+        <Definition partOfSpeech="adj">of or relating to or characteristic of conditions in the subtropics</Definition>
     </Word>
 </EnglishWarehouse>

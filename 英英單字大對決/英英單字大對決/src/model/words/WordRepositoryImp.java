@@ -10,6 +10,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * @author Joanna (±i®ÑÞ±)
+ */
 public class WordRepositoryImp implements WordRepository {
 	private Map<String, Word> words = new HashMap<String, Word>();
 	
