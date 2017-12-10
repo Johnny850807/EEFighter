@@ -39,8 +39,6 @@ public class LetterManager {
 	
 	private Sprite getLetter() {
 		Sprite sprite = letterPool.requireSprite();
-		if (sprite == null)
-			return null;
 		Random random = new Random();
 		int x, y;
 		do {
