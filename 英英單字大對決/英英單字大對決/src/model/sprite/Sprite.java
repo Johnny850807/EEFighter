@@ -169,22 +169,6 @@ public class Sprite implements Cloneable {
 		//do nothing as default
 	}
 	
-	public void addLetter(Sprite sprite) {
-		
-	}
-	
-	public void removeLetter(Sprite sprite) {
-		
-	}
-	
-	public Sprite getLastLetter() {
-		return null;
-	}
-	
-	public List<Sprite> getLetters() {
-		return null;
-	}
-	
 	public synchronized boolean isCollisions(Sprite sprite) {
 		int xStartSelf = getX() + getBiasWithX();
 		int yStartSelf = getY() + getBiasWithY();

@@ -276,7 +276,7 @@ public class GameViewImp extends JPanel implements GameView, KeyListener {
 
 	@Override
 	public void onLetterGotten(Sprite player, List<Sprite> letter) {
-		if (spriteP1.getSpriteName() == player.getSpriteName())
+		if (spriteP1.equals(player))
 			gameStartView.onPlayerEatLetter("player1", letter);
 		else 
 			gameStartView.onPlayerEatLetter("player2", letter);
