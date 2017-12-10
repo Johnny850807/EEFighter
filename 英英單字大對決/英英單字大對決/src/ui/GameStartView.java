@@ -120,6 +120,7 @@ public class GameStartView extends JFrame implements IGameStartView {
 		strBuilder.append(definition);
 		strBuilder.append("</html>");
 		wordDefinitionLab.setText(strBuilder.toString());
+		System.out.println(wordDefinitionLab.getText());
 	}
 
 	public void addComponent(Component c, Double weightX, Double weightY, int row, int column, int width, int height) {

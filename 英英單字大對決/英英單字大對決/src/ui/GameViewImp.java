@@ -45,6 +45,7 @@ public class GameViewImp extends JPanel implements GameView, KeyListener {
 		setupLayout();
 
 		eeFighter.startGame();
+		eeFighter.nextQuestion();
 	}
 
 	@Override
@@ -117,8 +118,6 @@ public class GameViewImp extends JPanel implements GameView, KeyListener {
 	 * released. Due to this strategy, we can perform composite moving keys such as
 	 * 'move top-left' by simply storing 0b00001010.
 	 */
-	private int keyInputP1 = 0b00000000;
-	private int keyInputP2 = 0b00000000;
 
 	@Override
 	public void keyTyped(KeyEvent e) {
@@ -174,43 +173,19 @@ public class GameViewImp extends JPanel implements GameView, KeyListener {
 		// set the corresponding action bit as 0.
 		switch (e.getKeyCode()) {
 		case KeyEvent.VK_UP:
-			keyInputP1 &= 0b11110111;
-			break;
 		case KeyEvent.VK_DOWN:
-			keyInputP1 &= 0b11111011;
-			break;
 		case KeyEvent.VK_LEFT:
-			keyInputP1 &= 0b11111101;
-			break;
 		case KeyEvent.VK_RIGHT:
-			keyInputP1 &= 0b11111110;
-			break;
-		case KeyEvent.VK_K:
-			keyInputP1 &= 0b11101111;
+			eeFighter.move(spriteP1, spriteP1.getDirection(), Status.STOP);
 			break;
 		case KeyEvent.VK_T:
-			keyInputP2 &= 0b11110111;
-			break;
 		case KeyEvent.VK_G:
-			keyInputP2 &= 0b11111011;
-			break;
 		case KeyEvent.VK_F:
-			keyInputP2 &= 0b11111101;
-			break;
 		case KeyEvent.VK_H:
-			keyInputP2 &= 0b11111110;
-			break;
-		case KeyEvent.VK_Z:
-			keyInputP2 &= 0b11101111;
+			eeFighter.move(spriteP2, spriteP2.getDirection(), Status.STOP);
 			break;
 		}
 
-		if (((keyInputP1 & 0b001000) == 0) || ((keyInputP1 & 0b000100) == 0) || ((keyInputP1 & 0b000010) == 0)
-				|| ((keyInputP1 & 0b000001) == 0))
-			eeFighter.move(spriteP1, spriteP1.getDirection(), Status.STOP);
-		if (((keyInputP2 & 0b001000) == 0) || ((keyInputP2 & 0b000100) == 0) || ((keyInputP2 & 0b000010) == 0)
-				|| ((keyInputP2 & 0b000001) == 0))
-			eeFighter.move(spriteP2, spriteP2.getDirection(), Status.STOP);
 	}
 
 	@Override
@@ -266,7 +241,7 @@ public class GameViewImp extends JPanel implements GameView, KeyListener {
 
 	@Override
 	public void onAnswerWrong(PlayerSprite player) {
-		System.out.println("wrong");
+		
 	}
 
 }
