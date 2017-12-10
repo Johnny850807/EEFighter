@@ -129,25 +129,29 @@ public class EEFighter implements LetterCreateListener {
 		char[] words = questionManger.getNowQuestion().getWord().toUpperCase().toCharArray();
 		System.out.println(words);
 		List<Sprite> letters = player.getLetters();
-		boolean[] check = new boolean[words.length];
-		for (int i = 0; i < check.length; i++)
-			check[i] = false;
-		for (Sprite letter : letters) {
-			int count = 0;
-			for (int i = 0; i < check.length; i++) {
-				if (!check[i] && letter.getSpriteName().toString().charAt(0) == words[i]) {
-					System.out.println("correct" + words[i]);
-					check[i] = true;
-					break;
+		if (words.length == letters.size()) {
+			boolean[] check = new boolean[words.length];
+			for (int i = 0; i < check.length; i++)
+				check[i] = false;
+			for (Sprite letter : letters) {
+				for (int i = 0; i < check.length; i++) {
+					if (!check[i] && letter.getSpriteName().toString().charAt(0) == words[i]) {
+						System.out.println("correct:" + words[i]);
+						check[i] = true;
+						break;
+					}	
 				}	
-			}	
-		}
-		for (int i = 0; i < check.length; i++)
-			if (!check[i]) {
-				gameView.onAnswerWrong(player);
-				return;
 			}
-		gameView.onAnswerCorrect(player);
+			for (int i = 0; i < check.length; i++)
+				if (!check[i]) {
+					gameView.onAnswerWrong(player);
+					return;
+				}
+			gameView.onAnswerCorrect(player);
+		}
+		else {
+			gameView.onAnswerWrong(player);
+		}
 	}
 	
 }
