@@ -57,6 +57,10 @@ public class PlayerSprite extends Sprite{
 		return letters.pop();
 	}
 	
+	public void removeAllLetters() {
+		letters.removeAll(letters);
+	}
+	
 	public List<Sprite> getLetters() {
 		for (Sprite sprite : letters) {
 			System.out.println(sprite.spriteName.toString());
