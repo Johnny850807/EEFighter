@@ -30,6 +30,7 @@ public class EEFighter implements LetterCreateListener {
 	private List<Sprite> letters = new ArrayList<Sprite>();
 	private PlayerSprite player1;
 	private PlayerSprite player2;
+	private boolean isNextQuestion = false;
 	
 	public EEFighter(MapDirector mapDirector) {
 		gameMap = mapDirector.buildMap();
@@ -59,7 +60,7 @@ public class EEFighter implements LetterCreateListener {
 		letterManager.createLetter();
 		new Thread() {
 			public void run() {
-				while (true) {
+				while (!isNextQuestion) {
 					try {
 						Thread.sleep(17);
 						player1.update();
@@ -82,6 +83,9 @@ public class EEFighter implements LetterCreateListener {
 	}
 	
 	public void nextQuestion() {
+		letters.removeAll(letters);
+		player1.removeAllLetters();
+		player2.removeAllLetters();
 		gameView.onNextQuestion(questionManger.getNextQuestion());
 	}
 	
@@ -117,5 +121,7 @@ public class EEFighter implements LetterCreateListener {
 	public void checkAnswer(PlayerSprite player) {
 		// TODO
 	}
+	
+	
 	
 }
