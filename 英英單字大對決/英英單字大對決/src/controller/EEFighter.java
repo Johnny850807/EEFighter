@@ -24,7 +24,6 @@ import ui.GameView;
  */
 public class EEFighter implements LetterCreateListener {
 	private GameView gameView;
-	private MapDirector mapDirector;
 	private GameMap gameMap;
 	private LetterManager letterManager;
 	private QuestionManger questionManger;
@@ -33,7 +32,6 @@ public class EEFighter implements LetterCreateListener {
 	private PlayerSprite player2;
 	
 	public EEFighter(MapDirector mapDirector) {
-		this.mapDirector = mapDirector;
 		gameMap = mapDirector.buildMap();
 		questionManger = new QuestionManger(new WordXMLRepository("words"));
 		letterManager = new LetterManager(gameMap, new LetterPool());
@@ -114,6 +112,10 @@ public class EEFighter implements LetterCreateListener {
 			letters.remove(letter);
 			gameView.onLetterGotten(player, player.getLetters());
 		}
+	}
+	
+	public void checkAnswer(PlayerSprite player) {
+		// TODO
 	}
 	
 }
