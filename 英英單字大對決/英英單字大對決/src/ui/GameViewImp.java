@@ -264,7 +264,7 @@ public class GameViewImp extends JPanel implements GameView, KeyListener {
 	}
 
 	@Override
-	public void onLetterPoppedSuccessfuly(Sprite player, List<Sprite> letter) {
+	public void onLetterPoppedSuccessfuly(PlayerSprite player, List<Sprite> letter) {
 		if (spriteP1 == player)
 			gameStartView.onPlayerPopedLetter("player1", letter);
 		else if (spriteP2 == player)
@@ -272,16 +272,28 @@ public class GameViewImp extends JPanel implements GameView, KeyListener {
 	}
 
 	@Override
-	public void onLetterPoppedFailed(Sprite player) {
+	public void onLetterPoppedFailed(PlayerSprite player) {
 		// TODO Auto-generated method stub
 	}
 
 	@Override
-	public void onLetterGotten(Sprite player, List<Sprite> letter) {
+	public void onLetterGotten(PlayerSprite player, List<Sprite> letter) {
 		if (spriteP1 == player)
 			gameStartView.onPlayerEatLetter("player1", letter);
 		else if (spriteP2 == player)
 			gameStartView.onPlayerEatLetter("player2", letter);
+	}
+
+	@Override
+	public void onAnswerCorrect(PlayerSprite player) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void onAnswerWrong(PlayerSprite player) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }
