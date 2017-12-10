@@ -3,7 +3,7 @@ package model.sprite;
 import java.util.Arrays;
 
 public enum SpriteName {
-	TERRAIN, GRASS, A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y, Z, PLAYER;
+	TERRAIN, GRASS, A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y, Z, PLAYER1, PLAYER2;
 	
 	public static SpriteName[] getLetterNames(){
 		SpriteName[] allNames = values();

@@ -140,24 +140,26 @@ public class GameStartView extends JFrame implements IGameStartView {
 
 	@Override
 	public void onPlayerEatLetter(String player, List<Sprite> letter) {
-		addPlayerLetter(player, letter);
+		showPlayerLetter(player, letter);
 	}
 
 	@Override
 	public void onPlayerPopedLetter(String player, List<Sprite> letter) {
-
+		showPlayerLetter(player, letter);
 	}
 
-	public void addPlayerLetter(String player, List<Sprite> letter) {
-		if (player.equals("player1"))
-			for (int i = 0; i < letter.size(); i++) {
-				String str = player1Lab.getText();
-				player1Lab.setText(str + letter.get(i).getSpriteName() + " ");
-			}
-		else if (player.equals("player2")) {
-			String str = player2Lab.getText();
-			for (int i = 0; i < letter.size(); i++)
-				player2Lab.setText(str + letter.get(i).getSpriteName() + " ");
+	public void showPlayerLetter(String player, List<Sprite> letter) {
+		
+		if (player.equals("player1")) {
+			StringBuilder strBuilder = new StringBuilder("Player1: ");
+			for (int i = 0; i < letter.size(); i++) 
+				strBuilder.append(letter.get(i).getSpriteName() + " ");
+			player1Lab.setText(strBuilder.toString());
+		} else if (player.equals("player2")) {
+			StringBuilder strBuilder = new StringBuilder("Player2: ");
+			for (int i = 0; i < letter.size(); i++) 
+				strBuilder.append(letter.get(i).getSpriteName() + " ");
+			player2Lab.setText(strBuilder.toString());
 		}
 	}
 }

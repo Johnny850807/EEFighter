@@ -47,8 +47,8 @@ public class EEFighter implements LetterCreateListener {
 	
 	private void createPlayers() {
 		SpritePrototypeFactory spritePrototypeFactory = SpritePrototypeFactory.getInstance();
-		player1 = (PlayerSprite) spritePrototypeFactory.createSprite(SpriteName.PLAYER);
-		player2 = (PlayerSprite) spritePrototypeFactory.createSprite(SpriteName.PLAYER);
+		player1 = (PlayerSprite) spritePrototypeFactory.createSprite(SpriteName.PLAYER1);
+		player2 = (PlayerSprite) spritePrototypeFactory.createSprite(SpriteName.PLAYER2);
 		player1.setGameMap(gameMap);
 		player2.setGameMap(gameMap);
 		player1.setXY(128, 128);
