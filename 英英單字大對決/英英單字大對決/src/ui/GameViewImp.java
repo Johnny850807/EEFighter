@@ -128,77 +128,44 @@ public class GameViewImp extends JPanel implements GameView, KeyListener {
 	public void keyPressed(KeyEvent e) {
 		switch (e.getKeyCode()) {
 		case KeyEvent.VK_UP:
-			keyInputP1 |= 0b00001000;
-			spriteP1.setDirection(Direction.NORTH);
+			eeFighter.move(spriteP1, Direction.NORTH, Status.MOVE);
 			break;
 		case KeyEvent.VK_DOWN:
-			keyInputP1 |= 0b00000100;
-			spriteP1.setDirection(Direction.SOUTH);
+			eeFighter.move(spriteP1, Direction.SOUTH, Status.MOVE);
 			break;
 		case KeyEvent.VK_LEFT:
-			keyInputP1 |= 0b00000010;
-			spriteP1.setDirection(Direction.WEST);
+			eeFighter.move(spriteP1, Direction.WEST, Status.MOVE);
 			break;
 		case KeyEvent.VK_RIGHT:
-			keyInputP1 |= 0b00000001;
-			spriteP1.setDirection(Direction.EAST);
+			eeFighter.move(spriteP1, Direction.EAST, Status.MOVE);
 			break;
 		case KeyEvent.VK_K:
-			keyInputP1 |= 0b00010000;
+			eeFighter.popLetter(spriteP1);
 			break;
 		case KeyEvent.VK_L:
-			keyInputP1 |= 0b00100000;
+			eeFighter.checkAnswer(spriteP1);
 			break;
 		case KeyEvent.VK_T:
-			keyInputP2 |= 0b00001000;
-			spriteP2.setDirection(Direction.NORTH);
+			eeFighter.move(spriteP2, Direction.NORTH, Status.MOVE);
 			break;
 		case KeyEvent.VK_G:
-			keyInputP2 |= 0b00000100;
-			spriteP2.setDirection(Direction.SOUTH);
+			eeFighter.move(spriteP2, Direction.SOUTH, Status.MOVE);
 			break;
 		case KeyEvent.VK_F:
-			keyInputP2 |= 0b00000010;
-			spriteP2.setDirection(Direction.WEST);
+			eeFighter.move(spriteP2, Direction.WEST, Status.MOVE);
 			break;
 		case KeyEvent.VK_H:
-			keyInputP2 |= 0b00000001;
-			spriteP2.setDirection(Direction.EAST);
+			eeFighter.move(spriteP2, Direction.EAST, Status.MOVE);
 			break;
 		case KeyEvent.VK_Z:
-			keyInputP2 |= 0b00010000;
+			eeFighter.popLetter(spriteP2);
 			break;
 		case KeyEvent.VK_X:
-			keyInputP2 |= 0b00100000;
+			eeFighter.checkAnswer(spriteP2);
 			break;
 		default:
 			break;
 		}
-
-		if ((keyInputP1 & 0b001000) != 0) 
-			eeFighter.move(spriteP1, Direction.NORTH, Status.MOVE);
-		if ((keyInputP1 & 0b000100) != 0) 
-			eeFighter.move(spriteP1, Direction.SOUTH, Status.MOVE);
-		if ((keyInputP1 & 0b000010) != 0) 
-			eeFighter.move(spriteP1, Direction.WEST, Status.MOVE);
-		if ((keyInputP1 & 0b000001) != 0) 
-			eeFighter.move(spriteP1, Direction.EAST, Status.MOVE);
-		if ((keyInputP1 & 0b010000) != 0)
-			eeFighter.popLetter(spriteP1);
-		if ((keyInputP1 & 0b100000) != 0)
-			eeFighter.checkAnswer(spriteP1);
-		if ((keyInputP2 & 0b001000) != 0) 
-			eeFighter.move(spriteP2, Direction.NORTH, Status.MOVE);
-		if ((keyInputP2 & 0b000100) != 0) 
-			eeFighter.move(spriteP2, Direction.SOUTH, Status.MOVE);
-		if ((keyInputP2 & 0b000010) != 0) 
-			eeFighter.move(spriteP2, Direction.WEST, Status.MOVE);
-		if ((keyInputP2 & 0b000001) != 0) 
-			eeFighter.move(spriteP2, Direction.EAST, Status.MOVE);
-		if ((keyInputP2 & 0b010000) != 0)
-			eeFighter.popLetter(spriteP2);
-		if ((keyInputP2 & 0b100000) != 0)
-			eeFighter.checkAnswer(spriteP2);
 		repaint();
 	}
 
@@ -294,12 +261,12 @@ public class GameViewImp extends JPanel implements GameView, KeyListener {
 
 	@Override
 	public void onAnswerCorrect(PlayerSprite player) {
-		// TODO Auto-generated method stub
+		System.out.println("correct");
 	}
 
 	@Override
 	public void onAnswerWrong(PlayerSprite player) {
-		// TODO Auto-generated method stub
+		System.out.println("wrong");
 	}
 
 }
