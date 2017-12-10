@@ -25,8 +25,10 @@ public class LetterManager {
 			public void run() {
 				while (true) {
 					try {
-						Thread.sleep(1000);
+						Thread.sleep(200);
 						Sprite sprite = getLetter();
+						if (sprite == null)
+							wait();
 						letters.add(sprite);
 						letterCreateListener.onCreateLetters(letters);
 					} catch (InterruptedException e) {
@@ -39,6 +41,8 @@ public class LetterManager {
 	
 	private Sprite getLetter() {
 		Sprite sprite = letterPool.requireSprite();
+		if (sprite == null)
+			return null;
 		Random random = new Random();
 		int x, y;
 		do {

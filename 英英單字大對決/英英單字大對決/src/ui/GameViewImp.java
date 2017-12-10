@@ -269,4 +269,10 @@ public class GameViewImp extends JPanel implements GameView, KeyListener {
 		System.out.println("wrong");
 	}
 
+	@Override
+	public void onNoMoreQuestion() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

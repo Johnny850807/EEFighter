@@ -18,6 +18,7 @@ public interface GameView {
 	void onMovedSuccessfuly(Sprite sprite, Direction direction, Status status);
 	void onHitWall(Sprite sprite);
 	void onNextQuestion(Question question);
+	void onNoMoreQuestion();
 	void onLetterPoppedSuccessfuly(PlayerSprite player, List<Sprite> letter);
 	void onLetterPoppedFailed(PlayerSprite player);
 	void onLetterGotten(PlayerSprite player, List<Sprite> letter);

@@ -89,7 +89,10 @@ public class EEFighter implements LetterCreateListener {
 		letters.removeAll(letters);
 		player1.removeAllLetters();
 		player2.removeAllLetters();
-		gameView.onNextQuestion(questionManger.getNextQuestion());
+		if (questionManger.hasNext()) 
+			gameView.onNextQuestion(questionManger.getNextQuestion());
+		else
+			gameView.onNoMoreQuestion();
 	}
 	
 	public boolean isOver() {
@@ -126,32 +129,31 @@ public class EEFighter implements LetterCreateListener {
 	}
 	
 	public void checkAnswer(PlayerSprite player) {
-		char[] words = questionManger.getNowQuestion().getWord().toUpperCase().toCharArray();
+		String words = questionManger.getNowQuestion().getWord().toUpperCase();
 		System.out.println(words);
 		List<Sprite> letters = player.getLetters();
-		if (words.length == letters.size()) {
-			boolean[] check = new boolean[words.length];
-			for (int i = 0; i < check.length; i++)
-				check[i] = false;
-			for (Sprite letter : letters) {
-				for (int i = 0; i < check.length; i++) {
-					if (!check[i] && letter.getSpriteName().toString().charAt(0) == words[i]) {
-						System.out.println("correct:" + words[i]);
-						check[i] = true;
-						break;
-					}	
-				}	
-			}
-			for (int i = 0; i < check.length; i++)
-				if (!check[i]) {
-					gameView.onAnswerWrong(player);
-					return;
-				}
-			gameView.onAnswerCorrect(player);
-		}
-		else {
+		if (words.length() == letters.size() && compareLetters(words, letters)) 
+				gameView.onAnswerCorrect(player);
+		else 
 			gameView.onAnswerWrong(player);
-		}
+	}
+	
+	private boolean compareLetters(String words, List<Sprite> playerLetters) {
+		boolean[] check = new boolean[words.length()];
+		for (int i = 0; i < check.length; i++)
+			check[i] = false;
+		for (Sprite letter : playerLetters) {
+			for (int i = 0; i < check.length; i++) 
+				if (!check[i] && letter.getSpriteName().toString().charAt(0) == words.charAt(i)) {
+					System.out.println("correct:" + words.charAt(i));
+					check[i] = true;
+					break;
+				}		
+		}				
+		for (int i = 0; i < check.length; i++)
+			if (!check[i]) 
+				return false;
+		return true;
 	}
 	
 }
