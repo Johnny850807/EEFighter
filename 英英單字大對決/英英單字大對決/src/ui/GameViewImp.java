@@ -146,6 +146,9 @@ public class GameViewImp extends JPanel implements GameView, KeyListener {
 		case KeyEvent.VK_K:
 			keyInputP1 |= 0b00010000;
 			break;
+		case KeyEvent.VK_L:
+			keyInputP1 |= 0b00100000;
+			break;
 		case KeyEvent.VK_T:
 			keyInputP2 |= 0b00001000;
 			spriteP2.setDirection(Direction.NORTH);
@@ -165,6 +168,9 @@ public class GameViewImp extends JPanel implements GameView, KeyListener {
 		case KeyEvent.VK_Z:
 			keyInputP2 |= 0b00010000;
 			break;
+		case KeyEvent.VK_X:
+			keyInputP2 |= 0b00100000;
+			break;
 		default:
 			break;
 		}
@@ -179,6 +185,8 @@ public class GameViewImp extends JPanel implements GameView, KeyListener {
 			eeFighter.move(spriteP1, Direction.EAST, Status.MOVE);
 		if ((keyInputP1 & 0b010000) != 0)
 			eeFighter.popLetter(spriteP1);
+		if ((keyInputP1 & 0b100000) != 0)
+			eeFighter.checkAnswer(spriteP1);
 		if ((keyInputP2 & 0b001000) != 0) 
 			eeFighter.move(spriteP2, Direction.NORTH, Status.MOVE);
 		if ((keyInputP2 & 0b000100) != 0) 
@@ -189,6 +197,8 @@ public class GameViewImp extends JPanel implements GameView, KeyListener {
 			eeFighter.move(spriteP2, Direction.EAST, Status.MOVE);
 		if ((keyInputP2 & 0b010000) != 0)
 			eeFighter.popLetter(spriteP2);
+		if ((keyInputP2 & 0b100000) != 0)
+			eeFighter.checkAnswer(spriteP2);
 		repaint();
 	}
 
@@ -285,13 +295,11 @@ public class GameViewImp extends JPanel implements GameView, KeyListener {
 	@Override
 	public void onAnswerCorrect(PlayerSprite player) {
 		// TODO Auto-generated method stub
-		
 	}
 
 	@Override
 	public void onAnswerWrong(PlayerSprite player) {
 		// TODO Auto-generated method stub
-		
 	}
 
 }

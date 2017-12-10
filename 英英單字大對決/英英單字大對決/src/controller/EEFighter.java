@@ -120,6 +120,7 @@ public class EEFighter implements LetterCreateListener {
 	
 	public void checkAnswer(PlayerSprite player) {
 		// TODO
+		System.out.println(player + " check");
 	}
 	
 	
