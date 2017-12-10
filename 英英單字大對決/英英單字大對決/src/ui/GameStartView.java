@@ -3,6 +3,7 @@ package ui;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
+import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -33,9 +34,11 @@ public class GameStartView extends JFrame implements IGameStartView {
 
 	public GameStartView() {
 		super("英英單字大對決");
-		setBounds(215, 80, 1105, 704);
-		setupViews();
-		setupLayout();
+		EventQueue.invokeLater(() -> {
+			setBounds(215, 80, 1105, 704);
+			setupViews();
+			setupLayout();
+		});
 	}
 
 	private void setupLayout() {

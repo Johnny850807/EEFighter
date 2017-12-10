@@ -27,8 +27,6 @@ public class LetterManager {
 					try {
 						Thread.sleep(200);
 						Sprite sprite = getLetter();
-						if (sprite == null)
-							wait();
 						letters.add(sprite);
 						letterCreateListener.onCreateLetters(letters);
 					} catch (InterruptedException e) {
