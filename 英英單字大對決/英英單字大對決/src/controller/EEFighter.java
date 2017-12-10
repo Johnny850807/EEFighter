@@ -103,8 +103,12 @@ public class EEFighter implements LetterCreateListener {
 	
 	public void popLetter(PlayerSprite player) {
 		Sprite letter = player.popLetter();
-		letterManager.releaseLetter(letter);
-		gameView.onLetterPoppedSuccessfuly(player, player.getLetters());
+		if (letter != null) {
+			letterManager.releaseLetter(letter);
+			gameView.onLetterPoppedSuccessfuly(player, player.getLetters());
+		}
+		else 
+			gameView.onLetterPoppedFailed(player);
 	}
 	
 	public void isLetterCollided(PlayerSprite player) {
@@ -122,18 +126,27 @@ public class EEFighter implements LetterCreateListener {
 	}
 	
 	public void checkAnswer(PlayerSprite player) {
-		String words = questionManger.getNowQuestion().getWord().toUpperCase();
+		char[] words = questionManger.getNowQuestion().getWord().toUpperCase().toCharArray();
 		System.out.println(words);
 		List<Sprite> letters = player.getLetters();
-		boolean[] check = new boolean[words.length()];
+		boolean[] check = new boolean[words.length];
+		for (int i = 0; i < check.length; i++)
+			check[i] = false;
 		for (Sprite letter : letters) {
 			int count = 0;
-			while (count < words.length() && !check[count] && letter.getSpriteName().toString().charAt(0) == words.indexOf(count)) 
-				check[count++] = true;		
+			for (int i = 0; i < check.length; i++) {
+				if (!check[i] && letter.getSpriteName().toString().charAt(0) == words[i]) {
+					System.out.println("correct" + words[i]);
+					check[i] = true;
+					break;
+				}	
+			}	
 		}
-		for (boolean c : check)
-			if (!c)
+		for (int i = 0; i < check.length; i++)
+			if (!check[i]) {
 				gameView.onAnswerWrong(player);
+				return;
+			}
 		gameView.onAnswerCorrect(player);
 	}
 	

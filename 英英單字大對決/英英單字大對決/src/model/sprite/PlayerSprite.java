@@ -54,7 +54,9 @@ public class PlayerSprite extends Sprite{
 	}
 	
 	public Sprite popLetter() {
-		return letters.pop();
+		if (!letters.isEmpty()) 
+			return letters.pop();
+		return null;
 	}
 	
 	public void removeAllLetters() {
