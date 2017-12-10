@@ -1,11 +1,10 @@
 package controller;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import model.QuestionManger;
-import model.sprite.BasicMapBuilder;
-import model.sprite.BasicMapDirector;
 import model.sprite.GameMap;
 import model.sprite.LetterCreateListener;
 import model.sprite.LetterManager;
@@ -54,8 +53,10 @@ public class EEFighter implements LetterCreateListener {
 		player2 = (PlayerSprite) spritePrototypeFactory.createSprite(SpriteName.PLAYER2);
 		player1.setGameMap(gameMap);
 		player2.setGameMap(gameMap);
-		player1.setXY(128, 128);
-		player2.setXY(256, 128);
+		List<Sprite> grasses = gameMap.getAllGrasses();
+		Collections.shuffle(grasses);
+		player1.setXY(grasses.get(0).getX(), grasses.get(0).getY());
+		player2.setXY(grasses.get(1).getX(), grasses.get(1).getY());
 	}
 	
 	public void startGame() {
@@ -123,16 +124,16 @@ public class EEFighter implements LetterCreateListener {
 	public void checkAnswer(PlayerSprite player) {
 		String words = questionManger.getNowQuestion().getWord().toUpperCase();
 		List<Sprite> letters = player.getLetters();
+		boolean[] check = new boolean[words.length()];
 		for (Sprite letter : letters) {
-			boolean check = false;
-			for (int i = 0; i < words.length(); i++) 
-				if (letter.getSpriteName().toString().charAt(0) == words.indexOf(i)) 
-					check = true;
-			if (!check) 
-				gameView.onAnswerWrong(player);
+			int count = 0;
+			while (count < words.length() && !check[count] && letter.getSpriteName().toString().charAt(0) == words.indexOf(count)) 
+				check[count++] = true;		
 		}
+		for (boolean c : check)
+			if (!c)
+				gameView.onAnswerWrong(player);
 		gameView.onAnswerCorrect(player);
-		
 	}
 	
 }

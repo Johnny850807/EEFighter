@@ -58,6 +58,15 @@ public class GameMap extends Sprite implements Iterable<Sprite> {
 		return terrains;
 	}
 	
+	public List<Sprite> getAllGrasses() {
+		List<Sprite> grasses = new ArrayList<>();
+		for (int i = 0; i < HEIGHT; i++)
+			for (int j = 0; j < WIDTH; j++)
+				if (blockSprites[i][j].getSpriteName() == SpriteName.GRASS)
+					grasses.add(blockSprites[i][j]);
+		return grasses;
+	}
+	
 	public boolean outOfMap(Sprite sprite) {
 		return sprite.getXy().hasNegative() || sprite.getY() + sprite.getBiasWithY() + sprite.getBodyHeight() > HEIGHT * ITEM_SIZE || sprite.getX() + sprite.getBiasWithX() + sprite.getBodyWidth() > WIDTH * ITEM_SIZE;
 	}
