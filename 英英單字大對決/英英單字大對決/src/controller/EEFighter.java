@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import model.QuestionManger;
+import model.sprite.BasicMapBuilder;
+import model.sprite.BasicMapDirector;
 import model.sprite.GameMap;
 import model.sprite.LetterCreateListener;
 import model.sprite.LetterManager;
@@ -119,9 +121,18 @@ public class EEFighter implements LetterCreateListener {
 	}
 	
 	public void checkAnswer(PlayerSprite player) {
-		// TODO
+		String words = questionManger.getNowQuestion().getWord().toUpperCase();
+		List<Sprite> letters = player.getLetters();
+		for (Sprite letter : letters) {
+			boolean check = false;
+			for (int i = 0; i < words.length(); i++) 
+				if (letter.getSpriteName().toString().charAt(0) == words.indexOf(i)) 
+					check = true;
+			if (!check) 
+				gameView.onAnswerWrong(player);
+		}
+		gameView.onAnswerCorrect(player);
+		
 	}
-	
-	
 	
 }
