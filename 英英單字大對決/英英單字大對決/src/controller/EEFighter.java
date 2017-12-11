@@ -9,6 +9,7 @@ import model.sprite.GameMap;
 import model.sprite.LetterCreateListener;
 import model.sprite.LetterManager;
 import model.sprite.LetterPool;
+import model.sprite.LetterPoolImp;
 import model.sprite.MapDirector;
 import model.sprite.PlayerSprite;
 import model.sprite.Sprite;
@@ -36,7 +37,7 @@ public class EEFighter implements LetterCreateListener {
 	public EEFighter(MapDirector mapDirector) {
 		gameMap = mapDirector.buildMap();
 		questionManger = new QuestionManger(new WordXMLRepository("words"));
-		letterManager = new LetterManager(gameMap, new LetterPool());
+		letterManager = new LetterManager(gameMap, new LetterPool(0, 25, questionManger));
 		letterManager.setLetterCreateListener(this);
 		createPlayers();
 	}

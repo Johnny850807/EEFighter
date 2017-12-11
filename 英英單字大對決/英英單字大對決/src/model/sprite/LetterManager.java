@@ -8,10 +8,10 @@ public class LetterManager {
 	
 	private List<Sprite> letters = new ArrayList<>();
 	private LetterCreateListener letterCreateListener;
-	private ILetterPool letterPool;
+	private LetterPool letterPool;
 	private GameMap gameMap;
 	
-	public LetterManager(GameMap gameMap, ILetterPool letterPool) {
+	public LetterManager(GameMap gameMap, LetterPool letterPool) {
 		this.letterPool = letterPool;
 		this.gameMap = gameMap;
 	}
@@ -38,7 +38,7 @@ public class LetterManager {
 	}
 	
 	private Sprite getLetter() {
-		Sprite sprite = letterPool.requireSprite();
+		Sprite sprite = letterPool.get();
 		Random random = new Random();
 		int x, y;
 		do {
@@ -61,7 +61,7 @@ public class LetterManager {
 	}
 	
 	public void releaseLetter(Sprite sprite) {
-		letterPool.releaseSprite(sprite);
+		letterPool.release(sprite);
 	}
 	
 }
