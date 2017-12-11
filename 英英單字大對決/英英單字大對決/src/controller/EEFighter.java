@@ -77,6 +77,16 @@ public class EEFighter implements LetterCreateListener {
 				}
 			}
 		}.start();
+		new Thread() {
+			public void run() {
+				try {
+					Thread.sleep(50000);
+					playQuestionWord();
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+			};
+		}.start();
 	}	
 	
 	public void move(PlayerSprite player, Direction direction, Status status) {
@@ -154,6 +164,10 @@ public class EEFighter implements LetterCreateListener {
 			if (!check[i]) 
 				return false;
 		return true;
+	}
+	
+	private void playQuestionWord() {
+		gameView.onQuestionWordSoundPlay(questionManger.getNowQuestion());
 	}
 	
 }

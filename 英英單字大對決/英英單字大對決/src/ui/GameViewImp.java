@@ -15,6 +15,7 @@ import model.sprite.PlayerSprite;
 import model.sprite.Sprite;
 import model.sprite.Sprite.Direction;
 import model.sprite.Sprite.Status;
+import utils.SoundPlayer;
 
 /**
  * @author Lin The game view where showing the playing game.
@@ -26,6 +27,7 @@ public class GameViewImp extends JPanel implements GameView, KeyListener {
 	private PlayerSprite spriteP2;
 	private List<Sprite> letters;
 	private IGameStartView gameStartView;
+	
 
 	public GameViewImp(EEFighter eeFighter, IGameStartView gameStartView) {
 		this.eeFighter = eeFighter;
@@ -238,6 +240,11 @@ public class GameViewImp extends JPanel implements GameView, KeyListener {
 	public void onNoMoreQuestion() {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public void onQuestionWordSoundPlay(Question question) {
+		SoundPlayer.getInstance().playSound(question.getSoundPath());
 	}
 
 }

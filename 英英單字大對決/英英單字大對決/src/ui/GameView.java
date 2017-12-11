@@ -24,4 +24,5 @@ public interface GameView {
 	void onLetterGotten(PlayerSprite player, List<Sprite> letter);
 	void onAnswerCorrect(PlayerSprite player);
 	void onAnswerWrong(PlayerSprite player);
+	void onQuestionWordSoundPlay(Question question);
 }
