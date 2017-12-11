@@ -1,6 +1,76 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <EnglishWarehouse>
     
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<Word name="terminal">
+        <SoundPath>sounds\vocabulary\terminal.wav</SoundPath>
+        <Definition partOfSpeech="adj">occurring at or forming an end or termination</Definition>
+        <Definition partOfSpeech="adj">being or situated at an end</Definition>
+        <Definition partOfSpeech="adj">of or relating to or situated at the ends of a delivery route</Definition>
+        <Definition partOfSpeech="adj">causing or ending in or approaching death</Definition>
+        <Definition partOfSpeech="adj">relating to or occurring in a term or fixed period of time</Definition>
+        <Definition partOfSpeech="n">either extremity of something that has length</Definition>
+        <Definition partOfSpeech="n">station where transport vehicles load or unload passengers or goods</Definition>
+        <Definition partOfSpeech="n">a contact on an electrical device (such as a battery) at which electric current enters or leaves</Definition>
+        <Definition partOfSpeech="n">electronic equipment consisting of a device providing access to a computer; has a keyboard and display</Definition>
+    </Word>
+<Word name="elephant">
+        <SoundPath>sounds\vocabulary\elephant.wav</SoundPath>
+        <Definition partOfSpeech="n">five-toed pachyderm</Definition>
+        <Definition partOfSpeech="n">the symbol of the Republican Party; introduced in cartoons by Thomas Nast in 1874</Definition>
+    </Word>
+<Word name="subtropical">
+        <SoundPath>sounds\vocabulary\subtropical.wav</SoundPath>
+        <Definition partOfSpeech="adj">of or relating to or characteristic of conditions in the subtropics</Definition>
+    </Word>
+<Word name="vocabulary">
+        <SoundPath>sounds\vocabulary\vocabulary.wav</SoundPath>
+        <Definition partOfSpeech="n">a language user's knowledge of words</Definition>
+        <Definition partOfSpeech="n">a listing of the words used in some enterprise</Definition>
+        <Definition partOfSpeech="n">the system of techniques or symbols serving as a means of expression (as in arts or crafts)</Definition>
+    </Word>
+
+
+
+
+
+<Word name="terminal">
+        <SoundPath/>
+        <Definition partOfSpeech="adj">occurring at or forming an end or termination</Definition>
+        <Definition partOfSpeech="adj">being or situated at an end</Definition>
+        <Definition partOfSpeech="adj">of or relating to or situated at the ends of a delivery route</Definition>
+        <Definition partOfSpeech="adj">causing or ending in or approaching death</Definition>
+        <Definition partOfSpeech="adj">relating to or occurring in a term or fixed period of time</Definition>
+        <Definition partOfSpeech="n">either extremity of something that has length</Definition>
+        <Definition partOfSpeech="n">station where transport vehicles load or unload passengers or goods</Definition>
+        <Definition partOfSpeech="n">a contact on an electrical device (such as a battery) at which electric current enters or leaves</Definition>
+        <Definition partOfSpeech="n">electronic equipment consisting of a device providing access to a computer; has a keyboard and display</Definition>
+    </Word>
+
+
+
 <Word name="egg">
         <SoundPath>sounds\vocabulary\egg.wav</SoundPath>
         <Definition partOfSpeech="v">throw eggs at</Definition>
@@ -9,23 +79,15 @@
         <Definition partOfSpeech="n">oval reproductive body of a fowl (especially a hen) used as food</Definition>
         <Definition partOfSpeech="n">one of the two male reproductive glands that produce spermatozoa and secrete androgens</Definition>
     </Word>
-<Word name="view">
-        <SoundPath>sounds\vocabulary\view.wav</SoundPath>
-        <Definition partOfSpeech="v">see or watch</Definition>
-        <Definition partOfSpeech="v">look at carefully; study mentally</Definition>
-        <Definition partOfSpeech="v">deem to be</Definition>
-        <Definition partOfSpeech="n">the visual percept of a region</Definition>
-        <Definition partOfSpeech="n">outward appearance</Definition>
-        <Definition partOfSpeech="n">the act of looking or seeing or observing</Definition>
-        <Definition partOfSpeech="n">the range of the eye</Definition>
-        <Definition partOfSpeech="n">graphic art consisting of the graphic or photographic representation of a visual percept</Definition>
-        <Definition partOfSpeech="n">a way of regarding situations or topics etc.</Definition>
-        <Definition partOfSpeech="n">a personal belief or judgment that is not founded on proof or certainty</Definition>
-        <Definition partOfSpeech="n">a message expressing a belief about something; the expression of a belief that is held with confidence but not substantiated by positive knowledge or proof</Definition>
-        <Definition partOfSpeech="n">purpose; the phrase `with a view to' means `with the intention of' or `for the purpose of'</Definition>
-        <Definition partOfSpeech="n">the range of interest or activity that can be anticipated</Definition>
+<Word name="fade">
+        <SoundPath>sounds\vocabulary\fade.wav</SoundPath>
+        <Definition partOfSpeech="v">become less clearly visible or distinguishable; disappear gradually or seemingly</Definition>
+        <Definition partOfSpeech="v">disappear gradually</Definition>
+        <Definition partOfSpeech="v">lose freshness, vigor, or vitality</Definition>
+        <Definition partOfSpeech="v">become feeble</Definition>
+        <Definition partOfSpeech="n">gradually ceasing to be visible</Definition>
+        <Definition partOfSpeech="n">a golf shot that curves to the right for a right-handed golfer</Definition>
     </Word>
-
 <Word name="have">
         <SoundPath>sounds\vocabulary\have.wav</SoundPath>
         <Definition partOfSpeech="v">have or possess, either in a concrete or an abstract sense</Definition>
@@ -49,16 +111,22 @@
         <Definition partOfSpeech="v">organize or be responsible for</Definition>
         <Definition partOfSpeech="n">a person who possesses great material wealth</Definition>
     </Word>
-<Word name="fade">
-        <SoundPath>sounds\vocabulary\fade.wav</SoundPath>
-        <Definition partOfSpeech="v">become less clearly visible or distinguishable; disappear gradually or seemingly</Definition>
-        <Definition partOfSpeech="v">disappear gradually</Definition>
-        <Definition partOfSpeech="v">lose freshness, vigor, or vitality</Definition>
-        <Definition partOfSpeech="v">become feeble</Definition>
-        <Definition partOfSpeech="n">gradually ceasing to be visible</Definition>
-        <Definition partOfSpeech="n">a golf shot that curves to the right for a right-handed golfer</Definition>
-
-</Word>
+<Word name="view">
+        <SoundPath>sounds\vocabulary\view.wav</SoundPath>
+        <Definition partOfSpeech="v">see or watch</Definition>
+        <Definition partOfSpeech="v">look at carefully; study mentally</Definition>
+        <Definition partOfSpeech="v">deem to be</Definition>
+        <Definition partOfSpeech="n">the visual percept of a region</Definition>
+        <Definition partOfSpeech="n">outward appearance</Definition>
+        <Definition partOfSpeech="n">the act of looking or seeing or observing</Definition>
+        <Definition partOfSpeech="n">the range of the eye</Definition>
+        <Definition partOfSpeech="n">graphic art consisting of the graphic or photographic representation of a visual percept</Definition>
+        <Definition partOfSpeech="n">a way of regarding situations or topics etc.</Definition>
+        <Definition partOfSpeech="n">a personal belief or judgment that is not founded on proof or certainty</Definition>
+        <Definition partOfSpeech="n">a message expressing a belief about something; the expression of a belief that is held with confidence but not substantiated by positive knowledge or proof</Definition>
+        <Definition partOfSpeech="n">purpose; the phrase `with a view to' means `with the intention of' or `for the purpose of'</Definition>
+        <Definition partOfSpeech="n">the range of interest or activity that can be anticipated</Definition>
+    </Word>
 <Word name="play">
         <SoundPath>sounds\vocabulary\play.wav</SoundPath>
         <Definition partOfSpeech="v">engage in recreational activities rather than work; occupy oneself in a diversion</Definition>
@@ -114,16 +182,6 @@
         <Definition partOfSpeech="n">a weak and tremulous light</Definition>
         <Definition partOfSpeech="n">the act of playing for stakes in the hope of winning (including the payment of a price for a chance to win a prize)</Definition>
     </Word>
-<Word name="apple">
-        <SoundPath>sounds\vocabulary\apple.wav</SoundPath>
-        <Definition partOfSpeech="n">native Eurasian tree widely cultivated in many varieties for its firm rounded edible fruits</Definition>
-        <Definition partOfSpeech="n">fruit with red or yellow or green skin and sweet to tart crisp whitish flesh</Definition>
-    </Word>
-<Word name="genus">
-        <SoundPath>sounds\vocabulary\genus.wav</SoundPath>
-        <Definition partOfSpeech="n">(biology) taxonomic group containing one or more species</Definition>
-        <Definition partOfSpeech="n">a general kind of something</Definition>
-    </Word>
 <Word name="elder">
         <SoundPath>sounds\vocabulary\elder.wav</SoundPath>
         <Definition partOfSpeech="adj">used of the older of two persons of the same name especially used to distinguish a father from his son</Definition>
@@ -175,7 +233,59 @@
         <Definition partOfSpeech="n">a garment size for a small person</Definition>
         <Definition partOfSpeech="n">the slender part of the back</Definition>
     </Word>
-
+<Word name="apple">
+        <SoundPath>sounds\vocabulary\apple.wav</SoundPath>
+        <Definition partOfSpeech="n">native Eurasian tree widely cultivated in many varieties for its firm rounded edible fruits</Definition>
+        <Definition partOfSpeech="n">fruit with red or yellow or green skin and sweet to tart crisp whitish flesh</Definition>
+    </Word>
+<Word name="sound">
+        <SoundPath>sounds\vocabulary\sound.wav</SoundPath>
+        <Definition partOfSpeech="v">make a certain noise or sound</Definition>
+        <Definition partOfSpeech="v">give off a certain sound or sounds</Definition>
+        <Definition partOfSpeech="v">cause to sound</Definition>
+        <Definition partOfSpeech="v">announce by means of a sound</Definition>
+        <Definition partOfSpeech="v">utter with vibrating vocal chords</Definition>
+        <Definition partOfSpeech="v">appear in a certain way</Definition>
+        <Definition partOfSpeech="v">measure the depth of (a body of water) with a sounding line</Definition>
+        <Definition partOfSpeech="adj">in good condition; free from defect or damage or decay</Definition>
+        <Definition partOfSpeech="adj">in excellent physical condition</Definition>
+        <Definition partOfSpeech="adj">free from moral defect</Definition>
+        <Definition partOfSpeech="adj">exercising or showing good judgment</Definition>
+        <Definition partOfSpeech="adj">financially secure and safe</Definition>
+        <Definition partOfSpeech="adj">logically valid</Definition>
+        <Definition partOfSpeech="adj">having legal efficacy or force</Definition>
+        <Definition partOfSpeech="adj">thorough</Definition>
+        <Definition partOfSpeech="adj">(of sleep) deep and complete</Definition>
+        <Definition partOfSpeech="n">mechanical vibrations transmitted by an elastic medium</Definition>
+        <Definition partOfSpeech="n">the subjective sensation of hearing something</Definition>
+        <Definition partOfSpeech="n">the particular auditory effect produced by a given cause</Definition>
+        <Definition partOfSpeech="n">the sudden occurrence of an audible event</Definition>
+        <Definition partOfSpeech="n">the audible part of a transmitted signal</Definition>
+        <Definition partOfSpeech="n">(phonetics) an individual sound unit of speech without concern as to whether or not it is a phoneme of some language</Definition>
+        <Definition partOfSpeech="n">a narrow channel of the sea joining two larger bodies of water</Definition>
+        <Definition partOfSpeech="n">a large ocean inlet or deep bay</Definition>
+    </Word>
+<Word name="still">
+        <SoundPath>sounds\vocabulary\still.wav</SoundPath>
+        <Definition partOfSpeech="adv">without moving or making a sound</Definition>
+        <Definition partOfSpeech="adv">with reference to action or condition; without change, interruption, or cessation</Definition>
+        <Definition partOfSpeech="adv">despite anything to the contrary (usually following a concession)</Definition>
+        <Definition partOfSpeech="adv">to a greater degree or extent; used with comparisons</Definition>
+        <Definition partOfSpeech="adj">not in physical motion</Definition>
+        <Definition partOfSpeech="adj">(of a body of water) free from disturbance by heavy waves</Definition>
+        <Definition partOfSpeech="adj">free from noticeable current</Definition>
+        <Definition partOfSpeech="adj">used of pictures; of a single or static photograph not presented so as to create the illusion of motion; or representing objects not capable of motion</Definition>
+        <Definition partOfSpeech="adj">marked by absence of sound</Definition>
+        <Definition partOfSpeech="adj">not sparkling</Definition>
+        <Definition partOfSpeech="v">make calm or still</Definition>
+        <Definition partOfSpeech="v">lessen the intensity of or calm</Definition>
+        <Definition partOfSpeech="v">make motionless</Definition>
+        <Definition partOfSpeech="v">cause to be quiet or not talk</Definition>
+        <Definition partOfSpeech="n">a static photograph (especially one taken from a movie and used for advertising purposes)</Definition>
+        <Definition partOfSpeech="n">(poetic) tranquil silence</Definition>
+        <Definition partOfSpeech="n">an apparatus used for the distillation of liquids; consists of a vessel in which a substance is vaporized by heat and a condenser where the vapor is condensed</Definition>
+        <Definition partOfSpeech="n">a plant and works where alcoholic drinks are made by distillation</Definition>
+    </Word>
 <Word name="model">
         <SoundPath>sounds\vocabulary\model.wav</SoundPath>
         <Definition partOfSpeech="v">create a representation or model of</Definition>
@@ -211,58 +321,21 @@
         <Definition partOfSpeech="n">(metonymy) a singer</Definition>
         <Definition partOfSpeech="n">(linguistics) the grammatical relation (active or passive) of the grammatical subject of a verb to the action that the verb denotes</Definition>
     </Word>
-<Word name="still">
-        <SoundPath>sounds\vocabulary\still.wav</SoundPath>
-        <Definition partOfSpeech="adv">without moving or making a sound</Definition>
-        <Definition partOfSpeech="adv">with reference to action or condition; without change, interruption, or cessation</Definition>
-        <Definition partOfSpeech="adv">despite anything to the contrary (usually following a concession)</Definition>
-        <Definition partOfSpeech="adv">to a greater degree or extent; used with comparisons</Definition>
-        <Definition partOfSpeech="adj">not in physical motion</Definition>
-        <Definition partOfSpeech="adj">(of a body of water) free from disturbance by heavy waves</Definition>
-        <Definition partOfSpeech="adj">free from noticeable current</Definition>
-        <Definition partOfSpeech="adj">used of pictures; of a single or static photograph not presented so as to create the illusion of motion; or representing objects not capable of motion</Definition>
-        <Definition partOfSpeech="adj">marked by absence of sound</Definition>
-        <Definition partOfSpeech="adj">not sparkling</Definition>
-        <Definition partOfSpeech="v">make calm or still</Definition>
-        <Definition partOfSpeech="v">lessen the intensity of or calm</Definition>
-        <Definition partOfSpeech="v">make motionless</Definition>
-        <Definition partOfSpeech="v">cause to be quiet or not talk</Definition>
-        <Definition partOfSpeech="n">a static photograph (especially one taken from a movie and used for advertising purposes)</Definition>
-        <Definition partOfSpeech="n">(poetic) tranquil silence</Definition>
-        <Definition partOfSpeech="n">an apparatus used for the distillation of liquids; consists of a vessel in which a substance is vaporized by heat and a condenser where the vapor is condensed</Definition>
-        <Definition partOfSpeech="n">a plant and works where alcoholic drinks are made by distillation</Definition>
-    </Word>
-<Word name="sound">
-        <SoundPath>sounds\vocabulary\sound.wav</SoundPath>
-        <Definition partOfSpeech="v">make a certain noise or sound</Definition>
-        <Definition partOfSpeech="v">give off a certain sound or sounds</Definition>
-        <Definition partOfSpeech="v">cause to sound</Definition>
-        <Definition partOfSpeech="v">announce by means of a sound</Definition>
-        <Definition partOfSpeech="v">utter with vibrating vocal chords</Definition>
-        <Definition partOfSpeech="v">appear in a certain way</Definition>
-        <Definition partOfSpeech="v">measure the depth of (a body of water) with a sounding line</Definition>
-        <Definition partOfSpeech="adj">in good condition; free from defect or damage or decay</Definition>
-        <Definition partOfSpeech="adj">in excellent physical condition</Definition>
-        <Definition partOfSpeech="adj">free from moral defect</Definition>
-        <Definition partOfSpeech="adj">exercising or showing good judgment</Definition>
-        <Definition partOfSpeech="adj">financially secure and safe</Definition>
-        <Definition partOfSpeech="adj">logically valid</Definition>
-        <Definition partOfSpeech="adj">having legal efficacy or force</Definition>
-        <Definition partOfSpeech="adj">thorough</Definition>
-        <Definition partOfSpeech="adj">(of sleep) deep and complete</Definition>
-        <Definition partOfSpeech="n">mechanical vibrations transmitted by an elastic medium</Definition>
-        <Definition partOfSpeech="n">the subjective sensation of hearing something</Definition>
-        <Definition partOfSpeech="n">the particular auditory effect produced by a given cause</Definition>
-        <Definition partOfSpeech="n">the sudden occurrence of an audible event</Definition>
-        <Definition partOfSpeech="n">the audible part of a transmitted signal</Definition>
-        <Definition partOfSpeech="n">(phonetics) an individual sound unit of speech without concern as to whether or not it is a phoneme of some language</Definition>
-        <Definition partOfSpeech="n">a narrow channel of the sea joining two larger bodies of water</Definition>
-        <Definition partOfSpeech="n">a large ocean inlet or deep bay</Definition>
+<Word name="genus">
+        <SoundPath>sounds\vocabulary\genus.wav</SoundPath>
+        <Definition partOfSpeech="n">(biology) taxonomic group containing one or more species</Definition>
+        <Definition partOfSpeech="n">a general kind of something</Definition>
     </Word>
 <Word name="banana">
         <SoundPath>sounds\vocabulary\banana.wav</SoundPath>
         <Definition partOfSpeech="n">any of several tropical and subtropical treelike herbs of the genus Musa having a terminal crown of large entire leaves and usually bearing hanging clusters of elongated fruits</Definition>
         <Definition partOfSpeech="n">elongated crescent-shaped yellow fruit with soft sweet flesh</Definition>
+    </Word>
+<Word name="several">
+        <SoundPath>sounds\vocabulary\several.wav</SoundPath>
+        <Definition partOfSpeech="adj">(used with count nouns) of an indefinite number more than 2 or 3 but not many</Definition>
+        <Definition partOfSpeech="adj">distinct and individual</Definition>
+        <Definition partOfSpeech="adj">considered individually</Definition>
     </Word>
 <Word name="search">
         <SoundPath>sounds\vocabulary\search.wav</SoundPath>
@@ -275,13 +348,6 @@
         <Definition partOfSpeech="n">an investigation seeking answers</Definition>
         <Definition partOfSpeech="n">the examination of alternative hypotheses</Definition>
         <Definition partOfSpeech="n">an operation that determines whether one or more of a set of items has a specified property</Definition>
-    </Word>
-
-<Word name="several">
-        <SoundPath>sounds\vocabulary\several.wav</SoundPath>
-        <Definition partOfSpeech="adj">(used with count nouns) of an indefinite number more than 2 or 3 but not many</Definition>
-        <Definition partOfSpeech="adj">distinct and individual</Definition>
-        <Definition partOfSpeech="adj">considered individually</Definition>
     </Word>
 <Word name="visible">
         <SoundPath>sounds\vocabulary\visible.wav</SoundPath>
@@ -312,91 +378,9 @@
         <Definition partOfSpeech="n">a spiritual agency that is assumed to assist the medium during a seance</Definition>
     </Word>
 
-<Word name="terminal">
-        <SoundPath>sounds\vocabulary\terminal.wav</SoundPath>
-        <Definition partOfSpeech="adj">occurring at or forming an end or termination</Definition>
-        <Definition partOfSpeech="adj">being or situated at an end</Definition>
-        <Definition partOfSpeech="adj">of or relating to or situated at the ends of a delivery route</Definition>
-        <Definition partOfSpeech="adj">causing or ending in or approaching death</Definition>
-        <Definition partOfSpeech="adj">relating to or occurring in a term or fixed period of time</Definition>
-        <Definition partOfSpeech="n">either extremity of something that has length</Definition>
-        <Definition partOfSpeech="n">station where transport vehicles load or unload passengers or goods</Definition>
-        <Definition partOfSpeech="n">a contact on an electrical device (such as a battery) at which electric current enters or leaves</Definition>
-        <Definition partOfSpeech="n">electronic equipment consisting of a device providing access to a computer; has a keyboard and display</Definition>
-    </Word>
-<Word name="elephant">
-        <SoundPath>sounds\vocabulary\elephant.wav</SoundPath>
-        <Definition partOfSpeech="n">five-toed pachyderm</Definition>
-        <Definition partOfSpeech="n">the symbol of the Republican Party; introduced in cartoons by Thomas Nast in 1874</Definition>
-    </Word>
-<<<<<<< HEAD
-    
-    <Word name="customer">
-        <SoundPath>D:\GitHub\EEFighter\英英單字大對決\英英單字大對決\sounds\vocabulary\customer.wav</SoundPath>
-        <Definition partOfSpeech="n">someone who pays for goods or services</Definition>
-    </Word>
-    
-=======
-<Word name="subtropical">
-        <SoundPath>sounds\vocabulary\subtropical.wav</SoundPath>
-        <Definition partOfSpeech="adj">of or relating to or characteristic of conditions in the subtropics</Definition>
-    </Word>
-<Word name="vocabulary">
-        <SoundPath>sounds\vocabulary\vocabulary.wav</SoundPath>
-        <Definition partOfSpeech="n">a language user's knowledge of words</Definition>
-        <Definition partOfSpeech="n">a listing of the words used in some enterprise</Definition>
-        <Definition partOfSpeech="n">the system of techniques or symbols serving as a means of expression (as in arts or crafts)</Definition>
-    </Word>
-
 <Word name="customer">
         <SoundPath>sounds\vocabulary\customer.wav</SoundPath>
         <Definition partOfSpeech="n">someone who pays for goods or services</Definition>
-</Word>
-<Word name="several">
-        <SoundPath/>
-        <Definition partOfSpeech="adj">(used with count nouns) of an indefinite number more than 2 or 3 but not many</Definition>
-        <Definition partOfSpeech="adj">distinct and individual</Definition>
-        <Definition partOfSpeech="adj">considered individually</Definition>
     </Word>
-<Word name="genus">
-        <SoundPath/>
-        <Definition partOfSpeech="n">(biology) taxonomic group containing one or more species</Definition>
-        <Definition partOfSpeech="n">a general kind of something</Definition>
-    </Word>
-<Word name="have">
-        <SoundPath/>
-        <Definition partOfSpeech="v">have or possess, either in a concrete or an abstract sense</Definition>
-        <Definition partOfSpeech="v">have as a feature</Definition>
-        <Definition partOfSpeech="v">have ownership or possession of</Definition>
-        <Definition partOfSpeech="v">get something; come into possession of</Definition>
-        <Definition partOfSpeech="v">serve oneself to, or consume regularly</Definition>
-        <Definition partOfSpeech="v">have sex with; archaic use</Definition>
-        <Definition partOfSpeech="v">have a personal or business relationship with someone</Definition>
-        <Definition partOfSpeech="v">have left</Definition>
-        <Definition partOfSpeech="v">be confronted with</Definition>
-        <Definition partOfSpeech="v">receive willingly something given or offered</Definition>
-        <Definition partOfSpeech="v">achieve a point or goal</Definition>
-        <Definition partOfSpeech="v">undergo</Definition>
-        <Definition partOfSpeech="v">undergo (as of injuries and illnesses)</Definition>
-        <Definition partOfSpeech="v">suffer from; be ill with</Definition>
-        <Definition partOfSpeech="v">go through (mental or physical states or experiences)</Definition>
-        <Definition partOfSpeech="v">cause to be born</Definition>
-        <Definition partOfSpeech="v">cause to move; cause to be in a certain position or condition</Definition>
-        <Definition partOfSpeech="v">cause to do; cause to act in a specified manner</Definition>
-        <Definition partOfSpeech="v">organize or be responsible for</Definition>
-        <Definition partOfSpeech="n">a person who possesses great material wealth</Definition>
-    </Word>
-<Word name="terminal">
-        <SoundPath/>
-        <Definition partOfSpeech="adj">occurring at or forming an end or termination</Definition>
-        <Definition partOfSpeech="adj">being or situated at an end</Definition>
-        <Definition partOfSpeech="adj">of or relating to or situated at the ends of a delivery route</Definition>
-        <Definition partOfSpeech="adj">causing or ending in or approaching death</Definition>
-        <Definition partOfSpeech="adj">relating to or occurring in a term or fixed period of time</Definition>
-        <Definition partOfSpeech="n">either extremity of something that has length</Definition>
-        <Definition partOfSpeech="n">station where transport vehicles load or unload passengers or goods</Definition>
-        <Definition partOfSpeech="n">a contact on an electrical device (such as a battery) at which electric current enters or leaves</Definition>
-        <Definition partOfSpeech="n">electronic equipment consisting of a device providing access to a computer; has a keyboard and display</Definition>
-    </Word>
->>>>>>> b6b663347206029d1870b579a3dd3dfdcf1cdbc3
+
 </EnglishWarehouse>
