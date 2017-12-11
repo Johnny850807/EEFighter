@@ -11,7 +11,6 @@ import javax.swing.JPanel;
 import controller.EEFighter;
 import model.Question;
 import model.sprite.GameMap;
-import model.sprite.IGameStartView;
 import model.sprite.PlayerSprite;
 import model.sprite.Sprite;
 import model.sprite.Sprite.Direction;
@@ -90,15 +89,6 @@ public class GameViewImp extends JPanel implements GameView, KeyListener {
 	@Override
 	public void onGameClose() {
 
-	}
-
-	public void nextQuestion() {
-		try {
-			Thread.sleep(1000);
-			eeFighter.nextQuestion();
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
 	}
 
 	@Override
@@ -185,12 +175,11 @@ public class GameViewImp extends JPanel implements GameView, KeyListener {
 			eeFighter.move(spriteP2, spriteP2.getDirection(), Status.STOP);
 			break;
 		}
-
 	}
 
 	@Override
 	public void onGameStarted() {
-
+	
 	}
 
 	@Override
@@ -236,6 +225,7 @@ public class GameViewImp extends JPanel implements GameView, KeyListener {
 
 	@Override
 	public void onAnswerCorrect(PlayerSprite player) {
+		eeFighter.nextQuestion();
 		System.out.println("correct");
 	}
 

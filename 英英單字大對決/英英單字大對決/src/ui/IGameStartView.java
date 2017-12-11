@@ -1,8 +1,9 @@
-package model.sprite;
+package ui;
 
 import java.util.List;
 
 import model.Question;
+import model.sprite.Sprite;
 
 public interface IGameStartView {
 	void onNextQuestion(Question question);
