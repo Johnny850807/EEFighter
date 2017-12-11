@@ -13,7 +13,7 @@ import java.util.List;
 
 import javax.swing.JFrame;
 
-import controller.EEFighter;
+import controller.EEFighterImp;
 import model.Question;
 import model.sprite.BasicMapBuilder;
 import model.sprite.BasicMapDirector;
@@ -113,7 +113,7 @@ public class GameStartView extends JFrame implements IGameStartView {
 		player2Lab = new Label();
 		wordDefinitionLab = new Label();
 		gbc = new GridBagConstraints();
-		gameViewPanel = new GameViewImp(new EEFighter(new BasicMapDirector(new BasicMapBuilder())), this);
+		gameViewPanel = new GameViewImp(new EEFighterImp(new BasicMapDirector(new BasicMapBuilder())), this);
 		gameViewPanel.start();
 	}
 	

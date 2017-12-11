@@ -154,12 +154,12 @@ public class WordXMLRepository implements WordRepository{
 		return soundPathElements.get(0).getTextContent();
 	}
 	
-	private Map<String, List<String>> getDefinitionMapFromWordElement(Element wordElement){
-		Map<String, List<String>> definitionMap = new HashMap<>();
+	private Map<PartOfSpeech, List<String>> getDefinitionMapFromWordElement(Element wordElement){
+		Map<PartOfSpeech, List<String>> definitionMap = new HashMap<>();
 		List<Element> definitionElements = filterElements(wordElement.getElementsByTagName(DEFINITION));
 		for(Element element : definitionElements)
 		{
-			String partOfSpeech = element.getAttribute(PARTOFSPEECH).toUpperCase();
+			PartOfSpeech partOfSpeech = PartOfSpeech.valueOf(element.getAttribute(PARTOFSPEECH).toUpperCase());
 			if (!definitionMap.containsKey(partOfSpeech))
 				definitionMap.put(partOfSpeech, new ArrayList<>());
 			definitionMap.get(partOfSpeech).add(element.getTextContent());
@@ -173,11 +173,11 @@ public class WordXMLRepository implements WordRepository{
 		wordElement.setAttribute(WORDNAME, word.getWord());
 		soundPathElement.setTextContent(word.getSoundPath());
 		wordElement.appendChild(soundPathElement);
-		for (String partOfSpeech : word.getSentences().keySet())
+		for (PartOfSpeech partOfSpeech : word.getSentences().keySet())
 			for (String definition : word.getSentences().get(partOfSpeech))
 			{
 				Element definitionElement = document.createElement(DEFINITION);
-				definitionElement.setAttribute(PARTOFSPEECH, partOfSpeech);
+				definitionElement.setAttribute(PARTOFSPEECH, partOfSpeech.toString());
 				definitionElement.setTextContent(definition);
 				wordElement.appendChild(definitionElement);
 			}

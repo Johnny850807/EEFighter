@@ -1,12 +1,14 @@
 package model;
 
+import model.words.PartOfSpeech;
+
 public class Question {
 	private String word;
 	private String soundPath;
-	private String partOfSpeech;
+	private PartOfSpeech partOfSpeech;
 	private String definition;
 	
-	public Question(String word, String soundPath, String partOfSpeech, String definition) {
+	public Question(String word, String soundPath, PartOfSpeech partOfSpeech, String definition) {
 		this.word = word;
 		this.soundPath = soundPath;
 		this.partOfSpeech = partOfSpeech;
@@ -21,7 +23,7 @@ public class Question {
 		return soundPath;
 	}
 
-	public String getPartOfSpeech() {
+	public PartOfSpeech getPartOfSpeech() {
 		return partOfSpeech;
 	}
 

@@ -66,7 +66,7 @@ public class WordRepositoryImp implements WordRepository {
 				for (int i = 0; i < Integer.valueOf(results[2]); i++) {
 					String[] define = br.readLine().split("/");
 					for (int j = 1; j < define.length; j++)
-						word.addDefinition(define[0], define[j]);
+						word.addDefinition(PartOfSpeech.valueOf(define[0]), define[j]);
 				}
 				words.put(wordtext, word);
 			}
@@ -90,13 +90,13 @@ public class WordRepositoryImp implements WordRepository {
 			
 			for (String w : words.keySet()) {
 				Word word = words.get(w);
-				Map<String, List<String>> definitions = word.getSentences();
+				Map<PartOfSpeech, List<String>> definitions = word.getSentences();
 				int keyAmount = definitions.keySet().size();
 				
 				bw.append(word.getWord() + " " + word.getSoundPath() + " " + keyAmount);
 				bw.newLine();
-				for (String partOfSpeech : definitions.keySet()) {
-					bw.append(partOfSpeech);
+				for (PartOfSpeech partOfSpeech : definitions.keySet()) {
+					bw.append(partOfSpeech.toString());
 					for (String definition : definitions.get(partOfSpeech))
 						bw.append("/" + definition);
 					bw.newLine();

@@ -10,7 +10,7 @@ public class Word {
 	private String word;
 	private String soundPath;
 	// TODO 詞性改成列舉
-	private Map<String, List<String>> definitions = new HashMap<String, List<String>>();
+	private Map<PartOfSpeech, List<String>> definitions = new HashMap<PartOfSpeech, List<String>>();
 
 	public Word(String word) {
 		this.word = word;
@@ -32,21 +32,21 @@ public class Word {
 		this.soundPath = soundPath;
 	}
 
-	public Map<String, List<String>> getSentences() {
+	public Map<PartOfSpeech, List<String>> getSentences() {
 		return definitions;
 	}
 	
-	public String getSentence(String partOfSpeech) {
+	public String getSentence(PartOfSpeech partOfSpeech) {
 		Random random = new Random();
 		List<String> definition = definitions.get(partOfSpeech);
 		return definition.get(random.nextInt(definition.size()));
 	}
 	
-	public void setSentences(Map<String, List<String>> sentences) {
+	public void setSentences(Map<PartOfSpeech, List<String>> sentences) {
 		this.definitions = sentences;
 	}
 
-	public void addDefinition(String partOfSpeech, String sentence) {
+	public void addDefinition(PartOfSpeech partOfSpeech, String sentence) {
 		if (!definitions.containsKey(partOfSpeech)) 
 			definitions.put(partOfSpeech, new ArrayList<>());
 		definitions.get(partOfSpeech).add(sentence);
@@ -56,7 +56,7 @@ public class Word {
 	public String toString() {
 		StringBuilder strb = new StringBuilder();
 		strb.append(getWord()).append(", ").append(getSoundPath()).append(":\n");
-		for (String partOfSpeech : definitions.keySet())
+		for (PartOfSpeech partOfSpeech : definitions.keySet())
 		{
 			strb.append("====   ").append(partOfSpeech).append("   ====\n");
 			for (String definition : definitions.get(partOfSpeech))
