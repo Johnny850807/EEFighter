@@ -15,7 +15,6 @@ import controller.EEFighter;
 import model.Question;
 import model.sprite.BasicMapBuilder;
 import model.sprite.BasicMapDirector;
-import model.sprite.IGameStartView;
 import model.sprite.Sprite;
 
 /**
@@ -133,12 +132,6 @@ public class GameStartView extends JFrame implements IGameStartView {
 		add(c, gbc);
 	}
 
-	public interface IGameStartView {
-		void onNextQuestion(Question question);
-
-		void onPlayerEatLetter(Sprite sprite);
-	}
-
 	@Override
 	public void onPlayerEatLetter(String player, List<Sprite> letter) {
 		showPlayerLetter(player, letter);
@@ -150,7 +143,6 @@ public class GameStartView extends JFrame implements IGameStartView {
 	}
 
 	public void showPlayerLetter(String player, List<Sprite> letter) {
-		
 		if (player.equals("player1")) {
 			StringBuilder strBuilder = new StringBuilder("Player1: ");
 			for (int i = 0; i < letter.size(); i++) 
