@@ -29,6 +29,7 @@ import javax.swing.ListCellRenderer;
 import javax.swing.Timer;
 
 import controller.EnglishWarehouseController;
+import model.words.PartOfSpeech;
 import model.words.Word;
 
 public class EnglishWarehouseViewImp extends JFrame implements EnglishWarehouseView, ActionListener {
@@ -145,7 +146,6 @@ public class EnglishWarehouseViewImp extends JFrame implements EnglishWarehouseV
 
 	@Override
 	public void onWordReadFailed(String word, Exception exception) {
-		// TODO Auto-generated method stub
 		
 	}
 
@@ -156,7 +156,6 @@ public class EnglishWarehouseViewImp extends JFrame implements EnglishWarehouseV
 
 	@Override
 	public void onWordReadFailed(Exception exception) {
-		// TODO Auto-generated method stub
 		
 	}
 }

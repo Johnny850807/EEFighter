@@ -21,6 +21,8 @@ import utils.SoundPlayer;
  * @author Lin The game view where showing the playing game.
  */
 public class GameViewImp extends JPanel implements GameView, KeyListener {
+	private static final String ERROR_SOUND_PATH = "sounds/error.wav";
+	private static final String CORRECT_SOUND_PATH = "sounds/correct.wav";
 	private GameMap gameMap;
 	private EEFighter eeFighter;
 	private PlayerSprite spriteP1;
@@ -227,13 +229,14 @@ public class GameViewImp extends JPanel implements GameView, KeyListener {
 
 	@Override
 	public void onAnswerCorrect(PlayerSprite player) {
+		SoundPlayer.getInstance().playSound(CORRECT_SOUND_PATH);
 		eeFighter.nextQuestion();
 		System.out.println("correct");
 	}
 
 	@Override
 	public void onAnswerWrong(PlayerSprite player) {
-		
+		SoundPlayer.getInstance().playSound(ERROR_SOUND_PATH);
 	}
 
 	@Override

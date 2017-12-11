@@ -8,7 +8,6 @@ import java.util.List;
  * @author Lin (ªL©v»õ)
  */
 public class LetterPool implements ILetterPool {
-
 	private List<Sprite> availableLetters;
 	private List<Sprite> inUseLetters;
 	private SpritePrototypeFactory prototypeFactory = SpritePrototypeFactory.getInstance();
