@@ -35,7 +35,7 @@ public class EEFighter implements LetterCreateListener {
 	
 	public EEFighter(MapDirector mapDirector) {
 		gameMap = mapDirector.buildMap();
-		questionManger = new QuestionManger(new WordXMLRepository("words"));
+		questionManger = new QuestionManger(new WordXMLRepository(WordXMLRepository.ENGLISH_WAREHOUSE));
 		letterManager = new LetterManager(gameMap, new LetterPool());
 		letterManager.setLetterCreateListener(this);
 		createPlayers();
@@ -167,7 +167,6 @@ public class EEFighter implements LetterCreateListener {
 	}
 	
 	private void playQuestionWord() {
-		System.out.println("1");
 		gameView.onQuestionWordSoundPlay(questionManger.getNowQuestion());
 	}
 	

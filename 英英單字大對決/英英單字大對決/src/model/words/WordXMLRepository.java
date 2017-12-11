@@ -34,7 +34,7 @@ import org.xml.sax.SAXException;
  * @author Waterball
  */
 public class WordXMLRepository implements WordRepository{
-	private static final String ENGLISH_WAREHOUSE = "EnglishWarehouse";
+	public static final String ENGLISH_WAREHOUSE = "EnglishWarehouse";
 	private static final String WORD = "Word";
 	private static final String WORDNAME = "name";
 	private static final String SOUNDPATH = "SoundPath";
