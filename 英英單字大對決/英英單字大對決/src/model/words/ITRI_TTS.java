@@ -59,7 +59,7 @@ public class ITRI_TTS implements TTS{
 		int convertId = getConvertId(word);
 		String resourceUrl = repeatedlyAskingForTheTTSProduct(convertId);
 		File file = parseAndSaveFileFromUrl(resourceUrl, directoryPath, word);
-		return file.getAbsolutePath();
+		return file.getPath();
 	}
 	
 
@@ -160,6 +160,7 @@ public class ITRI_TTS implements TTS{
 		try {
 			TTS tts = new ITRI_TTS(Secret.TTS_ACCOUNT, Secret.TTS_PASSWORD);
 			String path = tts.saveWordTTS("sounds/vocabulary", "Question one, listen carefully.");
+			System.out.println(path);
 			new MainView().setVisible(true);
 			SoundPlayer.getInstance().playSound(path);
 		} catch (Exception e) {
