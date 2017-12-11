@@ -3,7 +3,9 @@ package ui;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
+import java.awt.EventQueue;
 import java.awt.Font;
+import java.awt.Graphics;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Label;
@@ -28,13 +30,16 @@ public class GameStartView extends JFrame implements IGameStartView {
 	private Label player2Lab;
 	private Label wordDefinitionLab;
 	private GridBagConstraints gbc;
+	private Question question;
 	private GameViewImp gameViewPanel;
 
 	public GameStartView() {
 		super("英英單字大對決");
-		setBounds(215, 80, 1105, 704);
-		setupViews();
-		setupLayout();
+		EventQueue.invokeLater(() -> {
+			setBounds(215, 80, 1105, 704);
+			setupViews();
+			setupLayout();
+		});
 	}
 
 	private void setupLayout() {
@@ -111,15 +116,22 @@ public class GameStartView extends JFrame implements IGameStartView {
 		gameViewPanel = new GameViewImp(new EEFighter(new BasicMapDirector(new BasicMapBuilder())), this);
 		gameViewPanel.start();
 	}
-
+	
 	@Override
-	public void onNextQuestion(Question question) {
+	public void paint(Graphics g) {
+		super.paint(g);
 		String definition = "1. ( " + question.getPartOfSpeech() + ". ) " + question.getDefinition();
 		StringBuilder strBuilder = new StringBuilder("<html>");
 		strBuilder.append(definition);
 		strBuilder.append("</html>");
-		wordDefinitionLab.setText(strBuilder.toString());
-		System.out.println(wordDefinitionLab.getText());
+		if (question != null)
+			wordDefinitionLab.setText(strBuilder.toString());
+	}
+
+	@Override
+	public void onNextQuestion(Question question) {
+		this.question = question;
+		repaint();
 	}
 
 	public void addComponent(Component c, Double weightX, Double weightY, int row, int column, int width, int height) {
