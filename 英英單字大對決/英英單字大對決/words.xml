@@ -377,8 +377,10 @@
         <Definition partOfSpeech="n">great skillfulness and knowledge of some subject or activity</Definition>
         <Definition partOfSpeech="n">a spiritual agency that is assumed to assist the medium during a seance</Definition>
     </Word>
+
 <Word name="customer">
         <SoundPath>sounds\vocabulary\customer.wav</SoundPath>
         <Definition partOfSpeech="n">someone who pays for goods or services</Definition>
     </Word>
+
 </EnglishWarehouse>
