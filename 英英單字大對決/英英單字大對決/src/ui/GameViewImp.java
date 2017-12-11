@@ -240,4 +240,10 @@ public class GameViewImp extends JPanel implements GameView, KeyListener {
 		
 	}
 
+	@Override
+	public void onQuestionWordSoundPlay(Question question) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }
