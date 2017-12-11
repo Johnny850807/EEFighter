@@ -42,10 +42,17 @@ public abstract class ObjectPool<T> {
 	}
 	
 	private void prepareAvailableObjects() {
-		List<Runnable> workers = new ArrayList<>();
+		List<Thread> workers = new ArrayList<>();
 		for (int i = 0 ; i < minSize ; i ++)  // parallelly creating
-			workers.add(() -> available.add(createNewOne()));
-		workers.forEach(r -> new Thread(r).start());
+			workers.add(new Thread(() -> available.add(createNewOne())));
+		workers.forEach(t -> t.start());
+		workers.forEach(t -> {
+			try {
+				t.join();
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		});
 	}
 
 	public void setMaxSize(int maxSize) {
