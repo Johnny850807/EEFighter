@@ -2,12 +2,9 @@ package model.sprite;
 
 import java.io.IOException;
 import java.io.OutputStream;
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
-import model.QuestionManger;
 
 public class LetterPool {
 	protected int maxSize;
@@ -16,11 +13,9 @@ public class LetterPool {
 	protected boolean log;
 	protected OutputStream outputStream;
 	protected Set<Sprite> available = new HashSet<>();
-	private QuestionManger questionManger;
 
-	public LetterPool(int minSize, int maxSize, QuestionManger questionManger) {
+	public LetterPool(int minSize, int maxSize) {
 		this(minSize, maxSize, true);
-		this.questionManger = questionManger;
 	}
 
 	public LetterPool(int minSize, int maxSize, boolean log) {

@@ -25,7 +25,7 @@ public class CrawlerVocabularycom implements Crawler{
 				e[0].toUpperCase();
 				String partOfSpeech = e[0];
 				String sentence = e[1];
-				word.addDefinition(partOfSpeech, sentence);
+				word.addDefinition(PartOfSpeech.valueOf(partOfSpeech.toUpperCase()), sentence);
 			}
 			System.out.println(word.getSentences().entrySet());
 			return word;

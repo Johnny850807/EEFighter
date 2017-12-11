@@ -6,6 +6,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
+import model.words.PartOfSpeech;
 import model.words.ReadWordFailedException;
 import model.words.Word;
 import model.words.WordRepository;
@@ -28,9 +29,9 @@ public class QuestionManger implements Iterable<Question> {
 			for (Word word : words) {
 				String wordtxt = word.getWord();
 				String soundPath = word.getSoundPath();
-				Map<String, List<String>> definitions = word.getSentences();
-				List<String> partOfSpeechs = new ArrayList<>(definitions.keySet());
-				String partOfSpeech = partOfSpeechs.get(0);
+				Map<PartOfSpeech, List<String>> definitions = word.getSentences();
+				List<PartOfSpeech> partOfSpeechs = new ArrayList<>(definitions.keySet());
+				PartOfSpeech partOfSpeech = partOfSpeechs.get(0);
 				String definition = word.getSentence(partOfSpeech);
 				Question question = new Question(wordtxt, soundPath, partOfSpeech, definition);
 				questions.add(question);
