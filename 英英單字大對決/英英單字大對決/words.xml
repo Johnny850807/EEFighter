@@ -17,29 +17,7 @@
         <Definition partOfSpeech="n">gradually ceasing to be visible</Definition>
         <Definition partOfSpeech="n">a golf shot that curves to the right for a right-handed golfer</Definition>
     </Word>
-    <Word name="have">
-        <SoundPath>D:\GitHub\EEFighter\英英單字大對決\英英單字大對決\sounds\vocabulary\have.wav</SoundPath>
-        <Definition partOfSpeech="v">have or possess, either in a concrete or an abstract sense</Definition>
-        <Definition partOfSpeech="v">have as a feature</Definition>
-        <Definition partOfSpeech="v">have ownership or possession of</Definition>
-        <Definition partOfSpeech="v">get something; come into possession of</Definition>
-        <Definition partOfSpeech="v">serve oneself to, or consume regularly</Definition>
-        <Definition partOfSpeech="v">have sex with; archaic use</Definition>
-        <Definition partOfSpeech="v">have a personal or business relationship with someone</Definition>
-        <Definition partOfSpeech="v">have left</Definition>
-        <Definition partOfSpeech="v">be confronted with</Definition>
-        <Definition partOfSpeech="v">receive willingly something given or offered</Definition>
-        <Definition partOfSpeech="v">achieve a point or goal</Definition>
-        <Definition partOfSpeech="v">undergo</Definition>
-        <Definition partOfSpeech="v">undergo (as of injuries and illnesses)</Definition>
-        <Definition partOfSpeech="v">suffer from; be ill with</Definition>
-        <Definition partOfSpeech="v">go through (mental or physical states or experiences)</Definition>
-        <Definition partOfSpeech="v">cause to be born</Definition>
-        <Definition partOfSpeech="v">cause to move; cause to be in a certain position or condition</Definition>
-        <Definition partOfSpeech="v">cause to do; cause to act in a specified manner</Definition>
-        <Definition partOfSpeech="v">organize or be responsible for</Definition>
-        <Definition partOfSpeech="n">a person who possesses great material wealth</Definition>
-    </Word>
+    
     <Word name="view">
         <SoundPath>D:\GitHub\EEFighter\英英單字大對決\英英單字大對決\sounds\vocabulary\view.wav</SoundPath>
         <Definition partOfSpeech="v">see or watch</Definition>
@@ -245,16 +223,8 @@
         <Definition partOfSpeech="n">a garment size for a small person</Definition>
         <Definition partOfSpeech="n">the slender part of the back</Definition>
     </Word>
-    <Word name="apple">
-        <SoundPath>D:\GitHub\EEFighter\英英單字大對決\英英單字大對決\sounds\vocabulary\apple.wav</SoundPath>
-        <Definition partOfSpeech="n">native Eurasian tree widely cultivated in many varieties for its firm rounded edible fruits</Definition>
-        <Definition partOfSpeech="n">fruit with red or yellow or green skin and sweet to tart crisp whitish flesh</Definition>
-    </Word>
-    <Word name="genus">
-        <SoundPath>D:\GitHub\EEFighter\英英單字大對決\英英單字大對決\sounds\vocabulary\genus.wav</SoundPath>
-        <Definition partOfSpeech="n">(biology) taxonomic group containing one or more species</Definition>
-        <Definition partOfSpeech="n">a general kind of something</Definition>
-    </Word>
+    
+    
     <Word name="search">
         <SoundPath>D:\GitHub\EEFighter\英英單字大對決\英英單字大對決\sounds\vocabulary\search.wav</SoundPath>
         <Definition partOfSpeech="v">search or seek</Definition>
@@ -267,11 +237,7 @@
         <Definition partOfSpeech="n">the examination of alternative hypotheses</Definition>
         <Definition partOfSpeech="n">an operation that determines whether one or more of a set of items has a specified property</Definition>
     </Word>
-    <Word name="banana">
-        <SoundPath>D:\GitHub\EEFighter\英英單字大對決\英英單字大對決\sounds\vocabulary\banana.wav</SoundPath>
-        <Definition partOfSpeech="n">any of several tropical and subtropical treelike herbs of the genus Musa having a terminal crown of large entire leaves and usually bearing hanging clusters of elongated fruits</Definition>
-        <Definition partOfSpeech="n">elongated crescent-shaped yellow fruit with soft sweet flesh</Definition>
-    </Word>
+    
     <Word name="visible">
         <SoundPath>D:\GitHub\EEFighter\英英單字大對決\英英單字大對決\sounds\vocabulary\visible.wav</SoundPath>
         <Definition partOfSpeech="adj">capable of being seen; or open to easy view</Definition>
@@ -300,19 +266,75 @@
         <Definition partOfSpeech="n">great skillfulness and knowledge of some subject or activity</Definition>
         <Definition partOfSpeech="n">a spiritual agency that is assumed to assist the medium during a seance</Definition>
     </Word>
-    <Word name="several">
-        <SoundPath>D:\GitHub\EEFighter\英英單字大對決\英英單字大對決\sounds\vocabulary\several.wav</SoundPath>
-        <Definition partOfSpeech="adj">(used with count nouns) of an indefinite number more than 2 or 3 but not many</Definition>
-        <Definition partOfSpeech="adj">distinct and individual</Definition>
-        <Definition partOfSpeech="adj">considered individually</Definition>
-    </Word>
+    
     <Word name="elephant">
         <SoundPath>D:\GitHub\EEFighter\英英單字大對決\英英單字大對決\sounds\vocabulary\elephant.wav</SoundPath>
         <Definition partOfSpeech="n">five-toed pachyderm</Definition>
         <Definition partOfSpeech="n">the symbol of the Republican Party; introduced in cartoons by Thomas Nast in 1874</Definition>
     </Word>
-    <Word name="terminal">
-        <SoundPath>D:\GitHub\EEFighter\英英單字大對決\英英單字大對決\sounds\vocabulary\terminal.wav</SoundPath>
+    
+    <Word name="customer">
+        <SoundPath>D:\GitHub\EEFighter\英英單字大對決\英英單字大對決\sounds\vocabulary\customer.wav</SoundPath>
+        <Definition partOfSpeech="n">someone who pays for goods or services</Definition>
+    </Word>
+    
+    
+<Word name="apple">
+        <SoundPath/>
+        <Definition partOfSpeech="n">native Eurasian tree widely cultivated in many varieties for its firm rounded edible fruits</Definition>
+        <Definition partOfSpeech="n">fruit with red or yellow or green skin and sweet to tart crisp whitish flesh</Definition>
+    </Word>
+<Word name="banana">
+        <SoundPath/>
+        <Definition partOfSpeech="n">any of several tropical and subtropical treelike herbs of the genus Musa having a terminal crown of large entire leaves and usually bearing hanging clusters of elongated fruits</Definition>
+        <Definition partOfSpeech="n">elongated crescent-shaped yellow fruit with soft sweet flesh</Definition>
+    </Word>
+<Word name="vocabulary">
+        <SoundPath/>
+        <Definition partOfSpeech="n">a language user's knowledge of words</Definition>
+        <Definition partOfSpeech="n">a listing of the words used in some enterprise</Definition>
+        <Definition partOfSpeech="n">the system of techniques or symbols serving as a means of expression (as in arts or crafts)</Definition>
+    </Word>
+<Word name="subtropical">
+        <SoundPath/>
+        <Definition partOfSpeech="adj">of or relating to or characteristic of conditions in the subtropics</Definition>
+    </Word>
+<Word name="several">
+        <SoundPath/>
+        <Definition partOfSpeech="adj">(used with count nouns) of an indefinite number more than 2 or 3 but not many</Definition>
+        <Definition partOfSpeech="adj">distinct and individual</Definition>
+        <Definition partOfSpeech="adj">considered individually</Definition>
+    </Word>
+<Word name="genus">
+        <SoundPath/>
+        <Definition partOfSpeech="n">(biology) taxonomic group containing one or more species</Definition>
+        <Definition partOfSpeech="n">a general kind of something</Definition>
+    </Word>
+<Word name="have">
+        <SoundPath/>
+        <Definition partOfSpeech="v">have or possess, either in a concrete or an abstract sense</Definition>
+        <Definition partOfSpeech="v">have as a feature</Definition>
+        <Definition partOfSpeech="v">have ownership or possession of</Definition>
+        <Definition partOfSpeech="v">get something; come into possession of</Definition>
+        <Definition partOfSpeech="v">serve oneself to, or consume regularly</Definition>
+        <Definition partOfSpeech="v">have sex with; archaic use</Definition>
+        <Definition partOfSpeech="v">have a personal or business relationship with someone</Definition>
+        <Definition partOfSpeech="v">have left</Definition>
+        <Definition partOfSpeech="v">be confronted with</Definition>
+        <Definition partOfSpeech="v">receive willingly something given or offered</Definition>
+        <Definition partOfSpeech="v">achieve a point or goal</Definition>
+        <Definition partOfSpeech="v">undergo</Definition>
+        <Definition partOfSpeech="v">undergo (as of injuries and illnesses)</Definition>
+        <Definition partOfSpeech="v">suffer from; be ill with</Definition>
+        <Definition partOfSpeech="v">go through (mental or physical states or experiences)</Definition>
+        <Definition partOfSpeech="v">cause to be born</Definition>
+        <Definition partOfSpeech="v">cause to move; cause to be in a certain position or condition</Definition>
+        <Definition partOfSpeech="v">cause to do; cause to act in a specified manner</Definition>
+        <Definition partOfSpeech="v">organize or be responsible for</Definition>
+        <Definition partOfSpeech="n">a person who possesses great material wealth</Definition>
+    </Word>
+<Word name="terminal">
+        <SoundPath/>
         <Definition partOfSpeech="adj">occurring at or forming an end or termination</Definition>
         <Definition partOfSpeech="adj">being or situated at an end</Definition>
         <Definition partOfSpeech="adj">of or relating to or situated at the ends of a delivery route</Definition>
@@ -322,19 +344,5 @@
         <Definition partOfSpeech="n">station where transport vehicles load or unload passengers or goods</Definition>
         <Definition partOfSpeech="n">a contact on an electrical device (such as a battery) at which electric current enters or leaves</Definition>
         <Definition partOfSpeech="n">electronic equipment consisting of a device providing access to a computer; has a keyboard and display</Definition>
-    </Word>
-    <Word name="customer">
-        <SoundPath>D:\GitHub\EEFighter\英英單字大對決\英英單字大對決\sounds\vocabulary\customer.wav</SoundPath>
-        <Definition partOfSpeech="n">someone who pays for goods or services</Definition>
-    </Word>
-    <Word name="vocabulary">
-        <SoundPath>D:\GitHub\EEFighter\英英單字大對決\英英單字大對決\sounds\vocabulary\vocabulary.wav</SoundPath>
-        <Definition partOfSpeech="n">a language user's knowledge of words</Definition>
-        <Definition partOfSpeech="n">a listing of the words used in some enterprise</Definition>
-        <Definition partOfSpeech="n">the system of techniques or symbols serving as a means of expression (as in arts or crafts)</Definition>
-    </Word>
-    <Word name="subtropical">
-        <SoundPath>D:\GitHub\EEFighter\英英單字大對決\英英單字大對決\sounds\vocabulary\subtropical.wav</SoundPath>
-        <Definition partOfSpeech="adj">of or relating to or characteristic of conditions in the subtropics</Definition>
     </Word>
 </EnglishWarehouse>

@@ -35,7 +35,7 @@ public class EEFighter implements LetterCreateListener {
 	
 	public EEFighter(MapDirector mapDirector) {
 		gameMap = mapDirector.buildMap();
-		questionManger = new QuestionManger(new WordXMLRepository(WordXMLRepository.ENGLISH_WAREHOUSE));
+		questionManger = new QuestionManger(new WordXMLRepository("words"));
 		letterManager = new LetterManager(gameMap, new LetterPool());
 		letterManager.setLetterCreateListener(this);
 		createPlayers();
@@ -80,7 +80,7 @@ public class EEFighter implements LetterCreateListener {
 		new Thread() {
 			public void run() {
 				try {
-					Thread.sleep(5000);
+					Thread.sleep(50000);
 					playQuestionWord();
 				} catch (InterruptedException e) {
 					e.printStackTrace();
