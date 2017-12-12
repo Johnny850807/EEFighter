@@ -66,24 +66,13 @@ public class LetterPool {
 
 	public synchronized Sprite get() {
 		try {
-			if (available.isEmpty()) {
-//				if (created < maxSize)
-//					return createNewOne();
+			if (available.isEmpty())
 				waitForReleasing();
-			}
 			return getAvailableObject();
 		} catch (InterruptedException err) {
 			return null;
 		}
 	}
-
-//	private Sprite createNewOne() {
-//		Sprite newProduct = create();
-//		created++;
-//		assert created <= maxSize;
-//		log("New object created: " + newProduct);
-//		return newProduct;
-//	}
 
 	private void waitForReleasing() throws InterruptedException {
 		log("Object pool is empty, waiting for releasing.");

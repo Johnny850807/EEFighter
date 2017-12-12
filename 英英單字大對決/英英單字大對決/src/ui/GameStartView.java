@@ -12,6 +12,7 @@ import java.awt.Label;
 import java.util.List;
 
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 
 import controller.EEFighterImp;
 import model.Question;
@@ -26,9 +27,9 @@ import model.sprite.Sprite;
 
 public class GameStartView extends JFrame implements IGameStartView {
 
-	private Label player1Lab;
-	private Label player2Lab;
-	private Label wordDefinitionLab;
+	private JLabel player1Lab;
+	private JLabel player2Lab;
+	private JLabel wordDefinitionLab;
 	private GridBagConstraints gbc;
 	private Question question;
 	private GameViewImp gameViewPanel;
@@ -52,7 +53,10 @@ public class GameStartView extends JFrame implements IGameStartView {
 
 	private void setupViewsBackground() {
 		player1Lab.setBackground(ColorHelper.getPrimaryDark());
+		player1Lab.setOpaque(true);
 		player2Lab.setBackground(ColorHelper.getPrimaryDark());
+		player2Lab.setOpaque(true);
+		wordDefinitionLab.setOpaque(true);
 		wordDefinitionLab.setBackground(ColorHelper.getPrimaryBlue());
 	}
 
@@ -78,21 +82,23 @@ public class GameStartView extends JFrame implements IGameStartView {
 		setupGameViewPanel();
 		Font font = new Font("·L³n¥¿¶ÂÅé", Font.BOLD, 20);
 		setViewsFont(font);
-		setViewsSize(new Dimension(400, 100));
+		setViewsSize(new Dimension(100, 35));
 		setViewsText();
 	}
 
 	private void setViewsText() {
-		player1Lab.setText("Player1: ");
-		wordDefinitionLab.setText("Word defintion : ");
-		player2Lab.setText("Player2: ");
+		player1Lab.setText(" Player1: ");
+		wordDefinitionLab.setText(" Word defintion : ");
+		player2Lab.setText(" Player2: ");
 	}
 
 	private void setViewsSize(Dimension dimension) {
 		player1Lab.setSize(dimension);
+		player1Lab.setMinimumSize(dimension);
 		player2Lab.setSize(dimension);
-		wordDefinitionLab.setSize(new Dimension(100, 700));
-		wordDefinitionLab.setMaximumSize(new Dimension(100, 400));
+		player2Lab.setMinimumSize(dimension);
+		wordDefinitionLab.setSize(new Dimension(700, 100));
+		wordDefinitionLab.setMinimumSize(new Dimension(150, 35));
 	}
 
 	private void setViewsFont(Font font) {
@@ -109,9 +115,9 @@ public class GameStartView extends JFrame implements IGameStartView {
 	}
 
 	private void initializeAll() {
-		player1Lab = new Label();
-		player2Lab = new Label();
-		wordDefinitionLab = new Label();
+		player1Lab = new JLabel();
+		player2Lab = new JLabel();
+		wordDefinitionLab = new JLabel();
 		gbc = new GridBagConstraints();
 		gameViewPanel = new GameViewImp(new EEFighterImp(new BasicMapDirector(new BasicMapBuilder())), this);
 		gameViewPanel.start();
@@ -159,12 +165,12 @@ public class GameStartView extends JFrame implements IGameStartView {
 			StringBuilder strBuilder = new StringBuilder("Player1: ");
 			for (int i = 0; i < letter.size(); i++) 
 				strBuilder.append(letter.get(i).getSpriteName() + " ");
-			player1Lab.setText(strBuilder.toString());
+			player1Lab.setText("<html>" + strBuilder.toString() + " </html>");
 		} else if (player.equals("player2")) {
 			StringBuilder strBuilder = new StringBuilder("Player2: ");
 			for (int i = 0; i < letter.size(); i++) 
 				strBuilder.append(letter.get(i).getSpriteName() + " ");
-			player2Lab.setText(strBuilder.toString());
+			player2Lab.setText("<html>" + strBuilder.toString() + " </html>");
 		}
 	}
 }
