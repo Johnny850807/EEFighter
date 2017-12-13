@@ -231,6 +231,7 @@ public class GameViewImp extends JPanel implements GameView, KeyListener {
 	public void onAnswerCorrect(PlayerSprite player) {
 		SoundPlayer.getInstance().playSound(CORRECT_SOUND_PATH);
 		eeFighter.nextQuestion();
+		gameStartView.onQuestionCorrect(player);
 		System.out.println("correct");
 	}
 

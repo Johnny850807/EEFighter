@@ -18,6 +18,7 @@ import controller.EEFighterImp;
 import model.Question;
 import model.sprite.BasicMapBuilder;
 import model.sprite.BasicMapDirector;
+import model.sprite.PlayerSprite;
 import model.sprite.Sprite;
 
 /**
@@ -82,23 +83,20 @@ public class GameStartView extends JFrame implements IGameStartView {
 		setupGameViewPanel();
 		Font font = new Font("·L³n¥¿¶ÂÅé", Font.BOLD, 20);
 		setViewsFont(font);
-		setViewsSize(new Dimension(100, 35));
+		setViewsSize(new Dimension(50, 33));
 		setViewsText();
 	}
 
 	private void setViewsText() {
-		player1Lab.setText(" Player1: ");
-		wordDefinitionLab.setText(" Word defintion : ");
-		player2Lab.setText(" Player2: ");
+		player1Lab.setText("Player1: ");
+		wordDefinitionLab.setText("Word defintion : ");
+		player2Lab.setText("Player2: ");
 	}
 
 	private void setViewsSize(Dimension dimension) {
-		player1Lab.setSize(dimension);
 		player1Lab.setMinimumSize(dimension);
-		player2Lab.setSize(dimension);
 		player2Lab.setMinimumSize(dimension);
-		wordDefinitionLab.setSize(new Dimension(700, 100));
-		wordDefinitionLab.setMinimumSize(new Dimension(150, 35));
+		wordDefinitionLab.setMinimumSize(new Dimension(170, 33));
 	}
 
 	private void setViewsFont(Font font) {
@@ -180,5 +178,13 @@ public class GameStartView extends JFrame implements IGameStartView {
 				strBuilder.append(letter.get(i).getSpriteName() + " ");
 			player2Lab.setText("<html>" + strBuilder.toString() + " </html>");
 		}
+	}
+
+	@Override
+	public void onQuestionCorrect(PlayerSprite player) {
+		if (player.toString().equals("player1"))
+			player1Lab.setText("Player1 Win!!");
+		else if (player.toString().equals("player2"))
+			player2Lab.setText("Player2 Win!!");
 	}
 }
