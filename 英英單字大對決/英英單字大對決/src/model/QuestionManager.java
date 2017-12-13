@@ -13,12 +13,12 @@ import model.words.WordRepository;
 import model.words.WordXMLRepository;
 
 
-public class QuestionManger implements Iterable<Question> {
+public class QuestionManager implements Iterable<Question> {
 
 	private List<Question> questions = new ArrayList<Question>();
 	private int index = -1;
 
-	public QuestionManger(WordRepository wordRepository) {
+	public QuestionManager(WordRepository wordRepository) {
 		createQuestions(wordRepository);
 	}
 	
@@ -65,8 +65,8 @@ public class QuestionManger implements Iterable<Question> {
 	}
 	
 	public static void main(String[] argv) {
-		QuestionManger questionManger = new QuestionManger(new WordXMLRepository("words"));
-		List<Question> questions = questionManger.getQuestions();
+		QuestionManager questionManager = new QuestionManager(new WordXMLRepository("words"));
+		List<Question> questions = questionManager.getQuestions();
 		for (Question question : questions) {
 			System.out.println(question.getWord() + question.getPartOfSpeech() + question.getDefinition());
 		}

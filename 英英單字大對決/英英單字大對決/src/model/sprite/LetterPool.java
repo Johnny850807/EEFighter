@@ -5,7 +5,7 @@ import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
-import model.QuestionManger;
+import model.QuestionManager;
 
 public class LetterPool {
 	private int maxSize;

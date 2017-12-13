@@ -5,7 +5,7 @@ import java.util.Collections;
 import java.util.List;
 
 import model.Question;
-import model.QuestionManger;
+import model.QuestionManager;
 import model.sprite.GameMap;
 import model.sprite.LetterCreateListener;
 import model.sprite.LetterManager;
@@ -28,7 +28,7 @@ public class EEFighterImp implements EEFighter, LetterCreateListener {
 	private GameView gameView;
 	private GameMap gameMap;
 	private LetterManager letterManager;
-	private QuestionManger questionManger;
+	private QuestionManager questionManager;
 	private List<Sprite> letters = new ArrayList<Sprite>();
 	private PlayerSprite player1;
 	private PlayerSprite player2;
@@ -36,7 +36,7 @@ public class EEFighterImp implements EEFighter, LetterCreateListener {
 	
 	public EEFighterImp(MapDirector mapDirector) {
 		gameMap = mapDirector.buildMap();
-		questionManger = new QuestionManger(new WordXMLRepository("wordwarehouse"));
+		questionManager = new QuestionManager(new WordXMLRepository("wordwarehouse"));
 		letterManager = new LetterManager(gameMap, new LetterPool(70));
 		letterManager.setLetterCreateListener(this);
 		createPlayers();
@@ -94,8 +94,8 @@ public class EEFighterImp implements EEFighter, LetterCreateListener {
 		letters.removeAll(letters);
 		player1.removeAllLetters();
 		player2.removeAllLetters();
-		Question question = questionManger.getNextQuestion();
-		if (questionManger.hasNext()) {
+		Question question = questionManager.getNextQuestion();
+		if (questionManager.hasNext()) {
 			gameView.onNextQuestion(question);
 			playQuestionWord(question);
 		}
@@ -136,7 +136,7 @@ public class EEFighterImp implements EEFighter, LetterCreateListener {
 
 	@Override
 	public void checkAnswer(PlayerSprite player) {
-		String words = questionManger.getNowQuestion().getWord().toUpperCase();
+		String words = questionManager.getNowQuestion().getWord().toUpperCase();
 		System.out.println(words);
 		List<Sprite> letters = player.getLetters();
 		if (words.length() == letters.size() && compareLetters(words, letters)) 
