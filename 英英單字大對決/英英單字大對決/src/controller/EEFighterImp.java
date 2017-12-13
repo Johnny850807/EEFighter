@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import model.Question;
 import model.QuestionManger;
 import model.sprite.GameMap;
 import model.sprite.LetterCreateListener;
@@ -31,6 +32,7 @@ public class EEFighterImp implements EEFighter, LetterCreateListener {
 	private List<Sprite> letters = new ArrayList<Sprite>();
 	private PlayerSprite player1;
 	private PlayerSprite player2;
+	private SoundPlayTimer soundPlayTimer;
 	private boolean isNextQuestion = false;
 	
 	public EEFighterImp(MapDirector mapDirector) {
@@ -93,11 +95,12 @@ public class EEFighterImp implements EEFighter, LetterCreateListener {
 		letters.removeAll(letters);
 		player1.removeAllLetters();
 		player2.removeAllLetters();
-		if (questionManger.hasNext()) 
+		if (questionManger.hasNext()) {
 			gameView.onNextQuestion(questionManger.getNextQuestion());
+			playQuestionWord(questionManger.getNextQuestion());
+		}
 		else
 			gameView.onNoMoreQuestion();
-		playQuestionWord();
 	}
 
 	public boolean isOver() {
@@ -157,17 +160,11 @@ public class EEFighterImp implements EEFighter, LetterCreateListener {
 		return true;
 	}
 	
-	private void playQuestionWord() {
-		new Thread() {
-			public void run() {
-				try {
-					Thread.sleep(50000);
-					gameView.onQuestionWordSoundPlay(questionManger.getNowQuestion());
-				} catch (InterruptedException e) {
-					e.printStackTrace();
-				}
-			};
-		}.start();
+	private void playQuestionWord(Question question) {
+		if (soundPlayTimer != null)
+			soundPlayTimer.questionChange();
+		soundPlayTimer = new SoundPlayTimer(gameView, question);
+		soundPlayTimer.start();
 	}
 	
 }

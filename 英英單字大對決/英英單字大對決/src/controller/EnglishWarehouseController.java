@@ -71,7 +71,6 @@ public class EnglishWarehouseController {
 			}
 		}.start();
 	}
-	
 
 	public void readAllWord(){
 		new Thread() {
