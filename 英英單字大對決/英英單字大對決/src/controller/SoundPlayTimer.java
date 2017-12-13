@@ -23,9 +23,8 @@ public class SoundPlayTimer extends Thread {
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
-		while (!isOver) {
+		if (!isOver)
 			gameView.onQuestionWordSoundPlay(question);
-		}
 	}
 	
 	public void questionChange() {
