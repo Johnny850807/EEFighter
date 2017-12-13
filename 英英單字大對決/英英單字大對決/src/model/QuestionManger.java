@@ -26,6 +26,7 @@ public class QuestionManger implements Iterable<Question> {
 		try {
 			List<Word> words = wordRepository.readAllWord();
 			Collections.shuffle(words);
+			int number = 0;
 			for (Word word : words) {
 				String wordtxt = word.getWord();
 				String soundPath = word.getSoundPath();
@@ -33,7 +34,7 @@ public class QuestionManger implements Iterable<Question> {
 				List<PartOfSpeech> partOfSpeechs = new ArrayList<>(definitions.keySet());
 				PartOfSpeech partOfSpeech = partOfSpeechs.get(0);
 				String definition = word.getSentence(partOfSpeech);
-				Question question = new Question(wordtxt, soundPath, partOfSpeech, definition);
+				Question question = new Question(++number, wordtxt, soundPath, partOfSpeech, definition);
 				questions.add(question);
 			}
 		} catch (ReadWordFailedException e) {

@@ -33,7 +33,6 @@ public class EEFighterImp implements EEFighter, LetterCreateListener {
 	private PlayerSprite player1;
 	private PlayerSprite player2;
 	private SoundPlayTimer soundPlayTimer;
-	private boolean isNextQuestion = false;
 	
 	public EEFighterImp(MapDirector mapDirector) {
 		gameMap = mapDirector.buildMap();
