@@ -61,7 +61,15 @@ public class LetterPool {
 			available.add(sprite);
 			sprite = SpritePrototypeFactory.getInstance().createSprite(SpriteName.O);
 			available.add(sprite);
-			sprite = SpritePrototypeFactory.getInstance().createSprite(SpriteName.U);
+			sprite = SpritePrototypeFactory.getInstance().createSprite(SpriteName.T);
+			available.add(sprite);
+			sprite = SpritePrototypeFactory.getInstance().createSprite(SpriteName.N);
+			available.add(sprite);
+			sprite = SpritePrototypeFactory.getInstance().createSprite(SpriteName.S);
+			available.add(sprite);
+			sprite = SpritePrototypeFactory.getInstance().createSprite(SpriteName.H);
+			available.add(sprite);
+			sprite = SpritePrototypeFactory.getInstance().createSprite(SpriteName.R);
 			available.add(sprite);
 		}
 	}
