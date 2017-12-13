@@ -36,7 +36,7 @@ public class EEFighterImp implements EEFighter, LetterCreateListener {
 	public EEFighterImp(MapDirector mapDirector) {
 		gameMap = mapDirector.buildMap();
 		questionManger = new QuestionManger(new WordXMLRepository("words"));
-		letterManager = new LetterManager(gameMap, new LetterPool(26));
+		letterManager = new LetterManager(gameMap, new LetterPool(52));
 		letterManager.setLetterCreateListener(this);
 		createPlayers();
 	}

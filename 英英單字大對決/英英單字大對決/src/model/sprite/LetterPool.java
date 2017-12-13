@@ -2,17 +2,16 @@ package model.sprite;
 
 import java.io.IOException;
 import java.io.OutputStream;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
+import model.QuestionManger;
 
 public class LetterPool {
-	protected int maxSize;
-	protected int minSize;
-	protected int created = 0;
-	protected boolean log;
-	protected OutputStream outputStream;
-	protected Set<Sprite> available = new HashSet<>();
+	private int maxSize;
+	private boolean log;
+	private OutputStream outputStream;
+	private List<Sprite> available = new ArrayList<>();
 
 	public LetterPool(int maxSize) {
 		this(maxSize, true);
@@ -23,8 +22,6 @@ public class LetterPool {
 	}
 
 	/**
-	 * @param minSize
-	 *            the minSize determines the initially created object amount.
 	 * @param maxSize
 	 *            the maxSize constrains the object pool holding specific number of
 	 *            reusable objects.
@@ -34,9 +31,6 @@ public class LetterPool {
 	 *            where the logging be sent to.
 	 */
 	public LetterPool(int maxSize, boolean log, OutputStream outputStream) {
-		if (minSize > maxSize)
-			throw new IllegalArgumentException(
-					"The minSize of the object pool should not be greater than the maxSize.");
 		this.maxSize = maxSize;
 		this.log = log;
 		this.outputStream = outputStream;
@@ -45,10 +39,30 @@ public class LetterPool {
 	}
 
 	private void prepareSprite() {
+		prepareBasicLetters();
+		prepareExtraLetters();
+	}
+
+	private void prepareBasicLetters() {
 		SpriteName[] spriteNames = SpriteName.getLetterNames();
-		for (int i = 0; i < spriteNames.length; i++) {
-			Sprite sprite = SpritePrototypeFactory.getInstance().createSprite(spriteNames[i]);
-			available.add(sprite);			
+		for (int i = 0; i < 2; i++)
+			for (int j = 0; j < spriteNames.length; j++) {
+				available.add(SpritePrototypeFactory.getInstance().createSprite(spriteNames[j]));
+			}
+	}
+
+	private void prepareExtraLetters() {
+		for (int i = 0; i < 2; i++) {
+			Sprite sprite = SpritePrototypeFactory.getInstance().createSprite(SpriteName.A);
+			available.add(sprite);
+			sprite = SpritePrototypeFactory.getInstance().createSprite(SpriteName.E);
+			available.add(sprite);
+			sprite = SpritePrototypeFactory.getInstance().createSprite(SpriteName.I);
+			available.add(sprite);
+			sprite = SpritePrototypeFactory.getInstance().createSprite(SpriteName.O);
+			available.add(sprite);
+			sprite = SpritePrototypeFactory.getInstance().createSprite(SpriteName.U);
+			available.add(sprite);
 		}
 	}
 
@@ -80,7 +94,7 @@ public class LetterPool {
 	}
 
 	private Sprite getAvailableObject() {
-		Sprite nextObject = available.iterator().next();
+		Sprite nextObject = available.get((int) (Math.random() * available.size()));
 		log("Available object returned: " + nextObject);
 		available.remove(nextObject);
 		System.out.println(available.size());
