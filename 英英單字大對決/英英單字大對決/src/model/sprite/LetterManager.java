@@ -25,7 +25,7 @@ public class LetterManager {
 			public void run() {
 				while (true) {
 					try {
-						Thread.sleep(1000);
+						Thread.sleep(1500);
 						Sprite sprite = getLetter();
 						letters.add(sprite);
 						letterCreateListener.onCreateLetters(letters);

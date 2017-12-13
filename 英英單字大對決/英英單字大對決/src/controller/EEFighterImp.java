@@ -37,7 +37,7 @@ public class EEFighterImp implements EEFighter, LetterCreateListener {
 	
 	public EEFighterImp(MapDirector mapDirector) {
 		gameMap = mapDirector.buildMap();
-		questionManger = new QuestionManger(new WordXMLRepository("words"));
+		questionManger = new QuestionManger(new WordXMLRepository("wordwarehouse"));
 		letterManager = new LetterManager(gameMap, new LetterPool(26));
 		letterManager.setLetterCreateListener(this);
 		createPlayers();
@@ -95,9 +95,10 @@ public class EEFighterImp implements EEFighter, LetterCreateListener {
 		letters.removeAll(letters);
 		player1.removeAllLetters();
 		player2.removeAllLetters();
+		Question question = questionManger.getNextQuestion();
 		if (questionManger.hasNext()) {
-			gameView.onNextQuestion(questionManger.getNextQuestion());
-			playQuestionWord(questionManger.getNextQuestion());
+			gameView.onNextQuestion(question);
+			playQuestionWord(question);
 		}
 		else
 			gameView.onNoMoreQuestion();

@@ -16,7 +16,7 @@ import model.words.WordXMLRepository;
 public class QuestionManger implements Iterable<Question> {
 
 	private List<Question> questions = new ArrayList<Question>();
-	private int index = 0;
+	private int index = -1;
 
 	public QuestionManger(WordRepository wordRepository) {
 		createQuestions(wordRepository);
