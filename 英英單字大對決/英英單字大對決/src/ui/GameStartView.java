@@ -8,7 +8,6 @@ import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-import java.awt.Label;
 import java.util.List;
 
 import javax.swing.JFrame;
@@ -38,9 +37,10 @@ public class GameStartView extends JFrame implements IGameStartView {
 	public GameStartView() {
 		super("英英單字大對決");
 		EventQueue.invokeLater(() -> {
-			setBounds(215, 80, 1105, 704);
+			setBounds(215, 80, 1105, 715);
 			setupViews();
 			setupLayout();
+			
 		});
 	}
 
@@ -62,11 +62,6 @@ public class GameStartView extends JFrame implements IGameStartView {
 	}
 
 	private void setupViewsLocation() {
-
-		add(player1Lab);
-		add(wordDefinitionLab);
-		add(player2Lab);
-
 		getContentPane().setLayout(new GridBagLayout());
 		gbc.fill = GridBagConstraints.BOTH;
 		gbc.anchor = GridBagConstraints.NORTHWEST;
@@ -83,20 +78,20 @@ public class GameStartView extends JFrame implements IGameStartView {
 		setupGameViewPanel();
 		Font font = new Font("微軟正黑體", Font.BOLD, 20);
 		setViewsFont(font);
-		setViewsSize(new Dimension(50, 33));
+		setViewsSize(new Dimension(50, 50));
 		setViewsText();
 	}
 
 	private void setViewsText() {
-		player1Lab.setText("Player1: ");
+		player1Lab.setText("[0] Player1: ");
 		wordDefinitionLab.setText("Word defintion : ");
-		player2Lab.setText("Player2: ");
+		player2Lab.setText("[0] Player2: ");
 	}
 
 	private void setViewsSize(Dimension dimension) {
 		player1Lab.setMinimumSize(dimension);
 		player2Lab.setMinimumSize(dimension);
-		wordDefinitionLab.setMinimumSize(new Dimension(170, 33));
+		wordDefinitionLab.setMinimumSize(new Dimension(170, 50));
 	}
 
 	private void setViewsFont(Font font) {
@@ -120,16 +115,24 @@ public class GameStartView extends JFrame implements IGameStartView {
 		gameViewPanel = new GameViewImp(new EEFighterImp(new BasicMapDirector(new BasicMapBuilder())), this);
 		gameViewPanel.start();
 	}
-	
+
 	@Override
 	public void paint(Graphics g) {
 		super.paint(g);
-		String definition = "1. ( " + question.getPartOfSpeech() + ". ) " + createLine() + question.getDefinition();
-		StringBuilder strBuilder = new StringBuilder("<html><p style='height: 100%;'>");
+
+		String definition = question.getNumber() + ". ( " + question.getPartOfSpeech() + ". ) " + createLine()
+				+ question.getDefinition();
+		StringBuilder strBuilder = new StringBuilder("<html>");
 		strBuilder.append(definition);
 		strBuilder.append("</p></html>");
 		if (question != null)
 			wordDefinitionLab.setText(strBuilder.toString());
+		//modifyLayout();
+	}
+
+	private void modifyLayout() {
+		int height = wordDefinitionLab.getHeight();
+		setBounds(215, 80, 1105, 704 + (height));
 	}
 
 	private String createLine() {
@@ -144,6 +147,7 @@ public class GameStartView extends JFrame implements IGameStartView {
 	public void onNextQuestion(Question question) {
 		this.question = question;
 		repaint();
+		
 	}
 
 	public void addComponent(Component c, Double weightX, Double weightY, int row, int column, int width, int height) {
@@ -169,12 +173,12 @@ public class GameStartView extends JFrame implements IGameStartView {
 	public void showPlayerLetter(String player, List<Sprite> letter) {
 		if (player.equals("player1")) {
 			StringBuilder strBuilder = new StringBuilder("Player1: ");
-			for (int i = 0; i < letter.size(); i++) 
+			for (int i = 0; i < letter.size(); i++)
 				strBuilder.append(letter.get(i).getSpriteName() + " ");
 			player1Lab.setText("<html>" + strBuilder.toString() + " </html>");
 		} else if (player.equals("player2")) {
 			StringBuilder strBuilder = new StringBuilder("Player2: ");
-			for (int i = 0; i < letter.size(); i++) 
+			for (int i = 0; i < letter.size(); i++)
 				strBuilder.append(letter.get(i).getSpriteName() + " ");
 			player2Lab.setText("<html>" + strBuilder.toString() + " </html>");
 		}
@@ -186,5 +190,19 @@ public class GameStartView extends JFrame implements IGameStartView {
 			player1Lab.setText("Player1 Win!!");
 		else if (player.toString().equals("player2"))
 			player2Lab.setText("Player2 Win!!");
+	}
+
+	@Override
+	public void onAnswerCorrectCleanLettersView() {
+		player1Lab.setText("[0] Player1: ");
+		player2Lab.setText("[0] Player2: ");
+	}
+
+	@Override
+	public void showPlayerScore(String player, int Score) {
+		if (player.toString().equals("player1"))
+			player1Lab.setText("[" + Score + "] Player1: ");
+		else if (player.toString().equals("player2"))
+			player1Lab.setText("[" + Score + "] Player2: ");
 	}
 }

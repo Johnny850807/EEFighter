@@ -11,4 +11,6 @@ public interface IGameStartView {
 	void onPlayerEatLetter(String player, List<Sprite> letters);
 	void onPlayerPopedLetter(String player, List<Sprite> letters);
 	void onQuestionCorrect(PlayerSprite player);
+	void onAnswerCorrectCleanLettersView();
+	void showPlayerScore(String player, int Score);
 }

@@ -56,7 +56,7 @@ public class SpritePrototypeFactory {
 		spriteMap.put(SpriteName.C, new Sprite(64, 64, 22, 24, 47, 40, SpriteName.C, createImageMap(ImageIO.read(new File("pic/C.png")))));
 		spriteMap.put(SpriteName.D, new Sprite(64, 64, 18, 14, 50, 50, SpriteName.D, createImageMap(ImageIO.read(new File("pic/D.png")))));
 		spriteMap.put(SpriteName.E, new Sprite(64, 64, 19, 18, 42, 46, SpriteName.E, createImageMap(ImageIO.read(new File("pic/E.png")))));
-		spriteMap.put(SpriteName.F, new Sprite(64, 64, 22, 20, 44, 44, SpriteName.F, createImageMap(ImageIO.read(new File("pic/F.png")))));
+		spriteMap.put(SpriteName.F, new Sprite(64, 64, 20, 20, 44, 44, SpriteName.F, createImageMap(ImageIO.read(new File("pic/F.png")))));
 		spriteMap.put(SpriteName.G, new Sprite(64, 64, 22, 22, 42, 42, SpriteName.G, createImageMap(ImageIO.read(new File("pic/G.png")))));
 		spriteMap.put(SpriteName.H, new Sprite(64, 64, 17, 10, 40, 49, SpriteName.H, createImageMap(ImageIO.read(new File("pic/H.png")))));
 		spriteMap.put(SpriteName.I, new Sprite(64, 64, 10, 7, 3, 50, SpriteName.I, createImageMap(ImageIO.read(new File("pic/I.png")))));
