@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import controller.EEFighter;
+
 public class LetterManager {
 	
 	private List<Sprite> letters = new ArrayList<>();
