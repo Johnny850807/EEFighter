@@ -63,6 +63,7 @@ public class EEFighterImp implements EEFighter, LetterCreateListener {
 
 	@Override
 	public void startGame() {
+		letterManager.createLetter();
 		new Thread() {
 			public void run() {
 				while (!isOver()) {
@@ -90,9 +91,7 @@ public class EEFighterImp implements EEFighter, LetterCreateListener {
 
 	@Override
 	public void nextQuestion() {
-		letterManager.createLetter();
-		player1.removeAllLetters();
-		player2.removeAllLetters();
+		cleanAndReleasePlayerLetters();
 		Question question = questionManager.getNextQuestion();
 		if (questionManager.hasNext()) {
 			gameView.onNextQuestion(question);
@@ -100,6 +99,21 @@ public class EEFighterImp implements EEFighter, LetterCreateListener {
 		}
 		else
 			gameView.onNoMoreQuestion();
+	}
+	
+	private void cleanAndReleasePlayerLetters() {
+		int halfSize = letters.size() / 2;
+		for (int i = 0; i < halfSize; i++) {
+			letterManager.releaseLetter(letters.get(i));
+			letters.remove(i);
+		}
+		for (Sprite letter : player1.getLetters())
+			letterManager.releaseLetter(letter);
+		for (Sprite letter : player2.getLetters())
+			letterManager.releaseLetter(letter);
+		player1.removeAllLetters();
+		player2.removeAllLetters();
+		
 	}
 
 	public boolean isOver() {
