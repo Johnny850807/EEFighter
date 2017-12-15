@@ -8,12 +8,21 @@ import java.util.Stack;
 
 public class PlayerSprite extends Sprite{
 	private Stack<Sprite> letters = new Stack<Sprite>();
+	private int score = 0;
 	
 	public PlayerSprite(int w, int h, int biasWithX, int biasWithY, int bodyHeight, int bodyLength,
 			SpriteName spriteName, Map<Direction, Image> imageMap) {
 		super(w, h, biasWithX, biasWithY, bodyHeight, bodyLength, spriteName, imageMap);
 	}
 	
+	public void setScore(int score) {
+		this.score = score;
+	}
+
+	public int getScore() {
+		return score;
+	}
+
 	@Override
 	public synchronized void update() {
 		if (status == Status.MOVE) {
@@ -60,6 +69,8 @@ public class PlayerSprite extends Sprite{
 	}
 	
 	public void removeAllLetters() {
+		while (!letters.isEmpty())
+			popLetter();
 		letters.removeAll(letters);
 	}
 	

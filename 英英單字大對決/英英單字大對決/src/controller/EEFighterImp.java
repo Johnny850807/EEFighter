@@ -91,7 +91,6 @@ public class EEFighterImp implements EEFighter, LetterCreateListener {
 	@Override
 	public void nextQuestion() {
 		letterManager.createLetter();
-		letters.removeAll(letters);
 		player1.removeAllLetters();
 		player2.removeAllLetters();
 		Question question = questionManager.getNextQuestion();
@@ -139,8 +138,10 @@ public class EEFighterImp implements EEFighter, LetterCreateListener {
 		String words = questionManager.getNowQuestion().getWord().toUpperCase();
 		System.out.println(words);
 		List<Sprite> letters = player.getLetters();
-		if (words.length() == letters.size() && compareLetters(words, letters)) 
+		if (words.length() == letters.size() && compareLetters(words, letters)) {
+			player.setScore(player.getScore() + 1);
 			gameView.onAnswerCorrect(player);
+		}
 		else 
 			gameView.onAnswerWrong(player);
 	}
