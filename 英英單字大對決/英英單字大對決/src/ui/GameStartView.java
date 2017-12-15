@@ -125,9 +125,9 @@ public class GameStartView extends JFrame implements IGameStartView {
 	public void paint(Graphics g) {
 		super.paint(g);
 		String definition = "1. ( " + question.getPartOfSpeech() + ". ) " + createLine() + question.getDefinition();
-		StringBuilder strBuilder = new StringBuilder("<html>");
+		StringBuilder strBuilder = new StringBuilder("<html><p style='height: 100%;'>");
 		strBuilder.append(definition);
-		strBuilder.append("</html>");
+		strBuilder.append("</p></html>");
 		if (question != null)
 			wordDefinitionLab.setText(strBuilder.toString());
 	}
