@@ -29,7 +29,6 @@ public class GameViewImp extends JPanel implements GameView, KeyListener {
 	private PlayerSprite spriteP2;
 	private List<Sprite> letters;
 	private IGameStartView gameStartView;
-	
 
 	public GameViewImp(EEFighter eeFighter, IGameStartView gameStartView) {
 		this.eeFighter = eeFighter;
@@ -183,7 +182,7 @@ public class GameViewImp extends JPanel implements GameView, KeyListener {
 
 	@Override
 	public void onGameStarted() {
-	
+
 	}
 
 	@Override
@@ -223,7 +222,7 @@ public class GameViewImp extends JPanel implements GameView, KeyListener {
 	public void onLetterGotten(PlayerSprite player, List<Sprite> letter) {
 		if (spriteP1 == player)
 			gameStartView.onPlayerEatLetter("player1", letter);
-		else 
+		else
 			gameStartView.onPlayerEatLetter("player2", letter);
 	}
 
@@ -232,6 +231,11 @@ public class GameViewImp extends JPanel implements GameView, KeyListener {
 		SoundPlayer.getInstance().playSound(CORRECT_SOUND_PATH);
 		eeFighter.nextQuestion();
 		gameStartView.onQuestionCorrect(player);
+		gameStartView.onAnswerCorrectCleanLettersView();
+		if (spriteP1 == player)
+			gameStartView.showPlayerScore("player1", player.getScore());
+		else
+			gameStartView.showPlayerScore("player2", player.getScore());
 		System.out.println("correct");
 	}
 
@@ -243,7 +247,7 @@ public class GameViewImp extends JPanel implements GameView, KeyListener {
 	@Override
 	public void onNoMoreQuestion() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override

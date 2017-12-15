@@ -190,4 +190,18 @@ public class GameStartView extends JFrame implements IGameStartView {
 		else if (player.toString().equals("player2"))
 			player2Lab.setText("Player2 Win!!");
 	}
+
+	@Override
+	public void onAnswerCorrectCleanLettersView() {
+		player1Lab.setText("[0] Player1: ");
+		player2Lab.setText("[0] Player2: ");
+	}
+
+	@Override
+	public void showPlayerScore(String player, int Score) {
+		if (player.toString().equals("player1"))
+			player1Lab.setText("[" + Score + "] Player1: ");
+		else if (player.toString().equals("player2"))
+			player1Lab.setText("[" + Score + "] Player2: ");
+	}
 }
