@@ -160,36 +160,18 @@ public class GameStartView extends JFrame implements IGameStartView {
 		add(c, gbc);
 	}
 
-	@Override
-	public void onPlayerEatLetter(String player, List<Sprite> letter) {
-		showPlayerLetter(player, letter);
-	}
-
-	@Override
-	public void onPlayerPopedLetter(String player, List<Sprite> letter) {
-		showPlayerLetter(player, letter);
-	}
-
-	public void showPlayerLetter(String player, List<Sprite> letter) {
+	public void showPlayerBarInfo(String player, int score, List<Sprite> letter) {
 		if (player.equals("player1")) {
-			StringBuilder strBuilder = new StringBuilder("Player1: ");
+			StringBuilder strBuilder = new StringBuilder("[" + score + "] Player1: ");
 			for (int i = 0; i < letter.size(); i++)
 				strBuilder.append(letter.get(i).getSpriteName() + " ");
 			player1Lab.setText("<html>" + strBuilder.toString() + " </html>");
 		} else if (player.equals("player2")) {
-			StringBuilder strBuilder = new StringBuilder("Player2: ");
+			StringBuilder strBuilder = new StringBuilder("[" + score + "] Player2: ");
 			for (int i = 0; i < letter.size(); i++)
 				strBuilder.append(letter.get(i).getSpriteName() + " ");
 			player2Lab.setText("<html>" + strBuilder.toString() + " </html>");
 		}
-	}
-
-	@Override
-	public void onQuestionCorrect(PlayerSprite player) {
-		if (player.toString().equals("player1"))
-			player1Lab.setText("Player1 Win!!");
-		else if (player.toString().equals("player2"))
-			player2Lab.setText("Player2 Win!!");
 	}
 
 	@Override
@@ -200,9 +182,20 @@ public class GameStartView extends JFrame implements IGameStartView {
 
 	@Override
 	public void showPlayerScore(String player, int Score) {
-		if (player.toString().equals("player1"))
+		if (player.equals("player1"))
 			player1Lab.setText("[" + Score + "] Player1: ");
-		else if (player.toString().equals("player2"))
-			player1Lab.setText("[" + Score + "] Player2: ");
+		else if (player.equals("player2"))
+			player2Lab.setText("[" + Score + "] Player2: ");
+	}
+
+	@Override
+	public void onPlayerEatLetter(String player, int score, List<Sprite> letter) {
+		showPlayerBarInfo(player, score, letter);
+
+	}
+
+	@Override
+	public void onPlayerPopedLetter(String player, int score, List<Sprite> letter) {
+		showPlayerBarInfo(player, score, letter);
 	}
 }
