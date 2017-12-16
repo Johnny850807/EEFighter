@@ -3,7 +3,6 @@ package ui;
 import java.util.List;
 
 import model.Question;
-import model.sprite.PlayerSprite;
 import model.sprite.Sprite;
 
 public interface IGameStartView {
