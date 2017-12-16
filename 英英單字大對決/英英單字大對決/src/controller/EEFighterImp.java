@@ -113,7 +113,6 @@ public class EEFighterImp implements EEFighter, LetterCreateListener {
 			letterManager.releaseLetter(letter);
 		player1.removeAllLetters();
 		player2.removeAllLetters();
-		
 	}
 
 	public boolean isOver() {
