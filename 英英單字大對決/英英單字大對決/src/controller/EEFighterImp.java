@@ -128,10 +128,8 @@ public class EEFighterImp implements EEFighter, LetterCreateListener {
 	@Override
 	public void popLetter(PlayerSprite player) {
 		Sprite letter = player.popLetter();
-		if (letter != null) {
-			letterManager.releaseLetter(letter);
+		if (letter != null) 
 			gameView.onLetterPoppedSuccessfuly(player, player.getLetters());
-		}
 		else 
 			gameView.onLetterPoppedFailed(player);
 	}
@@ -142,6 +140,7 @@ public class EEFighterImp implements EEFighter, LetterCreateListener {
 			if (letter.isCollisions(player)) {
 				player.addLetter(letter);
 				letters.remove(letter);
+				letterManager.releaseLetter(letter);
 				gameView.onLetterGotten(player, player.getLetters());
 				break;
 			}
