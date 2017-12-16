@@ -17,6 +17,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 
 import controller.EnglishWarehouseController;
+import factory.ComponentAbstractFactory;
 import model.Secret;
 import model.words.CrawlerVocabularycom;
 import model.words.ITRI_TTS;
@@ -34,13 +35,15 @@ public class MainView extends JFrame implements ActionListener {
 	private Button connectBtn;
 	private Button waitBtn;
 	private Button englishWareBtn;
+	private ComponentAbstractFactory componentAbstractFactory;
 
-	public MainView() throws IOException {
+	public MainView(ComponentAbstractFactory componentAbstractFactory) throws IOException {
 		super("英英單字大對決");
 		setBounds(300, 300, 400, 650);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setupViews();
 		setupLayout();
+		this.componentAbstractFactory = componentAbstractFactory;
 	}
 
 	private void setupViews() throws IOException {
@@ -111,7 +114,7 @@ public class MainView extends JFrame implements ActionListener {
 	}
 
 	private void startPlayingPanel() {
-		GameStartView gameStartView = new GameStartView();
+		GameStartView gameStartView = (GameStartView) componentAbstractFactory.getGameStartView();
 		gameStartView.setVisible(true);
 	}
 
@@ -134,8 +137,9 @@ public class MainView extends JFrame implements ActionListener {
 
 	public static void main(String[] argv) {
 		MainView mainView;
+		ComponentAbstractFactory componentAbstractFactory = new ComponentAbstractFactory();
 		try {
-			mainView = new MainView();
+			mainView = new MainView(componentAbstractFactory);
 			mainView.setVisible(true);
 			//SoundPlayer.getInstance().playLoopMusic("sounds/after-journey.wav");
 		} catch (IOException e) {

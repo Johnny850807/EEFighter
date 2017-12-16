@@ -4,8 +4,11 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import factory.ComponentAbstractFactory;
 import model.Question;
 import model.QuestionManager;
+import model.sprite.BasicMapBuilder;
+import model.sprite.BasicMapDirector;
 import model.sprite.GameMap;
 import model.sprite.LetterCreateListener;
 import model.sprite.LetterManager;
@@ -34,9 +37,9 @@ public class EEFighterImp implements EEFighter, LetterCreateListener {
 	private PlayerSprite player2;
 	private SoundPlayTimer soundPlayTimer;
 	
-	public EEFighterImp(MapDirector mapDirector) {
-		gameMap = mapDirector.buildMap();
-		questionManager = new QuestionManager(new WordXMLRepository("wordwarehouse"));
+	public EEFighterImp(ComponentAbstractFactory componentAbstractFactory) {
+		gameMap = componentAbstractFactory.getMapDirector().buildMap();
+		questionManager = new QuestionManager(componentAbstractFactory.getWordRepository());
 		letterManager = new LetterManager(gameMap, new LetterPool(70));
 		letterManager.setLetterCreateListener(this);
 		createPlayers();
@@ -178,6 +181,22 @@ public class EEFighterImp implements EEFighter, LetterCreateListener {
 			soundPlayTimer.questionChange();
 		soundPlayTimer = new SoundPlayTimer(gameView, question);
 		soundPlayTimer.start();
+	}
+	
+	public void windowClosed() {
+		
+	}
+	
+	public static void main(String[] args) {
+		EEFighter eeFighter = new EEFighterImp(new ComponentAbstractFactory());
+		eeFighter.startGame();
+		try {
+			Thread.sleep(10000);
+			eeFighter = null;
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 }
