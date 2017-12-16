@@ -32,7 +32,6 @@ public class EnglishWarehouseController {
 		this.tts = tts;
 	}
 	
-	
 	public void setEnglishWarehouseView(EnglishWarehouseView englishWarehouseView) {
 		this.englishWarehouseView = englishWarehouseView;
 	}
