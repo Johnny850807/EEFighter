@@ -9,6 +9,7 @@ import java.util.List;
 import javax.swing.JPanel;
 
 import controller.EEFighter;
+import factory.AbstractFactory;
 import factory.ComponentAbstractFactory;
 import model.Question;
 import model.sprite.GameMap;
@@ -31,7 +32,7 @@ public class GameViewImp extends JPanel implements GameView, KeyListener {
 	private List<Sprite> letters;
 	private IGameStartView gameStartView;
 
-	public GameViewImp(ComponentAbstractFactory componentAbstractFactory) {
+	public GameViewImp(AbstractFactory componentAbstractFactory) {
 		this.eeFighter = componentAbstractFactory.getEeFighter();
 		this.gameStartView = componentAbstractFactory.getGameStartView();
 	}

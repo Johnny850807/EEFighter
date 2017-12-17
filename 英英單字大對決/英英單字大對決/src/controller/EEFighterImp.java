@@ -4,9 +4,11 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import factory.AbstractFactory;
 import factory.ComponentAbstractFactory;
 import model.Question;
 import model.QuestionManager;
+import model.Secret;
 import model.sprite.BasicMapBuilder;
 import model.sprite.BasicMapDirector;
 import model.sprite.GameMap;
@@ -20,6 +22,8 @@ import model.sprite.Sprite.Direction;
 import model.sprite.Sprite.Status;
 import model.sprite.SpriteName;
 import model.sprite.SpritePrototypeFactory;
+import model.words.CrawlerVocabularycom;
+import model.words.ITRI_TTS;
 import model.words.WordXMLRepository;
 import ui.GameView;
 
@@ -37,7 +41,7 @@ public class EEFighterImp implements EEFighter, LetterCreateListener {
 	private PlayerSprite player2;
 	private SoundPlayTimer soundPlayTimer;
 	
-	public EEFighterImp(ComponentAbstractFactory componentAbstractFactory) {
+	public EEFighterImp(AbstractFactory componentAbstractFactory) {
 		gameMap = componentAbstractFactory.getMapDirector().buildMap();
 		questionManager = new QuestionManager(componentAbstractFactory.getWordRepository());
 		letterManager = new LetterManager(gameMap, new LetterPool(70));
@@ -188,7 +192,9 @@ public class EEFighterImp implements EEFighter, LetterCreateListener {
 	}
 	
 	public static void main(String[] args) {
-		EEFighter eeFighter = new EEFighterImp(new ComponentAbstractFactory());
+		EEFighter eeFighter = new EEFighterImp(new ComponentAbstractFactory(new CrawlerVocabularycom(),
+				new ITRI_TTS(Secret.TTS_ACCOUNT, Secret.TTS_PASSWORD), new WordXMLRepository("wordwarehouse"),
+				new BasicMapBuilder(), new BasicMapDirector(new BasicMapBuilder())));
 		eeFighter.startGame();
 		try {
 			Thread.sleep(10000);

@@ -5,7 +5,6 @@ import controller.EEFighterImp;
 import model.Secret;
 import model.sprite.BasicMapBuilder;
 import model.sprite.BasicMapDirector;
-import model.sprite.GameMap;
 import model.sprite.MapBuilder;
 import model.sprite.MapDirector;
 import model.words.Crawler;
@@ -19,7 +18,7 @@ import ui.GameView;
 import ui.GameViewImp;
 import ui.IGameStartView;
 
-public class ComponentAbstractFactory {
+public class ComponentAbstractFactory implements AbstractFactory {
 	private WordRepository wordRepository;
 	private Crawler crawler;
 	private TTS tts;
@@ -28,13 +27,14 @@ public class ComponentAbstractFactory {
 	private IGameStartView gameStartView;
 	private GameView gameView;
 	private EEFighter eeFighter;
-	
-	public ComponentAbstractFactory() {
-		crawler = new CrawlerVocabularycom();
-		tts = new ITRI_TTS(Secret.TTS_ACCOUNT, Secret.TTS_PASSWORD);
-		wordRepository = new WordXMLRepository("wordwarehouse");
-		mapBuilder = new BasicMapBuilder();
-		mapDirector = new BasicMapDirector(mapBuilder);
+
+	public ComponentAbstractFactory(Crawler crawler, TTS tts, WordRepository wordRepository, MapBuilder mapBuilder,
+			MapDirector mapDirector) {
+		this.crawler = crawler;
+		this.tts = tts;
+		this.wordRepository = wordRepository;
+		this.mapBuilder = mapBuilder;
+		this.mapDirector = mapDirector;
 		eeFighter = new EEFighterImp(this);
 		gameStartView = new GameStartView(this);
 		gameView = new GameViewImp(this);
@@ -53,7 +53,7 @@ public class ComponentAbstractFactory {
 	}
 
 	public EEFighter getEeFighter() {
-		if (eeFighter == null) 
+		if (eeFighter == null)
 			return new EEFighterImp(this);
 		return eeFighter;
 	}
@@ -77,5 +77,5 @@ public class ComponentAbstractFactory {
 	public TTS getTts() {
 		return tts;
 	}
-	
+
 }

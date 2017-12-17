@@ -20,6 +20,8 @@ import org.w3c.dom.NodeList;
 
 import factory.ComponentAbstractFactory;
 import model.Secret;
+import model.sprite.BasicMapBuilder;
+import model.sprite.BasicMapDirector;
 import ui.MainView;
 import utils.SoapHelper;
 import utils.SoundPlayer;
@@ -162,7 +164,9 @@ public class ITRI_TTS implements TTS{
 			TTS tts = new ITRI_TTS(Secret.TTS_ACCOUNT, Secret.TTS_PASSWORD);
 			String path = tts.saveWordTTS("sounds/vocabulary", "Question one, listen carefully.");
 			System.out.println(path);
-			new MainView(new ComponentAbstractFactory()).setVisible(true);
+			new MainView(new ComponentAbstractFactory(new CrawlerVocabularycom(),
+					new ITRI_TTS(Secret.TTS_ACCOUNT, Secret.TTS_PASSWORD), new WordXMLRepository("wordwarehouse"),
+					new BasicMapBuilder(), new BasicMapDirector(new BasicMapBuilder()))).setVisible(true);
 			SoundPlayer.getInstance().playSound(path);
 		} catch (Exception e) {
 			e.printStackTrace();
