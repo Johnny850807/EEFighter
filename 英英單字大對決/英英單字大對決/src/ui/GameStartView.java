@@ -14,8 +14,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 
 import controller.EEFighterImp;
-import factory.AbstractFactory;
 import factory.ComponentAbstractFactory;
+import factory.MockComponentFactory;
 import model.Question;
 import model.sprite.BasicMapBuilder;
 import model.sprite.BasicMapDirector;
@@ -35,9 +35,9 @@ public class GameStartView extends JFrame implements IGameStartView {
 	private GridBagConstraints gbc;
 	private Question question;
 	private GameViewImp gameViewPanel;
-	private AbstractFactory componentAbstractFactory;
+	private ComponentAbstractFactory componentAbstractFactory;
 
-	public GameStartView(AbstractFactory componentAbstractFactory) {
+	public GameStartView(ComponentAbstractFactory componentAbstractFactory) {
 		super("英英單字大對決");
 		EventQueue.invokeLater(() -> {
 			setBounds(215, 80, 1105, 715);
@@ -178,7 +178,7 @@ public class GameStartView extends JFrame implements IGameStartView {
 	}
 
 	@Override
-	public void onAnswerCorrectCleanLettersView() {
+	public void CleanPlayersBarLetters() {
 		player1Lab.setText("[0] Player1: ");
 		player2Lab.setText("[0] Player2: ");
 	}

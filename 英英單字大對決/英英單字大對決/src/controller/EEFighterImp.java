@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import factory.AbstractFactory;
 import factory.ComponentAbstractFactory;
+import factory.MockComponentFactory;
 import model.Question;
 import model.QuestionManager;
 import model.Secret;
@@ -41,10 +41,10 @@ public class EEFighterImp implements EEFighter, LetterCreateListener {
 	private PlayerSprite player2;
 	private SoundPlayTimer soundPlayTimer;
 	
-	public EEFighterImp(AbstractFactory componentAbstractFactory) {
+	public EEFighterImp(ComponentAbstractFactory componentAbstractFactory) {
 		gameMap = componentAbstractFactory.getMapDirector().buildMap();
 		questionManager = new QuestionManager(componentAbstractFactory.getWordRepository());
-		letterManager = new LetterManager(gameMap, new LetterPool(70));
+		letterManager = new LetterManager(gameMap, new LetterPool(70, questionManager.getNextQuestion()));
 		letterManager.setLetterCreateListener(this);
 		createPlayers();
 	}
@@ -192,9 +192,7 @@ public class EEFighterImp implements EEFighter, LetterCreateListener {
 	}
 	
 	public static void main(String[] args) {
-		EEFighter eeFighter = new EEFighterImp(new ComponentAbstractFactory(new CrawlerVocabularycom(),
-				new ITRI_TTS(Secret.TTS_ACCOUNT, Secret.TTS_PASSWORD), new WordXMLRepository("wordwarehouse"),
-				new BasicMapBuilder(), new BasicMapDirector(new BasicMapBuilder())));
+		EEFighter eeFighter = new EEFighterImp(new MockComponentFactory());
 		eeFighter.startGame();
 		try {
 			Thread.sleep(10000);

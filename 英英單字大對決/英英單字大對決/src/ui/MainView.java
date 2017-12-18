@@ -17,8 +17,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 
 import controller.EnglishWarehouseController;
-import factory.AbstractFactory;
 import factory.ComponentAbstractFactory;
+import factory.MockComponentFactory;
 import model.Secret;
 import model.sprite.BasicMapBuilder;
 import model.sprite.BasicMapDirector;
@@ -38,9 +38,9 @@ public class MainView extends JFrame implements ActionListener {
 	private Button connectBtn;
 	private Button waitBtn;
 	private Button englishWareBtn;
-	private AbstractFactory componentAbstractFactory;
+	private ComponentAbstractFactory componentAbstractFactory;
 
-	public MainView(AbstractFactory componentAbstractFactory) throws IOException {
+	public MainView(ComponentAbstractFactory componentAbstractFactory) throws IOException {
 		super("英英單字大對決");
 		setBounds(300, 300, 400, 650);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -140,9 +140,7 @@ public class MainView extends JFrame implements ActionListener {
 
 	public static void main(String[] argv) {
 		MainView mainView;
-		AbstractFactory componentAbstractFactory = new ComponentAbstractFactory(new CrawlerVocabularycom(),
-				new ITRI_TTS(Secret.TTS_ACCOUNT, Secret.TTS_PASSWORD), new WordXMLRepository("wordwarehouse"),
-				new BasicMapBuilder(), new BasicMapDirector(new BasicMapBuilder()));
+		ComponentAbstractFactory componentAbstractFactory = new MockComponentFactory();
 		try {
 			mainView = new MainView(componentAbstractFactory);
 			mainView.setVisible(true);

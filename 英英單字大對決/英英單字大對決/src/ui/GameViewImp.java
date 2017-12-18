@@ -9,8 +9,8 @@ import java.util.List;
 import javax.swing.JPanel;
 
 import controller.EEFighter;
-import factory.AbstractFactory;
 import factory.ComponentAbstractFactory;
+import factory.MockComponentFactory;
 import model.Question;
 import model.sprite.GameMap;
 import model.sprite.PlayerSprite;
@@ -32,7 +32,7 @@ public class GameViewImp extends JPanel implements GameView, KeyListener {
 	private List<Sprite> letters;
 	private IGameStartView gameStartView;
 
-	public GameViewImp(AbstractFactory componentAbstractFactory) {
+	public GameViewImp(ComponentAbstractFactory componentAbstractFactory) {
 		this.eeFighter = componentAbstractFactory.getEeFighter();
 		this.gameStartView = componentAbstractFactory.getGameStartView();
 	}
@@ -232,7 +232,7 @@ public class GameViewImp extends JPanel implements GameView, KeyListener {
 	public void onAnswerCorrect(PlayerSprite player) {
 		SoundPlayer.getInstance().playSound(CORRECT_SOUND_PATH);
 		eeFighter.nextQuestion();
-		gameStartView.onAnswerCorrectCleanLettersView();
+		gameStartView.CleanPlayersBarLetters();
 		if (spriteP1.getSpriteName() == player.getSpriteName())
 			gameStartView.showPlayerScore("player1", player.getScore());
 		else

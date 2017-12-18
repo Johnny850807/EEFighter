@@ -3,7 +3,7 @@ package controller;
 import java.io.IOException;
 import java.util.List;
 
-import factory.ComponentAbstractFactory;
+import factory.MockComponentFactory;
 import model.Secret;
 import model.sprite.BasicMapBuilder;
 import model.sprite.BasicMapDirector;
@@ -104,9 +104,7 @@ public class EnglishWarehouseController {
 		String[] words = { "apple", "banana", "vocabulary", "subtropical", "several", "genus", "have", "terminal",
 				"egg", "small", "elephant", "elder", "control", "model", "view", "stick", "fade", "still", "visible",
 				"search", "customer", "play", "sound", "voice" };
-		new MainView(new ComponentAbstractFactory(new CrawlerVocabularycom(),
-				new ITRI_TTS(Secret.TTS_ACCOUNT, Secret.TTS_PASSWORD), new WordXMLRepository("wordwarehouse"),
-				new BasicMapBuilder(), new BasicMapDirector(new BasicMapBuilder()))).setVisible(true); // for playing
+		new MainView(new MockComponentFactory()).setVisible(true); // for playing
 																										// sounds
 		EnglishWarehouseController controller = new EnglishWarehouseController(new WordXMLRepository("words"),
 				new CrawlerVocabularycom(), new ITRI_TTS(Secret.TTS_ACCOUNT, Secret.TTS_PASSWORD));
