@@ -61,32 +61,93 @@
 
 
 
-<Word name="have">
-        <SoundPath>sounds\vocabulary\have.wav</SoundPath>
-        <Definition partOfSpeech="V">have or possess, either in a concrete or an abstract sense</Definition>
-        <Definition partOfSpeech="V">have as a feature</Definition>
-        <Definition partOfSpeech="V">have ownership or possession of</Definition>
-        <Definition partOfSpeech="V">get something; come into possession of</Definition>
-        <Definition partOfSpeech="V">serve oneself to, or consume regularly</Definition>
-        <Definition partOfSpeech="V">have sex with; archaic use</Definition>
-        <Definition partOfSpeech="V">have a personal or business relationship with someone</Definition>
-        <Definition partOfSpeech="V">have left</Definition>
-        <Definition partOfSpeech="V">be confronted with</Definition>
-        <Definition partOfSpeech="V">receive willingly something given or offered</Definition>
-        <Definition partOfSpeech="V">achieve a point or goal</Definition>
-        <Definition partOfSpeech="V">undergo</Definition>
-        <Definition partOfSpeech="V">undergo (as of injuries and illnesses)</Definition>
-        <Definition partOfSpeech="V">suffer from; be ill with</Definition>
-        <Definition partOfSpeech="V">go through (mental or physical states or experiences)</Definition>
-        <Definition partOfSpeech="V">cause to be born</Definition>
-        <Definition partOfSpeech="V">cause to move; cause to be in a certain position or condition</Definition>
-        <Definition partOfSpeech="V">cause to do; cause to act in a specified manner</Definition>
-        <Definition partOfSpeech="V">organize or be responsible for</Definition>
-        <Definition partOfSpeech="N">a person who possesses great material wealth</Definition>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<Word name="view">
+        <SoundPath>sounds\vocabulary\view.wav</SoundPath>
+        <Definition partOfSpeech="N">the visual percept of a region</Definition>
+        <Definition partOfSpeech="N">outward appearance</Definition>
+        <Definition partOfSpeech="N">the act of looking or seeing or observing</Definition>
+        <Definition partOfSpeech="N">the range of the eye</Definition>
+        <Definition partOfSpeech="N">graphic art consisting of the graphic or photographic representation of a visual percept</Definition>
+        <Definition partOfSpeech="N">a way of regarding situations or topics etc.</Definition>
+        <Definition partOfSpeech="N">a personal belief or judgment that is not founded on proof or certainty</Definition>
+        <Definition partOfSpeech="N">a message expressing a belief about something; the expression of a belief that is held with confidence but not substantiated by positive knowledge or proof</Definition>
+        <Definition partOfSpeech="N">purpose; the phrase `with a view to' means `with the intention of' or `for the purpose of'</Definition>
+        <Definition partOfSpeech="N">the range of interest or activity that can be anticipated</Definition>
+        <Definition partOfSpeech="V">see or watch</Definition>
+        <Definition partOfSpeech="V">look at carefully; study mentally</Definition>
+        <Definition partOfSpeech="V">deem to be</Definition>
     </Word>
 
 
-
+<Word name="apple">
+        <SoundPath>sounds\vocabulary\apple.wav</SoundPath>
+        <Definition partOfSpeech="N">native Eurasian tree widely cultivated in many varieties for its firm rounded edible fruits</Definition>
+        <Definition partOfSpeech="N">fruit with red or yellow or green skin and sweet to tart crisp whitish flesh</Definition>
+    </Word>
+<Word name="elder">
+        <SoundPath>sounds\vocabulary\elder.wav</SoundPath>
+        <Definition partOfSpeech="ADJ">used of the older of two persons of the same name especially used to distinguish a father from his son</Definition>
+        <Definition partOfSpeech="N">a person who is older than you are</Definition>
+        <Definition partOfSpeech="N">any of various church officers</Definition>
+        <Definition partOfSpeech="N">any of numerous shrubs or small trees of temperate and subtropical northern hemisphere having white flowers and berrylike fruit</Definition>
+    </Word>
 <Word name="voice">
         <SoundPath>sounds\vocabulary\voice.wav</SoundPath>
         <Definition partOfSpeech="N">the sound made by the vibration of vocal folds modified by the resonance of the vocal tract</Definition>
@@ -103,50 +164,67 @@
         <Definition partOfSpeech="V">utter with vibrating vocal chords</Definition>
         <Definition partOfSpeech="V">give voice to</Definition>
     </Word>
-<Word name="elder">
-        <SoundPath>sounds\vocabulary\elder.wav</SoundPath>
-        <Definition partOfSpeech="N">a person who is older than you are</Definition>
-        <Definition partOfSpeech="N">any of various church officers</Definition>
-        <Definition partOfSpeech="N">any of numerous shrubs or small trees of temperate and subtropical northern hemisphere having white flowers and berrylike fruit</Definition>
-        <Definition partOfSpeech="ADJ">used of the older of two persons of the same name especially used to distinguish a father from his son</Definition>
+<Word name="model">
+        <SoundPath>sounds\vocabulary\model.wav</SoundPath>
+        <Definition partOfSpeech="ADJ">worthy of imitation</Definition>
+        <Definition partOfSpeech="N">a representation of something (sometimes on a smaller scale)</Definition>
+        <Definition partOfSpeech="N">the act of representing something (usually on a smaller scale)</Definition>
+        <Definition partOfSpeech="N">a hypothetical description of a complex entity or process</Definition>
+        <Definition partOfSpeech="N">a representative form or pattern</Definition>
+        <Definition partOfSpeech="N">a person who poses for a photographer or painter or sculptor</Definition>
+        <Definition partOfSpeech="N">a person who wears clothes to display fashions</Definition>
+        <Definition partOfSpeech="N">something to be imitated</Definition>
+        <Definition partOfSpeech="N">someone worthy of imitation</Definition>
+        <Definition partOfSpeech="N">a type of product</Definition>
+        <Definition partOfSpeech="V">create a representation or model of</Definition>
+        <Definition partOfSpeech="V">construct a model of</Definition>
+        <Definition partOfSpeech="V">form in clay, wax, etc</Definition>
+        <Definition partOfSpeech="V">plan or create according to a model or models</Definition>
+        <Definition partOfSpeech="V">assume a posture as for artistic purposes</Definition>
+        <Definition partOfSpeech="V">display (clothes) as a mannequin</Definition>
+    </Word>
+<Word name="still">
+        <SoundPath>sounds\vocabulary\still.wav</SoundPath>
+        <Definition partOfSpeech="ADJ">not in physical motion</Definition>
+        <Definition partOfSpeech="ADJ">(of a body of water) free from disturbance by heavy waves</Definition>
+        <Definition partOfSpeech="ADJ">free from noticeable current</Definition>
+        <Definition partOfSpeech="ADJ">used of pictures; of a single or static photograph not presented so as to create the illusion of motion; or representing objects not capable of motion</Definition>
+        <Definition partOfSpeech="ADJ">marked by absence of sound</Definition>
+        <Definition partOfSpeech="ADJ">not sparkling</Definition>
+        <Definition partOfSpeech="V">make calm or still</Definition>
+        <Definition partOfSpeech="V">lessen the intensity of or calm</Definition>
+        <Definition partOfSpeech="V">make motionless</Definition>
+        <Definition partOfSpeech="V">cause to be quiet or not talk</Definition>
+        <Definition partOfSpeech="N">a static photograph (especially one taken from a movie and used for advertising purposes)</Definition>
+        <Definition partOfSpeech="N">(poetic) tranquil silence</Definition>
+        <Definition partOfSpeech="N">an apparatus used for the distillation of liquids; consists of a vessel in which a substance is vaporized by heat and a condenser where the vapor is condensed</Definition>
+        <Definition partOfSpeech="N">a plant and works where alcoholic drinks are made by distillation</Definition>
+        <Definition partOfSpeech="ADV">without moving or making a sound</Definition>
+        <Definition partOfSpeech="ADV">with reference to action or condition; without change, interruption, or cessation</Definition>
+        <Definition partOfSpeech="ADV">despite anything to the contrary (usually following a concession)</Definition>
+        <Definition partOfSpeech="ADV">to a greater degree or extent; used with comparisons</Definition>
+    </Word>
+<Word name="small">
+        <SoundPath>sounds\vocabulary\small.wav</SoundPath>
+        <Definition partOfSpeech="ADJ">limited or below average in number or quantity or magnitude or extent</Definition>
+        <Definition partOfSpeech="ADJ">limited in size or scope</Definition>
+        <Definition partOfSpeech="ADJ">slight or limited; especially in degree or intensity or scope</Definition>
+        <Definition partOfSpeech="ADJ">(of children and animals) young, immature</Definition>
+        <Definition partOfSpeech="ADJ">not large but sufficient in size or amount</Definition>
+        <Definition partOfSpeech="ADJ">lowercase</Definition>
+        <Definition partOfSpeech="ADJ">have fine or very small constituent particles</Definition>
+        <Definition partOfSpeech="ADJ">low or inferior in station or quality</Definition>
+        <Definition partOfSpeech="ADJ">made to seem smaller or less (especially in worth)</Definition>
+        <Definition partOfSpeech="ADJ">(of a voice) faint</Definition>
+        <Definition partOfSpeech="N">a garment size for a small person</Definition>
+        <Definition partOfSpeech="N">the slender part of the back</Definition>
+        <Definition partOfSpeech="ADV">on a small scale</Definition>
     </Word>
 
-<Word name="stick">
-        <SoundPath>sounds\vocabulary\stick.wav</SoundPath>
-        <Definition partOfSpeech="N">a long thin implement resembling a length of wood</Definition>
-        <Definition partOfSpeech="N">an implement consisting of a length of wood</Definition>
-        <Definition partOfSpeech="N">a small thin branch of a tree</Definition>
-        <Definition partOfSpeech="N">a lever used by a pilot to control the ailerons and elevators of an airplane</Definition>
-        <Definition partOfSpeech="N">a long implement (usually made of wood) that is shaped so that hockey or polo players can hit a puck or ball</Definition>
-        <Definition partOfSpeech="N">informal terms for the leg</Definition>
-        <Definition partOfSpeech="N">threat of a penalty</Definition>
-        <Definition partOfSpeech="N">a rectangular quarter pound block of butter or margarine</Definition>
-        <Definition partOfSpeech="N">marijuana leaves rolled into a cigarette for smoking</Definition>
-        <Definition partOfSpeech="V">put, fix, force, or implant</Definition>
-        <Definition partOfSpeech="V">pierce or penetrate or puncture with something pointed</Definition>
-        <Definition partOfSpeech="V">pierce with a thrust using a pointed instrument</Definition>
-        <Definition partOfSpeech="V">stay put (in a certain place)</Definition>
-        <Definition partOfSpeech="V">be or become fixed</Definition>
-        <Definition partOfSpeech="V">cover and decorate with objects that pierce the surface</Definition>
-        <Definition partOfSpeech="V">come or be in close contact with; stick or hold together and resist separation</Definition>
-        <Definition partOfSpeech="V">stick to firmly</Definition>
-        <Definition partOfSpeech="V">fasten with an adhesive material like glue</Definition>
-        <Definition partOfSpeech="V">fasten into place by fixing an end or point into something</Definition>
-        <Definition partOfSpeech="V">fasten with or as with pins or nails</Definition>
-        <Definition partOfSpeech="V">be loyal to</Definition>
-        <Definition partOfSpeech="V">be a devoted follower or supporter</Definition>
-        <Definition partOfSpeech="V">endure</Definition>
-        <Definition partOfSpeech="V">saddle with something disagreeable or disadvantageous</Definition>
-        <Definition partOfSpeech="V">be a mystery or bewildering to</Definition>
-    </Word>
-
-
-
-
-<Word name="banana">
-        <SoundPath>sounds\vocabulary\banana.wav</SoundPath>
-        <Definition partOfSpeech="N">any of several tropical and subtropical treelike herbs of the genus Musa having a terminal crown of large entire leaves and usually bearing hanging clusters of elongated fruits</Definition>
-        <Definition partOfSpeech="N">elongated crescent-shaped yellow fruit with soft sweet flesh</Definition>
+<Word name="genus">
+        <SoundPath>sounds\vocabulary\genus.wav</SoundPath>
+        <Definition partOfSpeech="N">(biology) taxonomic group containing one or more species</Definition>
+        <Definition partOfSpeech="N">a general kind of something</Definition>
     </Word>
 <Word name="search">
         <SoundPath>sounds\vocabulary\search.wav</SoundPath>
@@ -159,6 +237,11 @@
         <Definition partOfSpeech="N">an investigation seeking answers</Definition>
         <Definition partOfSpeech="N">the examination of alternative hypotheses</Definition>
         <Definition partOfSpeech="N">an operation that determines whether one or more of a set of items has a specified property</Definition>
+    </Word>
+<Word name="banana">
+        <SoundPath>sounds\vocabulary\banana.wav</SoundPath>
+        <Definition partOfSpeech="N">any of several tropical and subtropical treelike herbs of the genus Musa having a terminal crown of large entire leaves and usually bearing hanging clusters of elongated fruits</Definition>
+        <Definition partOfSpeech="N">elongated crescent-shaped yellow fruit with soft sweet flesh</Definition>
     </Word>
 <Word name="visible">
         <SoundPath>sounds\vocabulary\visible.wav</SoundPath>
@@ -206,14 +289,14 @@
         <Definition partOfSpeech="N">a contact on an electrical device (such as a battery) at which electric current enters or leaves</Definition>
         <Definition partOfSpeech="N">electronic equipment consisting of a device providing access to a computer; has a keyboard and display</Definition>
     </Word>
+<Word name="customer">
+        <SoundPath>sounds\vocabulary\customer.wav</SoundPath>
+        <Definition partOfSpeech="N">someone who pays for goods or services</Definition>
+    </Word>
 <Word name="elephant">
         <SoundPath>sounds\vocabulary\elephant.wav</SoundPath>
         <Definition partOfSpeech="N">five-toed pachyderm</Definition>
         <Definition partOfSpeech="N">the symbol of the Republican Party; introduced in cartoons by Thomas Nast in 1874</Definition>
-    </Word>
-<Word name="customer">
-        <SoundPath>sounds\vocabulary\customer.wav</SoundPath>
-        <Definition partOfSpeech="N">someone who pays for goods or services</Definition>
     </Word>
 <Word name="vocabulary">
         <SoundPath>sounds\vocabulary\vocabulary.wav</SoundPath>
@@ -225,6 +308,35 @@
         <SoundPath>sounds\vocabulary\subtropical.wav</SoundPath>
         <Definition partOfSpeech="ADJ">of or relating to or characteristic of conditions in the subtropics</Definition>
     </Word>
+
+<Word name="stick">
+        <SoundPath>sounds\vocabulary\stick.wav</SoundPath>
+        <Definition partOfSpeech="N">a long thin implement resembling a length of wood</Definition>
+        <Definition partOfSpeech="N">an implement consisting of a length of wood</Definition>
+        <Definition partOfSpeech="N">a small thin branch of a tree</Definition>
+        <Definition partOfSpeech="N">a lever used by a pilot to control the ailerons and elevators of an airplane</Definition>
+        <Definition partOfSpeech="N">a long implement (usually made of wood) that is shaped so that hockey or polo players can hit a puck or ball</Definition>
+        <Definition partOfSpeech="N">informal terms for the leg</Definition>
+        <Definition partOfSpeech="N">threat of a penalty</Definition>
+        <Definition partOfSpeech="N">a rectangular quarter pound block of butter or margarine</Definition>
+        <Definition partOfSpeech="N">marijuana leaves rolled into a cigarette for smoking</Definition>
+        <Definition partOfSpeech="V">put, fix, force, or implant</Definition>
+        <Definition partOfSpeech="V">pierce or penetrate or puncture with something pointed</Definition>
+        <Definition partOfSpeech="V">pierce with a thrust using a pointed instrument</Definition>
+        <Definition partOfSpeech="V">stay put (in a certain place)</Definition>
+        <Definition partOfSpeech="V">be or become fixed</Definition>
+        <Definition partOfSpeech="V">cover and decorate with objects that pierce the surface</Definition>
+        <Definition partOfSpeech="V">come or be in close contact with; stick or hold together and resist separation</Definition>
+        <Definition partOfSpeech="V">stick to firmly</Definition>
+        <Definition partOfSpeech="V">fasten with an adhesive material like glue</Definition>
+        <Definition partOfSpeech="V">fasten into place by fixing an end or point into something</Definition>
+        <Definition partOfSpeech="V">fasten with or as with pins or nails</Definition>
+        <Definition partOfSpeech="V">be loyal to</Definition>
+        <Definition partOfSpeech="V">be a devoted follower or supporter</Definition>
+        <Definition partOfSpeech="V">endure</Definition>
+        <Definition partOfSpeech="V">saddle with something disagreeable or disadvantageous</Definition>
+        <Definition partOfSpeech="V">be a mystery or bewildering to</Definition>
+    </Word>
 <Word name="egg">
         <SoundPath>sounds\vocabulary\egg.wav</SoundPath>
         <Definition partOfSpeech="N">animal reproductive body consisting of an ovum or embryo together with nutritive and protective envelopes; especially the thin-shelled reproductive body laid by e.g. female birds</Definition>
@@ -233,41 +345,31 @@
         <Definition partOfSpeech="V">throw eggs at</Definition>
         <Definition partOfSpeech="V">coat with beaten egg</Definition>
     </Word>
-<Word name="view">
-        <SoundPath>sounds\vocabulary\view.wav</SoundPath>
-        <Definition partOfSpeech="N">the visual percept of a region</Definition>
-        <Definition partOfSpeech="N">outward appearance</Definition>
-        <Definition partOfSpeech="N">the act of looking or seeing or observing</Definition>
-        <Definition partOfSpeech="N">the range of the eye</Definition>
-        <Definition partOfSpeech="N">graphic art consisting of the graphic or photographic representation of a visual percept</Definition>
-        <Definition partOfSpeech="N">a way of regarding situations or topics etc.</Definition>
-        <Definition partOfSpeech="N">a personal belief or judgment that is not founded on proof or certainty</Definition>
-        <Definition partOfSpeech="N">a message expressing a belief about something; the expression of a belief that is held with confidence but not substantiated by positive knowledge or proof</Definition>
-        <Definition partOfSpeech="N">purpose; the phrase `with a view to' means `with the intention of' or `for the purpose of'</Definition>
-        <Definition partOfSpeech="N">the range of interest or activity that can be anticipated</Definition>
-        <Definition partOfSpeech="V">see or watch</Definition>
-        <Definition partOfSpeech="V">look at carefully; study mentally</Definition>
-        <Definition partOfSpeech="V">deem to be</Definition>
+<Word name="have">
+        <SoundPath>sounds\vocabulary\have.wav</SoundPath>
+        <Definition partOfSpeech="V">have or possess, either in a concrete or an abstract sense</Definition>
+        <Definition partOfSpeech="V">have as a feature</Definition>
+        <Definition partOfSpeech="V">have ownership or possession of</Definition>
+        <Definition partOfSpeech="V">get something; come into possession of</Definition>
+        <Definition partOfSpeech="V">serve oneself to, or consume regularly</Definition>
+        <Definition partOfSpeech="V">have sex with; archaic use</Definition>
+        <Definition partOfSpeech="V">have a personal or business relationship with someone</Definition>
+        <Definition partOfSpeech="V">have left</Definition>
+        <Definition partOfSpeech="V">be confronted with</Definition>
+        <Definition partOfSpeech="V">receive willingly something given or offered</Definition>
+        <Definition partOfSpeech="V">achieve a point or goal</Definition>
+        <Definition partOfSpeech="V">undergo</Definition>
+        <Definition partOfSpeech="V">undergo (as of injuries and illnesses)</Definition>
+        <Definition partOfSpeech="V">suffer from; be ill with</Definition>
+        <Definition partOfSpeech="V">go through (mental or physical states or experiences)</Definition>
+        <Definition partOfSpeech="V">cause to be born</Definition>
+        <Definition partOfSpeech="V">cause to move; cause to be in a certain position or condition</Definition>
+        <Definition partOfSpeech="V">cause to do; cause to act in a specified manner</Definition>
+        <Definition partOfSpeech="V">organize or be responsible for</Definition>
+        <Definition partOfSpeech="N">a person who possesses great material wealth</Definition>
     </Word>
 <Word name="play">
         <SoundPath>sounds\vocabulary\play.wav</SoundPath>
-        <Definition partOfSpeech="N">activity by children that is guided more by imagination than by fixed rules</Definition>
-        <Definition partOfSpeech="N">gay or light-hearted recreational activity for diversion or amusement</Definition>
-        <Definition partOfSpeech="N">a deliberate coordinated movement requiring dexterity and skill</Definition>
-        <Definition partOfSpeech="N">a preset plan of action in team sports</Definition>
-        <Definition partOfSpeech="N">(game) the activity of doing something in an agreed succession</Definition>
-        <Definition partOfSpeech="N">the act using a sword (or other weapon) vigorously and skillfully</Definition>
-        <Definition partOfSpeech="N">verbal wit or mockery (often at another's expense but not to be taken seriously)</Definition>
-        <Definition partOfSpeech="N">(in games or plays or other performances) the time during which play proceeds</Definition>
-        <Definition partOfSpeech="N">a dramatic work intended for performance by actors on a stage</Definition>
-        <Definition partOfSpeech="N">a theatrical performance of a drama</Definition>
-        <Definition partOfSpeech="N">utilization or exercise</Definition>
-        <Definition partOfSpeech="N">a state in which action is feasible</Definition>
-        <Definition partOfSpeech="N">an attempt to get something</Definition>
-        <Definition partOfSpeech="N">the removal of constraints</Definition>
-        <Definition partOfSpeech="N">movement or space for movement</Definition>
-        <Definition partOfSpeech="N">a weak and tremulous light</Definition>
-        <Definition partOfSpeech="N">the act of playing for stakes in the hope of winning (including the payment of a price for a chance to win a prize)</Definition>
         <Definition partOfSpeech="V">engage in recreational activities rather than work; occupy oneself in a diversion</Definition>
         <Definition partOfSpeech="V">be at play; be engaged in playful activity; amuse oneself in a way characteristic of children</Definition>
         <Definition partOfSpeech="V">participate in games or sport</Definition>
@@ -303,31 +405,35 @@
         <Definition partOfSpeech="V">put (a card or piece) into play during a game, or act strategically as if in a card game</Definition>
         <Definition partOfSpeech="V">use or move</Definition>
         <Definition partOfSpeech="V">exhaust by allowing to pull on the line</Definition>
+        <Definition partOfSpeech="N">activity by children that is guided more by imagination than by fixed rules</Definition>
+        <Definition partOfSpeech="N">gay or light-hearted recreational activity for diversion or amusement</Definition>
+        <Definition partOfSpeech="N">a deliberate coordinated movement requiring dexterity and skill</Definition>
+        <Definition partOfSpeech="N">a preset plan of action in team sports</Definition>
+        <Definition partOfSpeech="N">(game) the activity of doing something in an agreed succession</Definition>
+        <Definition partOfSpeech="N">the act using a sword (or other weapon) vigorously and skillfully</Definition>
+        <Definition partOfSpeech="N">verbal wit or mockery (often at another's expense but not to be taken seriously)</Definition>
+        <Definition partOfSpeech="N">(in games or plays or other performances) the time during which play proceeds</Definition>
+        <Definition partOfSpeech="N">a dramatic work intended for performance by actors on a stage</Definition>
+        <Definition partOfSpeech="N">a theatrical performance of a drama</Definition>
+        <Definition partOfSpeech="N">utilization or exercise</Definition>
+        <Definition partOfSpeech="N">a state in which action is feasible</Definition>
+        <Definition partOfSpeech="N">an attempt to get something</Definition>
+        <Definition partOfSpeech="N">the removal of constraints</Definition>
+        <Definition partOfSpeech="N">movement or space for movement</Definition>
+        <Definition partOfSpeech="N">a weak and tremulous light</Definition>
+        <Definition partOfSpeech="N">the act of playing for stakes in the hope of winning (including the payment of a price for a chance to win a prize)</Definition>
     </Word>
 <Word name="fade">
         <SoundPath>sounds\vocabulary\fade.wav</SoundPath>
-        <Definition partOfSpeech="N">gradually ceasing to be visible</Definition>
-        <Definition partOfSpeech="N">a golf shot that curves to the right for a right-handed golfer</Definition>
         <Definition partOfSpeech="V">become less clearly visible or distinguishable; disappear gradually or seemingly</Definition>
         <Definition partOfSpeech="V">disappear gradually</Definition>
         <Definition partOfSpeech="V">lose freshness, vigor, or vitality</Definition>
         <Definition partOfSpeech="V">become feeble</Definition>
-    </Word>
-<Word name="genus">
-        <SoundPath>sounds\vocabulary\genus.wav</SoundPath>
-        <Definition partOfSpeech="N">(biology) taxonomic group containing one or more species</Definition>
-        <Definition partOfSpeech="N">a general kind of something</Definition>
+        <Definition partOfSpeech="N">gradually ceasing to be visible</Definition>
+        <Definition partOfSpeech="N">a golf shot that curves to the right for a right-handed golfer</Definition>
     </Word>
 <Word name="sound">
         <SoundPath>sounds\vocabulary\sound.wav</SoundPath>
-        <Definition partOfSpeech="N">mechanical vibrations transmitted by an elastic medium</Definition>
-        <Definition partOfSpeech="N">the subjective sensation of hearing something</Definition>
-        <Definition partOfSpeech="N">the particular auditory effect produced by a given cause</Definition>
-        <Definition partOfSpeech="N">the sudden occurrence of an audible event</Definition>
-        <Definition partOfSpeech="N">the audible part of a transmitted signal</Definition>
-        <Definition partOfSpeech="N">(phonetics) an individual sound unit of speech without concern as to whether or not it is a phoneme of some language</Definition>
-        <Definition partOfSpeech="N">a narrow channel of the sea joining two larger bodies of water</Definition>
-        <Definition partOfSpeech="N">a large ocean inlet or deep bay</Definition>
         <Definition partOfSpeech="ADJ">in good condition; free from defect or damage or decay</Definition>
         <Definition partOfSpeech="ADJ">in excellent physical condition</Definition>
         <Definition partOfSpeech="ADJ">free from moral defect</Definition>
@@ -337,6 +443,14 @@
         <Definition partOfSpeech="ADJ">having legal efficacy or force</Definition>
         <Definition partOfSpeech="ADJ">thorough</Definition>
         <Definition partOfSpeech="ADJ">(of sleep) deep and complete</Definition>
+        <Definition partOfSpeech="N">mechanical vibrations transmitted by an elastic medium</Definition>
+        <Definition partOfSpeech="N">the subjective sensation of hearing something</Definition>
+        <Definition partOfSpeech="N">the particular auditory effect produced by a given cause</Definition>
+        <Definition partOfSpeech="N">the sudden occurrence of an audible event</Definition>
+        <Definition partOfSpeech="N">the audible part of a transmitted signal</Definition>
+        <Definition partOfSpeech="N">(phonetics) an individual sound unit of speech without concern as to whether or not it is a phoneme of some language</Definition>
+        <Definition partOfSpeech="N">a narrow channel of the sea joining two larger bodies of water</Definition>
+        <Definition partOfSpeech="N">a large ocean inlet or deep bay</Definition>
         <Definition partOfSpeech="V">make a certain noise or sound</Definition>
         <Definition partOfSpeech="V">give off a certain sound or sounds</Definition>
         <Definition partOfSpeech="V">cause to sound</Definition>
@@ -344,66 +458,5 @@
         <Definition partOfSpeech="V">utter with vibrating vocal chords</Definition>
         <Definition partOfSpeech="V">appear in a certain way</Definition>
         <Definition partOfSpeech="V">measure the depth of (a body of water) with a sounding line</Definition>
-    </Word>
-<Word name="still">
-        <SoundPath>sounds\vocabulary\still.wav</SoundPath>
-        <Definition partOfSpeech="ADJ">not in physical motion</Definition>
-        <Definition partOfSpeech="ADJ">(of a body of water) free from disturbance by heavy waves</Definition>
-        <Definition partOfSpeech="ADJ">free from noticeable current</Definition>
-        <Definition partOfSpeech="ADJ">used of pictures; of a single or static photograph not presented so as to create the illusion of motion; or representing objects not capable of motion</Definition>
-        <Definition partOfSpeech="ADJ">marked by absence of sound</Definition>
-        <Definition partOfSpeech="ADJ">not sparkling</Definition>
-        <Definition partOfSpeech="N">a static photograph (especially one taken from a movie and used for advertising purposes)</Definition>
-        <Definition partOfSpeech="N">(poetic) tranquil silence</Definition>
-        <Definition partOfSpeech="N">an apparatus used for the distillation of liquids; consists of a vessel in which a substance is vaporized by heat and a condenser where the vapor is condensed</Definition>
-        <Definition partOfSpeech="N">a plant and works where alcoholic drinks are made by distillation</Definition>
-        <Definition partOfSpeech="ADV">without moving or making a sound</Definition>
-        <Definition partOfSpeech="ADV">with reference to action or condition; without change, interruption, or cessation</Definition>
-        <Definition partOfSpeech="ADV">despite anything to the contrary (usually following a concession)</Definition>
-        <Definition partOfSpeech="ADV">to a greater degree or extent; used with comparisons</Definition>
-        <Definition partOfSpeech="V">make calm or still</Definition>
-        <Definition partOfSpeech="V">lessen the intensity of or calm</Definition>
-        <Definition partOfSpeech="V">make motionless</Definition>
-        <Definition partOfSpeech="V">cause to be quiet or not talk</Definition>
-    </Word>
-<Word name="apple">
-        <SoundPath>sounds\vocabulary\apple.wav</SoundPath>
-        <Definition partOfSpeech="N">native Eurasian tree widely cultivated in many varieties for its firm rounded edible fruits</Definition>
-        <Definition partOfSpeech="N">fruit with red or yellow or green skin and sweet to tart crisp whitish flesh</Definition>
-    </Word>
-<Word name="model">
-        <SoundPath>sounds\vocabulary\model.wav</SoundPath>
-        <Definition partOfSpeech="N">a representation of something (sometimes on a smaller scale)</Definition>
-        <Definition partOfSpeech="N">the act of representing something (usually on a smaller scale)</Definition>
-        <Definition partOfSpeech="N">a hypothetical description of a complex entity or process</Definition>
-        <Definition partOfSpeech="N">a representative form or pattern</Definition>
-        <Definition partOfSpeech="N">a person who poses for a photographer or painter or sculptor</Definition>
-        <Definition partOfSpeech="N">a person who wears clothes to display fashions</Definition>
-        <Definition partOfSpeech="N">something to be imitated</Definition>
-        <Definition partOfSpeech="N">someone worthy of imitation</Definition>
-        <Definition partOfSpeech="N">a type of product</Definition>
-        <Definition partOfSpeech="ADJ">worthy of imitation</Definition>
-        <Definition partOfSpeech="V">create a representation or model of</Definition>
-        <Definition partOfSpeech="V">construct a model of</Definition>
-        <Definition partOfSpeech="V">form in clay, wax, etc</Definition>
-        <Definition partOfSpeech="V">plan or create according to a model or models</Definition>
-        <Definition partOfSpeech="V">assume a posture as for artistic purposes</Definition>
-        <Definition partOfSpeech="V">display (clothes) as a mannequin</Definition>
-    </Word>
-<Word name="small">
-        <SoundPath>sounds\vocabulary\small.wav</SoundPath>
-        <Definition partOfSpeech="ADJ">limited or below average in number or quantity or magnitude or extent</Definition>
-        <Definition partOfSpeech="ADJ">limited in size or scope</Definition>
-        <Definition partOfSpeech="ADJ">slight or limited; especially in degree or intensity or scope</Definition>
-        <Definition partOfSpeech="ADJ">(of children and animals) young, immature</Definition>
-        <Definition partOfSpeech="ADJ">not large but sufficient in size or amount</Definition>
-        <Definition partOfSpeech="ADJ">lowercase</Definition>
-        <Definition partOfSpeech="ADJ">have fine or very small constituent particles</Definition>
-        <Definition partOfSpeech="ADJ">low or inferior in station or quality</Definition>
-        <Definition partOfSpeech="ADJ">made to seem smaller or less (especially in worth)</Definition>
-        <Definition partOfSpeech="ADJ">(of a voice) faint</Definition>
-        <Definition partOfSpeech="N">a garment size for a small person</Definition>
-        <Definition partOfSpeech="N">the slender part of the back</Definition>
-        <Definition partOfSpeech="ADV">on a small scale</Definition>
     </Word>
 </EnglishWarehouse>

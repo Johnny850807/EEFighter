@@ -10,6 +10,7 @@ import javax.swing.JPanel;
 
 import controller.EEFighter;
 import factory.ComponentAbstractFactory;
+import factory.MockComponentFactory;
 import model.Question;
 import model.sprite.GameMap;
 import model.sprite.PlayerSprite;
@@ -231,7 +232,7 @@ public class GameViewImp extends JPanel implements GameView, KeyListener {
 	public void onAnswerCorrect(PlayerSprite player) {
 		SoundPlayer.getInstance().playSound(CORRECT_SOUND_PATH);
 		eeFighter.nextQuestion();
-		gameStartView.onAnswerCorrectCleanLettersView();
+		gameStartView.CleanPlayersBarLetters();
 		if (spriteP1.getSpriteName() == player.getSpriteName())
 			gameStartView.showPlayerScore("player1", player.getScore());
 		else

@@ -15,6 +15,7 @@ import javax.swing.JLabel;
 
 import controller.EEFighterImp;
 import factory.ComponentAbstractFactory;
+import factory.MockComponentFactory;
 import model.Question;
 import model.sprite.BasicMapBuilder;
 import model.sprite.BasicMapDirector;
@@ -177,7 +178,7 @@ public class GameStartView extends JFrame implements IGameStartView {
 	}
 
 	@Override
-	public void onAnswerCorrectCleanLettersView() {
+	public void CleanPlayersBarLetters() {
 		player1Lab.setText("[0] Player1: ");
 		player2Lab.setText("[0] Player2: ");
 	}

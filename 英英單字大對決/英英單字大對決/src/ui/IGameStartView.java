@@ -7,8 +7,12 @@ import model.sprite.Sprite;
 
 public interface IGameStartView {
 	void onNextQuestion(Question question);
-	void onAnswerCorrectCleanLettersView();
+
+	void CleanPlayersBarLetters();
+
 	void showPlayerScore(String player, int Score);
+
 	void onPlayerEatLetter(String string, int score, List<Sprite> letter);
+
 	void onPlayerPopedLetter(String string, int score, List<Sprite> letter);
 }

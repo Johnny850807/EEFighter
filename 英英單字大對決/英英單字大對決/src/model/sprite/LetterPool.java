@@ -5,18 +5,21 @@ import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
+import model.Question;
+
 public class LetterPool {
 	private int maxSize;
 	private boolean log;
 	private OutputStream outputStream;
 	private List<Sprite> available = new ArrayList<>();
+	private Question question;
 
-	public LetterPool(int maxSize) {
-		this(maxSize, true);
+	public LetterPool(int maxSize, Question question) {
+		this(maxSize, question, true);
 	}
 
-	public LetterPool(int maxSize, boolean log) {
-		this(maxSize, log, System.out);
+	public LetterPool(int maxSize, Question question, boolean log) {
+		this(maxSize, question, log, System.out);
 	}
 
 	/**
@@ -28,8 +31,9 @@ public class LetterPool {
 	 * @param outputStream
 	 *            where the logging be sent to.
 	 */
-	public LetterPool(int maxSize, boolean log, OutputStream outputStream) {
+	public LetterPool(int maxSize, Question question, boolean log, OutputStream outputStream) {
 		this.maxSize = maxSize;
+		this.question = question;
 		this.log = log;
 		this.outputStream = outputStream;
 
@@ -42,6 +46,7 @@ public class LetterPool {
 	}
 
 	private void prepareBasicLetters() {
+		System.out.println(question.getWord());
 		SpriteName[] spriteNames = SpriteName.getLetterNames();
 		for (int i = 0; i < 2; i++)
 			for (int j = 0; j < spriteNames.length; j++) {

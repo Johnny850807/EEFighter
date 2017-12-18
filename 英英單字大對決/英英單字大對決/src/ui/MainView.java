@@ -18,7 +18,10 @@ import javax.swing.JLabel;
 
 import controller.EnglishWarehouseController;
 import factory.ComponentAbstractFactory;
+import factory.MockComponentFactory;
 import model.Secret;
+import model.sprite.BasicMapBuilder;
+import model.sprite.BasicMapDirector;
 import model.words.CrawlerVocabularycom;
 import model.words.ITRI_TTS;
 import model.words.WordXMLRepository;
@@ -137,7 +140,7 @@ public class MainView extends JFrame implements ActionListener {
 
 	public static void main(String[] argv) {
 		MainView mainView;
-		ComponentAbstractFactory componentAbstractFactory = new ComponentAbstractFactory();
+		ComponentAbstractFactory componentAbstractFactory = new MockComponentFactory();
 		try {
 			mainView = new MainView(componentAbstractFactory);
 			mainView.setVisible(true);
