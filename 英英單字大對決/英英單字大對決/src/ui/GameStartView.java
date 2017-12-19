@@ -35,14 +35,16 @@ public class GameStartView extends JFrame implements IGameStartView {
 	private Question question;
 	private GameViewImp gameViewPanel;
 	private ComponentAbstractFactory componentAbstractFactory;
+	private EEFighterImp eeFighterImp;
 
 	public GameStartView(ComponentAbstractFactory componentAbstractFactory) {
 		super("英英單字大對決");
+		eeFighterImp = new EEFighterImp(componentAbstractFactory);
 		EventQueue.invokeLater(() -> {
 			setBounds(215, 80, 1105, 715);
 			setupViews();
 			setupLayout();
-			addWindowListener(new CloseHandler());
+			addWindowListener(new CloseHandler(eeFighterImp));
 		});
 		this.componentAbstractFactory = componentAbstractFactory;
 	}
@@ -115,7 +117,7 @@ public class GameStartView extends JFrame implements IGameStartView {
 		player2Lab = new JLabel();
 		wordDefinitionLab = new JLabel();
 		gbc = new GridBagConstraints();
-		gameViewPanel = new GameViewImp(this, new EEFighterImp(componentAbstractFactory), componentAbstractFactory);
+		gameViewPanel = new GameViewImp(this, eeFighterImp, componentAbstractFactory);
 		gameViewPanel.start();
 	}
 
@@ -202,8 +204,11 @@ public class GameStartView extends JFrame implements IGameStartView {
 	}
 
 	protected static class CloseHandler extends WindowAdapter {
-		private EEFighterImp eeFighter = new EEFighterImp(new ReleasedComponentAbstractFactory());
-		@Override
+		private EEFighterImp eeFighter;
+		public CloseHandler(EEFighterImp eeFighterImp) {
+			
+		}
+
 		public void windowClosing(final WindowEvent event) {
 			eeFighter.windowClosed();
 		}

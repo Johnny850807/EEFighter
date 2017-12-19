@@ -47,6 +47,7 @@ public class EnglishWarehouseViewImp extends JFrame implements EnglishWarehouseV
 		this.englishWarehouseController = englishWarehouseController;
 		englishWarehouseController.setEnglishWarehouseView(this);
 		englishWarehouseController.readAllWord();
+		wordListScrollPane = new JScrollPane();
 		words = new ArrayList<Word>();
 	}
 	
@@ -96,7 +97,7 @@ public class EnglishWarehouseViewImp extends JFrame implements EnglishWarehouseV
 			wordDefaultListModel.addElement(word);
 		wordList = new JList<>(wordDefaultListModel);
 		wordList.setCellRenderer(new WordCellRenderer());
-		wordListScrollPane = new JScrollPane(wordList);
+		wordListScrollPane.setViewportView(wordList);
 	}
 
 	public void start() {
