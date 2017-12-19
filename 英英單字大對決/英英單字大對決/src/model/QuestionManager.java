@@ -14,15 +14,15 @@ import model.words.WordXMLRepository;
 
 
 public class QuestionManager implements Iterable<Question> {
-
+	private WordRepository wordRepository;
 	private List<Question> questions = new ArrayList<Question>();
 	private int index = -1;
 
 	public QuestionManager(WordRepository wordRepository) {
-		createQuestions(wordRepository);
+		this.wordRepository = wordRepository;
 	}
 	
-	private void createQuestions(WordRepository wordRepository) {
+	public void prepareQuestions() {
 		try {
 			List<Word> words = wordRepository.readAllWord();
 			Collections.shuffle(words);
