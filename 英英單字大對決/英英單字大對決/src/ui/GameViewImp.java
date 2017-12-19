@@ -16,6 +16,7 @@ import model.sprite.PlayerSprite;
 import model.sprite.Sprite;
 import model.sprite.Sprite.Direction;
 import model.sprite.Sprite.Status;
+import ui.GameStartView.CloseHandler;
 import utils.SoundPlayer;
 
 /**
@@ -39,14 +40,12 @@ public class GameViewImp extends JPanel implements GameView, KeyListener {
 	@Override
 	public void start() {
 		eeFighter.setGameView(this);
-
 		setBounds(0, 0, 1110, 700);
 		setupViews();
 		setFocusable(true);
 		requestFocusInWindow();
 		addKeyListener(this);
 		setupLayout();
-
 		eeFighter.startGame();
 		eeFighter.nextQuestion();
 	}
