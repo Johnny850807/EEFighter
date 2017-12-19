@@ -44,7 +44,7 @@ public class GameStartView extends JFrame implements IGameStartView {
 			setBounds(215, 80, 1105, 715);
 			setupViews();
 			setupLayout();
-			addWindowListener(new CloseHandler(eeFighterImp));
+			addWindowListener(new CloseHandler());
 		});
 		this.componentAbstractFactory = componentAbstractFactory;
 	}
