@@ -25,6 +25,7 @@ import ui.GameView;
  * @author Joanna (±i®ÑÞ±)
  */
 public class EEFighterImp implements EEFighter, LetterCreateListener {
+	private ComponentAbstractFactory componentAbstractFactory;
 	private GameView gameView;
 	private GameMap gameMap;
 	private LetterManager letterManager;
@@ -64,7 +65,7 @@ public class EEFighterImp implements EEFighter, LetterCreateListener {
 
 	@Override
 	public void startGame() {
-		letterManager.createLetter();
+		questionManager.prepareQuestions();
 		new Thread() {
 			public void run() {
 				while (!isOver() && !windowClosed) {
@@ -81,6 +82,8 @@ public class EEFighterImp implements EEFighter, LetterCreateListener {
 				}
 			}
 		}.start();
+		gameView.onGameStarted();
+		letterManager.createLetter();
 	}	
 
 	@Override
