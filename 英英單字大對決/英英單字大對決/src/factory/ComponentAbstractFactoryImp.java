@@ -16,8 +16,6 @@ public class ComponentAbstractFactoryImp implements ComponentAbstractFactory {
 	private WordRepository wordRepository;
 	private Crawler crawler;
 	private TTS tts;
-	private MapBuilder mapBuilder;
-	private MapDirector mapDirector;
 	
 	public ComponentAbstractFactoryImp() {
 		crawler = new CrawlerVocabularycom();
@@ -27,12 +25,12 @@ public class ComponentAbstractFactoryImp implements ComponentAbstractFactory {
 
 	@Override
 	public MapBuilder createMapBuilder() {
-		return mapBuilder = new BasicMapBuilder();
+		return new BasicMapBuilder();
 	}
 
 	@Override
 	public MapDirector createMapDirector() {
-		return mapDirector = new BasicMapDirector(mapBuilder);
+		return new BasicMapDirector(createMapBuilder());
 	}
 
 	@Override
