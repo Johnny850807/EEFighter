@@ -23,18 +23,16 @@ public class ReleasedComponentAbstractFactory implements ComponentAbstractFactor
 		crawler = new CrawlerVocabularycom();
 		tts = new ITRI_TTS(Secret.TTS_ACCOUNT, Secret.TTS_PASSWORD);
 		wordRepository = new WordXMLRepository("wordwarehouse");
-		mapBuilder = new BasicMapBuilder();
-		mapDirector = new BasicMapDirector(mapBuilder);
 	}
 
 	@Override
-	public MapBuilder getMapBuilder() {
-		return mapBuilder;
+	public MapBuilder createMapBuilder() {
+		return mapBuilder = new BasicMapBuilder();
 	}
 
 	@Override
-	public MapDirector getMapDirector() {
-		return mapDirector;
+	public MapDirector createMapDirector() {
+		return mapDirector = new BasicMapDirector(mapBuilder);
 	}
 
 	@Override
