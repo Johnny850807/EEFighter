@@ -5,22 +5,19 @@ import java.util.Collections;
 import java.util.List;
 
 import factory.ComponentAbstractFactory;
+import factory.ComponentAbstractFactoryImp;
 import model.Question;
 import model.QuestionManager;
-import model.sprite.BasicMapBuilder;
-import model.sprite.BasicMapDirector;
 import model.sprite.GameMap;
 import model.sprite.LetterCreateListener;
 import model.sprite.LetterManager;
 import model.sprite.LetterPool;
-import model.sprite.MapDirector;
 import model.sprite.PlayerSprite;
 import model.sprite.Sprite;
 import model.sprite.Sprite.Direction;
 import model.sprite.Sprite.Status;
 import model.sprite.SpriteName;
 import model.sprite.SpritePrototypeFactory;
-import model.words.WordXMLRepository;
 import ui.GameView;
 
 
@@ -36,6 +33,7 @@ public class EEFighterImp implements EEFighter, LetterCreateListener {
 	private PlayerSprite player1;
 	private PlayerSprite player2;
 	private SoundPlayTimer soundPlayTimer;
+	private boolean windowClosed;
 	
 	public EEFighterImp(ComponentAbstractFactory componentAbstractFactory) {
 		gameMap = componentAbstractFactory.getMapDirector().buildMap();
@@ -69,7 +67,7 @@ public class EEFighterImp implements EEFighter, LetterCreateListener {
 		letterManager.createLetter();
 		new Thread() {
 			public void run() {
-				while (!isOver()) {
+				while (!isOver() && !windowClosed) {
 					try {
 						Thread.sleep(17);
 						player1.update();
@@ -182,17 +180,19 @@ public class EEFighterImp implements EEFighter, LetterCreateListener {
 		soundPlayTimer = new SoundPlayTimer(gameView, question);
 		soundPlayTimer.start();
 	}
-	
+
+	@Override
 	public void windowClosed() {
-		
+		windowClosed = true;
+		letterManager.windowClosed();
 	}
 	
 	public static void main(String[] args) {
-		EEFighter eeFighter = new EEFighterImp(new ComponentAbstractFactory());
+		EEFighter eeFighter = new EEFighterImp(new ComponentAbstractFactoryImp());
 		eeFighter.startGame();
 		try {
 			Thread.sleep(10000);
-			eeFighter = null;
+			eeFighter.windowClosed();
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

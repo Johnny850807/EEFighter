@@ -16,9 +16,6 @@ import javax.swing.JLabel;
 import controller.EEFighterImp;
 import factory.ComponentAbstractFactory;
 import model.Question;
-import model.sprite.BasicMapBuilder;
-import model.sprite.BasicMapDirector;
-import model.sprite.PlayerSprite;
 import model.sprite.Sprite;
 
 /**
@@ -114,7 +111,7 @@ public class GameStartView extends JFrame implements IGameStartView {
 		player2Lab = new JLabel();
 		wordDefinitionLab = new JLabel();
 		gbc = new GridBagConstraints();
-		gameViewPanel = (GameViewImp) componentAbstractFactory.getGameView();
+		gameViewPanel = new GameViewImp(this, new EEFighterImp(componentAbstractFactory), componentAbstractFactory);
 		gameViewPanel.start();
 	}
 

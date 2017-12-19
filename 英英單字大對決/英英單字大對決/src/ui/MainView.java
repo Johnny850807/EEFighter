@@ -18,6 +18,7 @@ import javax.swing.JLabel;
 
 import controller.EnglishWarehouseController;
 import factory.ComponentAbstractFactory;
+import factory.ComponentAbstractFactoryImp;
 import model.Secret;
 import model.words.CrawlerVocabularycom;
 import model.words.ITRI_TTS;
@@ -114,7 +115,7 @@ public class MainView extends JFrame implements ActionListener {
 	}
 
 	private void startPlayingPanel() {
-		GameStartView gameStartView = (GameStartView) componentAbstractFactory.getGameStartView();
+		GameStartView gameStartView = new GameStartView(componentAbstractFactory);
 		gameStartView.setVisible(true);
 	}
 
@@ -137,7 +138,7 @@ public class MainView extends JFrame implements ActionListener {
 
 	public static void main(String[] argv) {
 		MainView mainView;
-		ComponentAbstractFactory componentAbstractFactory = new ComponentAbstractFactory();
+		ComponentAbstractFactory componentAbstractFactory = new ComponentAbstractFactoryImp();
 		try {
 			mainView = new MainView(componentAbstractFactory);
 			mainView.setVisible(true);

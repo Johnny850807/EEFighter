@@ -152,6 +152,7 @@ public class EnglishWarehouseViewImp extends JFrame implements EnglishWarehouseV
 	@Override
 	public void onWordReadSuccessfully(List<Word> words) {
 		this.words = words;
+		showWordList();
 	}
 
 	@Override
