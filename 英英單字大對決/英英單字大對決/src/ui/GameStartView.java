@@ -15,7 +15,9 @@ import java.util.List;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
+import controller.EEFighterImp;
 import factory.ComponentAbstractFactory;
+import factory.ComponentAbstractFactoryImp;
 import model.Question;
 import model.sprite.Sprite;
 
@@ -128,7 +130,7 @@ public class GameStartView extends JFrame implements IGameStartView {
 		strBuilder.append("</p></html>");
 		if (question != null)
 			wordDefinitionLab.setText(strBuilder.toString());
-		//modifyLayout();
+		// modifyLayout();
 	}
 
 	private void modifyLayout() {
@@ -148,7 +150,7 @@ public class GameStartView extends JFrame implements IGameStartView {
 	public void onNextQuestion(Question question) {
 		this.question = question;
 		repaint();
-		
+
 	}
 
 	public void addComponent(Component c, Double weightX, Double weightY, int row, int column, int width, int height) {
@@ -199,14 +201,13 @@ public class GameStartView extends JFrame implements IGameStartView {
 	public void onPlayerPopedLetter(String player, int score, List<Sprite> letter) {
 		showPlayerBarInfo(player, score, letter);
 	}
-	
-	protected static class CloseHandler extends WindowAdapter{
-//		private ComponentAbstractFactory componentAbstractFactory = new MockComponentFactory();
-//		private EEFighterImp eeFighter = (EEFighterImp)componentAbstractFactory.getEeFighter();
-		public void windowClosing(final WindowEvent event){
-//		eeFighter.windowClosed();
-//		System.out.println("zxc");
+
+	protected static class CloseHandler extends WindowAdapter {
+		private EEFighterImp eeFighter = new EEFighterImp(new ComponentAbstractFactoryImp());
+
+		public void windowClosing(final WindowEvent event) {
+			eeFighter.windowClosed();
 		}
 	}
-	
+
 }
