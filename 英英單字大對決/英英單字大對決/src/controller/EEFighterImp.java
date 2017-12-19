@@ -81,6 +81,7 @@ public class EEFighterImp implements EEFighter, LetterCreateListener {
 				}
 			}
 		}.start();
+		gameView.onGameStarted();
 	}	
 
 	@Override
