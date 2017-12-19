@@ -205,13 +205,13 @@ public class GameStartView extends JFrame implements IGameStartView {
 	}
 
 	protected static class CloseHandler extends WindowAdapter {
-		private EEFighterImp eeFighter;
-		public CloseHandler(EEFighterImp eeFighterImp) {
-			
-		}
+		private EEFighterImp eeFighterImp;
 
+		public CloseHandler(EEFighterImp eeFighterImp) {
+			this.eeFighterImp = eeFighterImp;
+		}
 		public void windowClosing(final WindowEvent event) {
-			eeFighter.windowClosed();
+			eeFighterImp.windowClosed();
 		}
 	}
 
