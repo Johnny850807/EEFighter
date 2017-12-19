@@ -7,9 +7,9 @@ import model.words.TTS;
 import model.words.WordRepository;
 
 public interface ComponentAbstractFactory {
-	MapBuilder getMapBuilder();
+	MapBuilder createMapBuilder();
 
-	MapDirector getMapDirector();
+	MapDirector createMapDirector();
 
 	WordRepository getWordRepository();
 

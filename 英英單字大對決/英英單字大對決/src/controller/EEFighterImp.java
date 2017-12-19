@@ -36,7 +36,7 @@ public class EEFighterImp implements EEFighter, LetterCreateListener {
 	private boolean windowClosed;
 	
 	public EEFighterImp(ComponentAbstractFactory componentAbstractFactory) {
-		gameMap = componentAbstractFactory.getMapDirector().buildMap();
+		gameMap = componentAbstractFactory.createMapDirector().buildMap();
 		questionManager = new QuestionManager(componentAbstractFactory.getWordRepository());
 		letterManager = new LetterManager(gameMap, new LetterPool(70));
 		letterManager.setLetterCreateListener(this);
