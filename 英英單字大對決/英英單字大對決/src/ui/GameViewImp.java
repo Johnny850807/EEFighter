@@ -31,9 +31,9 @@ public class GameViewImp extends JPanel implements GameView, KeyListener {
 	private List<Sprite> letters;
 	private IGameStartView gameStartView;
 
-	public GameViewImp(ComponentAbstractFactory componentAbstractFactory) {
-		this.eeFighter = componentAbstractFactory.getEeFighter();
-		this.gameStartView = componentAbstractFactory.getGameStartView();
+	public GameViewImp(GameStartView gameStartView, EEFighter eeFighter, ComponentAbstractFactory componentAbstractFactory) {
+		this.eeFighter = eeFighter;
+		this.gameStartView = gameStartView;
 	}
 
 	@Override
