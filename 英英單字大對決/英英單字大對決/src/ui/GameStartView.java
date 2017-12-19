@@ -8,12 +8,13 @@ import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.util.List;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
-import controller.EEFighterImp;
 import factory.ComponentAbstractFactory;
 import model.Question;
 import model.sprite.Sprite;
@@ -39,6 +40,7 @@ public class GameStartView extends JFrame implements IGameStartView {
 			setBounds(215, 80, 1105, 715);
 			setupViews();
 			setupLayout();
+			addWindowListener(new CloseHandler());
 		});
 		this.componentAbstractFactory = componentAbstractFactory;
 	}
@@ -197,4 +199,14 @@ public class GameStartView extends JFrame implements IGameStartView {
 	public void onPlayerPopedLetter(String player, int score, List<Sprite> letter) {
 		showPlayerBarInfo(player, score, letter);
 	}
+	
+	protected static class CloseHandler extends WindowAdapter{
+//		private ComponentAbstractFactory componentAbstractFactory = new MockComponentFactory();
+//		private EEFighterImp eeFighter = (EEFighterImp)componentAbstractFactory.getEeFighter();
+		public void windowClosing(final WindowEvent event){
+//		eeFighter.windowClosed();
+//		System.out.println("zxc");
+		}
+	}
+	
 }

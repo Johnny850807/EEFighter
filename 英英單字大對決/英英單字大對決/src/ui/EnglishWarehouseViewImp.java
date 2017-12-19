@@ -92,7 +92,7 @@ public class EnglishWarehouseViewImp extends JFrame implements EnglishWarehouseV
 
 	public void showWordList() {
 		wordDefaultListModel = new DefaultListModel<>();
-		for (Word word : words)
+		for (Word word : words) 
 			wordDefaultListModel.addElement(word);
 		wordList = new JList<>(wordDefaultListModel);
 		wordList.setCellRenderer(new WordCellRenderer());
@@ -102,10 +102,10 @@ public class EnglishWarehouseViewImp extends JFrame implements EnglishWarehouseV
 	public void start() {
 		EventQueue.invokeLater(() -> {
 			setBounds(500, 200, 400, 650);
-			showWordList();
 			setupViews();
 			setupLayout();
 			addButtonsActionListener(this);
+			englishWarehouseController.readAllWord();
 		});
 	}
 
@@ -148,13 +148,13 @@ public class EnglishWarehouseViewImp extends JFrame implements EnglishWarehouseV
 	public void onWordReadFailed(String word, Exception exception) {
 		
 	}
-
+	
 	@Override
 	public void onWordReadSuccessfully(List<Word> words) {
 		this.words = words;
 		showWordList();
 	}
-
+	
 	@Override
 	public void onWordReadFailed(Exception exception) {
 		
