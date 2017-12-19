@@ -204,12 +204,7 @@ public class GameStartView extends JFrame implements IGameStartView {
 		showPlayerBarInfo(player, score, letter);
 	}
 
-	protected static class CloseHandler extends WindowAdapter {
-		private EEFighterImp eeFighterImp;
-
-		public CloseHandler(EEFighterImp eeFighterImp) {
-			this.eeFighterImp = eeFighterImp;
-		}
+	protected class CloseHandler extends WindowAdapter {
 		public void windowClosing(final WindowEvent event) {
 			eeFighterImp.windowClosed();
 		}
