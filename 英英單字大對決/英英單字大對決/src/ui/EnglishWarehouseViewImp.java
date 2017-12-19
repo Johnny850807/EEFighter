@@ -148,12 +148,13 @@ public class EnglishWarehouseViewImp extends JFrame implements EnglishWarehouseV
 	public void onWordReadFailed(String word, Exception exception) {
 		
 	}
-
+	
 	@Override
 	public void onWordReadSuccessfully(List<Word> words) {
 		this.words = words;
+		
 	}
-
+	
 	@Override
 	public void onWordReadFailed(Exception exception) {
 		
