@@ -4,14 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import controller.EEFighter;
-
 public class LetterManager {
-	
 	private List<Sprite> letters = new ArrayList<>();
 	private LetterCreateListener letterCreateListener;
 	private LetterPool letterPool;
 	private GameMap gameMap;
+	private boolean windowClosed;
 	
 	public LetterManager(GameMap gameMap, LetterPool letterPool) {
 		this.letterPool = letterPool;
@@ -25,7 +23,7 @@ public class LetterManager {
 	public void createLetter() {
 		new Thread() {
 			public void run() {
-				while (true) {
+				while (!windowClosed) {
 					try {
 						Thread.sleep(1750);
 						Sprite sprite = getLetter();
@@ -64,6 +62,10 @@ public class LetterManager {
 	
 	public void releaseLetter(Sprite sprite) {
 		letterPool.release(sprite);
+	}
+	
+	public void windowClosed() {
+		windowClosed = true;
 	}
 	
 }

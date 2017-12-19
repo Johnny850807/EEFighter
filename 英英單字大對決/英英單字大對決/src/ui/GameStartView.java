@@ -113,7 +113,7 @@ public class GameStartView extends JFrame implements IGameStartView {
 		player2Lab = new JLabel();
 		wordDefinitionLab = new JLabel();
 		gbc = new GridBagConstraints();
-		gameViewPanel = (GameViewImp) componentAbstractFactory.getGameView();
+		gameViewPanel = new GameViewImp(this, new EEFighterImp(componentAbstractFactory), componentAbstractFactory);
 		gameViewPanel.start();
 	}
 

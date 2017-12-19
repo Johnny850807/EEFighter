@@ -18,7 +18,7 @@ import javax.xml.soap.SOAPMessage;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 
-import factory.ComponentAbstractFactory;
+import factory.ComponentAbstractFactoryImp;
 import model.Secret;
 import ui.MainView;
 import utils.SoapHelper;
@@ -162,7 +162,7 @@ public class ITRI_TTS implements TTS{
 			TTS tts = new ITRI_TTS(Secret.TTS_ACCOUNT, Secret.TTS_PASSWORD);
 			String path = tts.saveWordTTS("sounds/vocabulary", "Question one, listen carefully.");
 			System.out.println(path);
-			new MainView(new ComponentAbstractFactory()).setVisible(true);
+			new MainView(new ComponentAbstractFactoryImp()).setVisible(true);
 			SoundPlayer.getInstance().playSound(path);
 		} catch (Exception e) {
 			e.printStackTrace();

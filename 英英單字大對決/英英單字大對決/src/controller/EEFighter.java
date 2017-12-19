@@ -19,4 +19,6 @@ public interface EEFighter {
 	void isLetterCollided(PlayerSprite player);
 
 	void checkAnswer(PlayerSprite player);
+	
+	void windowClosed();
 }
