@@ -34,12 +34,11 @@ public class GameViewImp extends JPanel implements GameView, KeyListener {
 	public GameViewImp(GameStartView gameStartView, EEFighter eeFighter, ComponentAbstractFactory componentAbstractFactory) {
 		this.eeFighter = eeFighter;
 		this.gameStartView = gameStartView;
+		eeFighter.setGameView(this);
 	}
 
 	@Override
 	public void start() {
-		eeFighter.setGameView(this);
-
 		setBounds(0, 0, 1110, 700);
 		setupViews();
 		setFocusable(true);
@@ -48,7 +47,6 @@ public class GameViewImp extends JPanel implements GameView, KeyListener {
 		setupLayout();
 
 		eeFighter.startGame();
-		eeFighter.nextQuestion();
 	}
 
 	@Override
@@ -183,7 +181,7 @@ public class GameViewImp extends JPanel implements GameView, KeyListener {
 
 	@Override
 	public void onGameStarted() {
-
+		eeFighter.nextQuestion();
 	}
 
 	@Override
