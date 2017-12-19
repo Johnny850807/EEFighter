@@ -18,7 +18,7 @@ import javax.swing.JLabel;
 
 import controller.EnglishWarehouseController;
 import factory.ComponentAbstractFactory;
-import factory.ComponentAbstractFactoryImp;
+import factory.ReleasedComponentAbstractFactory;
 import model.Secret;
 import model.words.CrawlerVocabularycom;
 import model.words.ITRI_TTS;
@@ -138,7 +138,7 @@ public class MainView extends JFrame implements ActionListener {
 
 	public static void main(String[] argv) {
 		MainView mainView;
-		ComponentAbstractFactory componentAbstractFactory = new ComponentAbstractFactoryImp();
+		ComponentAbstractFactory componentAbstractFactory = new ReleasedComponentAbstractFactory();
 		try {
 			mainView = new MainView(componentAbstractFactory);
 			mainView.setVisible(true);

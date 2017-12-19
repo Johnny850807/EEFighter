@@ -5,7 +5,7 @@ import java.util.Collections;
 import java.util.List;
 
 import factory.ComponentAbstractFactory;
-import factory.ComponentAbstractFactoryImp;
+import factory.ReleasedComponentAbstractFactory;
 import model.Question;
 import model.QuestionManager;
 import model.sprite.GameMap;
@@ -188,7 +188,7 @@ public class EEFighterImp implements EEFighter, LetterCreateListener {
 	}
 	
 	public static void main(String[] args) {
-		EEFighter eeFighter = new EEFighterImp(new ComponentAbstractFactoryImp());
+		EEFighter eeFighter = new EEFighterImp(new ReleasedComponentAbstractFactory());
 		eeFighter.startGame();
 		try {
 			Thread.sleep(10000);

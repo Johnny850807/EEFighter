@@ -12,14 +12,14 @@ import model.words.TTS;
 import model.words.WordRepository;
 import model.words.WordXMLRepository;
 
-public class ComponentAbstractFactoryImp implements ComponentAbstractFactory {
+public class ReleasedComponentAbstractFactory implements ComponentAbstractFactory {
 	private WordRepository wordRepository;
 	private Crawler crawler;
 	private TTS tts;
 	private MapBuilder mapBuilder;
 	private MapDirector mapDirector;
 	
-	public ComponentAbstractFactoryImp() {
+	public ReleasedComponentAbstractFactory() {
 		crawler = new CrawlerVocabularycom();
 		tts = new ITRI_TTS(Secret.TTS_ACCOUNT, Secret.TTS_PASSWORD);
 		wordRepository = new WordXMLRepository("wordwarehouse");
