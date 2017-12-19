@@ -17,7 +17,7 @@ import javax.swing.JLabel;
 
 import controller.EEFighterImp;
 import factory.ComponentAbstractFactory;
-import factory.ComponentAbstractFactoryImp;
+import factory.ReleasedComponentAbstractFactory;
 import model.Question;
 import model.sprite.Sprite;
 
@@ -194,7 +194,6 @@ public class GameStartView extends JFrame implements IGameStartView {
 	@Override
 	public void onPlayerEatLetter(String player, int score, List<Sprite> letter) {
 		showPlayerBarInfo(player, score, letter);
-
 	}
 
 	@Override
@@ -203,8 +202,8 @@ public class GameStartView extends JFrame implements IGameStartView {
 	}
 
 	protected static class CloseHandler extends WindowAdapter {
-		private EEFighterImp eeFighter = new EEFighterImp(new ComponentAbstractFactoryImp());
-
+		private EEFighterImp eeFighter = new EEFighterImp(new ReleasedComponentAbstractFactory());
+		@Override
 		public void windowClosing(final WindowEvent event) {
 			eeFighter.windowClosed();
 		}
