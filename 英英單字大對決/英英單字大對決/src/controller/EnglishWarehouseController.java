@@ -3,6 +3,8 @@ package controller;
 import java.io.IOException;
 import java.util.List;
 
+import factory.ComponentAbstractFactory;
+import factory.ComponentAbstractFactoryImp;
 import model.Secret;
 import model.words.Crawler;
 import model.words.CrawlerVocabularycom;
@@ -101,7 +103,7 @@ public class EnglishWarehouseController {
 		String[] words = {"apple", "banana", "vocabulary", "subtropical", "several", "genus", "have", "terminal", "egg", 
 				"small", "elephant",  "elder", "control", "model", "view", "stick", "fade", "still",
 				"visible", "search", "customer", "play", "sound", "voice"};
-		new MainView(null).setVisible(true);  //for playing sounds
+		new MainView(new ComponentAbstractFactoryImp()).setVisible(true);  //for playing sounds
 		EnglishWarehouseController controller = new EnglishWarehouseController(new WordXMLRepository("words"), new CrawlerVocabularycom(), new ITRI_TTS(Secret.TTS_ACCOUNT, Secret.TTS_PASSWORD));
 		controller.setEnglishWarehouseView(new EnglishWarehouseView() {
 			int success = 0;
