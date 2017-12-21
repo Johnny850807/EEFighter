@@ -68,4 +68,8 @@ public class LetterManager {
 		windowClosed = true;
 	}
 	
+	public interface LetterCreateListener {
+		void onCreateLetters(List<Sprite> letters);	
+	}
+	
 }

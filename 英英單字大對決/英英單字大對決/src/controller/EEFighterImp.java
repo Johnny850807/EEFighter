@@ -9,7 +9,7 @@ import model.Question;
 import model.QuestionManager;
 import model.QuestionManager.QuestionListener;
 import model.sprite.GameMap;
-import model.sprite.LetterCreateListener;
+import model.sprite.LetterManager.LetterCreateListener;
 import model.sprite.LetterManager;
 import model.sprite.LetterPool;
 import model.sprite.PlayerSprite;
