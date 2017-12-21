@@ -3,11 +3,11 @@ package controller;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-
 import factory.ComponentAbstractFactory;
 import factory.ComponentAbstractFactoryImp;
 import model.Question;
 import model.QuestionManager;
+import model.QuestionManager.QuestionListener;
 import model.sprite.GameMap;
 import model.sprite.LetterCreateListener;
 import model.sprite.LetterManager;
@@ -24,7 +24,7 @@ import ui.GameView;
 /**
  * @author Joanna (±i®ÑÞ±)
  */
-public class EEFighterImp implements EEFighter, LetterCreateListener {
+public class EEFighterImp implements EEFighter, LetterCreateListener, QuestionListener {
 	private ComponentAbstractFactory componentAbstractFactory;
 	private GameView gameView;
 	private GameMap gameMap;
@@ -39,6 +39,7 @@ public class EEFighterImp implements EEFighter, LetterCreateListener {
 	public EEFighterImp(ComponentAbstractFactory componentAbstractFactory) {
 		gameMap = componentAbstractFactory.createMapDirector().buildMap();
 		questionManager = new QuestionManager(componentAbstractFactory.getWordRepository());
+		questionManager.addListener(this);
 		letterManager = new LetterManager(gameMap, new LetterPool(70));
 		letterManager.setLetterCreateListener(this);
 		createPlayers();
@@ -82,9 +83,13 @@ public class EEFighterImp implements EEFighter, LetterCreateListener {
 				}
 			}
 		}.start();
+	}	
+
+	@Override
+	public void onQuestionPrepareFinish() {
 		gameView.onGameStarted();
 		letterManager.createLetter();
-	}	
+	}
 
 	@Override
 	public void move(PlayerSprite player, Direction direction, Status status) {
@@ -197,9 +202,8 @@ public class EEFighterImp implements EEFighter, LetterCreateListener {
 			Thread.sleep(10000);
 			eeFighter.windowClosed();
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
-	
+
 }

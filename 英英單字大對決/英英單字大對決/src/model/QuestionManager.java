@@ -15,11 +15,16 @@ import model.words.WordXMLRepository;
 
 public class QuestionManager implements Iterable<Question> {
 	private WordRepository wordRepository;
-	private List<Question> questions = new ArrayList<Question>();
+	private List<Question> questions = new ArrayList<>();
+	private List<QuestionListener> questionListeners = new ArrayList<>();
 	private int index = -1;
 
 	public QuestionManager(WordRepository wordRepository) {
 		this.wordRepository = wordRepository;
+	}
+	
+	public void addListener(QuestionListener questionListener) {
+		questionListeners.add(questionListener);
 	}
 	
 	public void prepareQuestions() {
@@ -37,11 +42,13 @@ public class QuestionManager implements Iterable<Question> {
 				Question question = new Question(++number, wordtxt, soundPath, partOfSpeech, definition);
 				questions.add(question);
 			}
+			for (QuestionListener questionListener : questionListeners) 
+				questionListener.onQuestionPrepareFinish();
 		} catch (ReadWordFailedException e) {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public List<Question> getQuestions() {
 		return questions;
 	}
@@ -77,4 +84,7 @@ public class QuestionManager implements Iterable<Question> {
 		return questions.iterator();
 	}
 	
+	public interface QuestionListener {
+		void onQuestionPrepareFinish();
+	}
 }
