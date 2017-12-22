@@ -124,14 +124,15 @@ public class GameStartView extends JFrame implements IGameStartView {
 	@Override
 	public void paint(Graphics g) {
 		super.paint(g);
+		if (question != null) {
+			String definition = question.getNumber() + ". ( " + question.getPartOfSpeech() + ". ) " + createLine()
+					+ question.getDefinition();
+			StringBuilder strBuilder = new StringBuilder("<html>");
+			strBuilder.append(definition);
+			strBuilder.append("</p></html>");
 
-		String definition = question.getNumber() + ". ( " + question.getPartOfSpeech() + ". ) " + createLine()
-				+ question.getDefinition();
-		StringBuilder strBuilder = new StringBuilder("<html>");
-		strBuilder.append(definition);
-		strBuilder.append("</p></html>");
-		if (question != null)
 			wordDefinitionLab.setText(strBuilder.toString());
+		}
 		// modifyLayout();
 	}
 
@@ -152,7 +153,6 @@ public class GameStartView extends JFrame implements IGameStartView {
 	public void onNextQuestion(Question question) {
 		this.question = question;
 		repaint();
-
 	}
 
 	public void addComponent(Component c, Double weightX, Double weightY, int row, int column, int width, int height) {

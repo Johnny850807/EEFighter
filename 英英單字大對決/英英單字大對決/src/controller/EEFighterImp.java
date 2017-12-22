@@ -66,9 +66,9 @@ public class EEFighterImp implements EEFighter, LetterCreateListener, QuestionLi
 
 	@Override
 	public void startGame() {
-		questionManager.prepareQuestions();
 		new Thread() {
 			public void run() {
+				questionManager.prepareQuestions();
 				while (!isOver() && !windowClosed) {
 					try {
 						Thread.sleep(17);
@@ -111,17 +111,19 @@ public class EEFighterImp implements EEFighter, LetterCreateListener, QuestionLi
 	}
 	
 	private void cleanAndReleasePlayerLetters() {
-		int halfSize = letters.size() / 2;
-		for (int i = 0; i < halfSize; i++) {
-			letterManager.releaseLetter(letters.get(i));
-			letters.remove(i);
+		if (!letters.isEmpty()) {
+			int halfSize = letters.size() / 2;
+			for (int i = 0; i < halfSize; i++) {
+				letterManager.releaseLetter(letters.get(i));
+				letters.remove(i);
+			}
+			for (Sprite letter : player1.getLetters())
+				letterManager.releaseLetter(letter);
+			for (Sprite letter : player2.getLetters())
+				letterManager.releaseLetter(letter);
+			player1.removeAllLetters();
+			player2.removeAllLetters();
 		}
-		for (Sprite letter : player1.getLetters())
-			letterManager.releaseLetter(letter);
-		for (Sprite letter : player2.getLetters())
-			letterManager.releaseLetter(letter);
-		player1.removeAllLetters();
-		player2.removeAllLetters();
 	}
 
 	public boolean isOver() {
