@@ -3,7 +3,10 @@ package model.sprite;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+
+import model.Question;
 
 public class LetterPool {
 	private int maxSize;
@@ -99,10 +102,23 @@ public class LetterPool {
 		this.wait(); // wait for another thread releasing the object.
 	}
 
+	public void shuffleObjects(Question question) {
+		Collections.shuffle(available);
+		String[] questionLetters = question.getWord().split("");
+		for (int i = 0; i < questionLetters.length; i++)
+			for (int j = 0; j < available.size(); j++)
+				if (available.get(j).getName().equals(questionLetters[i])) {
+					Sprite sprite = available.get(j);
+					int index = (int) (Math.random() * (questionLetters.length * 2 + 10));
+					available.set(j, available.get(index));
+					available.set(index, sprite);
+				}
+	}
+
 	private Sprite getAvailableObject() {
-		Sprite nextObject = available.get((int) (Math.random() * available.size()));
+		Sprite nextObject = available.get(0);
 		log("Available object returned: " + nextObject);
-		available.remove(nextObject);
+		available.remove(0);
 		System.out.println(available.size());
 		return nextObject;
 	}
