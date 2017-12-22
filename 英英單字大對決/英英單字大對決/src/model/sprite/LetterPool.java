@@ -107,7 +107,7 @@ public class LetterPool {
 		String[] questionLetters = question.getWord().split("");
 		for (int i = 0; i < questionLetters.length; i++)
 			for (int j = 0; j < available.size(); j++)
-				if (available.get(j).getName().equals(questionLetters[i])) {
+				if (available.get(j).spriteName.toString().equals(questionLetters[i])) {
 					Sprite sprite = available.get(j);
 					int index = (int) (Math.random() * (questionLetters.length * 2 + 10));
 					available.set(j, available.get(index));
