@@ -10,6 +10,7 @@ public class LetterManager {
 	private LetterPool letterPool;
 	private GameMap gameMap;
 	private boolean windowClosed;
+	private boolean gameOver;
 	
 	public LetterManager(GameMap gameMap, LetterPool letterPool) {
 		this.letterPool = letterPool;
@@ -23,7 +24,7 @@ public class LetterManager {
 	public void createLetter() {
 		new Thread() {
 			public void run() {
-				while (!windowClosed) {
+				while (!windowClosed && !gameOver) {
 					try {
 						Thread.sleep(1750);
 						Sprite sprite = getLetter();
@@ -66,6 +67,10 @@ public class LetterManager {
 	
 	public void windowClosed() {
 		windowClosed = true;
+	}
+	
+	public void gameOver() {
+		gameOver = true;
 	}
 	
 	public interface LetterCreateListener {

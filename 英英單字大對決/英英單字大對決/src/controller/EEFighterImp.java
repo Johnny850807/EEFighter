@@ -3,14 +3,15 @@ package controller;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+
 import factory.ComponentAbstractFactory;
 import factory.ComponentAbstractFactoryImp;
 import model.Question;
 import model.QuestionManager;
 import model.QuestionManager.QuestionListener;
 import model.sprite.GameMap;
-import model.sprite.LetterManager.LetterCreateListener;
 import model.sprite.LetterManager;
+import model.sprite.LetterManager.LetterCreateListener;
 import model.sprite.LetterPool;
 import model.sprite.PlayerSprite;
 import model.sprite.Sprite;
@@ -35,6 +36,7 @@ public class EEFighterImp implements EEFighter, LetterCreateListener, QuestionLi
 	private PlayerSprite player2;
 	private SoundPlayTimer soundPlayTimer;
 	private boolean windowClosed;
+	private boolean gameOver;
 	
 	public EEFighterImp(ComponentAbstractFactory componentAbstractFactory) {
 		gameMap = componentAbstractFactory.createMapDirector().buildMap();
@@ -69,7 +71,7 @@ public class EEFighterImp implements EEFighter, LetterCreateListener, QuestionLi
 		new Thread() {
 			public void run() {
 				questionManager.prepareQuestions();
-				while (!isOver() && !windowClosed) {
+				while (!gameOver && !windowClosed) {
 					try {
 						Thread.sleep(17);
 						player1.update();
@@ -106,8 +108,10 @@ public class EEFighterImp implements EEFighter, LetterCreateListener, QuestionLi
 			gameView.onNextQuestion(question);
 			playQuestionWord(question);
 		}
-		else
+		else {
 			gameView.onNoMoreQuestion();
+			gameOver();
+		}
 	}
 	
 	private void cleanAndReleasePlayerLetters() {
@@ -126,8 +130,11 @@ public class EEFighterImp implements EEFighter, LetterCreateListener, QuestionLi
 		}
 	}
 
-	public boolean isOver() {
-		return false;
+	public void gameOver() {
+		gameOver = true;
+		letterManager.gameOver();
+		PlayerSprite player = (player1.getScore() > player2.getScore())? player1 : player2;
+		gameView.onGameOver(player);
 	}
 
 	@Override

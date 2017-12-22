@@ -12,7 +12,7 @@ import model.sprite.Sprite.Status;
 public interface GameView {
 	void onDraw(GameMap gameMap, List<Sprite> letters, PlayerSprite player1, PlayerSprite player2);
 	void onGameStarted();
-	void onGameOver();
+	void onGameOver(PlayerSprite player);
 	void onGameClose();
 	void start();
 	void onMovedSuccessfuly(Sprite sprite, Direction direction, Status status);

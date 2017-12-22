@@ -185,7 +185,7 @@ public class GameViewImp extends JPanel implements GameView, KeyListener {
 	}
 
 	@Override
-	public void onGameOver() {
+	public void onGameOver(PlayerSprite player) {
 
 	}
 
