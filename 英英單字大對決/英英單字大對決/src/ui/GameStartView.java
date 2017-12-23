@@ -95,8 +95,11 @@ public class GameStartView extends JFrame implements IGameStartView {
 
 	private void setViewsSize(Dimension dimension) {
 		player1Lab.setMinimumSize(dimension);
+		player1Lab.setMaximumSize(dimension);
 		player2Lab.setMinimumSize(dimension);
+		player2Lab.setMaximumSize(dimension);
 		wordDefinitionLab.setMinimumSize(new Dimension(170, 50));
+		wordDefinitionLab.setMaximumSize(new Dimension(170, 50));
 	}
 
 	private void setViewsFont(Font font) {

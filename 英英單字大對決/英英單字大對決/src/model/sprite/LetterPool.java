@@ -103,9 +103,11 @@ public class LetterPool {
 	}
 
 	public void shuffleObjects(Question question) {
-		System.out.println(question.getWord());
+		
 		Collections.shuffle(available);
-		String[] questionLetters = question.getWord().split("");
+		String str = question.getWord().toUpperCase();
+		System.out.println(str);
+		String[] questionLetters = str.split("");
 		for (int i = 0; i < questionLetters.length; i++)
 			for (int j = 0; j < available.size(); j++)
 				if (available.get(j).spriteName.toString().equals(questionLetters[i])) {

@@ -47,7 +47,6 @@ public class GameViewImp extends JPanel implements GameView, KeyListener {
 		requestFocusInWindow();
 		addKeyListener(this);
 		setupLayout();
-		System.out.println(SpriteName.PLAYER1.toString());
 
 		eeFighter.startGame();
 	}
