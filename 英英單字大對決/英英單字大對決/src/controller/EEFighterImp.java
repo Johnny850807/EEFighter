@@ -194,17 +194,7 @@ public class EEFighterImp implements EEFighter, LetterCreateListener, QuestionLi
 	public void windowClosed() {
 		windowClosed = true;
 		letterManager.windowClosed();
-	}
-	
-	public static void main(String[] args) {
-		EEFighter eeFighter = new EEFighterImp(new ComponentAbstractFactoryImp());
-		eeFighter.startGame();
-		try {
-			Thread.sleep(10000);
-			eeFighter.windowClosed();
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
+		soundPlayTimer.windowClosed();
 	}
 
 }
