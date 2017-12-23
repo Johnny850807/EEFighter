@@ -116,6 +116,16 @@ public class LetterPool {
 				}
 	}
 
+	public List<Sprite> getQuestionLetters(String question) {
+		List<Sprite> letters = new ArrayList<>();
+		String[] questionLetters = question.split("");
+		for (int i = 0; i < available.size(); i++)
+			for (int j = 0; j < questionLetters.length; j++)
+				if (available.get(i).spriteName.toString().equals(questionLetters[j]))
+					letters.add(available.get(i));
+		return letters;
+	}
+
 	private Sprite getAvailableObject() {
 		Sprite nextObject = available.get(0);
 		log("Available object returned: " + nextObject);
