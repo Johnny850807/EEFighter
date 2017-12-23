@@ -11,12 +11,16 @@ public class LetterManager {
 	private LetterCreateListener letterCreateListener;
 	private LetterPool letterPool;
 	private GameMap gameMap;
+	private PlayerSprite player1;
+	private PlayerSprite player2;
 	private boolean windowClosed;
 	private boolean gameOver;
 	
-	public LetterManager(GameMap gameMap, LetterPool letterPool) {
+	public LetterManager(GameMap gameMap, LetterPool letterPool, PlayerSprite player1, PlayerSprite player2) {
 		this.letterPool = letterPool;
 		this.gameMap = gameMap;
+		this.player1 = player1;
+		this.player2 = player2;
 	}
 	
 	public void setLetterCreateListener(LetterCreateListener letterCreateListener) {
@@ -51,9 +55,16 @@ public class LetterManager {
 		do {
 			x = random.nextInt(gameMap.getWidth());
 			y = random.nextInt(gameMap.getHeight());
-		} while (hasLetter(x, y) || !hasGrass(x, y));
+		} while (hasLetter(x, y) || !hasGrass(x, y) || hasNearByPlayer(x, y));
 		sprite.setXY(x * GameMap.ITEM_SIZE, y * GameMap.ITEM_SIZE);
 		return sprite;
+	}
+	
+	private boolean hasNearByPlayer(int x, int y) {
+		if (player1.getX() ==  x * GameMap.ITEM_SIZE && player1.getY() == y * GameMap.ITEM_SIZE ||
+				player2.getX() ==  x * GameMap.ITEM_SIZE && player2.getY() == y * GameMap.ITEM_SIZE) 
+			return true;
+		return false;
 	}
 	
 	private boolean hasLetter(int x, int y) {

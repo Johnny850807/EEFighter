@@ -42,9 +42,9 @@ public class EEFighterImp implements EEFighter, LetterCreateListener, QuestionLi
 		gameMap = componentAbstractFactory.createMapDirector().buildMap();
 		questionManager = new QuestionManager(componentAbstractFactory.getWordRepository());
 		questionManager.addListener(this);
-		letterManager = new LetterManager(gameMap, new LetterPool(70));
-		letterManager.setLetterCreateListener(this);
 		createPlayers();
+		letterManager = new LetterManager(gameMap, new LetterPool(70), player1, player2);
+		letterManager.setLetterCreateListener(this);
 	}
 	
 	@Override
@@ -116,14 +116,10 @@ public class EEFighterImp implements EEFighter, LetterCreateListener, QuestionLi
 	}
 	
 	private void cleanAndReleasePlayerLetters() {
-		if (!letters.isEmpty()) {
-			letterManager.releaseLetters(letters);
-			letterManager.releaseLetters(player1.getLetters());
-			letterManager.releaseLetters(player2.getLetters());
-			letters.removeAll(letters);
-			player1.removeAllLetters();
-			player2.removeAllLetters();
-		}
+		letterManager.releaseLetters(letters);
+		letters.removeAll(letters);
+		player1.removeAllLetters();
+		player2.removeAllLetters();
 	}
 
 	public void gameOver() {

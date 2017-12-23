@@ -71,7 +71,6 @@ public class PlayerSprite extends Sprite{
 	public void removeAllLetters() {
 		while (!letters.isEmpty())
 			popLetter();
-		letters.removeAll(letters);
 	}
 	
 	public List<Sprite> getLetters() {
