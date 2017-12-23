@@ -36,7 +36,7 @@ public class LetterManager {
 			public void run() {
 				while (!windowClosed && !gameOver) {
 					try {
-						Thread.sleep(1750);
+						Thread.sleep(50);
 						Sprite sprite = getLetter();
 						letters.add(sprite);
 						letterCreateListener.onCreateLetters(letters);
@@ -61,14 +61,13 @@ public class LetterManager {
 	}
 	
 	private boolean hasNearByPlayer(int x, int y) {
-		int range = GameMap.ITEM_SIZE * 2;
+		int range = GameMap.ITEM_SIZE * 3;
 		int X = x * GameMap.ITEM_SIZE;
 		int Y = y * GameMap.ITEM_SIZE;
 		int player1X = player1.getX();
 		int player1Y = player1.getY();
 		int player2X = player2.getX();
 		int player2Y = player2.getY();
-		System.out.printf("l:%d, %d\np1:%d, %d\np2:%d, %d\n", X, Y, player1X, player1Y, player2X, player2Y);
 		if ((X > player1X - range && X < player1X + range && Y > player1Y - range && Y < player1Y + range))
 			return true;
 		if (X > player2X - range && X < player2X + range && Y > player2Y - range && Y < player2Y + range)
