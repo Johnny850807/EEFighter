@@ -36,7 +36,7 @@ public class LetterManager {
 			public void run() {
 				while (!windowClosed && !gameOver) {
 					try {
-						Thread.sleep(50);
+						Thread.sleep(1750);
 						Sprite sprite = getLetter();
 						letters.add(sprite);
 						letterCreateListener.onCreateLetters(letters);
@@ -68,9 +68,8 @@ public class LetterManager {
 		int player1Y = player1.getY();
 		int player2X = player2.getX();
 		int player2Y = player2.getY();
-		if ((X > player1X - range && X < player1X + range && Y > player1Y - range && Y < player1Y + range))
-			return true;
-		if (X > player2X - range && X < player2X + range && Y > player2Y - range && Y < player2Y + range)
+		if ((X > player1X - range && X < player1X + range && Y > player1Y - range && Y < player1Y + range) ||
+			(X > player2X - range && X < player2X + range && Y > player2Y - range && Y < player2Y + range))
 			return true;
 		return false;
 	}
