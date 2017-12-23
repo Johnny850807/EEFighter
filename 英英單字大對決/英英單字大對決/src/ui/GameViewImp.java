@@ -6,6 +6,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.List;
 
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import controller.EEFighter;
@@ -14,6 +15,7 @@ import model.Question;
 import model.sprite.GameMap;
 import model.sprite.PlayerSprite;
 import model.sprite.Sprite;
+import model.sprite.SpriteName;
 import model.sprite.Sprite.Direction;
 import model.sprite.Sprite.Status;
 import utils.SoundPlayer;
@@ -45,6 +47,7 @@ public class GameViewImp extends JPanel implements GameView, KeyListener {
 		requestFocusInWindow();
 		addKeyListener(this);
 		setupLayout();
+		System.out.println(SpriteName.PLAYER1.toString());
 
 		eeFighter.startGame();
 	}
@@ -186,7 +189,7 @@ public class GameViewImp extends JPanel implements GameView, KeyListener {
 
 	@Override
 	public void onGameOver(PlayerSprite player) {
-
+		JOptionPane.showMessageDialog(null, player + " win!!!");
 	}
 
 	@Override

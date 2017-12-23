@@ -11,8 +11,8 @@ public class PlayerSprite extends Sprite{
 	private int score = 0;
 	
 	public PlayerSprite(int w, int h, int biasWithX, int biasWithY, int bodyHeight, int bodyLength,
-			SpriteName spriteName, String name, Map<Direction, Image> imageMap) {
-		super(w, h, biasWithX, biasWithY, bodyHeight, bodyLength, spriteName, name, imageMap);
+			SpriteName spriteName, Map<Direction, Image> imageMap) {
+		super(w, h, biasWithX, biasWithY, bodyHeight, bodyLength, spriteName, imageMap);
 	}
 	
 	public void setScore(int score) {

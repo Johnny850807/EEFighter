@@ -20,7 +20,6 @@ public class Sprite implements Cloneable {
 	protected Map<Direction, Image> imageMap = new HashMap<>();
 	protected GameMap gameMap;
 	protected GameView gameView;
-	protected String name;
 
 	/**
 	 * 
@@ -32,7 +31,7 @@ public class Sprite implements Cloneable {
 	 * @param bodyLength 圖片的身體部分的長度
 	 * @param image image of this sprite
 	 */
-	public Sprite(int w, int h, int biasWithX, int biasWithY, int bodyHeight, int bodyLength,SpriteName spriteName, String name, Map<Direction, Image> imageMap) {
+	public Sprite(int w, int h, int biasWithX, int biasWithY, int bodyHeight, int bodyLength,SpriteName spriteName, Map<Direction, Image> imageMap) {
 		super();
 		this.w = w;
 		this.h = h;
@@ -42,11 +41,6 @@ public class Sprite implements Cloneable {
 		this.bodyLength = bodyLength;
 		this.spriteName = spriteName;
 		this.imageMap = imageMap;
-		this.name = name;
-	}
-	
-	public String getName() {
-		return name;
 	}
 
 	public Sprite() {
