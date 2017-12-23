@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import model.Question;
+
 public class LetterManager {
 	private List<Sprite> letters = new ArrayList<>();
 	private LetterCreateListener letterCreateListener;
@@ -19,6 +21,10 @@ public class LetterManager {
 	
 	public void setLetterCreateListener(LetterCreateListener letterCreateListener) {
 		this.letterCreateListener = letterCreateListener;
+	}
+	
+	public void onNextQuestion(Question question) {
+		letterPool.shuffleObjects(question);
 	}
 	
 	public void createLetter() {
@@ -63,6 +69,11 @@ public class LetterManager {
 	
 	public void releaseLetter(Sprite sprite) {
 		letterPool.release(sprite);
+	}
+	
+	public void releaseLetters(List<Sprite> sprites) {
+		for (Sprite sprite : sprites) 
+			letterPool.release(sprite);
 	}
 	
 	public void windowClosed() {

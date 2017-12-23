@@ -103,6 +103,7 @@ public class LetterPool {
 	}
 
 	public void shuffleObjects(Question question) {
+		System.out.println(question.getWord());
 		Collections.shuffle(available);
 		String[] questionLetters = question.getWord().split("");
 		for (int i = 0; i < questionLetters.length; i++)

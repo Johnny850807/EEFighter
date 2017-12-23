@@ -105,6 +105,7 @@ public class EEFighterImp implements EEFighter, LetterCreateListener, QuestionLi
 		cleanAndReleasePlayerLetters();
 		Question question = questionManager.getNextQuestion();
 		if (questionManager.hasNext()) {
+			letterManager.onNextQuestion(question);
 			gameView.onNextQuestion(question);
 			playQuestionWord(question);
 		}
@@ -116,15 +117,10 @@ public class EEFighterImp implements EEFighter, LetterCreateListener, QuestionLi
 	
 	private void cleanAndReleasePlayerLetters() {
 		if (!letters.isEmpty()) {
-			int halfSize = letters.size() / 2;
-			for (int i = 0; i < halfSize; i++) {
-				letterManager.releaseLetter(letters.get(i));
-				letters.remove(i);
-			}
-			for (Sprite letter : player1.getLetters())
-				letterManager.releaseLetter(letter);
-			for (Sprite letter : player2.getLetters())
-				letterManager.releaseLetter(letter);
+			letterManager.releaseLetters(letters);
+			letterManager.releaseLetters(player1.getLetters());
+			letterManager.releaseLetters(player2.getLetters());
+			letters.removeAll(letters);
 			player1.removeAllLetters();
 			player2.removeAllLetters();
 		}
