@@ -16,7 +16,6 @@ public class SoundPlayTimer extends Thread {
 		isOver = false;
 	}
 	
-
 	@Override
 	public void run() {
 		try {
@@ -28,7 +27,7 @@ public class SoundPlayTimer extends Thread {
 		}
 	}
 	
-	public void questionChange() {
+	public void over() {
 		isOver = true;
 	}
 	

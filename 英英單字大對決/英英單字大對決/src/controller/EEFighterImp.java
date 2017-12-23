@@ -5,7 +5,6 @@ import java.util.Collections;
 import java.util.List;
 
 import factory.ComponentAbstractFactory;
-import factory.ComponentAbstractFactoryImp;
 import model.Question;
 import model.QuestionManager;
 import model.QuestionManager.QuestionListener;
@@ -102,7 +101,7 @@ public class EEFighterImp implements EEFighter, LetterCreateListener, QuestionLi
 
 	@Override
 	public void nextQuestion() {
-		cleanAndReleasePlayerLetters();
+		cleanMapAndPlayerLetters();
 		Question question = questionManager.getNextQuestion();
 		if (questionManager.hasNext()) {
 			letterManager.onNextQuestion(question);
@@ -115,7 +114,7 @@ public class EEFighterImp implements EEFighter, LetterCreateListener, QuestionLi
 		}
 	}
 	
-	private void cleanAndReleasePlayerLetters() {
+	private void cleanMapAndPlayerLetters() {
 		letterManager.releaseLetters(letters);
 		letters.removeAll(letters);
 		player1.removeAllLetters();
@@ -125,6 +124,7 @@ public class EEFighterImp implements EEFighter, LetterCreateListener, QuestionLi
 	public void gameOver() {
 		gameOver = true;
 		letterManager.gameOver();
+		soundPlayTimer.over();
 		PlayerSprite player = (player1.getScore() > player2.getScore())? player1 : player2;
 		gameView.onGameOver(player);
 	}
@@ -185,7 +185,7 @@ public class EEFighterImp implements EEFighter, LetterCreateListener, QuestionLi
 	
 	private void playQuestionWord(Question question) {
 		if (soundPlayTimer != null)
-			soundPlayTimer.questionChange();
+			soundPlayTimer.over();
 		soundPlayTimer = new SoundPlayTimer(gameView, question);
 		soundPlayTimer.start();
 	}

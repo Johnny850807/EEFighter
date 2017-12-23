@@ -71,14 +71,6 @@ public class QuestionManager implements Iterable<Question> {
 		return questions.size();
 	}
 	
-	public static void main(String[] argv) {
-		QuestionManager questionManager = new QuestionManager(new WordXMLRepository("words"));
-		List<Question> questions = questionManager.getQuestions();
-		for (Question question : questions) {
-			System.out.println(question.getWord() + question.getPartOfSpeech() + question.getDefinition());
-		}
-	}
-
 	@Override
 	public Iterator<Question> iterator() {
 		return questions.iterator();
@@ -87,4 +79,13 @@ public class QuestionManager implements Iterable<Question> {
 	public interface QuestionListener {
 		void onQuestionPrepareFinish();
 	}
+	
+	public static void main(String[] argv) {
+		QuestionManager questionManager = new QuestionManager(new WordXMLRepository("words"));
+		List<Question> questions = questionManager.getQuestions();
+		for (Question question : questions) {
+			System.out.println(question.getWord() + question.getPartOfSpeech() + question.getDefinition());
+		}
+	}
+	
 }

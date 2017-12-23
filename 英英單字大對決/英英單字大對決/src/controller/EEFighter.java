@@ -21,4 +21,5 @@ public interface EEFighter {
 	void checkAnswer(PlayerSprite player);
 	
 	void windowClosed();
+
 }
