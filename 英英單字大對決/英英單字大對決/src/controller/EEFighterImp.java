@@ -102,8 +102,9 @@ public class EEFighterImp implements EEFighter, LetterCreateListener, QuestionLi
 	@Override
 	public void nextQuestion() {
 		cleanMapAndPlayerLetters();
-		Question question = questionManager.getNextQuestion();
 		if (questionManager.hasNext()) {
+			Question question = questionManager.getNextQuestion();
+			System.out.println(questionManager.getIndex() + " " + question.getNumber());
 			letterManager.onNextQuestion(question);
 			gameView.onNextQuestion(question);
 			playQuestionWord(question);

@@ -31,15 +31,15 @@ public class QuestionManager implements Iterable<Question> {
 		try {
 			List<Word> words = wordRepository.readAllWord();
 			Collections.shuffle(words);
-			int number = 0;
-			for (Word word : words) {
-				String wordtxt = word.getWord();
-				String soundPath = word.getSoundPath();
-				Map<PartOfSpeech, List<String>> definitions = word.getSentences();
+			//int number = 0;
+			for (int i = 0; i < 3; i++) {
+				String wordtxt = words.get(i).getWord();
+				String soundPath = words.get(i).getSoundPath();
+				Map<PartOfSpeech, List<String>> definitions = words.get(i).getSentences();
 				List<PartOfSpeech> partOfSpeechs = new ArrayList<>(definitions.keySet());
 				PartOfSpeech partOfSpeech = partOfSpeechs.get(0);
-				String definition = word.getSentence(partOfSpeech);
-				Question question = new Question(++number, wordtxt, soundPath, partOfSpeech, definition);
+				String definition = words.get(i).getSentence(partOfSpeech);
+				Question question = new Question(i + 1, wordtxt, soundPath, partOfSpeech, definition);
 				questions.add(question);
 			}
 			for (QuestionListener questionListener : questionListeners) 
@@ -49,6 +49,10 @@ public class QuestionManager implements Iterable<Question> {
 		}
 	}
 
+	public int getIndex() {
+		return index;
+	}
+	
 	public List<Question> getQuestions() {
 		return questions;
 	}
@@ -58,13 +62,13 @@ public class QuestionManager implements Iterable<Question> {
 	}
 	
 	public Question getNextQuestion() {
-		if (index != questions.size())
+		if (index != questions.size() - 1)
 			return questions.get(++index);
 		throw new IllegalStateException("No more questions.");
 	}
 	
 	public boolean hasNext() {
-		return index != questions.size();
+		return index != questions.size() - 1;
 	}
 	
 	public int getAllQuestionAmount() {
