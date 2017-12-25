@@ -112,7 +112,7 @@ public class LetterPool {
 			for (int j = 0; j < available.size(); j++)
 				if (available.get(j).spriteName.toString().equals(questionLetters[i])) {
 					Sprite sprite = available.get(j);
-					int index = (int) (Math.random() * (questionLetters.length * 2 + 10));
+					int index = (int) (Math.random() * (questionLetters.length * 3));
 					available.set(j, available.get(index));
 					available.set(index, sprite);
 				}
