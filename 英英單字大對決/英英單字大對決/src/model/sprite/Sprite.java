@@ -15,11 +15,12 @@ public class Sprite implements Cloneable {
 	protected int bodyHeight;
 	protected int bodyLength;
 	protected SpriteName spriteName;
-	protected Direction direction = Direction.NORTH;
+	protected Direction direction = Direction.WEST;
 	protected Status status = Status.STOP;
 	protected Map<Direction, Image[]> imageMap = new HashMap<>();
 	protected GameMap gameMap;
 	protected GameView gameView;
+	protected int picIndex;
 
 	/**
 	 * 
@@ -142,13 +143,19 @@ public class Sprite implements Cloneable {
 	public void setY(int y) {
 		this.xy.setY(y);
 	}
-
-	//Test modify
-	public Image getImage(Direction direction) {
-		Image[] images = imageMap.get(direction);
-		return images[0];
+	
+	public int getPicIndex() {
+		return picIndex;
 	}
 
+	public void addOnePicIndex() {
+		picIndex = picIndex >= 4 ? 0 : picIndex++;
+	}
+
+	//Test modify
+	public Image getImage() {
+		return imageMap.get(direction)[picIndex];
+	}
 
 	public GameMap getGameMap() {
 		return gameMap;

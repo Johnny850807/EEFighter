@@ -69,7 +69,7 @@ public class SpritePrototypeFactory {
 		Map<Direction, Image[]> imageMap = new HashMap<>();
 		Image[] images = new Image[1];
 		images[0] = image;
-		imageMap.put(Direction.NORTH, images);
+		imageMap.put(Direction.WEST, images);
 		return imageMap;
 	}
 

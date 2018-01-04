@@ -96,6 +96,7 @@ public class EEFighterImp implements EEFighter, LetterCreateListener, QuestionLi
 	public void move(PlayerSprite player, Direction direction, Status status) {
 		player.setDirection(direction);
 		player.setStatus(status);
+		player.addOnePicIndex();
 		gameView.onMovedSuccessfuly(player, direction, status);
 	}
 
