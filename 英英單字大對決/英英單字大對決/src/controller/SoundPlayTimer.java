@@ -19,9 +19,11 @@ public class SoundPlayTimer extends Thread {
 	@Override
 	public void run() {
 		try {
-			Thread.sleep(50000);
-			if (!windowClosed && !isOver)
+			Thread.sleep(30000);
+			while (!windowClosed && !isOver) {
 				gameView.onQuestionWordSoundPlay(question);
+				Thread.sleep(30000);
+			}
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}

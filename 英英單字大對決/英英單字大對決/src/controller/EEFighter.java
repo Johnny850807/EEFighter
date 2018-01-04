@@ -15,8 +15,10 @@ public interface EEFighter {
 	void nextQuestion();
 
 	void popLetter(PlayerSprite player);
+	
+	void pickUp(PlayerSprite player);
 
-	void isLetterCollided(PlayerSprite player);
+	boolean isLetterCollided(PlayerSprite player);
 
 	void checkAnswer(PlayerSprite player);
 	

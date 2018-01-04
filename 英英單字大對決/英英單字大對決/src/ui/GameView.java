@@ -22,6 +22,7 @@ public interface GameView {
 	void onLetterPoppedSuccessfuly(PlayerSprite player, List<Sprite> letter);
 	void onLetterPoppedFailed(PlayerSprite player);
 	void onLetterGotten(PlayerSprite player, List<Sprite> letter);
+	void onNoLetterGotten(PlayerSprite player, List<Sprite> letter);
 	void onAnswerCorrect(PlayerSprite player);
 	void onAnswerWrong(PlayerSprite player);
 	void onQuestionWordSoundPlay(Question question);

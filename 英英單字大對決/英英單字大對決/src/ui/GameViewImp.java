@@ -255,4 +255,10 @@ public class GameViewImp extends JPanel implements GameView, KeyListener {
 		SoundPlayer.getInstance().playSound(question.getSoundPath());
 	}
 
+	@Override
+	public void onNoLetterGotten(PlayerSprite player, List<Sprite> letter) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

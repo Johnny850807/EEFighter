@@ -59,6 +59,7 @@ public class PlayerSprite extends Sprite{
 	}
 
 	public void addLetter(Sprite sprite) {
+		// TODO ±Æ§Ç
 		letters.push(sprite);
 	}
 	

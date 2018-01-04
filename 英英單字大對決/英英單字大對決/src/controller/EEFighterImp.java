@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import org.jsoup.select.Evaluator.Id;
+
 import factory.ComponentAbstractFactory;
 import model.Question;
 import model.QuestionManager;
@@ -75,8 +77,6 @@ public class EEFighterImp implements EEFighter, LetterCreateListener, QuestionLi
 						Thread.sleep(17);
 						player1.update();
 						player2.update();
-						isLetterCollided(player1);
-						isLetterCollided(player2);
 						gameView.onDraw(gameMap, letters, player1, player2);
 					} catch (InterruptedException e) {
 						e.printStackTrace();
@@ -145,15 +145,23 @@ public class EEFighterImp implements EEFighter, LetterCreateListener, QuestionLi
 	}
 
 	@Override
-	public void isLetterCollided(PlayerSprite player) {
+	public boolean isLetterCollided(PlayerSprite player) {
 		for (Sprite letter : letters)
 			if (letter.isCollisions(player)) {
 				player.addLetter(letter);
 				letters.remove(letter);
 				letterManager.releaseLetter(letter);
-				gameView.onLetterGotten(player, player.getLetters());
-				break;
+				return true;
 			}
+		return false;
+	}
+	
+	@Override
+	public void pickUp(PlayerSprite player) {
+		if (isLetterCollided(player)) 
+			gameView.onLetterGotten(player, player.getLetters());
+		else 
+			gameView.onNoLetterGotten(player, player.getLetters());		
 	}
 
 	@Override
