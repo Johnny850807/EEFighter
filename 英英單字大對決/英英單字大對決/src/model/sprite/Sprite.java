@@ -20,7 +20,7 @@ public class Sprite implements Cloneable {
 	protected Map<Direction, Image[]> imageMap = new HashMap<>();
 	protected GameMap gameMap;
 	protected GameView gameView;
-	protected int picIndex;
+	protected int picIndex = 0;
 
 	/**
 	 * 
