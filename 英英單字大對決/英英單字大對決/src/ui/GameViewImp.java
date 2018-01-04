@@ -33,7 +33,8 @@ public class GameViewImp extends JPanel implements GameView, KeyListener {
 	private List<Sprite> letters;
 	private IGameStartView gameStartView;
 
-	public GameViewImp(GameStartView gameStartView, EEFighter eeFighter, ComponentAbstractFactory componentAbstractFactory) {
+	public GameViewImp(GameStartView gameStartView, EEFighter eeFighter,
+			ComponentAbstractFactory componentAbstractFactory) {
 		this.eeFighter = eeFighter;
 		this.gameStartView = gameStartView;
 		eeFighter.setGameView(this);
@@ -258,7 +259,7 @@ public class GameViewImp extends JPanel implements GameView, KeyListener {
 	@Override
 	public void onNoLetterGotten(PlayerSprite player, List<Sprite> letter) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 }

@@ -11,7 +11,10 @@ import model.words.CrawlerVocabularycom;
 import model.words.ITRI_TTS;
 import model.words.ReadWordFailedException;
 import model.words.TTS;
+import model.words.TTSException;
+import model.words.TTSProcessingException;
 import model.words.Word;
+import model.words.WordNotExistException;
 import model.words.WordRepository;
 import model.words.WordXMLRepository;
 import ui.EnglishWarehouseView;
@@ -22,16 +25,15 @@ import utils.SoundPlayer;
  * @author Joanna (張書瑄)
  */
 public class EnglishWarehouseController {
-
 	private EnglishWarehouseView englishWarehouseView;
 	private WordRepository wordRepository;
 	private Crawler crawler;
 	private TTS tts;
 	
-	public EnglishWarehouseController(WordRepository wordRepository, Crawler crawler, TTS tts) {
-		this.wordRepository = wordRepository;  
-		this.crawler = crawler;
-		this.tts = tts;
+	public EnglishWarehouseController(ComponentAbstractFactory componentAbstractFactory) {
+		wordRepository = componentAbstractFactory.getWordRepository();  
+		crawler = componentAbstractFactory.getCrawler();
+		tts = componentAbstractFactory.getTts();
 	}
 	
 	public void setEnglishWarehouseView(EnglishWarehouseView englishWarehouseView) {
@@ -49,9 +51,11 @@ public class EnglishWarehouseController {
 					word.setSoundPath(path);
 					wordRepository.addWord(word);
 					englishWarehouseView.onWordCreateSuccessfully(word);
-				} catch (Exception e) {  //TODO 不要直接處理Exception 仔細去查看 每個例外被拋出的原因 仔細思考 哪些是可以一起處理的 哪些要分開
+				} catch (TTSException e) {
 					e.printStackTrace();
 					englishWarehouseView.onWordCreateFailed(wordtxt, e); 
+				} catch (WordNotExistException e) {
+					englishWarehouseView.onWordNotExistCreateFailed(wordtxt); 
 				}
 			}
 		}.start();
@@ -104,7 +108,8 @@ public class EnglishWarehouseController {
 				"small", "elephant",  "elder", "control", "model", "view", "stick", "fade", "still",
 				"visible", "search", "customer", "play", "sound", "voice"};
 		new MainView(new ComponentAbstractFactoryImp()).setVisible(true);  //for playing sounds
-		EnglishWarehouseController controller = new EnglishWarehouseController(new WordXMLRepository("words"), new CrawlerVocabularycom(), new ITRI_TTS(Secret.TTS_ACCOUNT, Secret.TTS_PASSWORD));
+		ComponentAbstractFactory componentAbstractFactory = new ComponentAbstractFactoryImp();
+		EnglishWarehouseController controller = new EnglishWarehouseController(componentAbstractFactory);
 		controller.setEnglishWarehouseView(new EnglishWarehouseView() {
 			int success = 0;
 			@Override
@@ -139,6 +144,12 @@ public class EnglishWarehouseController {
 			
 			@Override
 			public void onWordCreateFailed(String word, Exception exception) {}
+
+			@Override
+			public void onWordNotExistCreateFailed(String word) {
+				// TODO Auto-generated method stub
+				
+			}
 		}); 
 		for(String word : words)
 			controller.addWord(word);

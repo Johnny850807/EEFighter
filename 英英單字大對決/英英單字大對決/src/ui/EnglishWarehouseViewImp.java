@@ -160,6 +160,12 @@ public class EnglishWarehouseViewImp extends JFrame implements EnglishWarehouseV
 	public void onWordReadFailed(Exception exception) {
 		
 	}
+
+	@Override
+	public void onWordNotExistCreateFailed(String word) {
+		// TODO Auto-generated method stub
+		
+	}
 }
 
 class WordCellRenderer extends JPanel implements ListCellRenderer {

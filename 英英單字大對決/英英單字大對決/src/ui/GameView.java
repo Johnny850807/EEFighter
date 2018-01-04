@@ -11,19 +11,34 @@ import model.sprite.Sprite.Status;
 
 public interface GameView {
 	void onDraw(GameMap gameMap, List<Sprite> letters, PlayerSprite player1, PlayerSprite player2);
+
 	void onGameStarted();
+
 	void onGameOver(PlayerSprite player);
+
 	void onGameClose();
+
 	void start();
+
 	void onMovedSuccessfuly(Sprite sprite, Direction direction, Status status);
+
 	void onHitWall(Sprite sprite);
+
 	void onNextQuestion(Question question);
+
 	void onNoMoreQuestion();
+
 	void onLetterPoppedSuccessfuly(PlayerSprite player, List<Sprite> letter);
+
 	void onLetterPoppedFailed(PlayerSprite player);
+
 	void onLetterGotten(PlayerSprite player, List<Sprite> letter);
+
 	void onNoLetterGotten(PlayerSprite player, List<Sprite> letter);
+
 	void onAnswerCorrect(PlayerSprite player);
+
 	void onAnswerWrong(PlayerSprite player);
+
 	void onQuestionWordSoundPlay(Question question);
 }

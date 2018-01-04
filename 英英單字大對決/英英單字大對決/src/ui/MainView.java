@@ -128,10 +128,8 @@ public class MainView extends JFrame implements ActionListener {
 	}
 
 	private void goToEnglishWarehouse() {
-		EnglishWarehouseViewImp englishWarehouseViewImp = new EnglishWarehouseViewImp
-							(new EnglishWarehouseController(new WordXMLRepository("wordwarehouse"), 
-															new CrawlerVocabularycom(), 
-															new ITRI_TTS(Secret.TTS_ACCOUNT, Secret.TTS_PASSWORD)));
+		EnglishWarehouseViewImp englishWarehouseViewImp = new EnglishWarehouseViewImp(
+				new EnglishWarehouseController(componentAbstractFactory));
 		englishWarehouseViewImp.setVisible(true);
 		englishWarehouseViewImp.start();
 	}
@@ -142,7 +140,7 @@ public class MainView extends JFrame implements ActionListener {
 		try {
 			mainView = new MainView(componentAbstractFactory);
 			mainView.setVisible(true);
-			//SoundPlayer.getInstance().playLoopMusic("sounds/after-journey.wav");
+			// SoundPlayer.getInstance().playLoopMusic("sounds/after-journey.wav");
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

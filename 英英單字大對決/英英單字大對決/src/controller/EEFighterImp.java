@@ -27,7 +27,6 @@ import ui.GameView;
  * @author Joanna (±i®ÑÞ±)
  */
 public class EEFighterImp implements EEFighter, LetterCreateListener, QuestionListener {
-	private ComponentAbstractFactory componentAbstractFactory;
 	private GameView gameView;
 	private GameMap gameMap;
 	private LetterManager letterManager;
