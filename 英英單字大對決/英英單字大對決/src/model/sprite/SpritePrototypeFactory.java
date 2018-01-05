@@ -21,8 +21,8 @@ public class SpritePrototypeFactory {
 	private Image[] player2LeftImages = new Image[4];
 	private Image[] player2RightImages = new Image[4];
 	private Map<SpriteName, Sprite> spriteMap = new HashMap<>();
-	private Map<Direction, Image[]> player1ImageMap = new HashMap<>();
-	private Map<Direction, Image[]> player2ImageMap = new HashMap<>();
+	private Map<Direction, ImageSequence> player1ImageMap = new HashMap<>();
+	private Map<Direction, ImageSequence> player2ImageMap = new HashMap<>();
 
 	private SpritePrototypeFactory() {
 		try {
@@ -34,41 +34,37 @@ public class SpritePrototypeFactory {
 	}
 	
 	private void preparePlayersImageMap() throws IOException{
-		preparePlayer1LeftAndRightImage();
-		player1ImageMap.put(Direction.WEST, player1LeftImages);
-		player1ImageMap.put(Direction.EAST, player1RightImages);
-		preparePlayer2LeftAndRightImage();
-		player2ImageMap.put(Direction.WEST, player2LeftImages);
-		player2ImageMap.put(Direction.EAST, player2RightImages);
+		player1ImageMap.put(Direction.WEST, new ImageSequence("pic/boy/boy-left-", "png", 4));
+		player1ImageMap.put(Direction.EAST, new ImageSequence("pic/boy/boy-right-", "png", 4));
+		player2ImageMap.put(Direction.WEST, new ImageSequence("pic/girl/girl-left-", "png", 4));
+		player2ImageMap.put(Direction.EAST, new ImageSequence("pic/girl/girl-right-", "png", 4));
 	}
 
-	private void preparePlayer2LeftAndRightImage() throws IOException {
-		player2LeftImages[0] = ImageIO.read(new File("pic/girl/girl-left-0.png"));
-		player2LeftImages[1] = ImageIO.read(new File("pic/girl/girl-left-1.png"));
-		player2LeftImages[2] = ImageIO.read(new File("pic/girl/girl-left-2.png"));
-		player2LeftImages[3] = ImageIO.read(new File("pic/girl/girl-left-3.png"));
-		player2RightImages[0] = ImageIO.read(new File("pic/girl/girl-left-0.png"));
-		player2RightImages[1] = ImageIO.read(new File("pic/girl/girl-left-1.png"));
-		player2RightImages[2] = ImageIO.read(new File("pic/girl/girl-left-2.png"));
-		player2RightImages[3] = ImageIO.read(new File("pic/girl/girl-left-3.png"));
-	}
+//	private void preparePlayer2LeftAndRightImage() throws IOException {
+//		player2LeftImages[0] = ImageIO.read(new File("pic/girl/girl-left-0.png"));
+//		player2LeftImages[1] = ImageIO.read(new File("pic/girl/girl-left-1.png"));
+//		player2LeftImages[2] = ImageIO.read(new File("pic/girl/girl-left-2.png"));
+//		player2LeftImages[3] = ImageIO.read(new File("pic/girl/girl-left-3.png"));
+//		player2RightImages[0] = ImageIO.read(new File("pic/girl/girl-left-0.png"));
+//		player2RightImages[1] = ImageIO.read(new File("pic/girl/girl-left-1.png"));
+//		player2RightImages[2] = ImageIO.read(new File("pic/girl/girl-left-2.png"));
+//		player2RightImages[3] = ImageIO.read(new File("pic/girl/girl-left-3.png"));
+//	}
+//
+//	private void preparePlayer1LeftAndRightImage() throws IOException {
+//		player1LeftImages[0] = ImageIO.read(new File("pic/boy/boy-left-0.png"));
+//		player1LeftImages[1] = ImageIO.read(new File("pic/boy/boy-left-1.png"));
+//		player1LeftImages[2] = ImageIO.read(new File("pic/boy/boy-left-2.png"));
+//		player1LeftImages[3] = ImageIO.read(new File("pic/boy/boy-left-3.png"));
+//		player1RightImages[0] = ImageIO.read(new File("pic/boy/boy-right-0.png"));
+//		player1RightImages[1] = ImageIO.read(new File("pic/boy/boy-right-1.png"));
+//		player1RightImages[2] = ImageIO.read(new File("pic/boy/boy-right-2.png"));
+//		player1RightImages[3] = ImageIO.read(new File("pic/boy/boy-right-3.png"));
+//
+//	}
 
-	private void preparePlayer1LeftAndRightImage() throws IOException {
-		player1LeftImages[0] = ImageIO.read(new File("pic/boy/boy-left-0.png"));
-		player1LeftImages[1] = ImageIO.read(new File("pic/boy/boy-left-1.png"));
-		player1LeftImages[2] = ImageIO.read(new File("pic/boy/boy-left-2.png"));
-		player1LeftImages[3] = ImageIO.read(new File("pic/boy/boy-left-3.png"));
-		player1RightImages[0] = ImageIO.read(new File("pic/boy/boy-right-0.png"));
-		player1RightImages[1] = ImageIO.read(new File("pic/boy/boy-right-1.png"));
-		player1RightImages[2] = ImageIO.read(new File("pic/boy/boy-right-2.png"));
-		player1RightImages[3] = ImageIO.read(new File("pic/boy/boy-right-3.png"));
-
-	}
-
-	private Map<Direction, Image[]> createImageMap(Image image) {
-		Map<Direction, Image[]> imageMap = new HashMap<>();
-		Image[] images = new Image[1];
-		images[0] = image;
+	private Map<Direction, ImageSequence> createImageMap(Image image) {
+		Map<Direction, ImageSequence> imageMap = new HashMap<>();
 		imageMap.put(Direction.WEST, images);
 		return imageMap;
 	}
