@@ -44,7 +44,7 @@ public class GameStartView extends JFrame implements IGameStartView {
 			setBounds(215, 80, 1105, 715);
 			setupViews();
 			setupLayout();
-			addWindowListener(new CloseHandler(eeFighterImp));
+			addWindowListener(new CloseHandler());
 		});
 		this.componentAbstractFactory = componentAbstractFactory;
 	}
@@ -95,8 +95,11 @@ public class GameStartView extends JFrame implements IGameStartView {
 
 	private void setViewsSize(Dimension dimension) {
 		player1Lab.setMinimumSize(dimension);
+		player1Lab.setMaximumSize(dimension);
 		player2Lab.setMinimumSize(dimension);
+		player2Lab.setMaximumSize(dimension);
 		wordDefinitionLab.setMinimumSize(new Dimension(170, 50));
+		wordDefinitionLab.setMaximumSize(new Dimension(170, 50));
 	}
 
 	private void setViewsFont(Font font) {
@@ -124,14 +127,15 @@ public class GameStartView extends JFrame implements IGameStartView {
 	@Override
 	public void paint(Graphics g) {
 		super.paint(g);
+		if (question != null) {
+			String definition = question.getNumber() + ". ( " + question.getPartOfSpeech() + ". ) " + createLine()
+					+ question.getDefinition();
+			StringBuilder strBuilder = new StringBuilder("<html>");
+			strBuilder.append(definition);
+			strBuilder.append("</p></html>");
 
-		String definition = question.getNumber() + ". ( " + question.getPartOfSpeech() + ". ) " + createLine()
-				+ question.getDefinition();
-		StringBuilder strBuilder = new StringBuilder("<html>");
-		strBuilder.append(definition);
-		strBuilder.append("</p></html>");
-		if (question != null)
 			wordDefinitionLab.setText(strBuilder.toString());
+		}
 		// modifyLayout();
 	}
 
@@ -152,7 +156,6 @@ public class GameStartView extends JFrame implements IGameStartView {
 	public void onNextQuestion(Question question) {
 		this.question = question;
 		repaint();
-
 	}
 
 	public void addComponent(Component c, Double weightX, Double weightY, int row, int column, int width, int height) {
@@ -203,14 +206,9 @@ public class GameStartView extends JFrame implements IGameStartView {
 		showPlayerBarInfo(player, score, letter);
 	}
 
-	protected static class CloseHandler extends WindowAdapter {
-		private EEFighterImp eeFighter;
-		public CloseHandler(EEFighterImp eeFighterImp) {
-			
-		}
-
+	protected class CloseHandler extends WindowAdapter {
 		public void windowClosing(final WindowEvent event) {
-			eeFighter.windowClosed();
+			eeFighterImp.windowClosed();
 		}
 	}
 

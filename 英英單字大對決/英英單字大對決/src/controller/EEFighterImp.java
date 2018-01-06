@@ -5,13 +5,16 @@ import java.util.Collections;
 import java.util.ConcurrentModificationException;
 import java.util.List;
 
+import org.jsoup.select.Evaluator.Id;
+
 import factory.ComponentAbstractFactory;
 import factory.ReleasedComponentAbstractFactory;
 import model.Question;
 import model.QuestionManager;
+import model.QuestionManager.QuestionListener;
 import model.sprite.GameMap;
-import model.sprite.LetterCreateListener;
 import model.sprite.LetterManager;
+import model.sprite.LetterManager.LetterCreateListener;
 import model.sprite.LetterPool;
 import model.sprite.PlayerSprite;
 import model.sprite.Sprite;
@@ -25,8 +28,7 @@ import ui.GameView;
 /**
  * @author Joanna (±i®ÑÞ±)
  */
-public class EEFighterImp implements EEFighter, LetterCreateListener {
-	private ComponentAbstractFactory componentAbstractFactory;
+public class EEFighterImp implements EEFighter, LetterCreateListener, QuestionListener {
 	private GameView gameView;
 	private GameMap gameMap;
 	private LetterManager letterManager;
@@ -36,13 +38,15 @@ public class EEFighterImp implements EEFighter, LetterCreateListener {
 	private PlayerSprite player2;
 	private SoundPlayTimer soundPlayTimer;
 	private boolean windowClosed;
+	private boolean gameOver;
 	
 	public EEFighterImp(ComponentAbstractFactory componentAbstractFactory) {
 		gameMap = componentAbstractFactory.createMapDirector().buildMap();
 		questionManager = new QuestionManager(componentAbstractFactory.getWordRepository());
-		letterManager = new LetterManager(gameMap, new LetterPool(70));
-		letterManager.setLetterCreateListener(this);
+		questionManager.addListener(this);
 		createPlayers();
+		letterManager = new LetterManager(gameMap, new LetterPool(70), player1, player2);
+		letterManager.setLetterCreateListener(this);
 	}
 	
 	@Override
@@ -66,16 +70,14 @@ public class EEFighterImp implements EEFighter, LetterCreateListener {
 
 	@Override
 	public void startGame() {
-		questionManager.prepareQuestions();
 		new Thread() {
 			public void run() {
-				while (!isOver() && !windowClosed) {
+				questionManager.prepareQuestions();
+				while (!gameOver && !windowClosed) {
 					try {
 						Thread.sleep(17);
 						player1.update();
 						player2.update();
-						isLetterCollided(player1);
-						isLetterCollided(player2);
 						gameView.onDraw(gameMap, letters, player1, player2);
 					} catch (InterruptedException e) {
 						e.printStackTrace();
@@ -83,9 +85,13 @@ public class EEFighterImp implements EEFighter, LetterCreateListener {
 				}
 			}
 		}.start();
+	}	
+
+	@Override
+	public void onQuestionPrepareFinish() {
 		gameView.onGameStarted();
 		letterManager.createLetter();
-	}	
+	}
 
 	@Override
 	public void move(PlayerSprite player, Direction direction, Status status) {
@@ -96,32 +102,33 @@ public class EEFighterImp implements EEFighter, LetterCreateListener {
 
 	@Override
 	public void nextQuestion() {
-		cleanAndReleasePlayerLetters();
-		Question question = questionManager.getNextQuestion();
+		cleanMapAndPlayerLetters();
 		if (questionManager.hasNext()) {
+			Question question = questionManager.getNextQuestion();
+			System.out.println(questionManager.getIndex() + " " + question.getNumber());
+			letterManager.onNextQuestion(question);
 			gameView.onNextQuestion(question);
 			playQuestionWord(question);
 		}
-		else
+		else {
 			gameView.onNoMoreQuestion();
+			gameOver();
+		}
 	}
 	
-	private void cleanAndReleasePlayerLetters() {
-		int halfSize = letters.size() / 2;
-		for (int i = 0; i < halfSize; i++) {
-			letterManager.releaseLetter(letters.get(i));
-			letters.remove(i);
-		}
-		for (Sprite letter : player1.getLetters())
-			letterManager.releaseLetter(letter);
-		for (Sprite letter : player2.getLetters())
-			letterManager.releaseLetter(letter);
+	private void cleanMapAndPlayerLetters() {
+		letterManager.releaseLetters(letters);
+		letters.removeAll(letters);
 		player1.removeAllLetters();
 		player2.removeAllLetters();
 	}
 
-	public boolean isOver() {
-		return false;
+	public void gameOver() {
+		gameOver = true;
+		letterManager.gameOver();
+		soundPlayTimer.over();
+		PlayerSprite player = (player1.getScore() > player2.getScore())? player1 : player2;
+		gameView.onGameOver(player);
 	}
 
 	@Override
@@ -139,15 +146,23 @@ public class EEFighterImp implements EEFighter, LetterCreateListener {
 	}
 
 	@Override
-	public synchronized void isLetterCollided(PlayerSprite player) {
+	public boolean isLetterCollided(PlayerSprite player) {
 		for (Sprite letter : letters)
 			if (letter.isCollisions(player)) {
 				player.addLetter(letter);
 				letters.remove(letter);
 				letterManager.releaseLetter(letter);
-				gameView.onLetterGotten(player, player.getLetters());
-				break;
+				return true;
 			}
+		return false;
+	}
+	
+	@Override
+	public void pickUp(PlayerSprite player) {
+		if (isLetterCollided(player)) 
+			gameView.onLetterGotten(player, player.getLetters());
+		else 
+			gameView.onNoLetterGotten(player, player.getLetters());		
 	}
 
 	@Override
@@ -180,7 +195,7 @@ public class EEFighterImp implements EEFighter, LetterCreateListener {
 	
 	private void playQuestionWord(Question question) {
 		if (soundPlayTimer != null)
-			soundPlayTimer.questionChange();
+			soundPlayTimer.over();
 		soundPlayTimer = new SoundPlayTimer(gameView, question);
 		soundPlayTimer.start();
 	}
@@ -189,18 +204,7 @@ public class EEFighterImp implements EEFighter, LetterCreateListener {
 	public void windowClosed() {
 		windowClosed = true;
 		letterManager.windowClosed();
+		soundPlayTimer.windowClosed();
 	}
-	
-	public static void main(String[] args) {
-		EEFighter eeFighter = new EEFighterImp(new ReleasedComponentAbstractFactory());
-		eeFighter.startGame();
-		try {
-			Thread.sleep(10000);
-			eeFighter.windowClosed();
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
-	
 }
+

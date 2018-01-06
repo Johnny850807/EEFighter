@@ -9,7 +9,6 @@ import java.util.Random;
 public class Word {
 	private String word;
 	private String soundPath;
-	// TODO 詞性改成列舉
 	private Map<PartOfSpeech, List<String>> definitions = new HashMap<PartOfSpeech, List<String>>();
 
 	public Word(String word) {

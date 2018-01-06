@@ -3,7 +3,10 @@ package model.sprite;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+
+import model.Question;
 
 public class LetterPool {
 	private int maxSize;
@@ -99,10 +102,36 @@ public class LetterPool {
 		this.wait(); // wait for another thread releasing the object.
 	}
 
+	public void shuffleObjects(Question question) {
+		
+		Collections.shuffle(available);
+		String str = question.getWord().toUpperCase();
+		System.out.println(str);
+		String[] questionLetters = str.split("");
+		for (int i = 0; i < questionLetters.length; i++)
+			for (int j = 0; j < available.size(); j++)
+				if (available.get(j).spriteName.toString().equals(questionLetters[i])) {
+					Sprite sprite = available.get(j);
+					int index = (int) (Math.random() * (questionLetters.length * 3));
+					available.set(j, available.get(index));
+					available.set(index, sprite);
+				}
+	}
+
+	public List<Sprite> getQuestionLetters(String question) {
+		List<Sprite> letters = new ArrayList<>();
+		String[] questionLetters = question.split("");
+		for (int i = 0; i < available.size(); i++)
+			for (int j = 0; j < questionLetters.length; j++)
+				if (available.get(i).spriteName.toString().equals(questionLetters[j]))
+					letters.add(available.get(i));
+		return letters;
+	}
+
 	private Sprite getAvailableObject() {
-		Sprite nextObject = available.get((int) (Math.random() * available.size()));
+		Sprite nextObject = available.get(0);
 		log("Available object returned: " + nextObject);
-		available.remove(nextObject);
+		available.remove(0);
 		System.out.println(available.size());
 		return nextObject;
 	}

@@ -33,7 +33,7 @@ import org.xml.sax.SAXException;
 /**
  * @author Waterball
  */
-public class WordXMLRepository implements WordRepository{
+public class WordXMLRepository implements WordRepository {
 	private static final String ENGLISH_WAREHOUSE = "EnglishWarehouse";
 	private static final String WORD = "Word";
 	private static final String WORDNAME = "name";
@@ -43,13 +43,13 @@ public class WordXMLRepository implements WordRepository{
 	private DocumentBuilder documentBuilder;
 	private String fileName;
 	private File file;
-	
+
 	public WordXMLRepository(String fileName) {
 		this.fileName = fileName + ".xml";
 		init();
 	}
-	
-	private void init(){
+
+	private void init() {
 		try {
 			documentBuilder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
 			this.file = new File(this.fileName);
@@ -61,17 +61,18 @@ public class WordXMLRepository implements WordRepository{
 			e.printStackTrace();
 		}
 	}
-	
-	private void createNewXmlFile(File file) throws IOException{
+
+	private void createNewXmlFile(File file) throws IOException {
 		file.createNewFile();
 	}
-	
+
 	@Override
 	public void addWord(Word word) {
 		try {
 			synchronized (this) {
 				Document document = documentBuilder.parse(file);
-				Element englishWareHouseElement = filterElements(document.getElementsByTagName(ENGLISH_WAREHOUSE)).get(0);
+				Element englishWareHouseElement = filterElements(document.getElementsByTagName(ENGLISH_WAREHOUSE))
+						.get(0);
 				removeDuplicatedWordElement(document, englishWareHouseElement, word.getWord());
 				englishWareHouseElement.appendChild(wordToElement(document, word));
 				outputDocument(document);
@@ -80,14 +81,14 @@ public class WordXMLRepository implements WordRepository{
 			e.printStackTrace();
 		}
 	}
-	
-	private void removeDuplicatedWordElement(Document document, Element englishWareHouseElement, String wordName) throws XPathExpressionException{
+
+	private void removeDuplicatedWordElement(Document document, Element englishWareHouseElement, String wordName)
+			throws XPathExpressionException {
 		List<Element> existingSameWordElements = findWordElements(document, wordName);
-		existingSameWordElements.parallelStream()
-								.forEach(e -> englishWareHouseElement.removeChild(e));
+		existingSameWordElements.parallelStream().forEach(e -> englishWareHouseElement.removeChild(e));
 	}
-	
-	private void outputDocument(Document document) throws TransformerException{
+
+	private void outputDocument(Document document) throws TransformerException {
 		TransformerFactory factory = TransformerFactory.newInstance();
 		Transformer transformer = factory.newTransformer();
 		transformer.setOutputProperty(OutputKeys.INDENT, "yes");
@@ -96,69 +97,65 @@ public class WordXMLRepository implements WordRepository{
 		StreamResult result = new StreamResult(file);
 		transformer.transform(source, result);
 	}
-	
+
 	@Override
 	public List<Word> readAllWord() throws ReadWordFailedException {
 		try {
 			synchronized (this) {
 				Document document = documentBuilder.parse(file);
 				List<Element> wordElements = filterElements(document.getElementsByTagName(WORD));
-				return wordElements.stream()
-									.map(e -> elementToWord(e))
-									.collect(Collectors.toList());
+				return wordElements.stream().map(e -> elementToWord(e)).collect(Collectors.toList());
 			}
 		} catch (SAXException | IOException e) {
 			e.printStackTrace();
 			throw new ReadWordFailedException(e);
 		}
 	}
-	
 
 	@Override
 	public Word readWord(String wordName) throws ReadWordFailedException {
-		try{
+		try {
 			synchronized (this) {
 				Document document = documentBuilder.parse(file);
 				Element wordElement = findWordElements(document, wordName).get(0);
 				return elementToWord(wordElement);
 			}
-		}catch (XPathExpressionException | SAXException | IOException e) {
+		} catch (XPathExpressionException | SAXException | IOException e) {
 			e.printStackTrace();
 			throw new ReadWordFailedException(e);
 		}
 	}
-	
-	private List<Element> filterElements(NodeList nodeList){
+
+	private List<Element> filterElements(NodeList nodeList) {
 		List<Element> elements = new ArrayList<>();
-		for(int i = 0 ; i < nodeList.getLength() ; i ++)
+		for (int i = 0; i < nodeList.getLength(); i++)
 			if (nodeList.item(i).getNodeType() == Node.ELEMENT_NODE)
-				elements.add((Element)nodeList.item(i));
+				elements.add((Element) nodeList.item(i));
 		return elements;
 	}
-	
-	private List<Element> findWordElements(Document document, String wordName) throws XPathExpressionException{
+
+	private List<Element> findWordElements(Document document, String wordName) throws XPathExpressionException {
 		String xpathExpression = String.format("//Word[@name='%s']", wordName);
 		NodeList results = (NodeList) executeXPath(document, xpathExpression, XPathConstants.NODESET);
 		return filterElements(results);
 	}
-	
-	private Word elementToWord(Element element){
+
+	private Word elementToWord(Element element) {
 		Word word = new Word(element.getAttribute(WORDNAME));
 		word.setSoundPath(getSoundPathFromWordElement(element));
 		word.setSentences(getDefinitionMapFromWordElement(element));
 		return word;
 	}
-	
-	private String getSoundPathFromWordElement(Element wordElement){
+
+	private String getSoundPathFromWordElement(Element wordElement) {
 		List<Element> soundPathElements = filterElements(wordElement.getElementsByTagName(SOUNDPATH));
 		return soundPathElements.get(0).getTextContent();
 	}
-	
-	private Map<PartOfSpeech, List<String>> getDefinitionMapFromWordElement(Element wordElement){
+
+	private Map<PartOfSpeech, List<String>> getDefinitionMapFromWordElement(Element wordElement) {
 		Map<PartOfSpeech, List<String>> definitionMap = new HashMap<>();
 		List<Element> definitionElements = filterElements(wordElement.getElementsByTagName(DEFINITION));
-		for(Element element : definitionElements)
-		{
+		for (Element element : definitionElements) {
 			PartOfSpeech partOfSpeech = PartOfSpeech.valueOf(element.getAttribute(PARTOFSPEECH).toUpperCase());
 			if (!definitionMap.containsKey(partOfSpeech))
 				definitionMap.put(partOfSpeech, new ArrayList<>());
@@ -166,16 +163,15 @@ public class WordXMLRepository implements WordRepository{
 		}
 		return definitionMap;
 	}
-	
-	private Element wordToElement(Document document, Word word){
+
+	private Element wordToElement(Document document, Word word) {
 		Element wordElement = document.createElement(WORD);
 		Element soundPathElement = document.createElement(SOUNDPATH);
 		wordElement.setAttribute(WORDNAME, word.getWord());
 		soundPathElement.setTextContent(word.getSoundPath());
 		wordElement.appendChild(soundPathElement);
 		for (PartOfSpeech partOfSpeech : word.getSentences().keySet())
-			for (String definition : word.getSentences().get(partOfSpeech))
-			{
+			for (String definition : word.getSentences().get(partOfSpeech)) {
 				Element definitionElement = document.createElement(DEFINITION);
 				definitionElement.setAttribute(PARTOFSPEECH, partOfSpeech.toString());
 				definitionElement.setTextContent(definition);
@@ -199,27 +195,26 @@ public class WordXMLRepository implements WordRepository{
 			throw new IllegalArgumentException("Removed word not found");
 		}
 	}
-	
-	private Object executeXPath(Document document, String xpathExpression, QName type) throws XPathExpressionException{
+
+	private Object executeXPath(Document document, String xpathExpression, QName type) throws XPathExpressionException {
 		XPath xpath = XPathFactory.newInstance().newXPath();
 		XPathExpression expr = xpath.compile(xpathExpression);
 		return expr.evaluate(document, type);
 	}
 
-	
-	public static void main(String[] argv) throws Exception{
-		String[] words = {"apple", "banana", "vocabulary", "subtropical", "several", "genus", "have", "terminal"};
+	public static void main(String[] argv) throws Exception {
+		String[] words = { "apple", "banana", "vocabulary", "subtropical", "several", "genus", "have", "terminal" };
 		WordXMLRepository repository = new WordXMLRepository("words");
-		for (String word : words)
-		{
+		for (String word : words) {
 			Word wordProduct = new CrawlerVocabularycom().crawlWordAndGetSentence(word);
 			repository.addWord(wordProduct);
 		}
-		/*Word wordProduct = new CrawlerVocabularycom().crawlWordAndGetSentence("have");
-		System.out.println(repository.readWord("banana"));
-		repository.removeWord(wordProduct);*/
-		repository.readAllWord()
-					.stream()
-					.forEach(w -> System.out.println(w));
+		/*
+		 * Word wordProduct = new
+		 * CrawlerVocabularycom().crawlWordAndGetSentence("have");
+		 * System.out.println(repository.readWord("banana"));
+		 * repository.removeWord(wordProduct);
+		 */
+		repository.readAllWord().stream().forEach(w -> System.out.println(w));
 	}
 }

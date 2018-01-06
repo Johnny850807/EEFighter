@@ -25,17 +25,17 @@ import utils.SoapHelper;
 import utils.SoundPlayer;
 
 /**
- * @author Waterball
- * The web service API referencing to http://tts.itri.org.tw/development/web_service_api.php#step2 which
- * provided by ITRI TTS in SOAP protocol. There might be several sequential actions within a TTS request:
- * 1. Send a request for synthesizing a TTS file from a vocabulary in SOAP.
- * 2. Get the convert Id of the synthesized file.
- * 3. Repeatedly query the convert Id to see if the synthesis done.
- * 4. Download the file from the url returned if done.
- * 5. Save the file by its directoryPath and the word given.
- * 6. Return the file absolute path.
+ * @author Waterball The web service API referencing to
+ *         http://tts.itri.org.tw/development/web_service_api.php#step2 which
+ *         provided by ITRI TTS in SOAP protocol. There might be several
+ *         sequential actions within a TTS request: 1. Send a request for
+ *         synthesizing a TTS file from a vocabulary in SOAP. 2. Get the convert
+ *         Id of the synthesized file. 3. Repeatedly query the convert Id to see
+ *         if the synthesis done. 4. Download the file from the url returned if
+ *         done. 5. Save the file by its directoryPath and the word given. 6.
+ *         Return the file absolute path.
  */
-public class ITRI_TTS implements TTS{
+public class ITRI_TTS implements TTS {
 	public static final String ENDPOINT = "http://tts.itri.org.tw/TTSService/Soap_1_3.php?wsdl";
 	public static final String ACTION_BASE = "http://tts.itri.org.tw/TTSService/";
 	public static final String ACTION_CONVERTSIMPLE = "ConvertSimple";
@@ -46,12 +46,12 @@ public class ITRI_TTS implements TTS{
 	private static final String KEY_CONVERT_ID = "password";
 	private final String TTS_ACCOUNT;
 	private final String TTS_PASSWORD;
-	
-	public ITRI_TTS(String ttsAccount, String ttsPassword){
+
+	public ITRI_TTS(String ttsAccount, String ttsPassword) {
 		this.TTS_ACCOUNT = ttsAccount;
 		this.TTS_PASSWORD = ttsPassword;
 	}
-	
+
 	@Override
 	public String saveWordTTS(String directoryPath, String word) throws TTSException {
 		if (word == null || word.isEmpty())
@@ -62,9 +62,8 @@ public class ITRI_TTS implements TTS{
 		File file = parseAndSaveFileFromUrl(resourceUrl, directoryPath, word);
 		return file.getPath();
 	}
-	
 
-	private int getConvertId(String word) throws TTSException{
+	private int getConvertId(String word) throws TTSException {
 		String resultTxt = null;
 		try {
 			final String actionEndpoint = ACTION_BASE + ACTION_CONVERTSIMPLE;
@@ -77,28 +76,28 @@ public class ITRI_TTS implements TTS{
 				throw new TTSException(resultTxt);
 		} catch (SOAPException e) {
 			e.printStackTrace();
-			
+
 		}
-		// for instance result will be: 0&success&4494487, the number 4494487 is the convertId for further request.
-		return Integer.parseInt(resultTxt.split("&")[2]); 
+		// for instance result will be: 0&success&4494487, the number 4494487 is the
+		// convertId for further request.
+		return Integer.parseInt(resultTxt.split("&")[2]);
 	}
-	
-	private String getTextFromTheResultElement(SOAPMessage response) throws SOAPException{
+
+	private String getTextFromTheResultElement(SOAPMessage response) throws SOAPException {
 		SOAPBody body = response.getSOAPBody();
 		NodeList nodeList = body.getElementsByTagName("Result");
 		Element resuleElm = (Element) nodeList.item(0);
 		return resuleElm.getTextContent().trim();
 	}
 
-    
-	private String repeatedlyAskingForTheTTSProduct(int convertId) throws TTSException{
+	private String repeatedlyAskingForTheTTSProduct(int convertId) throws TTSException {
 		String resourceUrl = null;
-		while(true)  // repeatedly asking for the status until it's completed.
+		while (true) // repeatedly asking for the status until it's completed.
 		{
-			try{
-				resourceUrl = getFileUrlByConvertId(convertId); 
+			try {
+				resourceUrl = getFileUrlByConvertId(convertId);
 				break;
-			}catch (TTSProcessingException e) {
+			} catch (TTSProcessingException e) {
 				try {
 					Thread.sleep(500);
 				} catch (InterruptedException e1) {
@@ -108,9 +107,10 @@ public class ITRI_TTS implements TTS{
 		}
 		return resourceUrl;
 	}
-	
-	private String getFileUrlByConvertId(int convertId) throws TTSException{
-		final String actionEndpoint = ACTION_BASE + ACTION_GET_CONVERT_STATUS; // now we are going to get the convert status.
+
+	private String getFileUrlByConvertId(int convertId) throws TTSException {
+		final String actionEndpoint = ACTION_BASE + ACTION_GET_CONVERT_STATUS; // now we are going to get the convert
+																				// status.
 		String[] results = null;
 		String fileUrl = null;
 		Map<String, String> properties = createBaseProperties();
@@ -121,19 +121,20 @@ public class ITRI_TTS implements TTS{
 			results = getTextFromTheResultElement(response).split("&"); // for instance 0&success&0&queued
 			if (!results[0].equals("0")) // result code
 				throw new TTSException(Arrays.toString(results));
-			if (!results[2].equals("2") ) // status code
+			if (!results[2].equals("2")) // status code
 				throw new TTSProcessingException(); // the TTS wav file is queued and waiting for processing
-			if (results[2].equals("2")) // if succeed, the result will be like 0&Success&2&completed&http://tts.itri.org.tw/TTSService/download/Account/1111.wav
+			if (results[2].equals("2")) // if succeed, the result will be like
+										// 0&Success&2&completed&http://tts.itri.org.tw/TTSService/download/Account/1111.wav
 				fileUrl = results[4];
 		} catch (SOAPException e) {
 			e.printStackTrace();
 		}
 		return fileUrl;
 	}
-	
-	private File parseAndSaveFileFromUrl(String url, String directoryPath, String word){
+
+	private File parseAndSaveFileFromUrl(String url, String directoryPath, String word) {
 		URL resource;
-		String name = word.length() > 15 ? word.substring(0, 15) :word;
+		String name = word.length() > 15 ? word.substring(0, 15) : word;
 		String fileName = directoryPath + "/" + name + ".wav";
 		File file = new File(fileName);
 		try {
@@ -148,8 +149,8 @@ public class ITRI_TTS implements TTS{
 		}
 		return file;
 	}
-	
-	private Map<String, String> createBaseProperties(){
+
+	private Map<String, String> createBaseProperties() {
 		Map<String, String> properties = new HashMap<>();
 		properties.put(SoapHelper.NAMESPACE_URL, ACTION_BASE);
 		properties.put(KEY_ACCOUNT_ID, TTS_ACCOUNT);
@@ -157,7 +158,7 @@ public class ITRI_TTS implements TTS{
 		return properties;
 	}
 
-	public static void main(String[] argv){
+	public static void main(String[] argv) {
 		try {
 			TTS tts = new ITRI_TTS(Secret.TTS_ACCOUNT, Secret.TTS_PASSWORD);
 			String path = tts.saveWordTTS("sounds/vocabulary", "OK");
@@ -177,5 +178,4 @@ public class ITRI_TTS implements TTS{
 		}
 	}
 
-	
 }

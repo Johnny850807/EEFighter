@@ -2,7 +2,6 @@ package model.sprite;
 
 import java.awt.Image;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import ui.GameView;
@@ -43,7 +42,7 @@ public class Sprite implements Cloneable {
 		this.spriteName = spriteName;
 		this.imageMap = imageMap;
 	}
-	
+
 	public Sprite() {
 		// TODO Auto-generated constructor stub
 	}

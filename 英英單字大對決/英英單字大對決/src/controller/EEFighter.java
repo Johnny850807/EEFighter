@@ -16,9 +16,12 @@ public interface EEFighter {
 
 	void popLetter(PlayerSprite player);
 
-	void isLetterCollided(PlayerSprite player);
+	void pickUp(PlayerSprite player);
+
+	boolean isLetterCollided(PlayerSprite player);
 
 	void checkAnswer(PlayerSprite player);
-	
+
 	void windowClosed();
+
 }

@@ -6,6 +6,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.List;
 
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import controller.EEFighter;
@@ -14,6 +15,7 @@ import model.Question;
 import model.sprite.GameMap;
 import model.sprite.PlayerSprite;
 import model.sprite.Sprite;
+import model.sprite.SpriteName;
 import model.sprite.Sprite.Direction;
 import model.sprite.Sprite.Status;
 import ui.GameStartView.CloseHandler;
@@ -32,7 +34,8 @@ public class GameViewImp extends JPanel implements GameView, KeyListener {
 	private List<Sprite> letters;
 	private IGameStartView gameStartView;
 
-	public GameViewImp(GameStartView gameStartView, EEFighter eeFighter, ComponentAbstractFactory componentAbstractFactory) {
+	public GameViewImp(GameStartView gameStartView, EEFighter eeFighter,
+			ComponentAbstractFactory componentAbstractFactory) {
 		this.eeFighter = eeFighter;
 		this.gameStartView = gameStartView;
 		eeFighter.setGameView(this);
@@ -185,8 +188,8 @@ public class GameViewImp extends JPanel implements GameView, KeyListener {
 	}
 
 	@Override
-	public void onGameOver() {
-
+	public void onGameOver(PlayerSprite player) {
+		JOptionPane.showMessageDialog(null, player.getSpriteName().toString() + " win the game!!!");
 	}
 
 	@Override
@@ -251,6 +254,12 @@ public class GameViewImp extends JPanel implements GameView, KeyListener {
 	@Override
 	public void onQuestionWordSoundPlay(Question question) {
 		SoundPlayer.getInstance().playSound(question.getSoundPath());
+	}
+
+	@Override
+	public void onNoLetterGotten(PlayerSprite player, List<Sprite> letter) {
+		// TODO Auto-generated method stub
+
 	}
 
 }

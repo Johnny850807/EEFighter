@@ -59,6 +59,7 @@ public class PlayerSprite extends Sprite{
 	}
 
 	public void addLetter(Sprite sprite) {
+		// TODO ±Æ§Ç
 		letters.push(sprite);
 	}
 	
@@ -71,7 +72,6 @@ public class PlayerSprite extends Sprite{
 	public void removeAllLetters() {
 		while (!letters.isEmpty())
 			popLetter();
-		letters.removeAll(letters);
 	}
 	
 	public List<Sprite> getLetters() {
