@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<EnglishWarehouse>
+<Word name="authority">
+        <SoundPath>sounds\vocabulary\authority.wav</SoundPath>
+        <Definition partOfSpeech="N">the power or right to give orders or make decisions</Definition>
+        <Definition partOfSpeech="N">(usually plural) persons who exercise (administrative) control over others</Definition>
+        <Definition partOfSpeech="N">an administrative unit of government</Definition>
+        <Definition partOfSpeech="N">an expert whose views are taken as definitive</Definition>
+        <Definition partOfSpeech="N">an authoritative written work</Definition>
+        <Definition partOfSpeech="N">freedom from doubt; belief in yourself and your abilities</Definition>
+        <Definition partOfSpeech="N">official permission or approval</Definition>
+    </Word>
+<Word name="consumption">
+        <SoundPath>sounds\vocabulary\consumption.wav</SoundPath>
+        <Definition partOfSpeech="N">the act of consuming something</Definition>
+        <Definition partOfSpeech="N">the process of taking food into the body through the mouth (as by eating)</Definition>
+        <Definition partOfSpeech="N">(economics) the utilization of economic goods to satisfy needs or in manufacturing</Definition>
+        <Definition partOfSpeech="N">a disease involving the lungs with progressive wasting of the body</Definition>
+    </Word>
+<Word name="omen">
+        <SoundPath>sounds\vocabulary\omen.wav</SoundPath>
+        <Definition partOfSpeech="N">a sign of something about to happen</Definition>
+        <Definition partOfSpeech="V">indicate by signs</Definition>
+    </Word>
+<Word name="prohibition">
+        <SoundPath>sounds\vocabulary\prohibition.wav</SoundPath>
+        <Definition partOfSpeech="N">the action of prohibiting or inhibiting or forbidding (or an instance thereof)</Definition>
+        <Definition partOfSpeech="N">refusal to approve or assent to</Definition>
+        <Definition partOfSpeech="N">a decree that prohibits something</Definition>
+        <Definition partOfSpeech="N">a law forbidding the sale of alcoholic beverages</Definition>
+        <Definition partOfSpeech="N">the period from 1920 to 1933 when the sale of alcoholic beverages was prohibited in the United States by a constitutional amendment</Definition>
+    </Word>
+<Word name="superstition">
+        <SoundPath>sounds\vocabulary\superstition.wav</SoundPath>
+        <Definition partOfSpeech="N">an irrational belief arising from ignorance or fear</Definition>
+    </Word>
+<Word name="taboo">
+        <SoundPath>sounds\vocabulary\taboo.wav</SoundPath>
+        <Definition partOfSpeech="N">an inhibition or ban resulting from social custom or emotional aversion</Definition>
+        <Definition partOfSpeech="N">a prejudice (especially in Polynesia and other South Pacific islands) that prohibits the use or mention of something because of its sacred nature</Definition>
+        <Definition partOfSpeech="ADJ">excluded from use or mention</Definition>
+        <Definition partOfSpeech="ADJ">forbidden to profane use especially in South Pacific islands</Definition>
+        <Definition partOfSpeech="V">declare as sacred and forbidden</Definition>
+    </Word>
+<Word name="abhor">
+        <SoundPath>sounds\vocabulary\abhor.wav</SoundPath>
+        <Definition partOfSpeech="V">find repugnant</Definition>
+    </Word>
+<Word name="attribute">
+        <SoundPath>sounds\vocabulary\attribute.wav</SoundPath>
+        <Definition partOfSpeech="N">an abstraction belonging to or characteristic of an entity</Definition>
+        <Definition partOfSpeech="N">a construct whereby objects or individuals can be distinguished</Definition>
+        <Definition partOfSpeech="V">decide as to where something belongs in a scheme</Definition>
+        <Definition partOfSpeech="V">attribute or credit to</Definition>
+    </Word>
+<Word name="violate">
+        <SoundPath>sounds\vocabulary\violate.wav</SoundPath>
+        <Definition partOfSpeech="V">fail to agree with; be in violation of; as of rules or patterns</Definition>
+        <Definition partOfSpeech="V">act in disregard of laws, rules, contracts, or promises</Definition>
+        <Definition partOfSpeech="V">destroy</Definition>
+        <Definition partOfSpeech="V">destroy and strip of its possession</Definition>
+        <Definition partOfSpeech="V">force (someone) to have sex against their will</Definition>
+        <Definition partOfSpeech="V">violate the sacred character of a place or language</Definition>
+    </Word>
+<Word name="arbitrary">
+        <SoundPath>sounds\vocabulary\arbitrary.wav</SoundPath>
+        <Definition partOfSpeech="ADJ">based on or subject to individual discretion or preference or sometimes impulse or caprice</Definition>
+    </Word>
+<Word name="linguistic">
+        <SoundPath>sounds\vocabulary\linguistic.wav</SoundPath>
+        <Definition partOfSpeech="ADJ">consisting of or related to language</Definition>
+        <Definition partOfSpeech="ADJ">of or relating to the scientific study of language</Definition>
+    </Word>
+<Word name="offensive">
+        <SoundPath>sounds\vocabulary\offensive.wav</SoundPath>
+        <Definition partOfSpeech="N">the action of attacking an enemy</Definition>
+        <Definition partOfSpeech="ADJ">unpleasant or disgusting especially to the senses</Definition>
+        <Definition partOfSpeech="ADJ">causing or able to cause nausea</Definition>
+        <Definition partOfSpeech="ADJ">causing anger or annoyance</Definition>
+        <Definition partOfSpeech="ADJ">substitute a harsher or distasteful term for a mild one</Definition>
+        <Definition partOfSpeech="ADJ">violating or tending to violate or offend against</Definition>
+        <Definition partOfSpeech="ADJ">morally offensive</Definition>
+        <Definition partOfSpeech="ADJ">for the purpose of attack rather than defense</Definition>
+    </Word>
+<Word name="rational">
+        <SoundPath>sounds\vocabulary\rational.wav</SoundPath>
+        <Definition partOfSpeech="N">an integer or a fraction</Definition>
+        <Definition partOfSpeech="ADJ">consistent with or based on or using reason</Definition>
+        <Definition partOfSpeech="ADJ">of or associated with or requiring the use of the mind</Definition>
+        <Definition partOfSpeech="ADJ">having its source in or being guided by the intellect (as distinguished from experience or emotion)</Definition>
+        <Definition partOfSpeech="ADJ">capable of being expressed as a quotient of integers</Definition>
+    </Word>
+<Word name="supernatural">
+        <SoundPath>sounds\vocabulary\supernatural.wav</SoundPath>
+        <Definition partOfSpeech="N">supernatural forces and events and beings collectively</Definition>
+        <Definition partOfSpeech="ADJ">not existing in nature or subject to explanation according to natural laws; not physical or material</Definition>
+    </Word>
+<Word name="advertisement">
+        <SoundPath>sounds\vocabulary\advertisement.wav</SoundPath>
+        <Definition partOfSpeech="N">a public promotion of some product or service</Definition>
+    </Word>
+<Word name="campaign">
+        <SoundPath>sounds\vocabulary\campaign.wav</SoundPath>
+        <Definition partOfSpeech="N">several related operations aimed at achieving a particular goal (usually within geographical and temporal constraints)</Definition>
+        <Definition partOfSpeech="N">a series of actions advancing a principle or tending toward a particular end</Definition>
+        <Definition partOfSpeech="N">a race between candidates for elective office</Definition>
+        <Definition partOfSpeech="N">an overland journey by hunters (especially in Africa)</Definition>
+        <Definition partOfSpeech="V">exert oneself continuously, vigorously, or obtrusively to gain an end or engage in a crusade for a certain cause or person; be an advocate for</Definition>
+        <Definition partOfSpeech="V">go on a campaign; go off to war</Definition>
+        <Definition partOfSpeech="V">run, stand, or compete for an office or a position</Definition>
+    </Word>
+<Word name="circular">
+        <SoundPath>sounds\vocabulary\circular.wav</SoundPath>
+        <Definition partOfSpeech="N">an advertisement (usually printed on a page or in a leaflet) intended for wide distribution</Definition>
+        <Definition partOfSpeech="ADJ">having a circular shape</Definition>
+        <Definition partOfSpeech="ADJ">describing a circle; moving in a circle</Definition>
+    </Word>
+<Word name="commercial">
+        <SoundPath>sounds\vocabulary\commercial.wav</SoundPath>
+        <Definition partOfSpeech="N">a commercially sponsored ad on radio or television</Definition>
+        <Definition partOfSpeech="ADJ">connected with or engaged in or sponsored by or used in commerce or commercial enterprises</Definition>
+        <Definition partOfSpeech="ADJ">of the kind or quality used in commerce; average or inferior</Definition>
+        <Definition partOfSpeech="ADJ">of or relating to commercialism</Definition>
+    </Word>
+<Word name="jingle">
+        <SoundPath>sounds\vocabulary\jingle.wav</SoundPath>
+        <Definition partOfSpeech="N">a metallic sound</Definition>
+        <Definition partOfSpeech="N">a comic verse of irregular measure</Definition>
+        <Definition partOfSpeech="V">make a sound typical of metallic objects</Definition>
+    </Word>
+<Word name="slogan">
+        <SoundPath>sounds\vocabulary\slogan.wav</SoundPath>
+        <Definition partOfSpeech="N">a favorite saying of a sect or political group</Definition>
+    </Word>
+<Word name="product">
+        <SoundPath>sounds\vocabulary\product.wav</SoundPath>
+        <Definition partOfSpeech="N">an artifact that has been created by someone or some process</Definition>
+        <Definition partOfSpeech="N">commodities offered for sale</Definition>
+        <Definition partOfSpeech="N">a consequence of someone's efforts or of a particular set of circumstances</Definition>
+        <Definition partOfSpeech="N">a chemical substance formed as a result of a chemical reaction</Definition>
+        <Definition partOfSpeech="N">a quantity obtained by multiplication</Definition>
+        <Definition partOfSpeech="N">the set of elements common to two or more sets</Definition>
+    </Word>
+<Word name="telemarketing">
+        <SoundPath>sounds\vocabulary\telemarketing.wav</SoundPath>
+        <Definition partOfSpeech="N">the use of the telephone as an interactive medium for promotion and sales</Definition>
+    </Word>
+<Word name="advertise">
+        <SoundPath>sounds\vocabulary\advertise.wav</SoundPath>
+        <Definition partOfSpeech="V">make publicity for; try to sell (a product)</Definition>
+        <Definition partOfSpeech="V">call attention to</Definition>
+    </Word>
+<Word name="convince">
+        <SoundPath>sounds\vocabulary\convince.wav</SoundPath>
+        <Definition partOfSpeech="V">make (someone) agree, understand, or realize the truth or validity of something</Definition>
+    </Word>
+<Word name="hype">
+        <SoundPath>sounds\vocabulary\hype.wav</SoundPath>
+        <Definition partOfSpeech="N">blatant or sensational promotion</Definition>
+        <Definition partOfSpeech="V">publicize in an exaggerated and often misleading manner</Definition>
+    </Word>
+<Word name="promote">
+        <SoundPath>sounds\vocabulary\promote.wav</SoundPath>
+        <Definition partOfSpeech="V">give a promotion to or assign to a higher position</Definition>
+        <Definition partOfSpeech="V">contribute to the progress or growth of</Definition>
+        <Definition partOfSpeech="V">make publicity for; try to sell (a product)</Definition>
+        <Definition partOfSpeech="V">be changed for a superior chess or checker piece</Definition>
+        <Definition partOfSpeech="V">change a pawn for a better piece by advancing it to the eighth row, or change a checker piece for a more valuable piece by moving it to the row closest to your opponent</Definition>
+    </Word>
+<Word name="exaggerated">
+        <SoundPath>sounds\vocabulary\exaggerated.wav</SoundPath>
+        <Definition partOfSpeech="ADJ">enlarged to an abnormal degree</Definition>
+        <Definition partOfSpeech="ADJ">represented as greater than is true or reasonable</Definition>
+    </Word>
+</EnglishWarehouse>

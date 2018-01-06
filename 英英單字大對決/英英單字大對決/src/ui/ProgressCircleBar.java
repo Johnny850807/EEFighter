@@ -24,7 +24,7 @@ class ProgressCircleBar extends BasicProgressBarUI {
 	    if (barRectWidth <= 0 || barRectHeight <= 0) {
 	      return;
 	    }
-
+	    
 	    // draw the cells
 	    Graphics2D g2 = (Graphics2D) g.create();
 	    g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING,

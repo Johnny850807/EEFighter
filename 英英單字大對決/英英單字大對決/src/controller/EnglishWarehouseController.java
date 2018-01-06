@@ -28,10 +28,10 @@ public class EnglishWarehouseController {
 	private Crawler crawler;
 	private TTS tts;
 	
-	public EnglishWarehouseController(WordRepository wordRepository, Crawler crawler, TTS tts) {
-		this.wordRepository = wordRepository;  
-		this.crawler = crawler;
-		this.tts = tts;
+	public EnglishWarehouseController(ComponentAbstractFactory abstractFactory) {
+		this.wordRepository = abstractFactory.getWordRepository();  
+		this.crawler = abstractFactory.getCrawler();
+		this.tts = abstractFactory.getTts();
 	}
 	
 	public void setEnglishWarehouseView(EnglishWarehouseView englishWarehouseView) {
@@ -104,7 +104,7 @@ public class EnglishWarehouseController {
 				"small", "elephant",  "elder", "control", "model", "view", "stick", "fade", "still",
 				"visible", "search", "customer", "play", "sound", "voice"};
 		new MainView(new ReleasedComponentAbstractFactory()).setVisible(true);  //for playing sounds
-		EnglishWarehouseController controller = new EnglishWarehouseController(new WordXMLRepository("words"), new CrawlerVocabularycom(), new ITRI_TTS(Secret.TTS_ACCOUNT, Secret.TTS_PASSWORD));
+		EnglishWarehouseController controller = new EnglishWarehouseController(new ReleasedComponentAbstractFactory());
 		controller.setEnglishWarehouseView(new EnglishWarehouseView() {
 			int success = 0;
 			@Override

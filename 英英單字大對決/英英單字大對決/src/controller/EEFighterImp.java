@@ -2,6 +2,7 @@ package controller;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.ConcurrentModificationException;
 import java.util.List;
 
 import factory.ComponentAbstractFactory;
@@ -138,7 +139,7 @@ public class EEFighterImp implements EEFighter, LetterCreateListener {
 	}
 
 	@Override
-	public void isLetterCollided(PlayerSprite player) {
+	public synchronized void isLetterCollided(PlayerSprite player) {
 		for (Sprite letter : letters)
 			if (letter.isCollisions(player)) {
 				player.addLetter(letter);

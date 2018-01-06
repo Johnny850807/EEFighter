@@ -160,7 +160,15 @@ public class ITRI_TTS implements TTS{
 	public static void main(String[] argv){
 		try {
 			TTS tts = new ITRI_TTS(Secret.TTS_ACCOUNT, Secret.TTS_PASSWORD);
-			String path = tts.saveWordTTS("sounds/vocabulary", "Question one, listen carefully.");
+			String path = tts.saveWordTTS("sounds/vocabulary", "OK");
+			tts.saveWordTTS("sounds/vocabulary", "Quickly!");
+			tts.saveWordTTS("sounds/vocabulary", "No");
+			tts.saveWordTTS("sounds/vocabulary", "Hello");
+			tts.saveWordTTS("sounds/vocabulary", "Please start the game.");
+			tts.saveWordTTS("sounds/vocabulary", "Please set ready to the game.");
+			tts.saveWordTTS("sounds/vocabulary", "Have a good game.");
+			tts.saveWordTTS("sounds/vocabulary", "Awesome!");
+			tts.saveWordTTS("sounds/vocabulary", "Damn it!");
 			System.out.println(path);
 			new MainView(new ReleasedComponentAbstractFactory()).setVisible(true);
 			SoundPlayer.getInstance().playSound(path);
