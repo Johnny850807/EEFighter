@@ -210,6 +210,40 @@ public class Sprite implements Cloneable {
 		}
 	}
 	
+	final static class Movement{
+		Direction direction;
+		Status status;
+		
+		Movement(Direction direction, Status status) {
+			this.direction = direction;
+			this.status = status;
+		}
+
+		@Override
+		public int hashCode() {
+			final int prime = 31;
+			int result = 1;
+			result = prime * result + ((direction == null) ? 0 : direction.hashCode());
+			result = prime * result + ((status == null) ? 0 : status.hashCode());
+			return result;
+		}
+		@Override
+		public boolean equals(Object obj) {
+			if (this == obj)
+				return true;
+			if (obj == null)
+				return false;
+			if (getClass() != obj.getClass())
+				return false;
+			Movement other = (Movement) obj;
+			if (direction != other.direction)
+				return false;
+			if (status != other.status)
+				return false;
+			return true;
+		}
+	}
+	
 	public enum Direction {
 		NORTH, WEST, EAST, SOUTH;
 	}
