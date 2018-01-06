@@ -6,11 +6,11 @@ import java.io.File;
 import javax.imageio.ImageIO;
 
 public class ImageSequence {
-	private String baseFileName; // 圖片檔主名
-	private String fileType; // 圖片檔附加名(如png檔)
-	private int picAmount; // 分鏡畫面檔個數
-	private Image[] images; // 儲存分鏡畫面圖檔(Image物件陣列)
-	private int index = -1; // 分鏡畫面索引
+	private String baseFileName;
+	private String fileType; 
+	private int picAmount;
+	private Image[] images; 
+	private int index = -1; 
 
 	public ImageSequence(String bfname, String fext, int n) {
 		images = new Image[n];
@@ -19,15 +19,27 @@ public class ImageSequence {
 		fileType = fext;
 		try {
 			for (int i = 0; i < picAmount; i++)
-				images[i] = ImageIO.read(new File(bfname + i + "." + fext)); // load the pic files
+				images[i] = ImageIO.read(new File(bfname + i + "." + fext));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
-	
-	public Image next() { //取得下一張畫面
-		 index = (index+1) % picAmount; //計算下一畫面索引
-		 return images[index];
-		 }
-		 public void reset () { index = -1;} //重設為起始狀態
+
+	public ImageSequence(Image image, int n) {
+		images = new Image[n];
+		picAmount = n;
+		for (int i = 0; i < picAmount; i++)
+			images[i] = image;
+	}
+
+	public Image getImage() {
+		index = index == 3 ? -1 : index;
+		return images[index + 1];
+	}
+
+	public Image nextImage() { 
+		index = (index + 1) % picAmount; 
+		return images[index];
+	}
+
 }

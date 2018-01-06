@@ -80,7 +80,10 @@ public class GameViewImp extends JPanel implements GameView, KeyListener {
 	}
 
 	private void drawSprite(Graphics g, Sprite sprite) {
-		g.drawImage(sprite.getImage(), sprite.getX(), sprite.getY(), null);
+		if (sprite.getStatus() == Status.MOVE)
+			g.drawImage(sprite.nextImage(), sprite.getX(), sprite.getY(), null);
+		else
+			g.drawImage(sprite.getImage(), sprite.getX(), sprite.getY(), null);
 	}
 
 	private void setupLayout() {
@@ -113,10 +116,10 @@ public class GameViewImp extends JPanel implements GameView, KeyListener {
 	public void keyPressed(KeyEvent e) {
 		switch (e.getKeyCode()) {
 		case KeyEvent.VK_UP:
-			eeFighter.move(spriteP1, spriteP1.getDirection(), Status.MOVE);
+			eeFighter.move(spriteP1, Direction.NORTH, Status.MOVE);
 			break;
 		case KeyEvent.VK_DOWN:
-			eeFighter.move(spriteP1, spriteP1.getDirection(), Status.MOVE);
+			eeFighter.move(spriteP1, Direction.SOUTH, Status.MOVE);
 			break;
 		case KeyEvent.VK_LEFT:
 			eeFighter.move(spriteP1, Direction.WEST, Status.MOVE);
