@@ -16,28 +16,56 @@ import model.sprite.Sprite.Direction;
  */
 public class SpritePrototypeFactory {
 	private static SpritePrototypeFactory instance = null;
+	private Image[] player1LeftImages = new Image[4];
+	private Image[] player1RightImages = new Image[4];
+	private Image[] player2LeftImages = new Image[4];
+	private Image[] player2RightImages = new Image[4];
 	private Map<SpriteName, Sprite> spriteMap = new HashMap<>();
-	private Map<Direction, Image> imageMap = new HashMap<>();
+	private Map<Direction, ImageSequence> player1ImageMap = new HashMap<>();
+	private Map<Direction, ImageSequence> player2ImageMap = new HashMap<>();
 
 	private SpritePrototypeFactory() {
 		try {
-			preparePlayerImageMap();
+			preparePlayersImageMap();
 			prepareSprites();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
 	
-	private void preparePlayerImageMap() throws IOException{
-		imageMap.put(Direction.NORTH, ImageIO.read(new File("pic/North_T0.png")));
-		imageMap.put(Direction.WEST, ImageIO.read(new File("pic/West_T0.png")));
-		imageMap.put(Direction.SOUTH, ImageIO.read(new File("pic/South_T0.png")));
-		imageMap.put(Direction.EAST, ImageIO.read(new File("pic/East_T0.png")));
+	private void preparePlayersImageMap() throws IOException{
+		player1ImageMap.put(Direction.WEST, new ImageSequence("pic/boy/boy-left-", "png", 4));
+		player1ImageMap.put(Direction.EAST, new ImageSequence("pic/boy/boy-right-", "png", 4));
+		player2ImageMap.put(Direction.WEST, new ImageSequence("pic/girl/girl-left-", "png", 4));
+		player2ImageMap.put(Direction.EAST, new ImageSequence("pic/girl/girl-right-", "png", 4));
 	}
 
-	private Map<Direction, Image> createImageMap(Image image) {
-		Map<Direction, Image> imageMap = new HashMap<>();
-		imageMap.put(Direction.NORTH, image);
+//	private void preparePlayer2LeftAndRightImage() throws IOException {
+//		player2LeftImages[0] = ImageIO.read(new File("pic/girl/girl-left-0.png"));
+//		player2LeftImages[1] = ImageIO.read(new File("pic/girl/girl-left-1.png"));
+//		player2LeftImages[2] = ImageIO.read(new File("pic/girl/girl-left-2.png"));
+//		player2LeftImages[3] = ImageIO.read(new File("pic/girl/girl-left-3.png"));
+//		player2RightImages[0] = ImageIO.read(new File("pic/girl/girl-left-0.png"));
+//		player2RightImages[1] = ImageIO.read(new File("pic/girl/girl-left-1.png"));
+//		player2RightImages[2] = ImageIO.read(new File("pic/girl/girl-left-2.png"));
+//		player2RightImages[3] = ImageIO.read(new File("pic/girl/girl-left-3.png"));
+//	}
+//
+//	private void preparePlayer1LeftAndRightImage() throws IOException {
+//		player1LeftImages[0] = ImageIO.read(new File("pic/boy/boy-left-0.png"));
+//		player1LeftImages[1] = ImageIO.read(new File("pic/boy/boy-left-1.png"));
+//		player1LeftImages[2] = ImageIO.read(new File("pic/boy/boy-left-2.png"));
+//		player1LeftImages[3] = ImageIO.read(new File("pic/boy/boy-left-3.png"));
+//		player1RightImages[0] = ImageIO.read(new File("pic/boy/boy-right-0.png"));
+//		player1RightImages[1] = ImageIO.read(new File("pic/boy/boy-right-1.png"));
+//		player1RightImages[2] = ImageIO.read(new File("pic/boy/boy-right-2.png"));
+//		player1RightImages[3] = ImageIO.read(new File("pic/boy/boy-right-3.png"));
+//
+//	}
+
+	private Map<Direction, ImageSequence> createImageMap(Image image) {
+		Map<Direction, ImageSequence> imageMap = new HashMap<>();
+		imageMap.put(Direction.WEST, images);
 		return imageMap;
 	}
 
@@ -77,8 +105,8 @@ public class SpritePrototypeFactory {
 		spriteMap.put(SpriteName.X, new Sprite(64, 64, 10, 12, 50, 52, SpriteName.X, createImageMap(ImageIO.read(new File("pic/X.png")))));
 		spriteMap.put(SpriteName.Y, new Sprite(64, 64, 11, 13, 50, 50, SpriteName.Y, createImageMap(ImageIO.read(new File("pic/Y.png")))));
 		spriteMap.put(SpriteName.Z, new Sprite(64, 64, 13, 13, 50, 50, SpriteName.Z, createImageMap(ImageIO.read(new File("pic/Z.png")))));
-		spriteMap.put(SpriteName.PLAYER1, new PlayerSprite(64, 64, 0, 0, 50, 50, SpriteName.PLAYER1, imageMap));
-		spriteMap.put(SpriteName.PLAYER2, new PlayerSprite(64, 64, 0, 0, 50, 50, SpriteName.PLAYER2, imageMap));
+		spriteMap.put(SpriteName.PLAYER1, new PlayerSprite(64, 64, 0, 0, 50, 50, SpriteName.PLAYER1, player1ImageMap));
+		spriteMap.put(SpriteName.PLAYER2, new PlayerSprite(64, 64, 0, 0, 50, 50, SpriteName.PLAYER2, player1ImageMap));
 	}
 
 	public Sprite createSprite(SpriteName spriteName) {

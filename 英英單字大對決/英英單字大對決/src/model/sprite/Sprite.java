@@ -15,11 +15,12 @@ public class Sprite implements Cloneable {
 	protected int bodyHeight;
 	protected int bodyLength;
 	protected SpriteName spriteName;
-	protected Direction direction = Direction.NORTH;
+	protected Direction direction = Direction.WEST;
 	protected Status status = Status.STOP;
-	protected Map<Direction, Image> imageMap = new HashMap<>();
+	protected Map<Direction, ImageSequence> imageMap = new HashMap<>();
 	protected GameMap gameMap;
 	protected GameView gameView;
+	protected int picIndex = 0;
 
 	/**
 	 * 
@@ -31,7 +32,7 @@ public class Sprite implements Cloneable {
 	 * @param bodyLength 圖片的身體部分的長度
 	 * @param image image of this sprite
 	 */
-	public Sprite(int w, int h, int biasWithX, int biasWithY, int bodyHeight, int bodyLength,SpriteName spriteName, Map<Direction, Image> imageMap) {
+	public Sprite(int w, int h, int biasWithX, int biasWithY, int bodyHeight, int bodyLength,SpriteName spriteName, Map<Direction, ImageSequence> imageMap) {
 		super();
 		this.w = w;
 		this.h = h;
@@ -142,11 +143,19 @@ public class Sprite implements Cloneable {
 	public void setY(int y) {
 		this.xy.setY(y);
 	}
-
-	public Image getImage(Direction direction) {
-		return imageMap.get(direction);
+	
+	public int getPicIndex() {
+		return picIndex;
 	}
 
+	public void addOnePicIndex() {
+		picIndex = picIndex >= 4 ? 0 : picIndex++;
+	}
+
+	//Test modify
+	public Image getImage() {
+		return imageMap.get(direction).next();
+	}
 
 	public GameMap getGameMap() {
 		return gameMap;
