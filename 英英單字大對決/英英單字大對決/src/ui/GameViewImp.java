@@ -131,7 +131,7 @@ public class GameViewImp extends JPanel implements GameView, KeyListener {
 			eeFighter.checkAnswer(spriteP1);
 			break;
 		case KeyEvent.VK_COLON:
-			// Todo player1 pickUp letter
+			eeFighter.pickUp(spriteP1);
 			break;
 		case KeyEvent.VK_T:
 			eeFighter.move(spriteP2, Direction.NORTH, spriteP2.getImgDirection(), Status.MOVE);
@@ -152,7 +152,7 @@ public class GameViewImp extends JPanel implements GameView, KeyListener {
 			eeFighter.checkAnswer(spriteP2);
 			break;
 		case KeyEvent.VK_C:
-			// player2 pickUp letter
+			eeFighter.pickUp(spriteP2);
 			break;
 		default:
 			break;
