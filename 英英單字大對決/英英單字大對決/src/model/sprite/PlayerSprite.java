@@ -11,7 +11,7 @@ public class PlayerSprite extends Sprite{
 	private int score = 0;
 	
 	public PlayerSprite(int w, int h, int biasWithX, int biasWithY, int bodyHeight, int bodyLength,
-			SpriteName spriteName, Map<Direction, Image> imageMap) {
+			SpriteName spriteName, Map<Movement, ImageSequence> imageMap) {
 		super(w, h, biasWithX, biasWithY, bodyHeight, bodyLength, spriteName, imageMap);
 	}
 	

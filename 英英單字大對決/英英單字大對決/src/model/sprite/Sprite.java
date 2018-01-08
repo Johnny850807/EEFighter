@@ -15,23 +15,33 @@ public class Sprite implements Cloneable {
 	protected int bodyHeight;
 	protected int bodyLength;
 	protected SpriteName spriteName;
-	protected Direction direction = Direction.NORTH;
+	protected Direction direction = Direction.EAST;
+	protected Direction imgDirection = Direction.EAST;
 	protected Status status = Status.STOP;
-	protected Map<Direction, Image> imageMap = new HashMap<>();
+	protected Map<Movement, ImageSequence> imageMap = new HashMap<>();
 	protected GameMap gameMap;
 	protected GameView gameView;
+	protected Movement movement = new Movement(imgDirection, status);
 
 	/**
 	 * 
-	 * @param w width of this sprite
-	 * @param h height of this sprite
-	 * @param biasWithX 圖片左側與圖片身體的偏差值
-	 * @param biasWithY 圖片上方與圖片身體的偏差值
-	 * @param bodyHeight 圖片的身體部分的高度
-	 * @param bodyLength 圖片的身體部分的長度
-	 * @param image image of this sprite
+	 * @param w
+	 *            width of this sprite
+	 * @param h
+	 *            height of this sprite
+	 * @param biasWithX
+	 *            圖片左側與圖片身體的偏差值
+	 * @param biasWithY
+	 *            圖片上方與圖片身體的偏差值
+	 * @param bodyHeight
+	 *            圖片的身體部分的高度
+	 * @param bodyLength
+	 *            圖片的身體部分的長度
+	 * @param image
+	 *            image of this sprite
 	 */
-	public Sprite(int w, int h, int biasWithX, int biasWithY, int bodyHeight, int bodyLength,SpriteName spriteName, Map<Direction, Image> imageMap) {
+	public Sprite(int w, int h, int biasWithX, int biasWithY, int bodyHeight, int bodyLength, SpriteName spriteName,
+			Map<Movement, ImageSequence> imageMap) {
 		super();
 		this.w = w;
 		this.h = h;
@@ -94,7 +104,7 @@ public class Sprite implements Cloneable {
 	public void setH(int h) {
 		this.h = h;
 	}
-	
+
 	public SpriteName getSpriteName() {
 		return spriteName;
 	}
@@ -116,13 +126,23 @@ public class Sprite implements Cloneable {
 	}
 
 	public void setStatus(Status status) {
+		movement.status = status;
 		this.status = status;
+	}
+
+	public Direction getImgDirection() {
+		return imgDirection;
+	}
+
+	public void setImgDirection(Direction imgDirection) {
+		movement.direction = imgDirection;
+		this.imgDirection = imgDirection;
 	}
 
 	public XY getXy() {
 		return xy;
 	}
-	
+
 	public void setXY(int x, int y) {
 		this.xy = new XY(x, y);
 	}
@@ -143,10 +163,12 @@ public class Sprite implements Cloneable {
 		this.xy.setY(y);
 	}
 
-	public Image getImage(Direction direction) {
-		return imageMap.get(direction);
+	// Test modify
+	public Image getImage() {
+		if (status == Status.MOVE)
+			return imageMap.get(movement).nextImage();
+		return imageMap.get(movement).nextImage();
 	}
-
 
 	public GameMap getGameMap() {
 		return gameMap;
@@ -165,9 +187,9 @@ public class Sprite implements Cloneable {
 	}
 
 	public synchronized void update() {
-		//do nothing as default
+		// do nothing as default
 	}
-	
+
 	public synchronized boolean isCollisions(Sprite sprite) {
 		int xStartSelf = getX() + getBiasWithX();
 		int yStartSelf = getY() + getBiasWithY();
@@ -177,19 +199,23 @@ public class Sprite implements Cloneable {
 		int yStartOther = sprite.getY() + sprite.getBiasWithY();
 		int xEndOther = xStartOther + sprite.getBodyWidth();
 		int yEndOther = yStartOther + sprite.getBodyWidth();
-		if (xStartSelf < xStartOther && xStartOther < xEndSelf && yStartSelf < yStartOther && yStartOther < yEndSelf) 
+		if (xStartSelf < xStartOther && xStartOther < xEndSelf && yStartSelf < yStartOther && yStartOther < yEndSelf)
 			return true;
-		if (xStartSelf < xStartOther && xStartOther < xEndSelf && yStartSelf < yEndOther && yEndOther < yEndSelf) 
+		if (xStartSelf < xStartOther && xStartOther < xEndSelf && yStartSelf < yEndOther && yEndOther < yEndSelf)
 			return true;
-		if (xStartSelf < xEndOther && xEndOther < xEndSelf && yStartSelf < yStartOther && yStartOther < yEndSelf) 
+		if (xStartSelf < xEndOther && xEndOther < xEndSelf && yStartSelf < yStartOther && yStartOther < yEndSelf)
 			return true;
-		if (xStartSelf < xEndOther && xEndOther < xEndSelf && yStartSelf < yEndOther && yEndOther < yEndSelf) 
+		if (xStartSelf < xEndOther && xEndOther < xEndSelf && yStartSelf < yEndOther && yEndOther < yEndSelf)
 			return true;
 		return false;
 	}
 
 	public void move(XY xy) {
 		this.xy.move(xy);
+	}
+
+	public Movement getMovement() {
+		return movement;
 	}
 
 	public Sprite clone() {
@@ -200,13 +226,48 @@ public class Sprite implements Cloneable {
 			return null;
 		}
 	}
-	
+
+	final static class Movement {
+		Direction direction;
+		Status status;
+
+		Movement(Direction direction, Status status) {
+			this.direction = direction;
+			this.status = status;
+		}
+
+		@Override
+		public int hashCode() {
+			final int prime = 31;
+			int result = 1;
+			result = prime * result + ((direction == null) ? 0 : direction.hashCode());
+			result = prime * result + ((status == null) ? 0 : status.hashCode());
+			return result;
+		}
+
+		@Override
+		public boolean equals(Object obj) {
+			if (this == obj)
+				return true;
+			if (obj == null)
+				return false;
+			if (getClass() != obj.getClass())
+				return false;
+			Movement other = (Movement) obj;
+			if (direction != other.direction)
+				return false;
+			if (status != other.status)
+				return false;
+			return true;
+		}
+	}
+
 	public enum Direction {
 		NORTH, WEST, EAST, SOUTH;
 	}
-	
+
 	public enum Status {
 		MOVE, STOP;
 	}
-	
+
 }

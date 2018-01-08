@@ -80,7 +80,7 @@ public class GameViewImp extends JPanel implements GameView, KeyListener {
 	}
 
 	private void drawSprite(Graphics g, Sprite sprite) {
-		g.drawImage(sprite.getImage(sprite.getDirection()), sprite.getX(), sprite.getY(), null);
+		g.drawImage(sprite.getImage(), sprite.getX(), sprite.getY(), null);
 	}
 
 	private void setupLayout() {
@@ -105,15 +105,6 @@ public class GameViewImp extends JPanel implements GameView, KeyListener {
 		repaint();
 	}
 
-	/**
-	 * Use 8-bit to store the key pressing status. Each bit corresponding action key
-	 * from left to right is: None, None, None, pop the eaten letter, move up, move
-	 * down, move left, move right. If the bit showing 1 means the corresponding
-	 * action key should be pressing, and the bit should be set as 0 once the key is
-	 * released. Due to this strategy, we can perform composite moving keys such as
-	 * 'move top-left' by simply storing 0b00001010.
-	 */
-
 	@Override
 	public void keyTyped(KeyEvent e) {
 	}
@@ -122,16 +113,16 @@ public class GameViewImp extends JPanel implements GameView, KeyListener {
 	public void keyPressed(KeyEvent e) {
 		switch (e.getKeyCode()) {
 		case KeyEvent.VK_UP:
-			eeFighter.move(spriteP1, Direction.NORTH, Status.MOVE);
+			eeFighter.move(spriteP1, Direction.NORTH, spriteP1.getImgDirection(),  Status.MOVE);
 			break;
 		case KeyEvent.VK_DOWN:
-			eeFighter.move(spriteP1, Direction.SOUTH, Status.MOVE);
+			eeFighter.move(spriteP1, Direction.SOUTH, spriteP1.getImgDirection(), Status.MOVE);
 			break;
 		case KeyEvent.VK_LEFT:
-			eeFighter.move(spriteP1, Direction.WEST, Status.MOVE);
+			eeFighter.move(spriteP1, Direction.WEST, Direction.WEST, Status.MOVE);
 			break;
 		case KeyEvent.VK_RIGHT:
-			eeFighter.move(spriteP1, Direction.EAST, Status.MOVE);
+			eeFighter.move(spriteP1, Direction.EAST, Direction.EAST, Status.MOVE);
 			break;
 		case KeyEvent.VK_K:
 			eeFighter.popLetter(spriteP1);
@@ -139,23 +130,29 @@ public class GameViewImp extends JPanel implements GameView, KeyListener {
 		case KeyEvent.VK_L:
 			eeFighter.checkAnswer(spriteP1);
 			break;
+		case KeyEvent.VK_COLON:
+			// Todo player1 pickUp letter
+			break;
 		case KeyEvent.VK_T:
-			eeFighter.move(spriteP2, Direction.NORTH, Status.MOVE);
+			eeFighter.move(spriteP2, Direction.NORTH, spriteP2.getImgDirection(), Status.MOVE);
 			break;
 		case KeyEvent.VK_G:
-			eeFighter.move(spriteP2, Direction.SOUTH, Status.MOVE);
+			eeFighter.move(spriteP2, Direction.SOUTH, spriteP2.getImgDirection(), Status.MOVE);
 			break;
 		case KeyEvent.VK_F:
-			eeFighter.move(spriteP2, Direction.WEST, Status.MOVE);
+			eeFighter.move(spriteP2, Direction.WEST, Direction.WEST, Status.MOVE);
 			break;
 		case KeyEvent.VK_H:
-			eeFighter.move(spriteP2, Direction.EAST, Status.MOVE);
+			eeFighter.move(spriteP2, Direction.EAST, Direction.EAST, Status.MOVE);
 			break;
 		case KeyEvent.VK_Z:
 			eeFighter.popLetter(spriteP2);
 			break;
 		case KeyEvent.VK_X:
 			eeFighter.checkAnswer(spriteP2);
+			break;
+		case KeyEvent.VK_C:
+			// player2 pickUp letter
 			break;
 		default:
 			break;
@@ -171,13 +168,15 @@ public class GameViewImp extends JPanel implements GameView, KeyListener {
 		case KeyEvent.VK_DOWN:
 		case KeyEvent.VK_LEFT:
 		case KeyEvent.VK_RIGHT:
-			eeFighter.move(spriteP1, spriteP1.getDirection(), Status.STOP);
+		case KeyEvent.VK_COLON:
+			eeFighter.move(spriteP1, spriteP1.getDirection(), spriteP1.getImgDirection(), Status.STOP);
 			break;
 		case KeyEvent.VK_T:
 		case KeyEvent.VK_G:
 		case KeyEvent.VK_F:
 		case KeyEvent.VK_H:
-			eeFighter.move(spriteP2, spriteP2.getDirection(), Status.STOP);
+		case KeyEvent.VK_C:
+			eeFighter.move(spriteP2, spriteP2.getDirection(), spriteP2.getImgDirection(), Status.STOP);
 			break;
 		}
 	}

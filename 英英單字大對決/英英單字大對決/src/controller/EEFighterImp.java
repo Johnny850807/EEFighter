@@ -92,7 +92,8 @@ public class EEFighterImp implements EEFighter, LetterCreateListener, QuestionLi
 	}
 
 	@Override
-	public void move(PlayerSprite player, Direction direction, Status status) {
+	public void move(PlayerSprite player, Direction direction, Direction imgDirection, Status status) {
+		player.setImgDirection(imgDirection);
 		player.setDirection(direction);
 		player.setStatus(status);
 		gameView.onMovedSuccessfuly(player, direction, status);
