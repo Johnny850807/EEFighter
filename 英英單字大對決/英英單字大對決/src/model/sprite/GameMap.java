@@ -68,7 +68,8 @@ public class GameMap extends Sprite implements Iterable<Sprite> {
 	}
 	
 	public boolean outOfMap(Sprite sprite) {
-		return sprite.getXy().hasNegative() || sprite.getY() + sprite.getBiasWithY() + sprite.getBodyHeight() > HEIGHT * ITEM_SIZE || sprite.getX() + sprite.getBiasWithX() + sprite.getBodyWidth() > WIDTH * ITEM_SIZE;
+		return sprite.getX() + sprite.getBiasWithX() < 0 ||
+				sprite.getY() + sprite.getBiasWithY() < 0 || sprite.getY() + sprite.getBiasWithY() + sprite.getBodyHeight() > HEIGHT * ITEM_SIZE || sprite.getX() + sprite.getBiasWithX() + sprite.getBodyWidth() > WIDTH * ITEM_SIZE;
 	}
 
 	@Override
