@@ -16,10 +16,12 @@ public class Sprite implements Cloneable {
 	protected int bodyLength;
 	protected SpriteName spriteName;
 	protected Direction direction = Direction.EAST;
+	protected Direction imgDirection = Direction.EAST;
 	protected Status status = Status.STOP;
-	protected Map<Direction, ImageSequence> imageMap = new HashMap<>();
+	protected Map<Movement, ImageSequence> imageMap = new HashMap<>();
 	protected GameMap gameMap;
 	protected GameView gameView;
+	protected Movement movement = new Movement(imgDirection, status);
 
 	/**
 	 * 
@@ -31,7 +33,7 @@ public class Sprite implements Cloneable {
 	 * @param bodyLength 圖片的身體部分的長度
 	 * @param image image of this sprite
 	 */
-	public Sprite(int w, int h, int biasWithX, int biasWithY, int bodyHeight, int bodyLength,SpriteName spriteName, Map<Direction, ImageSequence> imageMap) {
+	public Sprite(int w, int h, int biasWithX, int biasWithY, int bodyHeight, int bodyLength,SpriteName spriteName, Map<Movement, ImageSequence> imageMap) {
 		super();
 		this.w = w;
 		this.h = h;
@@ -108,6 +110,7 @@ public class Sprite implements Cloneable {
 	}
 
 	public void setDirection(Direction direction) {
+		movement.direction = direction;
 		this.direction = direction;
 	}
 
@@ -116,7 +119,16 @@ public class Sprite implements Cloneable {
 	}
 
 	public void setStatus(Status status) {
+		movement.status = status;
 		this.status = status;
+	}
+	
+	public Direction getImgDirection() {
+		return imgDirection;
+	}
+
+	public void setImgDirection(Direction imgDirection) {
+		this.imgDirection = imgDirection;
 	}
 
 	public XY getXy() {
@@ -146,16 +158,11 @@ public class Sprite implements Cloneable {
 
 	//Test modify
 	public Image getImage() {
-		if (direction.equals(Direction.NORTH) || direction == Direction.SOUTH)
-			return imageMap.get(Direction.EAST).getImage();
-		return imageMap.get(direction).getImage();
-	}
-	
-	//Todo modify
-	public Image nextImage() {
-		if (direction == Direction.NORTH || direction == Direction.SOUTH)
-			return imageMap.get(Direction.EAST).nextImage();
-		return imageMap.get(direction).nextImage();
+		if (direction.equals(Direction.NORTH) || direction == Direction.SOUTH) 
+			movement.direction = Direction.EAST;
+		if (status == Status.MOVE)
+			return imageMap.get(movement).nextImage();
+		return imageMap.get(movement).nextImage();
 	}
 
 	public GameMap getGameMap() {
@@ -200,6 +207,10 @@ public class Sprite implements Cloneable {
 
 	public void move(XY xy) {
 		this.xy.move(xy);
+	}
+	
+	public Movement getMovement() {
+		return movement;
 	}
 
 	public Sprite clone() {
