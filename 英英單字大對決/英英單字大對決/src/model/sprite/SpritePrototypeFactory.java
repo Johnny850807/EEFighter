@@ -131,7 +131,7 @@ public class SpritePrototypeFactory {
 		spriteMap.put(SpriteName.Z,
 				new Sprite(64, 64, 13, 13, 50, 50, SpriteName.Z, createImageMap(ImageIO.read(new File("pic/Z.png")))));
 		spriteMap.put(SpriteName.PLAYER1,
-				new PlayerSprite(64, 54, 25, 60, 15, 37, SpriteName.PLAYER1, player1ImageMap));
+				new PlayerSprite(52, 73, 25, 60, 15, 37, SpriteName.PLAYER1, player1ImageMap));
 		spriteMap.put(SpriteName.PLAYER2, new PlayerSprite(64, 54, 0, 5, 61, 56, SpriteName.PLAYER2, player2ImageMap));
 	}
 
