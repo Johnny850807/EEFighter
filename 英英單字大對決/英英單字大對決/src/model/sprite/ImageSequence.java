@@ -8,21 +8,19 @@ import javax.imageio.ImageIO;
 public class ImageSequence {
 	private int picAmount;
 	private Image[] images;
-	private int index = -1;
+	private int returnNumber = 0;
+	private int index = 0;
 
 	public ImageSequence(Image[] images, int amount) {
 		this.images = images;
 		picAmount = amount;
 	}
 
-	public Image getImage() {
-		index = (index == picAmount - 1) ? -1 : index;
-		return images[index + 1];
-	}
-
 	public Image nextImage() {
-		index = (index + 1) % picAmount;
-		return images[index];
+		returnNumber++;
+		if (returnNumber % 4 == 0)
+			index++;
+		return images[index % picAmount];
 	}
 
 }

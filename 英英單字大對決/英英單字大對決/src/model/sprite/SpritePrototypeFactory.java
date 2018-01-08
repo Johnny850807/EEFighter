@@ -34,13 +34,11 @@ public class SpritePrototypeFactory {
 		player1ImageMap.put(new Movement(Direction.WEST, Status.MOVE),
 				new ImageSequence(new Image[] { ImageIO.read(new File("pic/boy/boy-left-0.png")),
 						ImageIO.read(new File("pic/boy/boy-left-1.png")),
-						ImageIO.read(new File("pic/boy/boy-left-2.png")),
-						ImageIO.read(new File("pic/boy/boy-left-3.png")) }, 4));
+						ImageIO.read(new File("pic/boy/boy-left-2.png")) }, 3));
 		player1ImageMap.put(new Movement(Direction.EAST, Status.MOVE),
 				new ImageSequence(new Image[] { ImageIO.read(new File("pic/boy/boy-right-0.png")),
 						ImageIO.read(new File("pic/boy/boy-right-1.png")),
-						ImageIO.read(new File("pic/boy/boy-right-2.png")),
-						ImageIO.read(new File("pic/boy/boy-right-3.png")) }, 4));
+						ImageIO.read(new File("pic/boy/boy-right-2.png")) }, 3));
 		player1ImageMap.put(new Movement(Direction.EAST, Status.STOP),
 				new ImageSequence(new Image[] {ImageIO.read(new File("pic/boy/boy-right-0.png"))}, 1));
 		player1ImageMap.put(new Movement(Direction.WEST, Status.STOP),
@@ -133,7 +131,7 @@ public class SpritePrototypeFactory {
 		spriteMap.put(SpriteName.Z,
 				new Sprite(64, 64, 13, 13, 50, 50, SpriteName.Z, createImageMap(ImageIO.read(new File("pic/Z.png")))));
 		spriteMap.put(SpriteName.PLAYER1,
-				new PlayerSprite(64, 54, 0, 15, 60, 49, SpriteName.PLAYER1, player1ImageMap));
+				new PlayerSprite(64, 54, 0, 14, 60, 49, SpriteName.PLAYER1, player1ImageMap));
 		spriteMap.put(SpriteName.PLAYER2, new PlayerSprite(64, 54, 0, 5, 61, 56, SpriteName.PLAYER2, player2ImageMap));
 	}
 
