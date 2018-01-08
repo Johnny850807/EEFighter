@@ -64,8 +64,10 @@ public class EEFighterImp implements EEFighter, LetterCreateListener, QuestionLi
 		player2.setGameMap(gameMap);
 		List<Sprite> grasses = gameMap.getAllGrasses();
 		Collections.shuffle(grasses);
-		player1.setXY(grasses.get(0).getX(), grasses.get(0).getY());
-		player2.setXY(grasses.get(1).getX(), grasses.get(1).getY());
+		Sprite grass0 = grasses.get(0);
+		Sprite grass1 = grasses.get(1);
+		player1.setXY(grass0.getX()+ grass0.getW()/4 - player1.getBiasWithX(), grass0.getY()+ grass0.getH()/4 - player1.getBiasWithY());
+		player2.setXY(grass1.getX()+ grass1.getW()/4 - player2.getBiasWithX(), grass1.getY()+ grass1.getH()/4 - player2.getBiasWithY());
 	}
 
 	@Override
