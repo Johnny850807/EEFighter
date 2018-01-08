@@ -194,11 +194,11 @@ public class Sprite implements Cloneable {
 		int xStartSelf = getX() + getBiasWithX();
 		int yStartSelf = getY() + getBiasWithY();
 		int xEndSelf = xStartSelf + getBodyWidth();
-		int yEndSelf = yStartSelf + getBodyWidth();
+		int yEndSelf = yStartSelf + getBodyHeight();
 		int xStartOther = sprite.getX() + sprite.getBiasWithX();
 		int yStartOther = sprite.getY() + sprite.getBiasWithY();
 		int xEndOther = xStartOther + sprite.getBodyWidth();
-		int yEndOther = yStartOther + sprite.getBodyWidth();
+		int yEndOther = yStartOther + sprite.getBodyHeight();
 		if (xStartSelf < xStartOther && xStartOther < xEndSelf && yStartSelf < yStartOther && yStartOther < yEndSelf)
 			return true;
 		if (xStartSelf < xStartOther && xStartOther < xEndSelf && yStartSelf < yEndOther && yEndOther < yEndSelf)
