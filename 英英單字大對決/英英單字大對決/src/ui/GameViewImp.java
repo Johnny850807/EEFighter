@@ -113,16 +113,16 @@ public class GameViewImp extends JPanel implements GameView, KeyListener {
 	public void keyPressed(KeyEvent e) {
 		switch (e.getKeyCode()) {
 		case KeyEvent.VK_UP:
-			eeFighter.move(spriteP1, spriteP1.getDirection(), Status.MOVE);
+			eeFighter.move(spriteP1, Direction.NORTH, spriteP1.getImgDirection(),  Status.MOVE);
 			break;
 		case KeyEvent.VK_DOWN:
-			eeFighter.move(spriteP1, spriteP1.getDirection(), Status.MOVE);
+			eeFighter.move(spriteP1, Direction.SOUTH, spriteP1.getImgDirection(), Status.MOVE);
 			break;
 		case KeyEvent.VK_LEFT:
-			eeFighter.move(spriteP1, Direction.WEST, Status.MOVE);
+			eeFighter.move(spriteP1, Direction.WEST, Direction.WEST, Status.MOVE);
 			break;
 		case KeyEvent.VK_RIGHT:
-			eeFighter.move(spriteP1, Direction.EAST, Status.MOVE);
+			eeFighter.move(spriteP1, Direction.EAST, Direction.EAST, Status.MOVE);
 			break;
 		case KeyEvent.VK_K:
 			eeFighter.popLetter(spriteP1);
@@ -134,16 +134,16 @@ public class GameViewImp extends JPanel implements GameView, KeyListener {
 			// Todo player1 pickUp letter
 			break;
 		case KeyEvent.VK_T:
-			eeFighter.move(spriteP2, spriteP2.getDirection(), Status.MOVE);
+			eeFighter.move(spriteP2, Direction.NORTH, spriteP2.getImgDirection(), Status.MOVE);
 			break;
 		case KeyEvent.VK_G:
-			eeFighter.move(spriteP2, spriteP2.getDirection(), Status.MOVE);
+			eeFighter.move(spriteP2, Direction.SOUTH, spriteP2.getImgDirection(), Status.MOVE);
 			break;
 		case KeyEvent.VK_F:
-			eeFighter.move(spriteP2, Direction.WEST, Status.MOVE);
+			eeFighter.move(spriteP2, Direction.WEST, Direction.WEST, Status.MOVE);
 			break;
 		case KeyEvent.VK_H:
-			eeFighter.move(spriteP2, Direction.EAST, Status.MOVE);
+			eeFighter.move(spriteP2, Direction.EAST, Direction.EAST, Status.MOVE);
 			break;
 		case KeyEvent.VK_Z:
 			eeFighter.popLetter(spriteP2);
@@ -169,14 +169,14 @@ public class GameViewImp extends JPanel implements GameView, KeyListener {
 		case KeyEvent.VK_LEFT:
 		case KeyEvent.VK_RIGHT:
 		case KeyEvent.VK_COLON:
-			eeFighter.move(spriteP1, spriteP1.getDirection(), Status.STOP);
+			eeFighter.move(spriteP1, spriteP1.getDirection(), spriteP1.getImgDirection(), Status.STOP);
 			break;
 		case KeyEvent.VK_T:
 		case KeyEvent.VK_G:
 		case KeyEvent.VK_F:
 		case KeyEvent.VK_H:
 		case KeyEvent.VK_C:
-			eeFighter.move(spriteP2, spriteP2.getDirection(), Status.STOP);
+			eeFighter.move(spriteP2, spriteP2.getDirection(), spriteP2.getImgDirection(), Status.STOP);
 			break;
 		}
 	}
