@@ -154,7 +154,7 @@ public class Sprite implements Cloneable {
 
 	//Test modify
 	public Image getImage() {
-		return imageMap.get(direction).next();
+		return imageMap.get(direction).nextImage();
 	}
 
 	public GameMap getGameMap() {

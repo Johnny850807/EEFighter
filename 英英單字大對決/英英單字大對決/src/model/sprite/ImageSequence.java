@@ -25,7 +25,11 @@ public class ImageSequence {
 		}
 	}
 	
-	public Image next() { //取得下一張畫面
+	public ImageSequence(Image image, int n) {
+		images = new Image
+	}
+	
+	public Image nextImage() { //取得下一張畫面
 		 index = (index+1) % picAmount; //計算下一畫面索引
 		 return images[index];
 		 }
