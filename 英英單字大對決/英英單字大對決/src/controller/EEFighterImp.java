@@ -165,7 +165,7 @@ public class EEFighterImp implements EEFighter, LetterCreateListener, QuestionLi
 		if (isLetterCollided(player)) 
 			gameView.onLetterGotten(player, player.getLetters());
 		else 
-			gameView.onNoLetterGotten(player, player.getLetters());		
+			gameView.onNoLetterGotten(player, player.getLetters());	
 	}
 
 	@Override
