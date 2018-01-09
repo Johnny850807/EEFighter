@@ -13,8 +13,8 @@ import model.Question;
 import model.QuestionManager;
 import model.QuestionManager.QuestionListener;
 import model.sprite.GameMap;
-import model.sprite.LetterManager;
-import model.sprite.LetterManager.LetterCreateListener;
+import model.sprite.LetterPlacingManager;
+import model.sprite.LetterPlacingManager.LetterCreateListener;
 import model.sprite.LetterPool;
 import model.sprite.PlayerSprite;
 import model.sprite.Sprite;
@@ -31,7 +31,7 @@ import ui.GameView;
 public class EEFighterImp implements EEFighter, LetterCreateListener, QuestionListener {
 	private GameView gameView;
 	private GameMap gameMap;
-	private LetterManager letterManager;
+	private LetterPlacingManager letterManager;
 	private QuestionManager questionManager;
 	private List<Sprite> letters = new ArrayList<Sprite>();
 	private PlayerSprite player1;
@@ -45,7 +45,7 @@ public class EEFighterImp implements EEFighter, LetterCreateListener, QuestionLi
 		questionManager = new QuestionManager(componentAbstractFactory.getWordRepository());
 		questionManager.addListener(this);
 		createPlayers();
-		letterManager = new LetterManager(gameMap, new LetterPool(70), player1, player2);
+		letterManager = new LetterPlacingManager(gameMap, new LetterPool(70), player1, player2);
 		letterManager.setLetterCreateListener(this);
 	}
 	
