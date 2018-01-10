@@ -1,5 +1,8 @@
 package model.sprite;
 
+import static model.MapConstants.MAPHEIGHT;
+import static model.MapConstants.MAPWIDTH;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;

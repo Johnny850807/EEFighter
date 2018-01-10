@@ -1,10 +1,7 @@
 package model.sprite;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
-
-import org.ietf.jgss.Oid;
+import static model.MapConstants.MAPHEIGHT;
+import static model.MapConstants.MAPWIDTH;
 
 /**
  * @author WaterBall

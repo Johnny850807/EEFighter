@@ -1,5 +1,8 @@
 package ui;
 
+import static model.MapConstants.MAPHEIGHT;
+import static model.MapConstants.MAPWIDTH;
+
 import java.awt.FlowLayout;
 import java.awt.Graphics;
 import java.awt.event.KeyEvent;
@@ -15,10 +18,8 @@ import model.Question;
 import model.sprite.GameMap;
 import model.sprite.PlayerSprite;
 import model.sprite.Sprite;
-import model.sprite.SpriteName;
 import model.sprite.Sprite.Direction;
 import model.sprite.Sprite.Status;
-import ui.GameStartView.CloseHandler;
 import utils.SoundPlayer;
 
 /**
@@ -43,7 +44,7 @@ public class GameViewImp extends JPanel implements GameView, KeyListener {
 
 	@Override
 	public void start() {
-		setBounds(0, 0, 1110, 700);
+		setBounds(0, 0, MAPWIDTH * 64, MAPHEIGHT * 64);
 		setupViews();
 		setFocusable(true);
 		requestFocusInWindow();
