@@ -1,5 +1,7 @@
 package ui;
 
+import static model.MapConstants.MAPHEIGHT;
+import static model.MapConstants.MAPWIDTH;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
@@ -41,7 +43,7 @@ public class GameStartView extends JFrame implements IGameStartView {
 		super("英英單字大對決");
 		eeFighterImp = new EEFighterImp(componentAbstractFactory);
 		EventQueue.invokeLater(() -> {
-			setBounds(215, 80, 1105, 715);
+			setBounds(215, 80, MAPWIDTH *64 + 5, MAPHEIGHT * 64 + 15);
 			setupViews();
 			setupLayout();
 			addWindowListener(new CloseHandler());
