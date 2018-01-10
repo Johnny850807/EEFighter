@@ -6,7 +6,7 @@ import java.util.Random;
 
 import model.Question;
 
-public class LetterManager {
+public class LetterPlacingManager {
 	private List<Sprite> letters = new ArrayList<>();
 	private LetterCreateListener letterCreateListener;
 	private LetterPool letterPool;
@@ -16,7 +16,7 @@ public class LetterManager {
 	private boolean windowClosed;
 	private boolean gameOver;
 	
-	public LetterManager(GameMap gameMap, LetterPool letterPool, PlayerSprite player1, PlayerSprite player2) {
+	public LetterPlacingManager(GameMap gameMap, LetterPool letterPool, PlayerSprite player1, PlayerSprite player2) {
 		this.letterPool = letterPool;
 		this.gameMap = gameMap;
 		this.player1 = player1;
