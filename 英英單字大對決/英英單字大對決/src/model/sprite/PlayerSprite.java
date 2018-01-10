@@ -64,9 +64,11 @@ public class PlayerSprite extends Sprite{
 
 	public void addLetter(String answer, Sprite sprite) {
 		List<Character> tempAnswer = new ArrayList<>();
-		for (int i = 0; i < answer.length(); i++)
+		List<Character> tempAnswerCopy = new ArrayList<>();
+		for (int i = 0; i < answer.length(); i++) {
 			tempAnswer.add(answer.charAt(i));
-		List<Character> tempAnswercopy = tempAnswer;
+			tempAnswerCopy.add(answer.charAt(i));
+		}
 		List<Character> match = new ArrayList<>();
 		List<Character> nonsenses = new ArrayList<>();
 		
@@ -81,7 +83,7 @@ public class PlayerSprite extends Sprite{
 		}
 		
 		Collections.sort(match, (letter1, letter2) -> {
-			return tempAnswercopy.indexOf(letter1) - tempAnswercopy.indexOf(letter2);
+			return tempAnswerCopy.indexOf(letter1) - tempAnswerCopy.indexOf(letter2);
 		});
 		
 		StringBuilder stringBuilder = new StringBuilder();
