@@ -172,4 +172,17 @@
         <Definition partOfSpeech="ADJ">enlarged to an abnormal degree</Definition>
         <Definition partOfSpeech="ADJ">represented as greater than is true or reasonable</Definition>
     </Word>
+<Word name="water">
+        <SoundPath>sounds\vocabulary\water.wav</SoundPath>
+        <Definition partOfSpeech="N">binary compound that occurs at room temperature as a clear colorless odorless tasteless liquid; freezes into ice below 0 degrees centigrade and boils above 100 degrees centigrade; widely used as a solvent</Definition>
+        <Definition partOfSpeech="N">a liquid necessary for the life of most animals and plants</Definition>
+        <Definition partOfSpeech="N">once thought to be one of four elements composing the universe (Empedocles)</Definition>
+        <Definition partOfSpeech="N">the part of the earth's surface covered with water (such as a river or lake or ocean)</Definition>
+        <Definition partOfSpeech="N">a facility that provides a source of water</Definition>
+        <Definition partOfSpeech="N">liquid excretory product</Definition>
+        <Definition partOfSpeech="V">provide with water</Definition>
+        <Definition partOfSpeech="V">supply with water, as with channels or ditches or streams</Definition>
+        <Definition partOfSpeech="V">secrete or form water, as tears or saliva</Definition>
+        <Definition partOfSpeech="V">fill with tears</Definition>
+    </Word>
 </EnglishWarehouse>
