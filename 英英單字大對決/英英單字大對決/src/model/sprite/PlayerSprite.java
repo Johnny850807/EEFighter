@@ -13,12 +13,12 @@ import model.Question;
 public class PlayerSprite extends Sprite{
 	private Stack<Sprite> letters = new Stack<Sprite>();
 	private int score = 0;
-	
+
 	public PlayerSprite(int w, int h, int biasWithX, int biasWithY, int bodyHeight, int bodyLength,
 			SpriteName spriteName, Map<Movement, ImageSequence> imageMap) {
 		super(w, h, biasWithX, biasWithY, bodyHeight, bodyLength, spriteName, imageMap);
 	}
-	
+
 	public void setScore(int score) {
 		this.score = score;
 	}
@@ -31,32 +31,32 @@ public class PlayerSprite extends Sprite{
 	public synchronized void update() {
 		if (status == Status.MOVE) {
 			switch (direction) {
-				case NORTH:
-					xy.move(0, -4);
-					break;
-				case SOUTH:
-					xy.move(0, 4);
-					break;
-				case WEST:
-					xy.move(-4, 0);
-					break;
-				case EAST:
-					xy.move(4, 0);
-					break;
-				default:
-					break;
-			}	
+			case NORTH:
+				xy.move(0, -4);
+				break;
+			case SOUTH:
+				xy.move(0, 4);
+				break;
+			case WEST:
+				xy.move(-4, 0);
+				break;
+			case EAST:
+				xy.move(4, 0);
+				break;
+			default:
+				break;
+			}
 		}
 		if (moveFailed(gameMap)) {
 			xy.rollback();
 			gameView.onHitWall(this);
 		}
 	}
-	
-	private boolean moveFailed(GameMap gameMap){
+
+	private boolean moveFailed(GameMap gameMap) {
 		if (gameMap.outOfMap(this))
 			return true;
-		for (Sprite terrain : gameMap.getAllTerrains()) 
+		for (Sprite terrain : gameMap.getAllTerrains())
 			if (terrain.isCollisions(this))
 				return true;
 		return false;
@@ -93,25 +93,30 @@ public class PlayerSprite extends Sprite{
 			stringBuilder.append(character);
 		
 		// TODO ±Æ§Ç
-		letters.push(sprite);
+
+		// letters.push(sprite);
 	}
-	
+
+	private boolean indexIsAlreadyChange(String gottenLetter, String questionLetter) {
+		return gottenLetter.equals(questionLetter) ? true : false;
+	}
+
 	public Sprite popLetter() {
-		if (!letters.isEmpty()) 
+		if (!letters.isEmpty())
 			return letters.pop();
 		return null;
 	}
-	
+
 	public void removeAllLetters() {
 		while (!letters.isEmpty())
 			popLetter();
 	}
-	
+
 	public List<Sprite> getLetters() {
 		for (Sprite sprite : letters) {
 			System.out.println(sprite.spriteName.toString());
 		}
 		return letters;
 	}
-	
+
 }
