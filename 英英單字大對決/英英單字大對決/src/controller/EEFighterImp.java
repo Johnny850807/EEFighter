@@ -152,7 +152,7 @@ public class EEFighterImp implements EEFighter, LetterCreateListener, QuestionLi
 	public boolean isLetterCollided(PlayerSprite player) {
 		for (Sprite letter : letters)
 			if (letter.isCollisions(player)) {
-				player.addLetter(letter);
+				player.addLetter(questionManager.getNowQuestion().getWord().toUpperCase(), letter);
 				letters.remove(letter);
 				letterManager.releaseLetter(letter);
 				return true;

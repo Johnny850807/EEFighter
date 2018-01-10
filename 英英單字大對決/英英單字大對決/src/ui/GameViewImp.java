@@ -168,14 +168,12 @@ public class GameViewImp extends JPanel implements GameView, KeyListener {
 		case KeyEvent.VK_DOWN:
 		case KeyEvent.VK_LEFT:
 		case KeyEvent.VK_RIGHT:
-		case KeyEvent.VK_P:
 			eeFighter.move(spriteP1, spriteP1.getDirection(), spriteP1.getImgDirection(), Status.STOP);
 			break;
 		case KeyEvent.VK_T:
 		case KeyEvent.VK_G:
 		case KeyEvent.VK_F:
 		case KeyEvent.VK_H:
-		case KeyEvent.VK_C:
 			eeFighter.move(spriteP2, spriteP2.getDirection(), spriteP2.getImgDirection(), Status.STOP);
 			break;
 		}
