@@ -1,8 +1,10 @@
 package model.sprite;
+import static model.MapConstants.MAPHEIGHT;
+import static model.MapConstants.MAPWIDTH;
 
 public class BasicMapBuilder implements MapBuilder {
 
-	private GameMap gameMap = new GameMap(17, 9);
+	private GameMap gameMap = new GameMap(MAPWIDTH, MAPHEIGHT);
 	private SpritePrototypeFactory spritePrototypeFactory = SpritePrototypeFactory.getInstance();
 
 	@Override
