@@ -103,7 +103,6 @@ public class LetterPool {
 	}
 
 	public void shuffleObjects(Question question) {
-		
 		Collections.shuffle(available);
 		String str = question.getWord().toUpperCase();
 		System.out.println(str);
