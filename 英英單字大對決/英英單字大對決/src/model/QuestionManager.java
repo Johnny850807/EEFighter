@@ -31,7 +31,7 @@ public class QuestionManager implements Iterable<Question> {
 			List<Word> words = wordRepository.readAllWord();
 			Collections.shuffle(words);
 			// int number = 0;
-			for (int i = 0; i < 7; i++) {
+			for (int i = 0; i < 3; i++) {
 				String wordtxt = words.get(i).getWord();
 				String soundPath = words.get(i).getSoundPath();
 				Map<PartOfSpeech, List<String>> definitions = words.get(i).getSentences();
