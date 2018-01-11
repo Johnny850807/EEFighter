@@ -12,7 +12,7 @@ public interface IGameStartView {
 
 	void showPlayerScore(String player, int Score);
 
-	void onPlayerEatLetter(String string, int score, List<Sprite> letter);
+	void onPlayerEatLetter(String answer, String string, int score, List<Sprite> letter);
 
-	void onPlayerPopedLetter(String string, int score, List<Sprite> letter);
+	void onPlayerPopedLetter(String answer, String string, int score, List<Sprite> letter);
 }

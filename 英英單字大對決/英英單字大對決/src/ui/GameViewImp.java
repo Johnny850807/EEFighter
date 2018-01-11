@@ -34,6 +34,7 @@ public class GameViewImp extends JPanel implements GameView, KeyListener {
 	private PlayerSprite spriteP2;
 	private List<Sprite> letters;
 	private IGameStartView gameStartView;
+	private Question nowQuestion;
 
 	public GameViewImp(GameStartView gameStartView, EEFighter eeFighter,
 			ComponentAbstractFactory componentAbstractFactory) {
@@ -202,15 +203,16 @@ public class GameViewImp extends JPanel implements GameView, KeyListener {
 
 	@Override
 	public void onNextQuestion(Question question) {
+		this.nowQuestion = question;
 		gameStartView.onNextQuestion(question);
 	}
 
 	@Override
 	public void onLetterPoppedSuccessfuly(PlayerSprite player, List<Sprite> letter) {
 		if (spriteP1 == player)
-			gameStartView.onPlayerPopedLetter("player1", player.getScore(), letter);
+			gameStartView.onPlayerPopedLetter(nowQuestion.getWord(), "player1", player.getScore(), letter);
 		else if (spriteP2 == player)
-			gameStartView.onPlayerPopedLetter("player2", player.getScore(), letter);
+			gameStartView.onPlayerPopedLetter(nowQuestion.getWord(), "player2", player.getScore(), letter);
 	}
 
 	@Override
@@ -221,9 +223,9 @@ public class GameViewImp extends JPanel implements GameView, KeyListener {
 	@Override
 	public void onLetterGotten(PlayerSprite player, List<Sprite> letter) {
 		if (spriteP1 == player)
-			gameStartView.onPlayerEatLetter("player1", player.getScore(), letter);
+			gameStartView.onPlayerEatLetter(nowQuestion.getWord(), "player1", player.getScore(), letter);
 		else
-			gameStartView.onPlayerEatLetter("player2", player.getScore(), letter);
+			gameStartView.onPlayerEatLetter(nowQuestion.getWord(), "player2", player.getScore(), letter);
 	}
 
 	@Override

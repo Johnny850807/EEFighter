@@ -22,6 +22,8 @@ import factory.ComponentAbstractFactory;
 import factory.ReleasedComponentAbstractFactory;
 import model.Question;
 import model.sprite.Sprite;
+import model.words.LetterSpriteSorter;
+import utils.SpriteLogHelper;
 
 /**
  * @author Lin
@@ -171,7 +173,8 @@ public class GameStartView extends JFrame implements IGameStartView {
 		add(c, gbc);
 	}
 
-	public void showPlayerBarInfo(String player, int score, List<Sprite> letter) {
+	public void showPlayerBarInfo(String answer, String player, int score, List<Sprite> letter) {
+		
 		if (player.equals("player1")) {
 			StringBuilder strBuilder = new StringBuilder("[" + score + "] Player1: ");
 			for (int i = 0; i < letter.size(); i++)
@@ -200,13 +203,13 @@ public class GameStartView extends JFrame implements IGameStartView {
 	}
 
 	@Override
-	public void onPlayerEatLetter(String player, int score, List<Sprite> letter) {
-		showPlayerBarInfo(player, score, letter);
+	public void onPlayerEatLetter(String answer, String player, int score, List<Sprite> letter) {
+		showPlayerBarInfo(answer, player, score, letter);
 	}
 
 	@Override
-	public void onPlayerPopedLetter(String player, int score, List<Sprite> letter) {
-		showPlayerBarInfo(player, score, letter);
+	public void onPlayerPopedLetter(String answer, String player, int score, List<Sprite> letter) {
+		showPlayerBarInfo(answer, player, score, letter);
 	}
 
 	protected class CloseHandler extends WindowAdapter {
