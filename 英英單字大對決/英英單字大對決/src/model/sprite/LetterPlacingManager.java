@@ -1,13 +1,18 @@
 package model.sprite;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.ConcurrentModificationException;
 import java.util.List;
 import java.util.Random;
+import java.util.Timer;
+import java.util.TimerTask;
+import java.util.concurrent.TimeUnit;
 
 import model.Question;
 
 public class LetterPlacingManager {
-	private List<Sprite> letters = new ArrayList<>();
+	private List<Sprite> letters = Collections.synchronizedList(new ArrayList<>());
 	private LetterCreateListener letterCreateListener;
 	private LetterPool letterPool;
 	private GameMap gameMap;
@@ -15,6 +20,7 @@ public class LetterPlacingManager {
 	private PlayerSprite player2;
 	private boolean windowClosed;
 	private boolean gameOver;
+	private Timer timer = new Timer();
 	
 	public LetterPlacingManager(GameMap gameMap, LetterPool letterPool, PlayerSprite player1, PlayerSprite player2) {
 		this.letterPool = letterPool;
@@ -36,16 +42,33 @@ public class LetterPlacingManager {
 			public void run() {
 				while (!windowClosed && !gameOver) {
 					try {
-						Thread.sleep(1750);
+						Thread.sleep(550);
 						Sprite sprite = getLetter();
 						letters.add(sprite);
+						releaseLetterAfter20Secs(sprite);
 						letterCreateListener.onCreateLetters(letters);
+					} catch (ConcurrentModificationException e) {
+						//
 					} catch (InterruptedException e) {
-						e.printStackTrace();
+						// 
 					}
 				}
 			}
 		}.start();
+	}
+	
+	private void releaseLetterAfter20Secs(Sprite letter) {
+		timer.schedule(new TimerTask() {
+			@Override
+			public void run() {
+				if (letters.contains(letter))
+				{
+					letterPool.release(letter);
+					letters.remove(letter);
+					letterCreateListener.onCreateLetters(letters);
+				}
+			}
+		}, TimeUnit.SECONDS.toMillis(20));
 	}
 	
 	private Sprite getLetter() {

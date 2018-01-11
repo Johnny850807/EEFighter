@@ -82,10 +82,7 @@
 
 
 
-<Word name="subtropical">
-        <SoundPath>sounds\vocabulary\subtropical.wav</SoundPath>
-        <Definition partOfSpeech="ADJ">of or relating to or characteristic of conditions in the subtropics</Definition>
-    </Word>
+
 
 
 
@@ -215,11 +212,7 @@
         <Definition partOfSpeech="V">look at carefully; study mentally</Definition>
         <Definition partOfSpeech="V">deem to be</Definition>
     </Word>
-<Word name="apple">
-        <SoundPath>sounds\vocabulary\apple.wav</SoundPath>
-        <Definition partOfSpeech="N">native Eurasian tree widely cultivated in many varieties for its firm rounded edible fruits</Definition>
-        <Definition partOfSpeech="N">fruit with red or yellow or green skin and sweet to tart crisp whitish flesh</Definition>
-    </Word>
+
 <Word name="voice">
         <SoundPath>sounds\vocabulary\voice.wav</SoundPath>
         <Definition partOfSpeech="N">the sound made by the vibration of vocal folds modified by the resonance of the vocal tract</Definition>
@@ -371,17 +364,8 @@
         <Definition partOfSpeech="V">subject to a search</Definition>
         <Definition partOfSpeech="V">inquire into</Definition>
     </Word>
-<Word name="banana">
-        <SoundPath>sounds\vocabulary\banana.wav</SoundPath>
-        <Definition partOfSpeech="N">any of several tropical and subtropical treelike herbs of the genus Musa having a terminal crown of large entire leaves and usually bearing hanging clusters of elongated fruits</Definition>
-        <Definition partOfSpeech="N">elongated crescent-shaped yellow fruit with soft sweet flesh</Definition>
-    </Word>
-<Word name="several">
-        <SoundPath>sounds\vocabulary\several.wav</SoundPath>
-        <Definition partOfSpeech="ADJ">(used with count nouns) of an indefinite number more than 2 or 3 but not many</Definition>
-        <Definition partOfSpeech="ADJ">distinct and individual</Definition>
-        <Definition partOfSpeech="ADJ">considered individually</Definition>
-    </Word>
+
+
 <Word name="visible">
         <SoundPath>sounds\vocabulary\visible.wav</SoundPath>
         <Definition partOfSpeech="ADJ">capable of being seen; or open to easy view</Definition>
@@ -431,10 +415,31 @@
         <Definition partOfSpeech="ADJ">causing or ending in or approaching death</Definition>
         <Definition partOfSpeech="ADJ">relating to or occurring in a term or fixed period of time</Definition>
     </Word>
+
+<Word name="apple">
+        <SoundPath/>
+        <Definition partOfSpeech="N">native Eurasian tree widely cultivated in many varieties for its firm rounded edible fruits</Definition>
+        <Definition partOfSpeech="N">fruit with red or yellow or green skin and sweet to tart crisp whitish flesh</Definition>
+    </Word>
+<Word name="banana">
+        <SoundPath/>
+        <Definition partOfSpeech="N">any of several tropical and subtropical treelike herbs of the genus Musa having a terminal crown of large entire leaves and usually bearing hanging clusters of elongated fruits</Definition>
+        <Definition partOfSpeech="N">elongated crescent-shaped yellow fruit with soft sweet flesh</Definition>
+    </Word>
 <Word name="vocabulary">
-        <SoundPath>sounds\vocabulary\vocabulary.wav</SoundPath>
+        <SoundPath/>
         <Definition partOfSpeech="N">a language user's knowledge of words</Definition>
         <Definition partOfSpeech="N">a listing of the words used in some enterprise</Definition>
         <Definition partOfSpeech="N">the system of techniques or symbols serving as a means of expression (as in arts or crafts)</Definition>
+    </Word>
+<Word name="subtropical">
+        <SoundPath/>
+        <Definition partOfSpeech="ADJ">of or relating to or characteristic of conditions in the subtropics</Definition>
+    </Word>
+<Word name="several">
+        <SoundPath/>
+        <Definition partOfSpeech="ADJ">(used with count nouns) of an indefinite number more than 2 or 3 but not many</Definition>
+        <Definition partOfSpeech="ADJ">distinct and individual</Definition>
+        <Definition partOfSpeech="ADJ">considered individually</Definition>
     </Word>
 </EnglishWarehouse>

@@ -137,6 +137,10 @@ public class EEFighterImp implements EEFighter, LetterCreateListener, QuestionLi
 	@Override
 	public void onCreateLetters(List<Sprite> letters) {
 		this.letters = letters;
+		StringBuilder strb = new StringBuilder();
+		for (Sprite letter : letters)
+			strb.append(letter.getSpriteName() + " ");
+		System.out.println(strb.toString());
 	}
 
 	@Override
@@ -152,7 +156,7 @@ public class EEFighterImp implements EEFighter, LetterCreateListener, QuestionLi
 	public boolean isLetterCollided(PlayerSprite player) {
 		for (Sprite letter : letters)
 			if (letter.isCollisions(player)) {
-				player.addLetter(questionManager.getNowQuestion().getWord().toUpperCase(), letter);
+				player.addLetter(letter);
 				letters.remove(letter);
 				letterPlacingManager.releaseLetter(letter);
 				return true;

@@ -20,7 +20,7 @@ public class ReleasedComponentAbstractFactory implements ComponentAbstractFactor
 	public ReleasedComponentAbstractFactory() {
 		crawler = new CrawlerVocabularycom();
 		tts = new ITRI_TTS(Secret.TTS_ACCOUNT, Secret.TTS_PASSWORD);
-		wordRepository = new WordXMLRepository("®ÑÞ±¦Ò¸Õ");
+		wordRepository = new WordXMLRepository("wordwarehouse");
 	}
 
 	@Override

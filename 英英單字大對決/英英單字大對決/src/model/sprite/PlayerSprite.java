@@ -62,43 +62,8 @@ public class PlayerSprite extends Sprite{
 		return false;
 	}
 
-	public void addLetter(String answer, Sprite sprite) {
-		List<Character> tempAnswer = new ArrayList<>();
-		List<Character> tempAnswerCopy = new ArrayList<>();
-		for (int i = 0; i < answer.length(); i++) {
-			tempAnswer.add(answer.charAt(i));
-			tempAnswerCopy.add(answer.charAt(i));
-		}
-		List<Character> match = new ArrayList<>();
-		List<Character> nonsenses = new ArrayList<>();
-		
-		for (int j = 0; j < letters.size(); j++) {
-			Character letter = letters.get(j).getSpriteName().toString().charAt(0);
-			if (tempAnswer.contains(letter)) {
-				match.add(letter);
-				tempAnswer.remove(letter);
-			}
-			else 
-				nonsenses.add(letter);
-		}
-		
-		Collections.sort(match, (letter1, letter2) -> {
-			return tempAnswerCopy.indexOf(letter1) - tempAnswerCopy.indexOf(letter2);
-		});
-		
-		StringBuilder stringBuilder = new StringBuilder();
-		for (Character character : match)
-			stringBuilder.append(character);
-		for (Character character : nonsenses)
-			stringBuilder.append(character);
-		
-		// TODO ±Æ§Ç
-
-		// letters.push(sprite);
-	}
-
-	private boolean indexIsAlreadyChange(String gottenLetter, String questionLetter) {
-		return gottenLetter.equals(questionLetter) ? true : false;
+	public void addLetter(Sprite sprite) {
+		 letters.push(sprite);
 	}
 
 	public Sprite popLetter() {

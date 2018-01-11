@@ -202,19 +202,4 @@ public class WordXMLRepository implements WordRepository {
 		return expr.evaluate(document, type);
 	}
 
-	public static void main(String[] argv) throws Exception {
-		String[] words = { "apple", "banana", "vocabulary", "subtropical", "several", "genus", "have", "terminal" };
-		WordXMLRepository repository = new WordXMLRepository("words");
-		for (String word : words) {
-			Word wordProduct = new CrawlerVocabularycom().crawlWordAndGetSentence(word);
-			repository.addWord(wordProduct);
-		}
-		/*
-		 * Word wordProduct = new
-		 * CrawlerVocabularycom().crawlWordAndGetSentence("have");
-		 * System.out.println(repository.readWord("banana"));
-		 * repository.removeWord(wordProduct);
-		 */
-		repository.readAllWord().stream().forEach(w -> System.out.println(w));
-	}
 }
