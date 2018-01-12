@@ -1,3 +1,0 @@
- enum ActionType  {
-       HALT, WALK
-    }
