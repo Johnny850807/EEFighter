@@ -1,6 +1,6 @@
 package model;
 
 public interface MapConstants {
-	int MAPWIDTH = 25;
-	int MAPHEIGHT = 14;
+	int MAPWIDTH = 18;
+	int MAPHEIGHT = 9;
 }
