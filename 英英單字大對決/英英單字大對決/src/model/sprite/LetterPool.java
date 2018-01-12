@@ -105,7 +105,7 @@ public class LetterPool {
 	public void shuffleObjects(Question question) {
 		Collections.shuffle(available);
 		String str = question.getWord().toUpperCase();
-		System.out.println(str);
+		log("Now answer:" + str);
 		String[] questionLetters = str.split("");
 		for (int i = 0; i < questionLetters.length; i++)
 			for (int j = 0; j < available.size(); j++)
@@ -129,9 +129,9 @@ public class LetterPool {
 
 	private Sprite getAvailableObject() {
 		Sprite nextObject = available.get(0);
-		log("Available object returned: " + nextObject);
+		log("Letter pool - Available object returned: " + nextObject.getSpriteName());
 		available.remove(0);
-		System.out.println(available.size());
+		log("Letter pool available amount: " +available.size());
 		return nextObject;
 	}
 

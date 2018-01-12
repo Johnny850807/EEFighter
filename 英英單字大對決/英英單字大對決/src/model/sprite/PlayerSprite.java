@@ -3,15 +3,17 @@ package model.sprite;
 import java.awt.Image;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
 import java.util.Stack;
 
 import model.Question;
+import model.words.LetterSpriteSorter;
 
 public class PlayerSprite extends Sprite{
-	private Stack<Sprite> letters = new Stack<Sprite>();
+	private List<Sprite> letters = new ArrayList<Sprite>();
 	private int score = 0;
 
 	public PlayerSprite(int w, int h, int biasWithX, int biasWithY, int bodyHeight, int bodyLength,
@@ -63,24 +65,29 @@ public class PlayerSprite extends Sprite{
 	}
 
 	public void addLetter(Sprite sprite) {
-		 letters.push(sprite);
+		 letters.add(sprite);
 	}
 
-	public Sprite popLetter() {
-		if (!letters.isEmpty())
-			return letters.pop();
+	public Sprite popLetter(String answer) {
+		LinkedList<Sprite> sortedLetters = new LinkedList<>(
+				LetterSpriteSorter.productSortedLetters(answer, letters));
+		Sprite lastLetter = sortedLetters.peekLast();
+		for (int i = letters.size() - 1 ; i >= 0 ; i --)
+			if (letters.get(i).getSpriteName() == lastLetter.getSpriteName())
+			{
+				Sprite poppedLetter = letters.get(i);
+				System.out.println("Popped letter: " + poppedLetter.getSpriteName());
+				letters.remove(i);
+				return poppedLetter;
+			}
 		return null;
 	}
 
 	public void removeAllLetters() {
-		while (!letters.isEmpty())
-			popLetter();
+		letters.clear();
 	}
 
 	public List<Sprite> getLetters() {
-		for (Sprite sprite : letters) {
-			System.out.println(sprite.spriteName.toString());
-		}
 		return letters;
 	}
 

@@ -45,7 +45,7 @@ public class EEFighterImp implements EEFighter, LetterCreateListener, QuestionLi
 		questionManager = new QuestionManager(componentAbstractFactory.getWordRepository());
 		questionManager.addListener(this);
 		createPlayers();
-		letterPlacingManager = new LetterPlacingManager(gameMap, new LetterPool(70), player1, player2);
+		letterPlacingManager = new LetterPlacingManager(gameMap, new LetterPool(70, false), player1, player2);
 		letterPlacingManager.setLetterCreateListener(this);
 	}
 	
@@ -108,7 +108,6 @@ public class EEFighterImp implements EEFighter, LetterCreateListener, QuestionLi
 		cleanMapAndPlayerLetters();
 		if (questionManager.hasNext()) {
 			Question question = questionManager.getNextQuestion();
-			System.out.println(questionManager.getIndex() + " " + question.getNumber());
 			letterPlacingManager.onNextQuestion(question);
 			gameView.onNextQuestion(question);
 			playQuestionWord(question);
@@ -137,15 +136,11 @@ public class EEFighterImp implements EEFighter, LetterCreateListener, QuestionLi
 	@Override
 	public void onCreateLetters(List<Sprite> letters) {
 		this.letters = letters;
-		StringBuilder strb = new StringBuilder();
-		for (Sprite letter : letters)
-			strb.append(letter.getSpriteName() + " ");
-		System.out.println(strb.toString());
 	}
 
 	@Override
 	public void popLetter(PlayerSprite player) {
-		Sprite letter = player.popLetter();
+		Sprite letter = player.popLetter(questionManager.getNowQuestion().getWord());
 		if (letter != null) 
 			gameView.onLetterPoppedSuccessfuly(player, player.getLetters());
 		else 

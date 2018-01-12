@@ -11,10 +11,13 @@ import java.util.Map;
 import model.sprite.Sprite;
 import model.sprite.SpriteName;
 import model.sprite.SpritePrototypeFactory;
+import utils.SpriteLogHelper;
 
 public class LetterSpriteSorter {
 	
 	public static List<Sprite> productSortedLetters(String answer, List<Sprite> letters){
+		answer = answer.toUpperCase();
+		System.out.println("Answer: " + answer + ", Input: " + SpriteLogHelper.toString(letters));
 		List<Sprite> output = new ArrayList<>();
 		List<Character> answerCharList = new ArrayList<>();
 		List<Character> answerCharListCopy = new ArrayList<>();
@@ -46,12 +49,16 @@ public class LetterSpriteSorter {
 			{
 				if (letterToChar(letter) == answerCharListCopy.get(i) &&
 						!ordering.containsKey(i))
+				{
 					ordering.put(i, letter);
+					break;
+				}
 			}
 		}
 		
 		output.addAll(new ArrayList<>(ordering.values()));
 		output.addAll(nonsensesLetters);
+		System.out.println("Output: " + SpriteLogHelper.toString(output));
 		return output;
 	}
 	

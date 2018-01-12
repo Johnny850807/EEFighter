@@ -12,6 +12,7 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.awt.peer.LightweightPeer;
 import java.util.List;
 
 import javax.swing.JFrame;
@@ -174,7 +175,8 @@ public class GameStartView extends JFrame implements IGameStartView {
 	}
 
 	public void showPlayerBarInfo(String answer, String player, int score, List<Sprite> letter) {
-		
+		letter = LetterSpriteSorter.productSortedLetters(answer, letter);
+		System.out.println(SpriteLogHelper.toString(letter));
 		if (player.equals("player1")) {
 			StringBuilder strBuilder = new StringBuilder("[" + score + "] Player1: ");
 			for (int i = 0; i < letter.size(); i++)
