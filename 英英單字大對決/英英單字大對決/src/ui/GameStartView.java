@@ -22,6 +22,7 @@ import controller.EEFighterImp;
 import factory.ComponentAbstractFactory;
 import factory.ReleasedComponentAbstractFactory;
 import model.Question;
+import model.sprite.PlayerSprite;
 import model.sprite.Sprite;
 import model.words.LetterSpriteSorter;
 import utils.SpriteLogHelper;
@@ -191,9 +192,9 @@ public class GameStartView extends JFrame implements IGameStartView {
 	}
 
 	@Override
-	public void onAnswerCorrectCleanLettersView() {
-		player1Lab.setText("[0] Player1: ");
-		player2Lab.setText("[0] Player2: ");
+	public void onAnswerCorrectCleanLettersView(PlayerSprite player1, PlayerSprite player2) {
+		player1Lab.setText("["+ player1.getScore() +"] Player1: ");
+		player2Lab.setText("["+ player2.getScore() +"] Player2: ");
 	}
 
 	@Override

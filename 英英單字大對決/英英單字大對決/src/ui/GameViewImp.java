@@ -45,7 +45,7 @@ public class GameViewImp extends JPanel implements GameView, KeyListener {
 
 	@Override
 	public void start() {
-		setBounds(0, 0, MAPWIDTH * 64, MAPHEIGHT * 64);
+		setBounds(0, 200, MAPWIDTH * 64, MAPHEIGHT * 64);
 		setupViews();
 		setFocusable(true);
 		requestFocusInWindow();
@@ -232,11 +232,11 @@ public class GameViewImp extends JPanel implements GameView, KeyListener {
 	public void onAnswerCorrect(PlayerSprite player) {
 		SoundPlayer.getInstance().playSound(CORRECT_SOUND_PATH);
 		eeFighter.nextQuestion();
-		gameStartView.onAnswerCorrectCleanLettersView();
-		if (spriteP1.getSpriteName() == player.getSpriteName())
-			gameStartView.showPlayerScore("player1", player.getScore());
-		else
-			gameStartView.showPlayerScore("player2", player.getScore());
+		gameStartView.onAnswerCorrectCleanLettersView(spriteP1, spriteP2);
+//		if (spriteP1.getSpriteName() == player.getSpriteName())
+//			gameStartView.showPlayerScore("player1", player.getScore());
+//		else
+//			gameStartView.showPlayerScore("player2", player.getScore());
 		System.out.println("correct");
 	}
 
