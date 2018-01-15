@@ -37,7 +37,7 @@ public class EEFighterImp implements EEFighter, LetterCreateListener, QuestionLi
 	private PlayerSprite player1;
 	private PlayerSprite player2;
 	private SoundPlayTimer soundPlayTimer;
-	private boolean windowClosed;
+	private boolean gameClosed;
 	private boolean gameOver;
 	
 	public EEFighterImp(ComponentAbstractFactory componentAbstractFactory) {
@@ -75,7 +75,7 @@ public class EEFighterImp implements EEFighter, LetterCreateListener, QuestionLi
 		new Thread() {
 			public void run() {
 				questionManager.prepareQuestions();
-				while (!gameOver && !windowClosed) {
+				while (!gameOver && !gameClosed) {
 					try {
 						Thread.sleep(17);
 						player1.update();
@@ -147,8 +147,7 @@ public class EEFighterImp implements EEFighter, LetterCreateListener, QuestionLi
 			gameView.onLetterPoppedFailed(player);
 	}
 
-	@Override
-	public boolean isLetterCollided(PlayerSprite player) {
+	protected boolean isLetterCollided(PlayerSprite player) {
 		for (Sprite letter : letters)
 			if (letter.isCollisions(player)) {
 				player.addLetter(letter);
@@ -203,10 +202,15 @@ public class EEFighterImp implements EEFighter, LetterCreateListener, QuestionLi
 	}
 
 	@Override
-	public void windowClosed() {
-		windowClosed = true;
-		letterPlacingManager.windowClosed();
-		soundPlayTimer.windowClosed();
+	public void closeGame() {
+		gameClosed = true;
+		letterPlacingManager.stopPlacing();
+		soundPlayTimer.stopCounting();
+	}
+	
+	@Override
+	public boolean isGameClosed() {
+		return gameClosed;
 	}
 }
 

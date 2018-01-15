@@ -117,7 +117,7 @@ public class LetterPlacingManager {
 			letterPool.release(sprite);
 	}
 	
-	public void windowClosed() {
+	public void stopPlacing() {
 		windowClosed = true;
 	}
 	

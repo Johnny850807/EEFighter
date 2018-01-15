@@ -217,7 +217,7 @@ public class GameStartView extends JFrame implements IGameStartView {
 
 	protected class CloseHandler extends WindowAdapter {
 		public void windowClosing(final WindowEvent event) {
-			eeFighterImp.windowClosed();
+			eeFighterImp.closeGame();
 		}
 	}
 

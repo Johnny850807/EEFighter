@@ -1,25 +1,16 @@
 package controller;
 
-import java.io.IOException;
 import java.util.List;
 
 import factory.ComponentAbstractFactory;
-import factory.ReleasedComponentAbstractFactory;
-import model.Secret;
 import model.words.Crawler;
-import model.words.CrawlerVocabularycom;
-import model.words.ITRI_TTS;
 import model.words.ReadWordFailedException;
 import model.words.TTS;
 import model.words.TTSException;
-import model.words.TTSProcessingException;
 import model.words.Word;
 import model.words.WordNotExistException;
 import model.words.WordRepository;
-import model.words.WordXMLRepository;
 import ui.EnglishWarehouseView;
-import ui.MainView;
-import utils.SoundPlayer;
 
 /**
  * @author Joanna (±i®ÑÞ±)

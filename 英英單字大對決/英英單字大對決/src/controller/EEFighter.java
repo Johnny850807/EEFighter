@@ -18,10 +18,9 @@ public interface EEFighter {
 
 	void pickUp(PlayerSprite player);
 
-	boolean isLetterCollided(PlayerSprite player);
-
 	void checkAnswer(PlayerSprite player);
 
-	void windowClosed();
+	void closeGame();
 
+	boolean isGameClosed();
 }

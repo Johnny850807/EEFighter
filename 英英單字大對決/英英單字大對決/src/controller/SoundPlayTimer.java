@@ -32,7 +32,7 @@ public class SoundPlayTimer extends Thread {
 		isOver = true;
 	}
 
-	public void windowClosed() {
+	public void stopCounting() {
 		windowClosed = true;
 	}
 
