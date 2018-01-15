@@ -32,12 +32,12 @@ public class EEFighterClientProxy implements EEFighter{
 
 	@Override
 	public void startGame() {
-		
+		gameView.onGameStarted();
 	}
 
 	@Override
 	public void move(PlayerSprite player, Direction direction, Direction imgDirection, Status status) {
-		
+		gameView.onMovedSuccessfuly(player, imgDirection, status);
 	}
 
 	@Override
