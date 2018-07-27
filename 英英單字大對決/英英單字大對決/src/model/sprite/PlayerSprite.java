@@ -66,7 +66,7 @@ public class PlayerSprite extends Sprite{
 
 	public Sprite popLetter(String answer) {
 		LinkedList<Sprite> sortedLetters = new LinkedList<>(
-				LetterSpriteSorter.productSortedLetters(answer, letters));
+				LetterSpriteSorter.produceSortedLetters(answer, letters));
 		Sprite lastLetter = sortedLetters.peekLast();
 		for (int i = letters.size() - 1 ; i >= 0 ; i --)
 			if (letters.get(i).getSpriteName() == lastLetter.getSpriteName())

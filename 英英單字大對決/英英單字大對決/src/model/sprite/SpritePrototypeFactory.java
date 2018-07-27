@@ -3,7 +3,9 @@ package model.sprite;
 import java.awt.Image;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.imageio.ImageIO;
@@ -74,9 +76,9 @@ public class SpritePrototypeFactory {
 	}
 
 	public void prepareSprites() throws IOException {
-		spriteMap.put(SpriteName.GRASS, new Sprite(64, 64, 0, 0, 64, 64, SpriteName.GRASS,
-				createImageMap(ImageIO.read(new File("pic/grass.png")))));
 		spriteMap.put(SpriteName.TERRAIN, new Sprite(64, 64, 0, 0, 64, 64, SpriteName.TERRAIN,
+				createImageMap(ImageIO.read(new File("pic/grass.png")))));
+		spriteMap.put(SpriteName.BARRIER, new Sprite(64, 64, 0, 0, 64, 64, SpriteName.BARRIER,
 				createImageMap(ImageIO.read(new File("pic/block.png")))));
 		spriteMap.put(SpriteName.A,
 				new Sprite(64, 64, 10, 10, 54, 54, SpriteName.A, createImageMap(ImageIO.read(new File("pic/A.png")))));
@@ -136,6 +138,16 @@ public class SpritePrototypeFactory {
 				new PlayerSprite(52, 73, 20, 60, 11, 22, SpriteName.PLAYER2, player2ImageMap));
 	}
 
+	public List<Sprite> createLetters(String letters){
+		List<Sprite> letterSprites = new ArrayList<>();
+		letters = letters.trim().toUpperCase();
+		for (int i = 0; i < letters.length(); i++) {
+			String letter = String.valueOf(letters.charAt(i));
+			letterSprites.add(createSprite(SpriteName.valueOf(letter)));
+		}
+		return letterSprites;
+	}
+	
 	public Sprite createSprite(SpriteName spriteName) {
 		return spriteMap.get(spriteName).clone();
 	}

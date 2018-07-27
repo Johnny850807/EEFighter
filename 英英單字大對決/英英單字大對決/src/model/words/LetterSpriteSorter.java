@@ -15,7 +15,7 @@ import utils.SpriteLogHelper;
 
 public class LetterSpriteSorter {
 	
-	public static List<Sprite> productSortedLetters(String answer, List<Sprite> letters){
+	public static List<Sprite> produceSortedLetters(String answer, List<Sprite> letters){
 		answer = answer.toUpperCase();
 		System.out.println("Answer: " + answer + ", Input: " + SpriteLogHelper.toString(letters));
 		List<Sprite> output = new ArrayList<>();
@@ -79,7 +79,7 @@ public class LetterSpriteSorter {
 		myLetters.add(factory.createSprite(SpriteName.K));
 		
 		StringBuilder strb = new StringBuilder();
-		for (Sprite letter : productSortedLetters(answer, myLetters))
+		for (Sprite letter : produceSortedLetters(answer, myLetters))
 			strb.append(letter.getSpriteName() + " ");
 		System.out.println(strb.toString());
 	}

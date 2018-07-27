@@ -252,8 +252,8 @@ public class GameViewImp extends JPanel implements GameView, KeyListener {
 	}
 
 	@Override
-	public void onQuestionWordSoundPlay(Question question) {
-		SoundPlayer.getInstance().playSound(question.getSoundPath());
+	public void onQuestionWordSoundPlay(String soundPath) {
+		SoundPlayer.getInstance().playSound(soundPath);
 	}
 
 	@Override

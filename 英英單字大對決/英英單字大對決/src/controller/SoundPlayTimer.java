@@ -20,7 +20,7 @@ public class SoundPlayTimer extends Thread {
 		try {
 			Thread.sleep(30000);
 			while (!windowClosed && !isOver) {
-				gameView.onQuestionWordSoundPlay(question);
+				gameView.onQuestionWordSoundPlay(question.getSoundPath());
 				Thread.sleep(30000);
 			}
 		} catch (InterruptedException e) {

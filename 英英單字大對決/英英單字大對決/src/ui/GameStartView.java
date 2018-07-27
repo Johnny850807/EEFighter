@@ -176,7 +176,7 @@ public class GameStartView extends JFrame implements IGameStartView {
 	}
 
 	public void showPlayerBarInfo(String answer, String player, int score, List<Sprite> letter) {
-		letter = LetterSpriteSorter.productSortedLetters(answer, letter);
+		letter = LetterSpriteSorter.produceSortedLetters(answer, letter);
 		System.out.println(SpriteLogHelper.toString(letter));
 		if (player.equals("player1")) {
 			StringBuilder strBuilder = new StringBuilder("[" + score + "] Player1: ");

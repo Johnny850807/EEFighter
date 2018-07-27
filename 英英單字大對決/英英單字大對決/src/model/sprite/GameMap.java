@@ -53,7 +53,7 @@ public class GameMap extends Sprite implements Iterable<Sprite> {
 		List<Sprite> terrains = new ArrayList<>();
 		for (int i = 0; i < HEIGHT; i++)
 			for (int j = 0; j < WIDTH; j++)
-				if (blockSprites[i][j].getSpriteName() == SpriteName.TERRAIN)
+				if (blockSprites[i][j].getSpriteName() == SpriteName.BARRIER)
 					terrains.add(blockSprites[i][j]);
 		return terrains;
 	}
@@ -62,7 +62,7 @@ public class GameMap extends Sprite implements Iterable<Sprite> {
 		List<Sprite> grasses = new ArrayList<>();
 		for (int i = 0; i < HEIGHT; i++)
 			for (int j = 0; j < WIDTH; j++)
-				if (blockSprites[i][j].getSpriteName() == SpriteName.GRASS)
+				if (blockSprites[i][j].getSpriteName() == SpriteName.TERRAIN)
 					grasses.add(blockSprites[i][j]);
 		return grasses;
 	}

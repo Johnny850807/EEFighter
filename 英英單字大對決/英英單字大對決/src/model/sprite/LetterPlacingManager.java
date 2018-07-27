@@ -105,7 +105,7 @@ public class LetterPlacingManager {
 	}
 	
 	private boolean hasGrass(int x, int y) {
-		return gameMap.getSprite(x, y).getSpriteName() == SpriteName.GRASS;
+		return gameMap.getSprite(x, y).getSpriteName() == SpriteName.TERRAIN;
 	}
 	
 	public void releaseLetter(Sprite sprite) {

@@ -9,12 +9,12 @@ public class BasicMapBuilder implements MapBuilder {
 
 	@Override
 	public void buildBarrier(int coordinateX, int coordinateY) {
-		gameMap.setBlockSprite(coordinateX, coordinateY, spritePrototypeFactory.createSprite(SpriteName.TERRAIN));
+		gameMap.setBlockSprite(coordinateX, coordinateY, spritePrototypeFactory.createSprite(SpriteName.BARRIER));
 	}
 
 	@Override
 	public void buildRoad(int coordinateX, int coordinateY) {
-		gameMap.setBlockSprite(coordinateX, coordinateY, spritePrototypeFactory.createSprite(SpriteName.GRASS));
+		gameMap.setBlockSprite(coordinateX, coordinateY, spritePrototypeFactory.createSprite(SpriteName.TERRAIN));
 	}
 
 	@Override

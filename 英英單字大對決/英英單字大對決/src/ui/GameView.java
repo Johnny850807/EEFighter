@@ -40,5 +40,5 @@ public interface GameView {
 
 	void onAnswerWrong(PlayerSprite player);
 
-	void onQuestionWordSoundPlay(Question question);
+	void onQuestionWordSoundPlay(String soundPath);
 }
