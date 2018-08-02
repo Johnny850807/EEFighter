@@ -76,7 +76,7 @@ public class EEFighterP2PClient implements EEFighter{
 	public void prepareAllPacketHandlers(){
 		packetHandler.put(PID_EV_GAME_START, (in) -> handleGameStarted(in));
 		packetHandler.put(PID_EV_NEXT_QUESTION, (in) -> handleNextQuestion(in));
-		packetHandler.put(PID_EV_POSITION_UPDATED, (in) -> handleModelPositionUpdated(in));
+		packetHandler.put(PID_EV_SPRITES_POSITION_UPDATED, (in) -> handleModelPositionUpdated(in));
 		packetHandler.put(PID_EV_PLAYER_LETTERS_UPDATED, (in) -> handlePlayerLettersUdpated(in));
 		packetHandler.put(PID_EV_PLAY_VOICE, (in) -> handlePlayWordVoice(in));
 		packetHandler.put(PID_EV_ANSWER_COMMIT_RESULT, (in) -> handleAnswerCommitResult(in));

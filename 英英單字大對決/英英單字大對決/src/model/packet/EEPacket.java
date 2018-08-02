@@ -1,5 +1,7 @@
 package model.packet;
 
+import java.io.ByteArrayInputStream;
+import java.io.DataInputStream;
 import java.util.Arrays;
 
 public class EEPacket {
@@ -13,6 +15,10 @@ public class EEPacket {
 		return bytes;
 	}
 
+	public DataInputStream createDataInputStream(){
+		return new DataInputStream(new ByteArrayInputStream(bytes));
+	}
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;

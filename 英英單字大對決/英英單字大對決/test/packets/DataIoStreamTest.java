@@ -1,4 +1,4 @@
-package model.packet;
+package packets;
 
 import static org.junit.Assert.*;
 

@@ -56,11 +56,11 @@ public class Sprite implements Cloneable {
 	public Sprite() {
 		// TODO Auto-generated constructor stub
 	}
-
+	
 	public int getBiasWithX() {
 		return biasWithX;
 	}
-
+	
 	public void setBiasWithX(int biasWithX) {
 		this.biasWithX = biasWithX;
 	}
