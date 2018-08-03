@@ -127,12 +127,10 @@ public class EnglishWarehouseViewImp extends JFrame implements EnglishWarehouseV
 
 	@Override
 	public void onWordCreateSuccessfully(Word word) {
-		JOptionPane.showMessageDialog(null, word.getWord() + " create successfuly"); 
 	}
 
 	@Override
 	public void onWordRemoveSuccessfully(Word word) {
-		JOptionPane.showMessageDialog(null, word.getWord() + " remove successfuly"); 
 	}
 	
 	public void onWordReadSuccessfully(Word word) {
