@@ -87,12 +87,12 @@ public class EEFighterP2PServer extends EEFighterImp{
 		PlayerReadyRequest playerReadyRequest = Packets.parsePlayerReadyRequest(inputStream);
 		startGame();
 		try {
-			Thread.sleep(6000);
+			Thread.sleep(6000);  //delay, for fear that the client has not initialized the game and handled the game start event.
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
 	}
-
+	
 	private void handleMovementRequest(DataInputStream inputStream){
 		MovementRequest movementRequest = Packets.parseMovementRequest(inputStream);
 		this.move(player2, movementRequest.direction, movementRequest.status);
@@ -150,9 +150,15 @@ public class EEFighterP2PServer extends EEFighterImp{
 	private class ClientObserver implements GameView{
 
 		@Override
-		public void onDraw(GameMap gameMap, List<Sprite> letters, PlayerSprite player1, PlayerSprite player2) {
+		public void onDraw(GameMap gameMap, List<Sprite> letters, PlayerSprite player1Sprite, PlayerSprite player2Sprite) {
 			LettersUpdatedEvent lettersUpdatedEvent = new LettersUpdatedEvent(letterSpritesToLetterArray(letters));
 			sendPacket(Packets.parse(lettersUpdatedEvent));
+			
+			if (player1Sprite.getStatus() == Status.MOVE)
+				sendPacket(Packets.parse(new PlayerUpdatedEvent(getPlayerNo(player1Sprite), player1Sprite.toPlayer())));
+
+			if (player2Sprite.getStatus() == Status.MOVE)
+				sendPacket(Packets.parse(new PlayerUpdatedEvent(getPlayerNo(player2Sprite), player2Sprite.toPlayer())));
 		}
 
 		@Override

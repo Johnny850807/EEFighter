@@ -9,8 +9,10 @@ import java.net.Socket;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
+import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
+import java.util.concurrent.LinkedBlockingQueue;
 import java.util.function.Consumer;
 
 import controller.EEFighter;
@@ -40,11 +42,11 @@ public class EEFighterP2PClient implements EEFighter{
 	private List<Sprite> letterSprites;
 	private PlayerSprite player1Sprite;
 	private PlayerSprite player2Sprite;
-	
 	private Socket socket;
 	private DataInputStream inputStream;
 	private DataOutputStream outputStream;
 	private HashMap<Byte, Consumer<DataInputStream>> packetHandler = new HashMap<>();
+	private BlockingQueue<PlayerUpdatedEvent> playerMovementsBlockingQueue = new LinkedBlockingQueue();
 	
 	
 	public EEFighterP2PClient(Socket socket, ComponentAbstractFactory abstractFactory) {
@@ -98,6 +100,26 @@ public class EEFighterP2PClient implements EEFighter{
 		player2Sprite.setXY(gameStartEvent.player2Point);
 
 		gameView.onDraw(gameMap, Collections.EMPTY_LIST, player1Sprite, player2Sprite);
+		startUpdateClientPlayerSpriteMovingLoop();
+	}
+	
+	private void startUpdateClientPlayerSpriteMovingLoop(){
+		new Thread(()->{
+			try {
+				while(!isGameClosed())
+				{
+					Thread.sleep(1);
+					PlayerUpdatedEvent nextMovement = playerMovementsBlockingQueue.take();
+					PlayerSprite playerSprite = getPlayerSprite(nextMovement.playerNo);
+					playerSprite.setXY(nextMovement.player.point);
+					playerSprite.setDirection(nextMovement.player.direction);
+					playerSprite.setStatus(nextMovement.player.status);
+					gameView.onDraw(gameMap, letterSprites, player1Sprite, player2Sprite);
+				}
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}).start();
 	}
 	
 	private void handleNextQuestion(DataInputStream inputStream){
@@ -107,10 +129,11 @@ public class EEFighterP2PClient implements EEFighter{
 	
 	private void handlePlayerUpdated(DataInputStream inputStream){
 		PlayerUpdatedEvent playerUpdatedEvent = Packets.parsePlayerUpdatedEvent(inputStream);
-		PlayerSprite playerSprite = getPlayerSprite(playerUpdatedEvent.playerNo);
-		playerSprite.setXY(playerUpdatedEvent.player.point);
-		playerSprite.setDirection(playerUpdatedEvent.player.direction);
-		playerSprite.setStatus(playerUpdatedEvent.player.status);
+		try {
+			playerMovementsBlockingQueue.put(playerUpdatedEvent);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 	}
 
 	private void handleLettersPlacedUpdated(DataInputStream inputStream){
@@ -168,10 +191,11 @@ public class EEFighterP2PClient implements EEFighter{
 
 	@Override
 	public void move(PlayerSprite player, Direction direction, Status status) {
-		executor.execute(()->{
-			EEPacket packet = Packets.parse(new MovementRequest(clientPlayerNo, direction, status));
-			sendBytes(packet.getBytes());
-		});
+		if (player == player2Sprite)
+			executor.execute(()->{
+					EEPacket packet = Packets.parse(new MovementRequest(clientPlayerNo, direction, status));
+					sendBytes(packet.getBytes());
+			});
 	}
 
 	@Override
@@ -181,26 +205,29 @@ public class EEFighterP2PClient implements EEFighter{
 
 	@Override
 	public void popLetter(PlayerSprite player) {
-		executor.execute(()->{
-			EEPacket packet = Packets.parse(new ThrowLastestWordRequest(clientPlayerNo));
-			sendBytes(packet.getBytes());
-		});
+		if (player == player2Sprite)
+			executor.execute(()->{
+				EEPacket packet = Packets.parse(new ThrowLastestWordRequest(clientPlayerNo));
+				sendBytes(packet.getBytes());
+			});	
 	}
 
 	@Override
 	public void pickUp(PlayerSprite player) {
-		executor.execute(()->{
-			EEPacket packet = Packets.parse(new PickUpRequest(clientPlayerNo));
-			sendBytes(packet.getBytes());
-		});
+		if (player == player2Sprite)
+			executor.execute(()->{
+				EEPacket packet = Packets.parse(new PickUpRequest(clientPlayerNo));
+				sendBytes(packet.getBytes());
+			});
 	}
 
 	@Override
 	public void checkAnswer(PlayerSprite player) {
-		executor.execute(()->{
-			EEPacket packet = Packets.parse(new CheckAnswerRequest(clientPlayerNo));
-			sendBytes(packet.getBytes());
-		});
+		if (player == player2Sprite)
+			executor.execute(()->{
+				EEPacket packet = Packets.parse(new CheckAnswerRequest(clientPlayerNo));
+				sendBytes(packet.getBytes());
+			});
 	}
 
 	private void sendBytes(byte[] bytes){ 

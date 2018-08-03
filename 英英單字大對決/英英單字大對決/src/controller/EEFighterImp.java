@@ -78,7 +78,7 @@ public class EEFighterImp implements EEFighter, LetterCreateListener, QuestionLi
 				questionManager.prepareQuestions();
 				while (!gameOver && !gameClosed) {
 					try {
-						Thread.sleep(30);
+						Thread.sleep(15);
 						player1.update();
 						player2.update();
 						notifyGameViews((gameView)-> gameView.onDraw(gameMap, letters, player1, player2));

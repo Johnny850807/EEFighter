@@ -12,7 +12,7 @@ import model.words.LetterSpriteSorter;
 public class PlayerSprite extends Sprite{
 	private List<Sprite> letters = new ArrayList<Sprite>();
 	private int score = 0;
-	private static final int MOVE_SPEED = 10;
+	private static final int MOVE_SPEED = 5;
 
 	public PlayerSprite(int w, int h, int biasWithX, int biasWithY, int bodyHeight, int bodyLength,
 			SpriteName spriteName, Map<Movement, ImageSequence> imageMap) {

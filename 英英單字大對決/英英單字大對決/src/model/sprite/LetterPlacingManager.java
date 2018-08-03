@@ -13,6 +13,7 @@ import model.Question;
 
 public class LetterPlacingManager {
 	private List<Sprite> letters = Collections.synchronizedList(new ArrayList<>());
+	private final static int PLACING_INTERVAL = 1200;
 	private LetterCreateListener letterCreateListener;
 	private LetterPool letterPool;
 	private GameMap gameMap;
@@ -42,7 +43,7 @@ public class LetterPlacingManager {
 			public void run() {
 				while (!windowClosed && !gameOver) {
 					try {
-						Thread.sleep(550);
+						Thread.sleep(1200);
 						Sprite sprite = getLetter();
 						letters.add(sprite);
 						releaseLetterAfter20Secs(sprite);
