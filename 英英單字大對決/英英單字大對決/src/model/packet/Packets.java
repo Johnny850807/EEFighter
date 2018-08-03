@@ -157,7 +157,7 @@ public class Packets {
 	public static EEPacket parse(GameStartEvent gameStartEvent){
 		try {
 			PacketWriter packetWriter = new PacketWriter();
-			packetWriter.writeByte(PacketIds.PID_REQ_CHECK_ANSWER);
+			packetWriter.writeByte(PacketIds.PID_EV_GAME_START);
 			writeSpirteNameMap(packetWriter, gameStartEvent.spriteNameMapMatrix);
 			writePoint(packetWriter, gameStartEvent.player1Point.x, gameStartEvent.player1Point.y);
 			writePoint(packetWriter, gameStartEvent.player2Point.x, gameStartEvent.player2Point.y);
@@ -171,7 +171,7 @@ public class Packets {
 		packetWriter.writeByte(map.length);  //map's height
 		packetWriter.writeByte(map[0].length);  //map's width
 		for(int i = 0 ; i < map.length; i ++)
-			for(int j = 0; j < map.length; j ++)
+			for(int j = 0; j < map[0].length; j ++)
 				packetWriter.writeByte(map[i][j].ordinal());
 	}
 	
@@ -199,7 +199,7 @@ public class Packets {
 		}
 	}
 
-	public static PickUpRequest parsePickUpResultEvent(DataInputStream inputStream){
+	public static PickUpRequest parsePickUpRequest(DataInputStream inputStream){
 		try {
 			byte playerNo = inputStream.readByte();
 			return new PickUpRequest(playerNo);
@@ -267,7 +267,7 @@ public class Packets {
 		}
 	}
 
-	public static PlayerLettersUpdatedEvent parsePlayerLettersUpdated(DataInputStream inputStream) {
+	public static PlayerLettersUpdatedEvent parsePlayerLettersUpdatedEvent(DataInputStream inputStream) {
 		try {
 			byte playerNo = inputStream.readByte();
 			Letter[] letters = readLetters(inputStream);
@@ -309,7 +309,7 @@ public class Packets {
 		}
 	}
 	
-	public static NextQuestionEvent parseEventNextQuestion(DataInputStream inputStream){
+	public static NextQuestionEvent parseNextQuestionEvent(DataInputStream inputStream){
 		try {
 			Question question = readQuestion(inputStream);
 			return new NextQuestionEvent(question);

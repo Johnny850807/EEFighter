@@ -41,7 +41,7 @@ public class SpritesUpdatedEvent {
 		if (getClass() != obj.getClass())
 			return false;
 		SpritesUpdatedEvent other = (SpritesUpdatedEvent) obj;
-		if (!Arrays.equals(letters, other.letters))
+		if (!Arrays.deepEquals(letters, other.letters))
 			return false;
 		if (player1Point == null) {
 			if (other.player1Point != null)
