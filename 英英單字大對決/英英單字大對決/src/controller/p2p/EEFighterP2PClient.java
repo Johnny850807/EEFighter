@@ -152,7 +152,7 @@ public class EEFighterP2PClient implements EEFighter{
 	}
 	
 	private void handlePlayWordVoice(DataInputStream inputStream){
-		PlayVoiceEvent playVoiceEvent = Packets.parseEventPlayWordVoice(inputStream);
+		PlayVoiceEvent playVoiceEvent = Packets.parsePlayWordVoiceEvent(inputStream);
 		gameView.onQuestionWordSoundPlay(playVoiceEvent.word, playVoiceEvent.soundPath);
 	}
 	

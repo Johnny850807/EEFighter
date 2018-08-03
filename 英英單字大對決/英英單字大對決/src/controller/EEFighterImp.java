@@ -110,7 +110,7 @@ public class EEFighterImp implements EEFighter, LetterCreateListener, QuestionLi
 			Question question = questionManager.getNextQuestion();
 			letterPlacingManager.onNextQuestion(question);
 			notifyGameViews((gameView)-> gameView.onNextQuestion(question));
-			playQuestionWord(question);
+			setQuestionWordSoundPlayerTimerBegins(question);
 		}
 		else {
 			notifyGameViews((gameView)-> gameView.onNoMoreQuestion());
@@ -194,7 +194,7 @@ public class EEFighterImp implements EEFighter, LetterCreateListener, QuestionLi
 		return true;
 	}
 	
-	private void playQuestionWord(Question question) {
+	private void setQuestionWordSoundPlayerTimerBegins(Question question) {
 		if (soundPlayTimer != null)
 			soundPlayTimer.over();
 		soundPlayTimer = new SoundPlayTimer(gameView, question, 
@@ -206,7 +206,7 @@ public class EEFighterImp implements EEFighter, LetterCreateListener, QuestionLi
 	public void closeGame() {
 		gameClosed = true;
 		letterPlacingManager.stopPlacing();
-		soundPlayTimer.stopCounting();
+		soundPlayTimer.setWindowClosed();
 	}
 	
 	@Override
@@ -214,7 +214,7 @@ public class EEFighterImp implements EEFighter, LetterCreateListener, QuestionLi
 		return gameClosed;
 	}
 	
-	public void notifyGameViews(Consumer<GameView> notifyAction){
+	protected void notifyGameViews(Consumer<GameView> notifyAction){
 		notifyAction.accept(this.gameView);
 	}
 }

@@ -85,7 +85,6 @@ public class EEFighterP2PServer extends EEFighterImp{
 
 	private void handlePlayerReadyRequest(DataInputStream inputStream){
 		PlayerReadyRequest playerReadyRequest = Packets.parsePlayerReadyRequest(inputStream);
-		startGame();
 		try {
 			Thread.sleep(6000);  //delay, for fear that the client has not initialized the game and handled the game start event.
 		} catch (InterruptedException e) {

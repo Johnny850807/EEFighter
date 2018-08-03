@@ -1,6 +1,5 @@
 package controller;
 
-import java.util.function.BiConsumer;
 import java.util.function.Consumer;
 
 import model.Question;
@@ -35,7 +34,7 @@ public class SoundPlayTimer extends Thread {
 		isOver = true;
 	}
 
-	public void stopCounting() {
+	public void setWindowClosed() {
 		windowClosed = true;
 	}
 

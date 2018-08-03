@@ -138,7 +138,6 @@ public class PacketsTest {
 		assertEquals(inputStream.readByte(), PID_REQ_THROW_LATEST_WORD);
 		assertEquals(dto, Packets.parseThrowLastestWordRequest(inputStream));
 	}
-	
 
 	@Test
 	public void testNextQuestionEvent() throws IOException {
@@ -148,5 +147,13 @@ public class PacketsTest {
 		DataInputStream inputStream = Packets.parse(dto).createDataInputStream();
 		assertEquals(inputStream.readByte(), PID_EV_NEXT_QUESTION);
 		assertEquals(dto, Packets.parseNextQuestionEvent(inputStream));
+	}
+	
+	@Test
+	public void testPlayVoiceEvent() throws IOException {
+		PlayVoiceEvent dto = new PlayVoiceEvent("apple", "/v/a/b/c/d/s/e");
+		DataInputStream inputStream = Packets.parse(dto).createDataInputStream();
+		assertEquals(inputStream.readByte(), PID_EV_PLAY_VOICE);
+		assertEquals(dto, Packets.parsePlayWordVoiceEvent(inputStream));
 	}
 }

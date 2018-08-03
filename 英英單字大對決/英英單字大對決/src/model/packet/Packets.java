@@ -366,7 +366,7 @@ public class Packets {
 		packetWriter.writeUTF(question.getDefinition());
 	}
 	
-	public static PlayVoiceEvent parseEventPlayWordVoice(DataInputStream inputStream){
+	public static PlayVoiceEvent parsePlayWordVoiceEvent(DataInputStream inputStream){
 		try {
 			String word = inputStream.readUTF();
 			String soundPath = inputStream.readUTF();
