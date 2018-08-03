@@ -1,7 +1,7 @@
 package model.sprite;
 
 public enum MapItemName {
-	GRASS('0'), BLOCK('1');
+	TERRAIN('0'), BARRIER('1');
 
 	private char number;
 

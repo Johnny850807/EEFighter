@@ -4,12 +4,16 @@ import java.awt.Image;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 import javax.imageio.ImageIO;
 
+import model.packet.dto.Letter;
 import model.sprite.Sprite.Direction;
 import model.sprite.Sprite.Movement;
 import model.sprite.Sprite.Status;
@@ -146,6 +150,17 @@ public class SpritePrototypeFactory {
 			letterSprites.add(createSprite(SpriteName.valueOf(letter)));
 		}
 		return letterSprites;
+	}
+
+	public List<Sprite> createLetters(Letter[] letters){
+		return Arrays.stream(letters)
+			.map(letter -> 
+			{
+				Sprite letterSprite = createSprite(letter.letterName);
+				letterSprite.setXY(letter.point);
+				return letterSprite;
+			})
+			.collect(Collectors.toList());
 	}
 	
 	public Sprite createSprite(SpriteName spriteName) {

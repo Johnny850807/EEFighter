@@ -1,5 +1,7 @@
 package factory;
 
+import controller.EEFighter;
+import controller.EEFighterImp;
 import model.Secret;
 import model.sprite.BasicMapBuilder;
 import model.sprite.BasicMapDirector;
@@ -48,6 +50,11 @@ public class ReleasedComponentAbstractFactory implements ComponentAbstractFactor
 	@Override
 	public TTS getTts() {
 		return tts;
+	}
+
+	@Override
+	public EEFighter createEEFighter() {
+		return new EEFighterImp(this);
 	}
 	
 }

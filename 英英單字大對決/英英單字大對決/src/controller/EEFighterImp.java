@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.ConcurrentModificationException;
 import java.util.List;
+import java.util.function.Consumer;
 
 import org.jsoup.select.Evaluator.Id;
 
@@ -29,16 +30,16 @@ import ui.GameView;
  * @author Joanna (±i®ÑÞ±)
  */
 public class EEFighterImp implements EEFighter, LetterCreateListener, QuestionListener {
-	private GameView gameView;
-	private GameMap gameMap;
-	private LetterPlacingManager letterPlacingManager;
-	private QuestionManager questionManager;
-	private List<Sprite> letters = new ArrayList<Sprite>();
-	private PlayerSprite player1;
-	private PlayerSprite player2;
-	private SoundPlayTimer soundPlayTimer;
-	private boolean gameClosed;
-	private boolean gameOver;
+	protected GameView gameView;
+	protected GameMap gameMap;
+	protected LetterPlacingManager letterPlacingManager;
+	protected QuestionManager questionManager;
+	protected List<Sprite> letters = new ArrayList<Sprite>();
+	protected PlayerSprite player1;
+	protected PlayerSprite player2;
+	protected SoundPlayTimer soundPlayTimer;
+	protected boolean gameClosed;
+	protected boolean gameOver;
 	
 	public EEFighterImp(ComponentAbstractFactory componentAbstractFactory) {
 		gameMap = componentAbstractFactory.createMapDirector().buildMap();
@@ -62,7 +63,7 @@ public class EEFighterImp implements EEFighter, LetterCreateListener, QuestionLi
 		player2 = (PlayerSprite) spritePrototypeFactory.createSprite(SpriteName.PLAYER2);
 		player1.setGameMap(gameMap);
 		player2.setGameMap(gameMap);
-		List<Sprite> grasses = gameMap.getAllGrasses();
+		List<Sprite> grasses = gameMap.getAllTerrain();
 		Collections.shuffle(grasses);
 		Sprite grass0 = grasses.get(0);
 		Sprite grass1 = grasses.get(1);
@@ -77,10 +78,10 @@ public class EEFighterImp implements EEFighter, LetterCreateListener, QuestionLi
 				questionManager.prepareQuestions();
 				while (!gameOver && !gameClosed) {
 					try {
-						Thread.sleep(17);
+						Thread.sleep(30);
 						player1.update();
 						player2.update();
-						gameView.onDraw(gameMap, letters, player1, player2);
+						notifyGameViews((gameView)-> gameView.onDraw(gameMap, letters, player1, player2));
 					} catch (InterruptedException e) {
 						e.printStackTrace();
 					}
@@ -91,16 +92,15 @@ public class EEFighterImp implements EEFighter, LetterCreateListener, QuestionLi
 
 	@Override
 	public void onQuestionPrepareFinish() {
-		gameView.onGameStarted();
+		notifyGameViews((gameView)-> gameView.onGameStarted());
 		letterPlacingManager.createLetter();
 	}
 
 	@Override
-	public void move(PlayerSprite player, Direction direction, Direction imgDirection, Status status) {
-		player.setImgDirection(imgDirection);
+	public void move(PlayerSprite player, Direction direction, Status status) {
 		player.setDirection(direction);
 		player.setStatus(status);
-		gameView.onMovedSuccessfuly(player, direction, status);
+		notifyGameViews((gameView)-> gameView.onMovedSuccessfuly(player, direction, status));
 	}
 
 	@Override
@@ -109,11 +109,11 @@ public class EEFighterImp implements EEFighter, LetterCreateListener, QuestionLi
 		if (questionManager.hasNext()) {
 			Question question = questionManager.getNextQuestion();
 			letterPlacingManager.onNextQuestion(question);
-			gameView.onNextQuestion(question);
+			notifyGameViews((gameView)-> gameView.onNextQuestion(question));
 			playQuestionWord(question);
 		}
 		else {
-			gameView.onNoMoreQuestion();
+			notifyGameViews((gameView)-> gameView.onNoMoreQuestion());
 			gameOver();
 		}
 	}
@@ -130,7 +130,7 @@ public class EEFighterImp implements EEFighter, LetterCreateListener, QuestionLi
 		letterPlacingManager.gameOver();
 		soundPlayTimer.over();
 		PlayerSprite player = (player1.getScore() > player2.getScore())? player1 : player2;
-		gameView.onGameOver(player);
+		notifyGameViews((gameView)-> gameView.onGameOver(player));
 	}
 
 	@Override
@@ -142,14 +142,14 @@ public class EEFighterImp implements EEFighter, LetterCreateListener, QuestionLi
 	public void popLetter(PlayerSprite player) {
 		Sprite letter = player.popLetter(questionManager.getNowQuestion().getWord());
 		if (letter != null) 
-			gameView.onLetterPoppedSuccessfuly(player, player.getLetters());
+			notifyGameViews((gameView)-> gameView.onLetterPoppedSuccessfuly(player, player.getLetters()));
 		else 
-			gameView.onLetterPoppedFailed(player);
+			notifyGameViews((gameView)-> gameView.onLetterPoppedFailed(player));
 	}
 
 	protected boolean isLetterCollided(PlayerSprite player) {
 		for (Sprite letter : letters)
-			if (letter.isCollisions(player)) {
+			if (letter.hasCollision(player)) {
 				player.addLetter(letter);
 				letters.remove(letter);
 				letterPlacingManager.releaseLetter(letter);
@@ -161,9 +161,9 @@ public class EEFighterImp implements EEFighter, LetterCreateListener, QuestionLi
 	@Override
 	public void pickUp(PlayerSprite player) {
 		if (isLetterCollided(player)) 
-			gameView.onLetterGotten(player, player.getLetters());
+			notifyGameViews((gameView)-> gameView.onLetterGotten(player, player.getLetters()));
 		else 
-			gameView.onNoLetterGotten(player, player.getLetters());	
+			notifyGameViews((gameView)-> gameView.onNoLetterGotten(player, player.getLetters()));	
 	}
 
 	@Override
@@ -173,10 +173,10 @@ public class EEFighterImp implements EEFighter, LetterCreateListener, QuestionLi
 		List<Sprite> letters = player.getLetters();
 		if (words.length() == letters.size() && compareLetters(words, letters)) {
 			player.setScore(player.getScore() + 1);
-			gameView.onAnswerCorrect(player);
+			notifyGameViews((gameView)-> gameView.onAnswerCorrect(player));
 		}
 		else 
-			gameView.onAnswerWrong(player);
+			notifyGameViews((gameView)-> gameView.onAnswerWrong(player));
 	}
 	
 	private boolean compareLetters(String words, List<Sprite> playerLetters) {
@@ -197,7 +197,8 @@ public class EEFighterImp implements EEFighter, LetterCreateListener, QuestionLi
 	private void playQuestionWord(Question question) {
 		if (soundPlayTimer != null)
 			soundPlayTimer.over();
-		soundPlayTimer = new SoundPlayTimer(gameView, question);
+		soundPlayTimer = new SoundPlayTimer(gameView, question, 
+				(q) -> notifyGameViews((gameView)-> gameView.onQuestionWordSoundPlay(q.getWord(), q.getSoundPath())));
 		soundPlayTimer.start();
 	}
 
@@ -211,6 +212,10 @@ public class EEFighterImp implements EEFighter, LetterCreateListener, QuestionLi
 	@Override
 	public boolean isGameClosed() {
 		return gameClosed;
+	}
+	
+	public void notifyGameViews(Consumer<GameView> notifyAction){
+		notifyAction.accept(this.gameView);
 	}
 }
 

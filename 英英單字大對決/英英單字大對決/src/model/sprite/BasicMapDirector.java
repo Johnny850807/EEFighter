@@ -23,9 +23,9 @@ public class BasicMapDirector extends MapDirector{
 			{
 				startFromGrass = !startFromGrass;
 				if (startFromGrass)
-					mapString.add(productCrossLine(MapItemName.GRASS, MapItemName.BLOCK, MapConstants.MAPWIDTH));
+					mapString.add(productCrossLine(MapItemName.TERRAIN, MapItemName.BARRIER, MapConstants.MAPWIDTH));
 				else
-					mapString.add(productCrossLine(MapItemName.BLOCK, MapItemName.GRASS, MapConstants.MAPWIDTH));
+					mapString.add(productCrossLine(MapItemName.BARRIER, MapItemName.TERRAIN, MapConstants.MAPWIDTH));
 			}
 		}
 		return mapString.toArray(new String[MapConstants.MAPHEIGHT]);
@@ -34,7 +34,7 @@ public class BasicMapDirector extends MapDirector{
 	private String produceGrassLine(int length){
 		StringBuilder strb = new StringBuilder();
 		for (int i = 0 ; i < length ; i ++)
-			strb.append(MapItemName.GRASS.getNumber());
+			strb.append(MapItemName.TERRAIN.getNumber());
 		return strb.toString();
 	}
 	

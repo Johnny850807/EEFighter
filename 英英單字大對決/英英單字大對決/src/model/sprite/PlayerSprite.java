@@ -1,10 +1,12 @@
 package model.sprite;
 
+import java.awt.Point;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
+import model.packet.dto.Player;
 import model.words.LetterSpriteSorter;
 
 public class PlayerSprite extends Sprite{
@@ -45,21 +47,25 @@ public class PlayerSprite extends Sprite{
 				break;
 			}
 		}
-		if (moveFailed(gameMap)) {
+		if (isMoveFailed(gameMap)) {
 			xy.rollback();
 			gameView.onHitWall(this);
 		}
 	}
 
-	private boolean moveFailed(GameMap gameMap) {
+	private boolean isMoveFailed(GameMap gameMap) {
 		if (gameMap.outOfMap(this))
 			return true;
-		for (Sprite terrain : gameMap.getAllTerrains())
-			if (terrain.isCollisions(this))
+		for (Sprite barrier : gameMap.getAllBarriers())
+			if (barrier.hasCollision(this))
 				return true;
 		return false;
 	}
 
+	public void setLetters(List<Sprite> letters) {
+		this.letters = letters;
+	}
+	
 	public void addLetter(Sprite sprite) {
 		 letters.add(sprite);
 	}
@@ -87,4 +93,16 @@ public class PlayerSprite extends Sprite{
 		return letters;
 	}
 
+	@Override
+	public void setDirection(Direction direction) {
+		this.direction = direction;
+		
+		if (direction == Direction.EAST || direction == Direction.WEST)
+			setImgDirection(direction);
+	}
+	
+	
+	public Player toPlayer(){
+		return new Player(new Point(xy.getX(), xy.getY()), direction, status);
+	}
 }

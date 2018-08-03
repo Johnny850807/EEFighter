@@ -10,7 +10,7 @@ public interface EEFighter {
 
 	void startGame();
 
-	void move(PlayerSprite player, Direction direction, Direction imgDirection, Status status);
+	void move(PlayerSprite player, Direction direction, Status status);
 
 	void nextQuestion();
 

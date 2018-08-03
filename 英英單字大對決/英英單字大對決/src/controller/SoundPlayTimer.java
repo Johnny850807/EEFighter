@@ -1,16 +1,20 @@
 package controller;
 
+import java.util.function.BiConsumer;
+import java.util.function.Consumer;
+
 import model.Question;
 import ui.GameView;
 
 public class SoundPlayTimer extends Thread {
-	private GameView gameView;
+	private Consumer<Question> soundPlayObserver;
 	private boolean isOver;
 	private boolean windowClosed;
 	private Question question;
 
-	public SoundPlayTimer(GameView gameView, Question question) {
-		this.gameView = gameView;
+	public SoundPlayTimer(GameView gameView, Question question, 
+			Consumer<Question> soundPlayObserver) {
+		this.soundPlayObserver = soundPlayObserver;
 		this.question = question;
 		isOver = false;
 	}
@@ -18,11 +22,10 @@ public class SoundPlayTimer extends Thread {
 	@Override
 	public void run() {
 		try {
-			Thread.sleep(30000);
-			while (!windowClosed && !isOver) {
-				gameView.onQuestionWordSoundPlay(question.getSoundPath());
+			do {
 				Thread.sleep(30000);
-			}
+				soundPlayObserver.accept(question);
+			} while (!windowClosed && !isOver);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}

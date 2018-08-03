@@ -1,6 +1,7 @@
 package model.sprite;
 
 import java.awt.Image;
+import java.awt.Point;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -147,6 +148,10 @@ public class Sprite implements Cloneable {
 		this.xy = new XY(x, y);
 	}
 
+	public void setXY(Point point) {
+		this.xy = new XY(point.x, point.y);
+	}
+
 	public int getX() {
 		return xy.getX();
 	}
@@ -190,7 +195,7 @@ public class Sprite implements Cloneable {
 		// do nothing as default
 	}
 
-	public synchronized boolean isCollisions(Sprite sprite) {
+	public synchronized boolean hasCollision(Sprite sprite) {
 		int xStartSelf = getX() + getBiasWithX();
 		int yStartSelf = getY() + getBiasWithY();
 		int xEndSelf = xStartSelf + getBodyWidth();
@@ -227,6 +232,10 @@ public class Sprite implements Cloneable {
 		}
 	}
 
+	public Point getPoint(){
+		return new Point(xy.getX(), xy.getY());
+	}
+	
 	final static class Movement {
 		Direction direction;
 		Status status;

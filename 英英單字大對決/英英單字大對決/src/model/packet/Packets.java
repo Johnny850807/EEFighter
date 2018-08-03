@@ -15,9 +15,11 @@ import model.packet.dto.MovementRequest;
 import model.packet.dto.NextQuestionEvent;
 import model.packet.dto.PickUpRequest;
 import model.packet.dto.PlayVoiceEvent;
+import model.packet.dto.Player;
 import model.packet.dto.PlayerLettersUpdatedEvent;
 import model.packet.dto.PlayerReadyRequest;
-import model.packet.dto.SpritesUpdatedEvent;
+import model.packet.dto.PlayerUpdatedEvent;
+import model.packet.dto.LettersUpdatedEvent;
 import model.packet.dto.ThrowLastestWordRequest;
 import model.sprite.SpriteName;
 import model.sprite.Sprite.Direction;
@@ -42,8 +44,9 @@ public class Packets {
 		public static final byte PID_EV_PLAY_VOICE = 2;
 		public static final byte PID_EV_ANSWER_COMMIT_RESULT = 3;
 		public static final byte PID_EV_PLAYER_LETTERS_UPDATED = 4;
-		public static final byte PID_EV_SPRITES_POSITION_UPDATED = 5;
+		public static final byte PID_EV_LETTERS_PLACED_UPDATED = 5;
 		public static final byte PID_EV_GAME_OVER = 6;
+		public static final byte PID_EV_PLAYER_UPDATED = 7;
 	}
 
 	public static PlayerReadyRequest parsePlayerReadyRequest(DataInputStream inputStream){
@@ -219,12 +222,10 @@ public class Packets {
 		}
 	}
 	
-	public static SpritesUpdatedEvent parseSpritesUpdatedEvent(DataInputStream inputStream){
+	public static LettersUpdatedEvent parseLettersUpdatedEvent(DataInputStream inputStream){
 		try {
-			Point player1Point = readPoint(inputStream);
-			Point player2Point = readPoint(inputStream);
 			Letter[] placedLetters = readLetters(inputStream);
-			return new SpritesUpdatedEvent(player1Point, player2Point, placedLetters);
+			return new LettersUpdatedEvent(placedLetters);
 		} catch (IOException e) {
 			throw new RuntimeException(e);
 		}
@@ -244,12 +245,10 @@ public class Packets {
 		return placedLetters;
 	}
 	
-	public static EEPacket parse(SpritesUpdatedEvent spritesUpdatedEvent){
+	public static EEPacket parse(LettersUpdatedEvent spritesUpdatedEvent){
 		try {
 			PacketWriter packetWriter = new PacketWriter();
-			packetWriter.writeByte(PacketIds.PID_EV_SPRITES_POSITION_UPDATED);
-			writePoint(packetWriter, spritesUpdatedEvent.player1Point.x, spritesUpdatedEvent.player1Point.y);
-			writePoint(packetWriter, spritesUpdatedEvent.player2Point.x, spritesUpdatedEvent.player2Point.y);
+			packetWriter.writeByte(PacketIds.PID_EV_LETTERS_PLACED_UPDATED);
 			writeLetters(packetWriter, spritesUpdatedEvent.letters);
 			return new EEPacket(packetWriter.getBytes());
 		} catch (IOException e) {
@@ -267,6 +266,28 @@ public class Packets {
 		}
 	}
 
+	public static PlayerUpdatedEvent parsePlayerUpdatedEvent(DataInputStream inputStream) {
+		try {
+			byte playerNo = inputStream.readByte();
+			Player player = readPlayer(inputStream);
+			return new PlayerUpdatedEvent(playerNo, player);
+		} catch (IOException e) {
+			throw new RuntimeException(e);
+		}
+	}
+
+	public static EEPacket parse(PlayerUpdatedEvent playerUpdatedEvent){
+		try {
+			PacketWriter packetWriter = new PacketWriter();
+			packetWriter.writeByte(PacketIds.PID_EV_PLAYER_UPDATED);
+			packetWriter.writeByte(playerUpdatedEvent.playerNo);
+			writePlayer(packetWriter, playerUpdatedEvent.player);
+			return new EEPacket(packetWriter.getBytes());
+		} catch (IOException e) {
+			throw new RuntimeException(e);
+		}
+	}
+	
 	public static PlayerLettersUpdatedEvent parsePlayerLettersUpdatedEvent(DataInputStream inputStream) {
 		try {
 			byte playerNo = inputStream.readByte();
@@ -376,6 +397,18 @@ public class Packets {
 		return new Point(inputStream.readShort(), inputStream.readShort());
 	}
 	
+	public static void writePlayer(PacketWriter packetWriter, Player player) throws IOException{
+		writePoint(packetWriter, player.point.x, player.point.y);
+		packetWriter.writeByte(player.direction.ordinal());
+		packetWriter.writeByte(player.status.ordinal());
+	}
+	
+	public static Player readPlayer(DataInputStream inputStream) throws IOException{
+		Point point = readPoint(inputStream);
+		Direction direction = Direction.values()[inputStream.readByte()];
+		Status status = Status.values()[inputStream.readByte()];
+		return new Player(point, direction, status);
+	}
 	/**
 	* The class represents as a DataOutputStream wrapping on a ByteArrayOutputStream, which produces a byte array.
 	* Notice that ByteArrayOutputStream needn't invoke close(), so neither PacketWriter. 

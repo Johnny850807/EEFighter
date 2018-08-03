@@ -15,9 +15,9 @@ public abstract class MapDirector {
 		for (int i = 0; i < mapString.length; i++)
 			for (int j = 0; j < mapString[i].length(); j++) {
 				char number = mapString[i].charAt(j);
-				if (number == MapItemName.BLOCK.getNumber())
+				if (number == MapItemName.BARRIER.getNumber())
 					builder.buildBarrier(j, i);
-				else if (number == MapItemName.GRASS.getNumber())
+				else if (number == MapItemName.TERRAIN.getNumber())
 					builder.buildRoad(j, i);
 			}
 		return builder.build();

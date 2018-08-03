@@ -89,13 +89,22 @@ public class PacketsTest {
 	}
 	
 	@Test
-	public void testSpritesUpdatedEvent() throws IOException {
-		SpritesUpdatedEvent dto = new SpritesUpdatedEvent(
-				new Point(10, 255), new Point(178, 44), createMockLetters());
+	public void testPlayerUpdatedEvent() throws IOException {
+		PlayerUpdatedEvent dto = new PlayerUpdatedEvent((byte) 1, 
+				new Player(new Point(178, 44), Direction.NORTH, Status.MOVE));
 		
 		DataInputStream inputStream = Packets.parse(dto).createDataInputStream();
-		assertEquals(inputStream.readByte(), PID_EV_SPRITES_POSITION_UPDATED);
-		assertEquals(dto, Packets.parseSpritesUpdatedEvent(inputStream));
+		assertEquals(inputStream.readByte(), PID_EV_PLAYER_UPDATED);
+		assertEquals(dto, Packets.parsePlayerUpdatedEvent(inputStream));
+	}
+
+	@Test
+	public void testLettersPlacedUpdatedEvent() throws IOException {
+		LettersUpdatedEvent dto = new LettersUpdatedEvent(createMockLetters());
+		
+		DataInputStream inputStream = Packets.parse(dto).createDataInputStream();
+		assertEquals(inputStream.readByte(), PID_EV_LETTERS_PLACED_UPDATED);
+		assertEquals(dto, Packets.parseLettersUpdatedEvent(inputStream));
 	}
 	
 	@Test

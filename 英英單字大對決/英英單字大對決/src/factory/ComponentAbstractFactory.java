@@ -1,5 +1,6 @@
 package factory;
 
+import controller.EEFighter;
 import model.sprite.MapBuilder;
 import model.sprite.MapDirector;
 import model.words.Crawler;
@@ -16,5 +17,6 @@ public interface ComponentAbstractFactory {
 	Crawler getCrawler();
 
 	TTS getTts();
-
+	
+	EEFighter createEEFighter();
 }

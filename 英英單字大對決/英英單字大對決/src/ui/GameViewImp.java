@@ -115,16 +115,16 @@ public class GameViewImp extends JPanel implements GameView, KeyListener {
 	public void keyPressed(KeyEvent e) {
 		switch (e.getKeyCode()) {
 		case KeyEvent.VK_UP:
-			eeFighter.move(spriteP1, Direction.NORTH, spriteP1.getImgDirection(),  Status.MOVE);
+			eeFighter.move(spriteP1, Direction.NORTH,  Status.MOVE);
 			break;
 		case KeyEvent.VK_DOWN:
-			eeFighter.move(spriteP1, Direction.SOUTH, spriteP1.getImgDirection(), Status.MOVE);
+			eeFighter.move(spriteP1, Direction.SOUTH, Status.MOVE);
 			break;
 		case KeyEvent.VK_LEFT:
-			eeFighter.move(spriteP1, Direction.WEST, Direction.WEST, Status.MOVE);
+			eeFighter.move(spriteP1, Direction.WEST, Status.MOVE);
 			break;
 		case KeyEvent.VK_RIGHT:
-			eeFighter.move(spriteP1, Direction.EAST, Direction.EAST, Status.MOVE);
+			eeFighter.move(spriteP1, Direction.EAST, Status.MOVE);
 			break;
 		case KeyEvent.VK_I:
 			eeFighter.popLetter(spriteP1);
@@ -136,16 +136,16 @@ public class GameViewImp extends JPanel implements GameView, KeyListener {
 			eeFighter.pickUp(spriteP1);
 			break;
 		case KeyEvent.VK_T:
-			eeFighter.move(spriteP2, Direction.NORTH, spriteP2.getImgDirection(), Status.MOVE);
+			eeFighter.move(spriteP2, Direction.NORTH, Status.MOVE);
 			break;
 		case KeyEvent.VK_G:
-			eeFighter.move(spriteP2, Direction.SOUTH, spriteP2.getImgDirection(), Status.MOVE);
+			eeFighter.move(spriteP2, Direction.SOUTH, Status.MOVE);
 			break;
 		case KeyEvent.VK_F:
-			eeFighter.move(spriteP2, Direction.WEST, Direction.WEST, Status.MOVE);
+			eeFighter.move(spriteP2, Direction.WEST, Status.MOVE);
 			break;
 		case KeyEvent.VK_H:
-			eeFighter.move(spriteP2, Direction.EAST, Direction.EAST, Status.MOVE);
+			eeFighter.move(spriteP2, Direction.EAST, Status.MOVE);
 			break;
 		case KeyEvent.VK_Z:
 			eeFighter.popLetter(spriteP2);
@@ -170,13 +170,13 @@ public class GameViewImp extends JPanel implements GameView, KeyListener {
 		case KeyEvent.VK_DOWN:
 		case KeyEvent.VK_LEFT:
 		case KeyEvent.VK_RIGHT:
-			eeFighter.move(spriteP1, spriteP1.getDirection(), spriteP1.getImgDirection(), Status.STOP);
+			eeFighter.move(spriteP1, spriteP1.getDirection(), Status.STOP);
 			break;
 		case KeyEvent.VK_T:
 		case KeyEvent.VK_G:
 		case KeyEvent.VK_F:
 		case KeyEvent.VK_H:
-			eeFighter.move(spriteP2, spriteP2.getDirection(), spriteP2.getImgDirection(), Status.STOP);
+			eeFighter.move(spriteP2, spriteP2.getDirection(), Status.STOP);
 			break;
 		}
 	}
@@ -210,9 +210,9 @@ public class GameViewImp extends JPanel implements GameView, KeyListener {
 	@Override
 	public void onLetterPoppedSuccessfuly(PlayerSprite player, List<Sprite> letter) {
 		if (spriteP1 == player)
-			gameStartView.onPlayerPopedLetter(nowQuestion.getWord(), "player1", player.getScore(), letter);
+			gameStartView.onPlayerPopLetter(nowQuestion.getWord(), "player1", player.getScore(), letter);
 		else if (spriteP2 == player)
-			gameStartView.onPlayerPopedLetter(nowQuestion.getWord(), "player2", player.getScore(), letter);
+			gameStartView.onPlayerPopLetter(nowQuestion.getWord(), "player2", player.getScore(), letter);
 	}
 
 	@Override
@@ -252,7 +252,7 @@ public class GameViewImp extends JPanel implements GameView, KeyListener {
 	}
 
 	@Override
-	public void onQuestionWordSoundPlay(String soundPath) {
+	public void onQuestionWordSoundPlay(String word, String soundPath) {
 		SoundPlayer.getInstance().playSound(soundPath);
 	}
 

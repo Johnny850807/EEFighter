@@ -18,6 +18,7 @@ import java.util.List;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
+import controller.EEFighter;
 import controller.EEFighterImp;
 import factory.ComponentAbstractFactory;
 import factory.ReleasedComponentAbstractFactory;
@@ -41,11 +42,12 @@ public class GameStartView extends JFrame implements IGameStartView {
 	private Question question;
 	private GameViewImp gameViewPanel;
 	private ComponentAbstractFactory componentAbstractFactory;
-	private EEFighterImp eeFighterImp;
+	private EEFighter eeFighterImp;
 
 	public GameStartView(ComponentAbstractFactory componentAbstractFactory) {
 		super("英英單字大對決");
-		eeFighterImp = new EEFighterImp(componentAbstractFactory);
+		this.componentAbstractFactory = componentAbstractFactory;
+		eeFighterImp = componentAbstractFactory.createEEFighter();
 		EventQueue.invokeLater(() -> {
 			setBounds(215, 80, MAPWIDTH *64 + 7, MAPHEIGHT * 64 + 129);
 			setupViews();
@@ -53,7 +55,6 @@ public class GameStartView extends JFrame implements IGameStartView {
 			setResizable(false);
 			addWindowListener(new CloseHandler());
 		});
-		this.componentAbstractFactory = componentAbstractFactory;
 	}
 
 	private void setupLayout() {
@@ -175,18 +176,17 @@ public class GameStartView extends JFrame implements IGameStartView {
 		add(c, gbc);
 	}
 
-	public void showPlayerBarInfo(String answer, String player, int score, List<Sprite> letter) {
-		letter = LetterSpriteSorter.produceSortedLetters(answer, letter);
-		System.out.println(SpriteLogHelper.toString(letter));
+	public void showPlayerBarInfo(String answer, String player, int score, List<Sprite> letters) {
+		letters = LetterSpriteSorter.produceSortedLetters(answer, letters);
 		if (player.equals("player1")) {
 			StringBuilder strBuilder = new StringBuilder("[" + score + "] Player1: ");
-			for (int i = 0; i < letter.size(); i++)
-				strBuilder.append(letter.get(i).getSpriteName() + " ");
+			for (int i = 0; i < letters.size(); i++)
+				strBuilder.append(letters.get(i).getSpriteName() + " ");
 			player1Lab.setText("<html>" + strBuilder.toString() + " </html>");
 		} else if (player.equals("player2")) {
 			StringBuilder strBuilder = new StringBuilder("[" + score + "] Player2: ");
-			for (int i = 0; i < letter.size(); i++)
-				strBuilder.append(letter.get(i).getSpriteName() + " ");
+			for (int i = 0; i < letters.size(); i++)
+				strBuilder.append(letters.get(i).getSpriteName() + " ");
 			player2Lab.setText("<html>" + strBuilder.toString() + " </html>");
 		}
 	}
@@ -211,7 +211,7 @@ public class GameStartView extends JFrame implements IGameStartView {
 	}
 
 	@Override
-	public void onPlayerPopedLetter(String answer, String player, int score, List<Sprite> letter) {
+	public void onPlayerPopLetter(String answer, String player, int score, List<Sprite> letter) {
 		showPlayerBarInfo(answer, player, score, letter);
 	}
 

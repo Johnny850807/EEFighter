@@ -15,5 +15,5 @@ public interface IGameStartView {
 
 	void onPlayerEatLetter(String answer, String string, int score, List<Sprite> letter);
 
-	void onPlayerPopedLetter(String answer, String string, int score, List<Sprite> letter);
+	void onPlayerPopLetter(String answer, String string, int score, List<Sprite> letter);
 }
