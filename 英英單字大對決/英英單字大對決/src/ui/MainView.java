@@ -8,16 +8,18 @@ import java.awt.Image;
 import java.awt.Panel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.awt.event.WindowListener;
 import java.io.File;
 import java.io.IOException;
-import java.net.DatagramSocket;
+import java.net.Inet4Address;
 import java.net.InetAddress;
+import java.net.NetworkInterface;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.net.SocketException;
 import java.net.UnknownHostException;
+import java.util.Enumeration;
 import java.util.regex.Pattern;
 
 import javax.imageio.ImageIO;
@@ -133,21 +135,36 @@ public class MainView extends JFrame implements ActionListener {
 
 	private void waitingConnectFromPlayer() {
 		JDialog dialog = createDialogForWaitingClient();
-		dialog.addWindowListener(new DefaultWindowListener() {
+		dialog.addWindowListener(new WindowAdapter() {
+			ServerSocket serverSocket = null;
+			boolean windowClosedOnPurpose = false;
+			boolean gameStarted = false;
 			@Override
 			public void windowOpened(WindowEvent event) {
 				new Thread(()->{
 					try {
-						ServerSocket serverSocket = new ServerSocket(EEFighterP2PServer.PORT);
+						serverSocket = new ServerSocket(EEFighterP2PServer.PORT);
 						Socket clientSocket = serverSocket.accept();
 						GameStartView gameStartView = new GameStartView(
 								new P2PServerAbstractFactory(serverSocket, clientSocket));;
 						gameStartView.setVisible(true);
+						gameStarted = true;
 						dialog.setVisible(false);
 					} catch (IOException e) {
-						JOptionPane.showMessageDialog(MainView.this, "無法連線，請確認網路狀態。");
+						if (!windowClosedOnPurpose)
+							JOptionPane.showMessageDialog(MainView.this, "無法連線，請確認網路狀態。");
 					}
 				}).start();
+			}@Override
+			public void windowClosing(WindowEvent e) {
+				windowClosedOnPurpose = true;
+				if (serverSocket != null && !gameStarted)
+					try {
+						serverSocket.close();
+					} catch (IOException e1) {
+						e1.printStackTrace();
+					}
+
 			}
 		});
 		dialog.setVisible(true);
@@ -171,10 +188,26 @@ public class MainView extends JFrame implements ActionListener {
 	 * The destination 8.8.8.8 is not needed to be reachable.
 	 */
 	private String getOutboundHost() {
-		try (final DatagramSocket socket = new DatagramSocket()) {
-			socket.connect(InetAddress.getByName("8.8.8.8"), 10002);
-			return socket.getLocalAddress().getHostAddress();
-		} catch (SocketException | UnknownHostException e) {
+		try {
+			String lastIp = "";
+			for (Enumeration<NetworkInterface> en = NetworkInterface.getNetworkInterfaces(); en.hasMoreElements();) {
+				NetworkInterface intf = en.nextElement();
+				Enumeration<InetAddress> enumIpAddr = intf.getInetAddresses();
+				while(enumIpAddr.hasMoreElements())
+				{
+					InetAddress inetAddress = enumIpAddr.nextElement();
+					if (inetAddress instanceof Inet4Address)
+					{
+						lastIp = inetAddress.toString().substring(1);
+						if (!lastIp.equals("127.0.0.1") && !lastIp.startsWith("10")
+								&& !lastIp.startsWith("192.168") && 
+								!Pattern.matches("(^172\\.1[6-9])|(^172\\.2[0-9])|(^172\\.3[0-1])", lastIp))
+							return lastIp;
+					}
+				}
+			}
+			return lastIp;
+		} catch (SocketException e) {
 			throw new RuntimeException(e);
 		}
 	}

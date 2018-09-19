@@ -31,6 +31,7 @@ public class Packets {
 	 * PID = packet's id
 	 * REQ = request from client
 	 * EV = event broadcasted from server
+	 * OP Code
 	 */
 	public interface PacketIds{
 		public static final byte PID_REQ_PLAYER_READY = -1;

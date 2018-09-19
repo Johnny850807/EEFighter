@@ -90,7 +90,7 @@ public class WordRepositoryImp implements WordRepository {
 			
 			for (String w : words.keySet()) {
 				Word word = words.get(w);
-				Map<PartOfSpeech, List<String>> definitions = word.getSentences();
+				Map<PartOfSpeech, List<String>> definitions = word.getDefinitions();
 				int keyAmount = definitions.keySet().size();
 				
 				bw.append(word.getWord() + " " + word.getSoundPath() + " " + keyAmount);

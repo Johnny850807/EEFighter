@@ -1,5 +1,5 @@
 package model.words;
 
 public interface Crawler {
-	Word crawlWordAndGetSentence(String wordSpelling) throws WordNotExistException;
+	Word crawlWord(String wordSpelling) throws WordNotExistException;
 }

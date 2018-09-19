@@ -34,10 +34,10 @@ public class QuestionManager implements Iterable<Question> {
 			for (int i = 0; i < 3; i++) {
 				String wordtxt = words.get(i).getWord();
 				String soundPath = words.get(i).getSoundPath();
-				Map<PartOfSpeech, List<String>> definitions = words.get(i).getSentences();
+				Map<PartOfSpeech, List<String>> definitions = words.get(i).getDefinitions();
 				List<PartOfSpeech> partOfSpeechs = new ArrayList<>(definitions.keySet());
 				PartOfSpeech partOfSpeech = partOfSpeechs.get(0);
-				String definition = words.get(i).getSentence(partOfSpeech);
+				String definition = words.get(i).getDefinition(partOfSpeech);
 				Question question = new Question(i + 1, wordtxt, soundPath, partOfSpeech, definition);
 				questions.add(question);
 			}

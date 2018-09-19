@@ -143,7 +143,7 @@ public class WordXMLRepository implements WordRepository {
 	private Word elementToWord(Element element) {
 		Word word = new Word(element.getAttribute(WORDNAME));
 		word.setSoundPath(getSoundPathFromWordElement(element));
-		word.setSentences(getDefinitionMapFromWordElement(element));
+		word.setDefinitions(getDefinitionMapFromWordElement(element));
 		return word;
 	}
 
@@ -170,8 +170,8 @@ public class WordXMLRepository implements WordRepository {
 		wordElement.setAttribute(WORDNAME, word.getWord());
 		soundPathElement.setTextContent(word.getSoundPath());
 		wordElement.appendChild(soundPathElement);
-		for (PartOfSpeech partOfSpeech : word.getSentences().keySet())
-			for (String definition : word.getSentences().get(partOfSpeech)) {
+		for (PartOfSpeech partOfSpeech : word.getDefinitions().keySet())
+			for (String definition : word.getDefinitions().get(partOfSpeech)) {
 				Element definitionElement = document.createElement(DEFINITION);
 				definitionElement.setAttribute(PARTOFSPEECH, partOfSpeech.toString());
 				definitionElement.setTextContent(definition);

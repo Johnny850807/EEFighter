@@ -37,7 +37,7 @@ public class EnglishWarehouseController {
 			public void run() {
 				Word word;
 				try {
-					word = crawler.crawlWordAndGetSentence(wordtxt);
+					word = crawler.crawlWord(wordtxt);
 					String path = tts.saveWordTTS("sounds/vocabulary", wordtxt);
 					word.setSoundPath(path);
 					wordRepository.addWord(word);

@@ -81,7 +81,8 @@ public class EEFighterP2PClient implements EEFighter{
 					byte packedId = inputStream.readByte();
 					packetHandler.get(packedId).accept(inputStream);
 				} catch (IOException e) {
-					e.printStackTrace();
+					gameView.onGameClose();
+					break;
 				}
 			}
 		}).start();

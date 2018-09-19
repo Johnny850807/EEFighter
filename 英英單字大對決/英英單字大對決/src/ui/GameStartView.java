@@ -215,10 +215,16 @@ public class GameStartView extends JFrame implements IGameStartView {
 		showPlayerBarInfo(answer, player, score, letter);
 	}
 
+	@Override
+	public void closeWindow() {
+		dispatchEvent(new WindowEvent(this, WindowEvent.WINDOW_CLOSING));
+	}
+	
 	protected class CloseHandler extends WindowAdapter {
 		public void windowClosing(final WindowEvent event) {
 			eeFighterImp.closeGame();
 		}
 	}
+
 
 }

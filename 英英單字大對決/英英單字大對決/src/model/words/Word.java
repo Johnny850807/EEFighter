@@ -31,24 +31,24 @@ public class Word {
 		this.soundPath = soundPath;
 	}
 
-	public Map<PartOfSpeech, List<String>> getSentences() {
+	public Map<PartOfSpeech, List<String>> getDefinitions() {
 		return definitions;
 	}
 	
-	public String getSentence(PartOfSpeech partOfSpeech) {
+	public String getDefinition(PartOfSpeech partOfSpeech) {
 		Random random = new Random();
 		List<String> definition = definitions.get(partOfSpeech);
 		return definition.get(random.nextInt(definition.size()));
 	}
 	
-	public void setSentences(Map<PartOfSpeech, List<String>> sentences) {
-		this.definitions = sentences;
+	public void setDefinitions(Map<PartOfSpeech, List<String>> definitions) {
+		this.definitions = definitions;
 	}
 
-	public void addDefinition(PartOfSpeech partOfSpeech, String sentence) {
+	public void addDefinition(PartOfSpeech partOfSpeech, String definition) {
 		if (!definitions.containsKey(partOfSpeech)) 
 			definitions.put(partOfSpeech, new ArrayList<>());
-		definitions.get(partOfSpeech).add(sentence);
+		definitions.get(partOfSpeech).add(definition);
 	}
 	
 	@Override

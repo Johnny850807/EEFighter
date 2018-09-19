@@ -123,6 +123,11 @@ public class EEFighterP2PServer extends EEFighterImp{
 					e.printStackTrace();
 				}
 			}
+			try {
+				clientSocket.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 		}).start();
 	}
 

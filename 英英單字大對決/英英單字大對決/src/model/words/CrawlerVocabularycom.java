@@ -10,7 +10,7 @@ import org.jsoup.select.Elements;
 public class CrawlerVocabularycom implements Crawler{
 	
 	@Override
-	public Word crawlWordAndGetSentence(String wordSpelling) throws WordNotExistException {
+	public Word crawlWord(String wordSpelling) throws WordNotExistException {
 		final String LINK = "https://www.vocabulary.com/dictionary/" + wordSpelling;
 		try {
 			Document doc = Jsoup.connect(LINK).get();
@@ -27,31 +27,12 @@ public class CrawlerVocabularycom implements Crawler{
 				String sentence = e[1];
 				word.addDefinition(PartOfSpeech.valueOf(partOfSpeech.toUpperCase()), sentence);
 			}
-			System.out.println(word.getSentences().entrySet());
 			return word;
 
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 		return null;
-	}
-	
-	
-	public static void main(String[] args) {
-		String wordtext = "acrgillj";
-		WordRepository wordRepository = new WordRepositoryImp();
-		CrawlerVocabularycom c = new CrawlerVocabularycom();
-		Word word;
-		try {
-			word = c.crawlWordAndGetSentence(wordtext);
-			word.setSoundPath("fjii");
-			wordRepository.addWord(word);
-			wordRepository.removeWord(word);
-			System.out.println(wordRepository.readWord("despair").getSentences());
-		} catch (Exception e) {
-			e.printStackTrace();
-			System.out.println(e.getMessage());
-		}
 	}
 
 }
