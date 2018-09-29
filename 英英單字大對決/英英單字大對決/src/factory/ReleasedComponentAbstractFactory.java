@@ -34,7 +34,7 @@ public class ReleasedComponentAbstractFactory implements ComponentAbstractFactor
 
 	@Override
 	public MapDirector createMapDirector() {
-		return new BasicRandomMapDirector(createMapBuilder());
+		return new BasicMapDirector(createMapBuilder());
 	}
 
 	@Override

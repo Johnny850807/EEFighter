@@ -1,5 +1,27 @@
-# OOD-Design-Pattern-Course
-支援物件導向之最極端的作業集合
+# EEFighter
 
-所有的 `Secret.java` 檔案會被自動忽略而不會上傳到此 Repository, <br/>
-用於 封裝所有對於伺服器的資料。
+JAVA Vocabulary words competing game implemented in Java Swing, 
+pure OOP, no game framework implementation.
+
+# Table of contents
+
+- [TODO](#todo)
+- [FEATURES](#features)
+- [DEMO](#demo)
+
+FEATURES
+===
+
+- Single computer 2 players game
+- P2P TCP Connection
+
+TODO
+===
+
+- AI implementation
+- Chinese translation each word crawling 
+
+
+DEMO
+===
+![Demo](https://i.imgur.com/kOkz64q.png)
