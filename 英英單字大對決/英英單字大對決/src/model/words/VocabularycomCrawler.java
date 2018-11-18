@@ -7,7 +7,7 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
-public class CrawlerVocabularycom implements Crawler{
+public class VocabularycomCrawler implements Crawler{
 	
 	@Override
 	public Word crawlWord(String wordSpelling) throws WordNotExistException {
@@ -17,7 +17,7 @@ public class CrawlerVocabularycom implements Crawler{
 			Elements definitions = doc.select("h3.definition");
 			
 			Word word = new Word(wordSpelling);
-			int i = 1;
+
 			if (definitions.isEmpty()) 
 				throw new WordNotExistException(wordSpelling);
 			for (Element element : definitions) {
@@ -30,9 +30,8 @@ public class CrawlerVocabularycom implements Crawler{
 			return word;
 
 		} catch (IOException e) {
-			e.printStackTrace();
+			throw new RuntimeException(e);
 		}
-		return null;
 	}
 
 }

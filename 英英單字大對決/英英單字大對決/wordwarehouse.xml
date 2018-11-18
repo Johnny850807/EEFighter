@@ -11,160 +11,29 @@
 
 
 
-<Word name="commodity">
-        <SoundPath>sounds\vocabulary\commodity.wav</SoundPath>
-        <Definition partOfSpeech="N">articles of commerce</Definition>
-    </Word>
-<Word name="rebate">
-        <SoundPath>sounds\vocabulary\rebate.wav</SoundPath>
-        <Definition partOfSpeech="V">give a reduction in the price during a sale</Definition>
-        <Definition partOfSpeech="V">join with a rebate</Definition>
-        <Definition partOfSpeech="V">cut a rebate in (timber or stone)</Definition>
-        <Definition partOfSpeech="N">a refund of some fraction of the amount paid</Definition>
-        <Definition partOfSpeech="N">a rectangular groove made to hold two pieces together</Definition>
-    </Word>
-<Word name="extraordinary">
-        <SoundPath>sounds\vocabulary\extraordinary.wav</SoundPath>
-        <Definition partOfSpeech="ADJ">beyond what is ordinary or usual; highly unusual or exceptional or remarkable</Definition>
-        <Definition partOfSpeech="ADJ">far more than usual or expected</Definition>
-        <Definition partOfSpeech="ADJ">(of an official) serving an unusual or special function in addition to those of the regular officials</Definition>
-    </Word>
-<Word name="auction">
-        <SoundPath>sounds\vocabulary\auction.wav</SoundPath>
-        <Definition partOfSpeech="V">sell at an auction</Definition>
-        <Definition partOfSpeech="N">the public sale of something to the highest bidder</Definition>
-        <Definition partOfSpeech="N">a variety of bridge in which tricks made in excess of the contract are scored toward game; now generally superseded by contract bridge</Definition>
-    </Word>
-<Word name="regular">
-        <SoundPath>sounds\vocabulary\regular.wav</SoundPath>
-        <Definition partOfSpeech="N">a regular patron</Definition>
-        <Definition partOfSpeech="N">a dependable follower (especially in party politics)</Definition>
-        <Definition partOfSpeech="N">a soldier in the regular army</Definition>
-        <Definition partOfSpeech="N">a garment size for persons of average height and weight</Definition>
-        <Definition partOfSpeech="ADJ">conforming to a standard or pattern</Definition>
-        <Definition partOfSpeech="ADJ">in accordance with fixed order or procedure or principle</Definition>
-        <Definition partOfSpeech="ADJ">in accord with regular practice or procedure</Definition>
-        <Definition partOfSpeech="ADJ">not deviating from what is normal</Definition>
-        <Definition partOfSpeech="ADJ">relating to a person who does something regularly</Definition>
-        <Definition partOfSpeech="ADJ">officially full-time</Definition>
-        <Definition partOfSpeech="ADJ">occurring at fixed intervals</Definition>
-        <Definition partOfSpeech="ADJ">regularly scheduled for fixed times</Definition>
-        <Definition partOfSpeech="ADJ">(of solids) having clear dimensions that can be measured; volume can be determined with a suitable geometric formula</Definition>
-        <Definition partOfSpeech="ADJ">symmetrically arranged</Definition>
-        <Definition partOfSpeech="ADJ">(used of the military) belonging to or engaged in by legitimate army forces</Definition>
-        <Definition partOfSpeech="ADJ">not constipated</Definition>
-        <Definition partOfSpeech="ADJ">often used as intensifiers</Definition>
-    </Word>
-<Word name="retail">
-        <SoundPath>sounds\vocabulary\retail.wav</SoundPath>
-        <Definition partOfSpeech="V">be sold at the retail level</Definition>
-        <Definition partOfSpeech="V">sell on the retail market</Definition>
-        <Definition partOfSpeech="N">the selling of goods to consumers; usually in small quantities and not for resale</Definition>
-        <Definition partOfSpeech="ADV">at a retail price</Definition>
-    </Word>
-<Word name="wholesale">
-        <SoundPath>sounds\vocabulary\wholesale.wav</SoundPath>
-        <Definition partOfSpeech="V">sell in large quantities</Definition>
-        <Definition partOfSpeech="N">the selling of goods to merchants; usually in large quantities for resale to consumers</Definition>
-        <Definition partOfSpeech="ADJ">ignoring distinctions</Definition>
-        <Definition partOfSpeech="ADV">at a wholesale price</Definition>
-        <Definition partOfSpeech="ADV">on a large scale without careful discrimination</Definition>
-    </Word>
-<Word name="barter">
-        <SoundPath>sounds\vocabulary\barter.wav</SoundPath>
-        <Definition partOfSpeech="V">exchange goods without involving money</Definition>
-        <Definition partOfSpeech="N">an equal exchange</Definition>
-    </Word>
-<Word name="agency">
-        <SoundPath>sounds\vocabulary\agency.wav</SoundPath>
-        <Definition partOfSpeech="N">the state of being in action or exerting power</Definition>
-        <Definition partOfSpeech="N">the state of serving as an official and authorized delegate or agent</Definition>
-        <Definition partOfSpeech="N">a business that provides a specialized service</Definition>
-        <Definition partOfSpeech="N">an administrative unit of government</Definition>
-        <Definition partOfSpeech="N">how a result is obtained or an end is achieved</Definition>
-    </Word>
-<Word name="discount">
-        <SoundPath>sounds\vocabulary\discount.wav</SoundPath>
-        <Definition partOfSpeech="V">give a reduction in price on</Definition>
-        <Definition partOfSpeech="V">bar from attention or consideration</Definition>
-        <Definition partOfSpeech="N">an amount or percentage deducted</Definition>
-        <Definition partOfSpeech="N">a refund of some fraction of the amount paid</Definition>
-        <Definition partOfSpeech="N">the act of reducing the selling price of merchandise</Definition>
-        <Definition partOfSpeech="N">interest on an annual basis deducted in advance on a loan</Definition>
-    </Word>
-<Word name="tailored">
-        <SoundPath>sounds\vocabulary\tailored.wav</SoundPath>
-        <Definition partOfSpeech="ADJ">(of clothing) custom-made</Definition>
-        <Definition partOfSpeech="ADJ">severely simple in line or design</Definition>
-    </Word>
-<Word name="massive">
-        <SoundPath>sounds\vocabulary\massive.wav</SoundPath>
-        <Definition partOfSpeech="ADJ">consisting of great mass; containing a great quantity of matter</Definition>
-        <Definition partOfSpeech="ADJ">imposing in size or bulk or solidity</Definition>
-        <Definition partOfSpeech="ADJ">imposing in scale or scope or degree or power</Definition>
-        <Definition partOfSpeech="ADJ">being the same substance throughout</Definition>
-    </Word>
-<Word name="license">
-        <SoundPath>sounds\vocabulary\license.wav</SoundPath>
-        <Definition partOfSpeech="V">authorize officially</Definition>
-        <Definition partOfSpeech="N">a legal document giving official permission to do something</Definition>
-        <Definition partOfSpeech="N">the act of giving a formal (usually written) authorization</Definition>
-        <Definition partOfSpeech="N">freedom to deviate deliberately from normally applicable rules or practices (especially in behavior or speech)</Definition>
-        <Definition partOfSpeech="N">excessive freedom; lack of due restraint</Definition>
-    </Word>
-<Word name="exhibit">
-        <SoundPath>sounds\vocabulary\exhibit.wav</SoundPath>
-        <Definition partOfSpeech="V">show; make visible or apparent</Definition>
-        <Definition partOfSpeech="V">give an exhibition of to an interested audience</Definition>
-        <Definition partOfSpeech="V">show an attribute, property, knowledge, or skill</Definition>
-        <Definition partOfSpeech="V">walk ostentatiously</Definition>
-        <Definition partOfSpeech="N">something shown to the public</Definition>
-        <Definition partOfSpeech="N">an object or statement produced before a court of law and referred to while giving evidence</Definition>
-    </Word>
-<Word name="ostentatious">
-        <SoundPath>sounds\vocabulary\ostentatious.wav</SoundPath>
-        <Definition partOfSpeech="ADJ">intended to attract notice and impress others</Definition>
-        <Definition partOfSpeech="ADJ">(of a display) tawdry or vulgar</Definition>
-    </Word>
-<Word name="resemble">
-        <SoundPath>sounds\vocabulary\resemble.wav</SoundPath>
-        <Definition partOfSpeech="V">appear like; be similar or bear a likeness to</Definition>
-    </Word>
 
 
 
-<Word name="affluent">
-        <SoundPath>sounds\vocabulary\affluent.wav</SoundPath>
-        <Definition partOfSpeech="N">an affluent person; a person who is financially well off</Definition>
-        <Definition partOfSpeech="N">a branch that flows into the main stream</Definition>
-        <Definition partOfSpeech="ADJ">having an abundant supply of money or possessions of value</Definition>
-    </Word>
-<Word name="anticipate">
-        <SoundPath>sounds\vocabulary\anticipate.wav</SoundPath>
-        <Definition partOfSpeech="V">regard something as probable or likely</Definition>
-        <Definition partOfSpeech="V">be excited or anxious about</Definition>
-        <Definition partOfSpeech="V">realize beforehand</Definition>
-        <Definition partOfSpeech="V">act in advance of; deal with ahead of time</Definition>
-        <Definition partOfSpeech="V">make a prediction about; tell in advance</Definition>
-        <Definition partOfSpeech="V">be a forerunner of or occur earlier than</Definition>
-    </Word>
-<Word name="appraise">
-        <SoundPath>sounds\vocabulary\appraise.wav</SoundPath>
-        <Definition partOfSpeech="V">consider in a comprehensive way</Definition>
-        <Definition partOfSpeech="V">evaluate or estimate the nature, quality, ability, extent, or significance of</Definition>
-    </Word>
-<Word name="counterfeit">
-        <SoundPath>sounds\vocabulary\counterfeit.wav</SoundPath>
-        <Definition partOfSpeech="V">make a copy of with the intent to deceive</Definition>
-        <Definition partOfSpeech="N">a copy that is represented as the original</Definition>
-        <Definition partOfSpeech="ADJ">not genuine; imitating something superior</Definition>
-    </Word>
-<Word name="emporium">
-        <SoundPath>sounds\vocabulary\emporium.wav</SoundPath>
-        <Definition partOfSpeech="N">a large retail store organized into departments offering a variety of merchandise; commonly part of a retail chain</Definition>
-    </Word>
-<Word name="warranty">
-        <SoundPath>sounds\vocabulary\warranty.wav</SoundPath>
-        <Definition partOfSpeech="N">a written assurance that some product or service will be provided or will meet certain specifications</Definition>
-    </Word>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </EnglishWarehouse>

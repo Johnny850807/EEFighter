@@ -1,5 +1,6 @@
 package factory;
 
+import WordProductionLineFactory.WordProductLineFactoryImp;
 import controller.EEFighter;
 import controller.EEFighterImp;
 import model.Secret;
@@ -9,10 +10,12 @@ import model.sprite.BasicRandomMapDirector;
 import model.sprite.MapBuilder;
 import model.sprite.MapDirector;
 import model.sprite.WaterBallMapDirector;
+import model.words.ChineseTranslationCrawler;
 import model.words.Crawler;
-import model.words.CrawlerVocabularycom;
+import model.words.VocabularycomCrawler;
 import model.words.ITRI_TTS;
 import model.words.TTS;
+import model.words.WordProductionLineFactory;
 import model.words.WordRepository;
 import model.words.WordXMLRepository;
 
@@ -20,9 +23,10 @@ public class ReleasedComponentAbstractFactory implements ComponentAbstractFactor
 	private WordRepository wordRepository;
 	private Crawler crawler;
 	private TTS tts;
+	private WordProductionLineFactory wordProductionLineFactory;
 	
 	public ReleasedComponentAbstractFactory() {
-		crawler = new CrawlerVocabularycom();
+		crawler = new VocabularycomCrawler();
 		tts = new ITRI_TTS(Secret.TTS_ACCOUNT, Secret.TTS_PASSWORD);
 		wordRepository = new WordXMLRepository("wordwarehouse");
 	}
@@ -55,6 +59,13 @@ public class ReleasedComponentAbstractFactory implements ComponentAbstractFactor
 	@Override
 	public EEFighter createEEFighter() {
 		return new EEFighterImp(this);
+	}
+
+	@Override
+	public WordProductionLineFactory getWordProductionLineFactory() {
+		return wordProductionLineFactory == null ? wordProductionLineFactory
+				= new WordProductLineFactoryImp(getTts(), getCrawler(), getWordRepository()) 
+				: wordProductionLineFactory;
 	}
 	
 }

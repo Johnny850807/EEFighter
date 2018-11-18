@@ -9,6 +9,7 @@ import model.words.TTS;
 import model.words.TTSException;
 import model.words.Word;
 import model.words.WordNotExistException;
+import model.words.WordProductionLineFactory;
 import model.words.WordRepository;
 import ui.EnglishWarehouseView;
 
@@ -17,14 +18,12 @@ import ui.EnglishWarehouseView;
  */
 public class EnglishWarehouseController {
 	private EnglishWarehouseView englishWarehouseView;
+	private WordProductionLineFactory wordProductionLineFactory;
 	private WordRepository wordRepository;
-	private Crawler crawler;
-	private TTS tts;
 	
 	public EnglishWarehouseController(ComponentAbstractFactory componentAbstractFactory) {
-		wordRepository = componentAbstractFactory.getWordRepository();  
-		crawler = componentAbstractFactory.getCrawler();
-		tts = componentAbstractFactory.getTts();
+		this.wordProductionLineFactory = componentAbstractFactory.getWordProductionLineFactory();
+		this.wordRepository = componentAbstractFactory.getWordRepository();
 	}
 	
 	public void setEnglishWarehouseView(EnglishWarehouseView englishWarehouseView) {
@@ -37,10 +36,7 @@ public class EnglishWarehouseController {
 			public void run() {
 				Word word;
 				try {
-					word = crawler.crawlWord(wordtxt);
-					String path = tts.saveWordTTS("sounds/vocabulary", wordtxt);
-					word.setSoundPath(path);
-					wordRepository.addWord(word);
+					word = wordProductionLineFactory.createWord(wordtxt);
 					englishWarehouseView.onWordCreateSuccessfully(word);
 				} catch (TTSException e) {
 					e.printStackTrace();

@@ -157,7 +157,8 @@ public class ITRI_TTS implements TTS {
 		properties.put(KEY_PASSWORD, TTS_PASSWORD);
 		return properties;
 	}
-
+	
+/* Testing Code
 	public static void main(String[] argv) {
 		try {
 			TTS tts = new ITRI_TTS(Secret.TTS_ACCOUNT, Secret.TTS_PASSWORD);
@@ -176,6 +177,6 @@ public class ITRI_TTS implements TTS {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-	}
+	}*/
 
 }
