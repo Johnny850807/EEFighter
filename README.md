@@ -22,7 +22,8 @@ TODO
 ===
 
 - AI implementation
-- Chinese translation each word crawling 
+- P2P Connection stability
+- GUI codes optimizations (especially word bank)
 
 
 DEMO
