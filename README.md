@@ -12,6 +12,9 @@ pure OOP, no game framework implementation.
 FEATURES
 ===
 
+- **Crawling** Vocabulary word's definitions from some websites. (words are saved as xml)
+    - English definitions are crawled from **Vocabulary.com**
+    - Chinese definitions are crawled from **Cambridge Dictionary**
 - Single computer 2 players game
 - P2P TCP Connection
 
