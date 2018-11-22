@@ -45,7 +45,7 @@ public class GameStartView extends JFrame implements IGameStartView {
 	private EEFighter eeFighterImp;
 
 	public GameStartView(ComponentAbstractFactory componentAbstractFactory) {
-		super("英英單字大對決");
+		super("EEFighter");
 		this.componentAbstractFactory = componentAbstractFactory;
 		eeFighterImp = componentAbstractFactory.createEEFighter();
 		EventQueue.invokeLater(() -> {

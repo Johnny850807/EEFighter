@@ -188,7 +188,7 @@ public class GameViewImp extends JPanel implements GameView, KeyListener {
 
 	@Override
 	public void onGameOver(PlayerSprite player) {
-		JOptionPane.showMessageDialog(null, player.getSpriteName().toString() + " win the game!!!");
+		JOptionPane.showMessageDialog(null, player.getSpriteName().toString() + " wins!");
 	}
 
 	@Override
