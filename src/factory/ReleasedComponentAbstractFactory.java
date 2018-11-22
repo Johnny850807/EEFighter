@@ -26,7 +26,7 @@ public class ReleasedComponentAbstractFactory implements ComponentAbstractFactor
 	private WordProductionLineFactory wordProductionLineFactory;
 	
 	public ReleasedComponentAbstractFactory() {
-		crawler = new VocabularycomCrawler();
+		crawler = new ChineseTranslationCrawler();
 		tts = new ITRI_TTS(Secret.TTS_ACCOUNT, Secret.TTS_PASSWORD);
 		wordRepository = new WordXMLRepository("wordwarehouse");
 	}

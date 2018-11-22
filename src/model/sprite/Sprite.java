@@ -172,6 +172,7 @@ public class Sprite implements Cloneable {
 	public Image getImage() {
 		if (status == Status.MOVE)
 			return imageMap.get(movement).nextImage();
+		
 		return imageMap.get(movement).nextImage();
 	}
 
